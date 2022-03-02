@@ -6,14 +6,14 @@ licenses(["notice"])
 
 closure_js_library(
     name = "proto",
-    srcs = ["proto.js"],
+    srcs = ["proto.js", "proto.clutz.d.ts"],
     lenient = True,
     deps = [":serializer"],
 )
 
 closure_js_library(
     name = "serializer",
-    srcs = ["serializer.js"],
+    srcs = ["serializer.js", "serializer.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/json",

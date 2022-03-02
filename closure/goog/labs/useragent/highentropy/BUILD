@@ -4,14 +4,14 @@ package(default_visibility = ["//visibility:public"])
 
 closure_js_library(
     name = "highentropydata",
-    srcs = ["highentropydata.js"],
+    srcs = ["highentropydata.js", "highentropydata.clutz.d.ts"],
     lenient = True,
     deps = [":highentropyvalue"],
 )
 
 closure_js_library(
     name = "highentropyvalue",
-    srcs = ["highentropyvalue.js"],
+    srcs = ["highentropyvalue.js", "highentropyvalue.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/labs/useragent:util",

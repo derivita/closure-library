@@ -20,7 +20,7 @@ closure_js_library(
 
 closure_js_library(
     name = "image",
-    srcs = ["image.js"],
+    srcs = ["image.js", "image.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/disposable",
@@ -36,7 +36,7 @@ closure_js_library(
 
 closure_js_library(
     name = "webchannel",
-    srcs = ["webchannel.js"],
+    srcs = ["webchannel.js", "webchannel.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/events",
@@ -48,14 +48,14 @@ closure_js_library(
 
 closure_js_library(
     name = "webchanneltransport",
-    srcs = ["webchanneltransport.js"],
+    srcs = ["webchanneltransport.js", "webchanneltransport.clutz.d.ts"],
     lenient = True,
     deps = [":webchannel"],
 )
 
 closure_js_library(
     name = "webchanneltransportfactory",
-    srcs = ["webchanneltransportfactory.js"],
+    srcs = ["webchanneltransportfactory.js", "webchanneltransportfactory.clutz.d.ts"],
     lenient = True,
     deps = [
         ":webchanneltransport",
@@ -65,7 +65,7 @@ closure_js_library(
 
 closure_js_library(
     name = "xhr",
-    srcs = ["xhr.js"],
+    srcs = ["xhr.js", "xhr.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",

@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "actioneventwrapper",
-    srcs = ["actioneventwrapper.js"],
+    srcs = ["actioneventwrapper.js", "actioneventwrapper.clutz.d.ts"],
     lenient = True,
     deps = [
         ":eventhandler",
@@ -22,7 +22,7 @@ closure_js_library(
 
 closure_js_library(
     name = "actionhandler",
-    srcs = ["actionhandler.js"],
+    srcs = ["actionhandler.js", "actionhandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserevent",
@@ -36,7 +36,7 @@ closure_js_library(
 
 closure_js_library(
     name = "browserevent",
-    srcs = ["browserevent.js"],
+    srcs = ["browserevent.js", "browserevent.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -50,7 +50,7 @@ closure_js_library(
 
 closure_js_library(
     name = "browserfeature",
-    srcs = ["browserfeature.js"],
+    srcs = ["browserfeature.js", "browserfeature.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/useragent"],
 )
@@ -58,8 +58,8 @@ closure_js_library(
 closure_js_library(
     name = "event",
     srcs = [
-        "event.js",
-        "eventlike.js",
+        "event.js", "event.clutz.d.ts",
+        "eventlike.js", "eventlike.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -75,17 +75,17 @@ alias(
 
 closure_js_library(
     name = "eventid",
-    srcs = ["eventid.js"],
+    srcs = ["eventid.js", "eventid.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "events",
     srcs = [
-        "eventhandler.js",
-        "events.js",
-        "eventtarget.js",
-        "eventwrapper.js",
+        "eventhandler.js", "eventhandler.clutz.d.ts",
+        "events.js", "events.clutz.d.ts",
+        "eventtarget.js", "eventtarget.clutz.d.ts",
+        "eventwrapper.js", "eventwrapper.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -112,7 +112,7 @@ alias(
 closure_js_library(
     name = "eventtargettester",
     testonly = 1,
-    srcs = ["eventtargettester.js"],
+    srcs = ["eventtargettester.js", "eventtargettester.clutz.d.ts"],
     lenient = True,
     deps = [
         ":event",
@@ -127,7 +127,7 @@ closure_js_library(
 
 closure_js_library(
     name = "eventtype",
-    srcs = ["eventtype.js"],
+    srcs = ["eventtype.js", "eventtype.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -142,7 +142,7 @@ alias(
 
 closure_js_library(
     name = "filedrophandler",
-    srcs = ["filedrophandler.js"],
+    srcs = ["filedrophandler.js", "filedrophandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserevent",
@@ -157,7 +157,7 @@ closure_js_library(
 
 closure_js_library(
     name = "focushandler",
-    srcs = ["focushandler.js"],
+    srcs = ["focushandler.js", "focushandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserevent",
@@ -169,7 +169,7 @@ closure_js_library(
 
 closure_js_library(
     name = "imehandler",
-    srcs = ["imehandler.js"],
+    srcs = ["imehandler.js", "imehandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserevent",
@@ -184,7 +184,7 @@ closure_js_library(
 
 closure_js_library(
     name = "inputhandler",
-    srcs = ["inputhandler.js"],
+    srcs = ["inputhandler.js", "inputhandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserevent",
@@ -199,7 +199,7 @@ closure_js_library(
 
 closure_js_library(
     name = "keycodes",
-    srcs = ["keycodes.js"],
+    srcs = ["keycodes.js", "keycodes.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserevent",
@@ -210,8 +210,8 @@ closure_js_library(
 closure_js_library(
     name = "keyhandler",
     srcs = [
-        "keyevent.js",
-        "keyhandler.js",
+        "keyevent.js", "keyevent.clutz.d.ts",
+        "keyhandler.js", "keyhandler.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -226,21 +226,21 @@ closure_js_library(
 
 closure_js_library(
     name = "keynames",
-    srcs = ["keynames.js"],
+    srcs = ["keynames.js", "keynames.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "keys",
-    srcs = ["keys.js"],
+    srcs = ["keys.js", "keys.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "listenable",
     srcs = [
-        "listenable.js",
-        "listenablekey.js",
+        "listenable.js", "listenable.clutz.d.ts",
+        "listenablekey.js", "listenablekey.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -251,14 +251,14 @@ closure_js_library(
 
 closure_js_library(
     name = "listener",
-    srcs = ["listener.js"],
+    srcs = ["listener.js", "listener.clutz.d.ts"],
     lenient = True,
     deps = [":listenable"],
 )
 
 closure_js_library(
     name = "listenermap",
-    srcs = ["listenermap.js"],
+    srcs = ["listenermap.js", "listenermap.clutz.d.ts"],
     lenient = True,
     deps = [
         ":eventid",
@@ -271,7 +271,7 @@ closure_js_library(
 
 closure_js_library(
     name = "mousewheelhandler",
-    srcs = ["mousewheelhandler.js"],
+    srcs = ["mousewheelhandler.js", "mousewheelhandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserevent",
@@ -286,7 +286,7 @@ closure_js_library(
 
 closure_js_library(
     name = "onlinehandler",
-    srcs = ["onlinehandler.js"],
+    srcs = ["onlinehandler.js", "onlinehandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":eventhandler",
@@ -298,7 +298,7 @@ closure_js_library(
 
 closure_js_library(
     name = "pastehandler",
-    srcs = ["pastehandler.js"],
+    srcs = ["pastehandler.js", "pastehandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserevent",
@@ -315,7 +315,7 @@ closure_js_library(
 
 closure_js_library(
     name = "wheelevent",
-    srcs = ["wheelevent.js"],
+    srcs = ["wheelevent.js", "wheelevent.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserevent",
@@ -325,7 +325,7 @@ closure_js_library(
 
 closure_js_library(
     name = "wheelhandler",
-    srcs = ["wheelhandler.js"],
+    srcs = ["wheelhandler.js", "wheelhandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserevent",

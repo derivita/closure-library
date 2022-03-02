@@ -22,11 +22,11 @@ alias(
 closure_js_library(
     name = "message",
     srcs = [
-        "descriptor.js",
-        "fielddescriptor.js",
-        "lazydeserializer.js",
-        "message.js",
-        "serializer.js",
+        "descriptor.js", "descriptor.clutz.d.ts",
+        "fielddescriptor.js", "fielddescriptor.clutz.d.ts",
+        "lazydeserializer.js", "lazydeserializer.clutz.d.ts",
+        "message.js", "message.clutz.d.ts",
+        "serializer.js", "serializer.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -39,7 +39,7 @@ closure_js_library(
 
 closure_js_library(
     name = "objectserializer",
-    srcs = ["objectserializer.js"],
+    srcs = ["objectserializer.js", "objectserializer.clutz.d.ts"],
     lenient = True,
     deps = [
         ":fielddescriptor",
@@ -51,7 +51,7 @@ closure_js_library(
 
 closure_js_library(
     name = "pbliteserializer",
-    srcs = ["pbliteserializer.js"],
+    srcs = ["pbliteserializer.js", "pbliteserializer.clutz.d.ts"],
     lenient = True,
     deps = [
         ":fielddescriptor",
@@ -68,7 +68,7 @@ alias(
 
 closure_js_library(
     name = "textformatserializer",
-    srcs = ["textformatserializer.js"],
+    srcs = ["textformatserializer.js", "textformatserializer.clutz.d.ts"],
     lenient = True,
     deps = [
         ":fielddescriptor",
@@ -84,7 +84,7 @@ closure_js_library(
 
 closure_js_library(
     name = "util",
-    srcs = ["util.js"],
+    srcs = ["util.js", "util.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )

@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "abstractmoduleloader",
-    srcs = ["abstractmoduleloader.js"],
+    srcs = ["abstractmoduleloader.js", "abstractmoduleloader.clutz.d.ts"],
     lenient = True,
     deps = [
         ":module",
@@ -16,7 +16,7 @@ closure_js_library(
 
 closure_js_library(
     name = "basemodule",
-    srcs = ["basemodule.js"],
+    srcs = ["basemodule.js", "basemodule.clutz.d.ts"],
     lenient = True,
     deps = [
         ":module",
@@ -26,7 +26,7 @@ closure_js_library(
 
 closure_js_library(
     name = "loader",
-    srcs = ["loader.js"],
+    srcs = ["loader.js", "loader.clutz.d.ts"],
     lenient = True,
     deps = [
         ":module",
@@ -43,15 +43,15 @@ closure_js_library(
 
 closure_js_library(
     name = "module",
-    srcs = ["module.js"],
+    srcs = ["module.js", "module.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "moduleinfo",
     srcs = [
-        "moduleinfo.js",
-        "moduleloadfailuretype.js",
+        "moduleinfo.js", "moduleinfo.clutz.d.ts",
+        "moduleloadfailuretype.js", "moduleloadfailuretype.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -67,7 +67,7 @@ closure_js_library(
 
 closure_js_library(
     name = "moduleloadcallback",
-    srcs = ["moduleloadcallback.js"],
+    srcs = ["moduleloadcallback.js", "moduleloadcallback.clutz.d.ts"],
     lenient = True,
     deps = [
         ":module",
@@ -77,7 +77,7 @@ closure_js_library(
 
 closure_js_library(
     name = "moduleloader",
-    srcs = ["moduleloader.js"],
+    srcs = ["moduleloader.js", "moduleloader.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractmoduleloader",
@@ -109,7 +109,7 @@ closure_js_library(
 
 closure_js_library(
     name = "modulemanager",
-    srcs = ["modulemanager.js"],
+    srcs = ["modulemanager.js", "modulemanager.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractmoduleloader",

@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "abstractdialog",
-    srcs = ["abstractdialog.js"],
+    srcs = ["abstractdialog.js", "abstractdialog.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -22,7 +22,7 @@ closure_js_library(
 
 closure_js_library(
     name = "bubble",
-    srcs = ["bubble.js"],
+    srcs = ["bubble.js", "bubble.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -51,7 +51,7 @@ closure_js_library(
 
 closure_js_library(
     name = "defaulttoolbar",
-    srcs = ["defaulttoolbar.js"],
+    srcs = ["defaulttoolbar.js", "defaulttoolbar.clutz.d.ts"],
     lenient = True,
     deps = [
         ":messages",
@@ -78,7 +78,7 @@ closure_js_library(
 
 closure_js_library(
     name = "linkdialog",
-    srcs = ["linkdialog.js"],
+    srcs = ["linkdialog.js", "linkdialog.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractdialog",
@@ -112,7 +112,7 @@ closure_js_library(
 
 closure_js_library(
     name = "messages",
-    srcs = ["messages.js"],
+    srcs = ["messages.js", "messages.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/html:safehtml",
@@ -122,7 +122,7 @@ closure_js_library(
 
 closure_js_library(
     name = "tabpane",
-    srcs = ["tabpane.js"],
+    srcs = ["tabpane.js", "tabpane.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -143,7 +143,7 @@ closure_js_library(
 
 closure_js_library(
     name = "toolbarcontroller",
-    srcs = ["toolbarcontroller.js"],
+    srcs = ["toolbarcontroller.js", "toolbarcontroller.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/editor:field",
@@ -156,7 +156,7 @@ closure_js_library(
 
 closure_js_library(
     name = "toolbarfactory",
-    srcs = ["toolbarfactory.js"],
+    srcs = ["toolbarfactory.js", "toolbarfactory.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",

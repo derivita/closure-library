@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "memoize",
-    srcs = ["memoize.js"],
+    srcs = ["memoize.js", "memoize.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/reflect"],
 )

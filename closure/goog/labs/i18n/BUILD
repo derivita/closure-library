@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "listformat",
-    srcs = ["listformat.js"],
+    srcs = ["listformat.js", "listformat.clutz.d.ts"],
     lenient = True,
     deps = [
         ":listsymbols",
@@ -16,13 +16,13 @@ closure_js_library(
 
 closure_js_library(
     name = "listsymbols",
-    srcs = ["listsymbols.js"],
+    srcs = ["listsymbols.js", "listsymbols.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "listsymbolsext",
-    srcs = ["listsymbolsext.js"],
+    srcs = ["listsymbolsext.js", "listsymbolsext.clutz.d.ts"],
     lenient = True,
     deps = [":listsymbols"],
 )

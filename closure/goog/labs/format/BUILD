@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "csv",
-    srcs = ["csv.js"],
+    srcs = ["csv.js", "csv.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",

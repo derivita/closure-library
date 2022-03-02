@@ -23,7 +23,7 @@ closure_js_library(
 
 closure_js_library(
     name = "base64pbstreamparser",
-    srcs = ["base64pbstreamparser.js"],
+    srcs = ["base64pbstreamparser.js", "base64pbstreamparser.clutz.d.ts"],
     lenient = True,
     deps = [
         ":base64streamdecoder",
@@ -35,7 +35,7 @@ closure_js_library(
 
 closure_js_library(
     name = "base64streamdecoder",
-    srcs = ["base64streamdecoder.js"],
+    srcs = ["base64streamdecoder.js", "base64streamdecoder.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -45,7 +45,7 @@ closure_js_library(
 
 closure_js_library(
     name = "jsonstreamparser",
-    srcs = ["jsonstreamparser.js"],
+    srcs = ["jsonstreamparser.js", "jsonstreamparser.clutz.d.ts"],
     lenient = True,
     deps = [
         ":streamparser",
@@ -56,13 +56,13 @@ closure_js_library(
 
 closure_js_library(
     name = "nodereadablestream",
-    srcs = ["nodereadablestream.js"],
+    srcs = ["nodereadablestream.js", "nodereadablestream.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "pbjsonstreamparser",
-    srcs = ["pbjsonstreamparser.js"],
+    srcs = ["pbjsonstreamparser.js", "pbjsonstreamparser.clutz.d.ts"],
     lenient = True,
     deps = [
         ":jsonstreamparser",
@@ -74,7 +74,7 @@ closure_js_library(
 
 closure_js_library(
     name = "pbstreamparser",
-    srcs = ["pbstreamparser.js"],
+    srcs = ["pbstreamparser.js", "pbstreamparser.clutz.d.ts"],
     lenient = True,
     deps = [
         ":streamparser",
@@ -84,7 +84,7 @@ closure_js_library(
 
 closure_js_library(
     name = "streamfactory",
-    srcs = ["streamfactory.js"],
+    srcs = ["streamfactory.js", "streamfactory.clutz.d.ts"],
     lenient = True,
     deps = [
         ":nodereadablestream",
@@ -97,13 +97,13 @@ closure_js_library(
 
 closure_js_library(
     name = "streamparser",
-    srcs = ["streamparser.js"],
+    srcs = ["streamparser.js", "streamparser.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "streamparsers",
-    srcs = ["streamparsers.js"],
+    srcs = ["streamparsers.js", "streamparsers.clutz.d.ts"],
     lenient = True,
     deps = [
         ":base64pbstreamparser",
@@ -118,13 +118,13 @@ closure_js_library(
 
 closure_js_library(
     name = "utils",
-    srcs = ["utils.js"],
+    srcs = ["utils.js", "utils.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "xhrnodereadablestream",
-    srcs = ["xhrnodereadablestream.js"],
+    srcs = ["xhrnodereadablestream.js", "xhrnodereadablestream.clutz.d.ts"],
     lenient = True,
     deps = [
         ":nodereadablestream",
@@ -136,7 +136,7 @@ closure_js_library(
 
 closure_js_library(
     name = "xhrstreamreader",
-    srcs = ["xhrstreamreader.js"],
+    srcs = ["xhrstreamreader.js", "xhrstreamreader.clutz.d.ts"],
     lenient = True,
     deps = [
         ":streamparser",

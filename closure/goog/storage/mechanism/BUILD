@@ -6,34 +6,34 @@ licenses(["notice"])
 
 closure_js_library(
     name = "errorcode",
-    srcs = ["errorcode.js"],
+    srcs = ["errorcode.js", "errorcode.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "errorhandlingmechanism",
-    srcs = ["errorhandlingmechanism.js"],
+    srcs = ["errorhandlingmechanism.js", "errorhandlingmechanism.clutz.d.ts"],
     lenient = True,
     deps = [":mechanism"],
 )
 
 closure_js_library(
     name = "html5localstorage",
-    srcs = ["html5localstorage.js"],
+    srcs = ["html5localstorage.js", "html5localstorage.clutz.d.ts"],
     lenient = True,
     deps = [":html5webstorage"],
 )
 
 closure_js_library(
     name = "html5sessionstorage",
-    srcs = ["html5sessionstorage.js"],
+    srcs = ["html5sessionstorage.js", "html5sessionstorage.clutz.d.ts"],
     lenient = True,
     deps = [":html5webstorage"],
 )
 
 closure_js_library(
     name = "html5webstorage",
-    srcs = ["html5webstorage.js"],
+    srcs = ["html5webstorage.js", "html5webstorage.clutz.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -45,7 +45,7 @@ closure_js_library(
 
 closure_js_library(
     name = "ieuserdata",
-    srcs = ["ieuserdata.js"],
+    srcs = ["ieuserdata.js", "ieuserdata.clutz.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -59,7 +59,7 @@ closure_js_library(
 
 closure_js_library(
     name = "iterablemechanism",
-    srcs = ["iterablemechanism.js"],
+    srcs = ["iterablemechanism.js", "iterablemechanism.clutz.d.ts"],
     lenient = True,
     deps = [
         ":mechanism",
@@ -73,7 +73,7 @@ closure_js_library(
 closure_js_library(
     name = "iterablemechanismtester",
     testonly = 1,
-    srcs = ["iterablemechanismtester.js"],
+    srcs = ["iterablemechanismtester.js", "iterablemechanismtester.clutz.d.ts"],
     lenient = True,
     deps = [
         ":iterablemechanism",
@@ -84,13 +84,13 @@ closure_js_library(
 
 closure_js_library(
     name = "mechanism",
-    srcs = ["mechanism.js"],
+    srcs = ["mechanism.js", "mechanism.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "mechanismfactory",
-    srcs = ["mechanismfactory.js"],
+    srcs = ["mechanismfactory.js", "mechanismfactory.clutz.d.ts"],
     lenient = True,
     deps = [
         ":html5localstorage",
@@ -104,7 +104,7 @@ closure_js_library(
 closure_js_library(
     name = "mechanismseparationtester",
     testonly = 1,
-    srcs = ["mechanismseparationtester.js"],
+    srcs = ["mechanismseparationtester.js", "mechanismseparationtester.clutz.d.ts"],
     lenient = True,
     deps = [
         ":mechanismtestdefinition",
@@ -116,7 +116,7 @@ closure_js_library(
 closure_js_library(
     name = "mechanismsharingtester",
     testonly = 1,
-    srcs = ["mechanismsharingtester.js"],
+    srcs = ["mechanismsharingtester.js", "mechanismsharingtester.clutz.d.ts"],
     lenient = True,
     deps = [
         ":mechanismtestdefinition",
@@ -128,14 +128,14 @@ closure_js_library(
 closure_js_library(
     name = "mechanismtestdefinition",
     testonly = 1,
-    srcs = ["mechanismtestdefinition.js"],
+    srcs = ["mechanismtestdefinition.js", "mechanismtestdefinition.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "mechanismtester",
     testonly = 1,
-    srcs = ["mechanismtester.js"],
+    srcs = ["mechanismtester.js", "mechanismtester.clutz.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -148,7 +148,7 @@ closure_js_library(
 
 closure_js_library(
     name = "prefixedmechanism",
-    srcs = ["prefixedmechanism.js"],
+    srcs = ["prefixedmechanism.js", "prefixedmechanism.clutz.d.ts"],
     lenient = True,
     deps = [
         ":iterablemechanism",

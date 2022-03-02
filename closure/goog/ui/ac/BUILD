@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "ac",
-    srcs = ["ac.js"],
+    srcs = ["ac.js", "ac.clutz.d.ts"],
     lenient = True,
     deps = [
         ":arraymatcher",
@@ -18,14 +18,14 @@ closure_js_library(
 
 closure_js_library(
     name = "arraymatcher",
-    srcs = ["arraymatcher.js"],
+    srcs = ["arraymatcher.js", "arraymatcher.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/string"],
 )
 
 closure_js_library(
     name = "autocomplete",
-    srcs = ["autocomplete.js"],
+    srcs = ["autocomplete.js", "autocomplete.clutz.d.ts"],
     lenient = True,
     deps = [
         ":inputhandler",
@@ -40,7 +40,7 @@ closure_js_library(
 
 closure_js_library(
     name = "cachingmatcher",
-    srcs = ["cachingmatcher.js"],
+    srcs = ["cachingmatcher.js", "cachingmatcher.clutz.d.ts"],
     lenient = True,
     deps = [
         ":arraymatcher",
@@ -52,7 +52,7 @@ closure_js_library(
 
 closure_js_library(
     name = "inputhandler",
-    srcs = ["inputhandler.js"],
+    srcs = ["inputhandler.js", "inputhandler.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/a11y/aria",
@@ -76,7 +76,7 @@ closure_js_library(
 
 closure_js_library(
     name = "remote",
-    srcs = ["remote.js"],
+    srcs = ["remote.js", "remote.clutz.d.ts"],
     lenient = True,
     deps = [
         ":autocomplete",
@@ -89,7 +89,7 @@ closure_js_library(
 
 closure_js_library(
     name = "remotearraymatcher",
-    srcs = ["remotearraymatcher.js"],
+    srcs = ["remotearraymatcher.js", "remotearraymatcher.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/disposable",
@@ -105,7 +105,7 @@ closure_js_library(
 
 closure_js_library(
     name = "renderer",
-    srcs = ["renderer.js"],
+    srcs = ["renderer.js", "renderer.clutz.d.ts"],
     lenient = True,
     deps = [
         ":autocomplete",
@@ -134,20 +134,20 @@ closure_js_library(
 
 closure_js_library(
     name = "renderoptions",
-    srcs = ["renderoptions.js"],
+    srcs = ["renderoptions.js", "renderoptions.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "richinputhandler",
-    srcs = ["richinputhandler.js"],
+    srcs = ["richinputhandler.js", "richinputhandler.clutz.d.ts"],
     lenient = True,
     deps = [":inputhandler"],
 )
 
 closure_js_library(
     name = "richremote",
-    srcs = ["richremote.js"],
+    srcs = ["richremote.js", "richremote.clutz.d.ts"],
     lenient = True,
     deps = [
         ":autocomplete",
@@ -160,7 +160,7 @@ closure_js_library(
 
 closure_js_library(
     name = "richremotearraymatcher",
-    srcs = ["richremotearraymatcher.js"],
+    srcs = ["richremotearraymatcher.js", "richremotearraymatcher.clutz.d.ts"],
     lenient = True,
     deps = [
         ":remotearraymatcher",

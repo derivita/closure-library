@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "url",
-    srcs = ["url.js"],
+    srcs = ["url.js", "url.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",

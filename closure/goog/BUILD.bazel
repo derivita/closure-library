@@ -8,6 +8,6 @@ package(default_visibility = ["//visibility:public"])
 
 closure_base_js_library(
     name = "base",
-    srcs = ["base.js"],
+    srcs = ["base.js", "base.clutz.d.ts"],
     visibility = ["//visibility:public"],
 )

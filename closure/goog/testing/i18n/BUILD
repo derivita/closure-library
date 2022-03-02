@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "asserts",
     testonly = True,
-    srcs = ["asserts.js"],
+    srcs = ["asserts.js", "asserts.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/testing:jsunit"],
 )

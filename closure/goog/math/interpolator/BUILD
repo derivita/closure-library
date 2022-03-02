@@ -6,13 +6,13 @@ licenses(["notice"])
 
 closure_js_library(
     name = "interpolator1",
-    srcs = ["interpolator1.js"],
+    srcs = ["interpolator1.js", "interpolator1.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "linear1",
-    srcs = ["linear1.js"],
+    srcs = ["linear1.js", "linear1.clutz.d.ts"],
     lenient = True,
     deps = [
         ":interpolator1",
@@ -24,7 +24,7 @@ closure_js_library(
 
 closure_js_library(
     name = "pchip1",
-    srcs = ["pchip1.js"],
+    srcs = ["pchip1.js", "pchip1.clutz.d.ts"],
     lenient = True,
     deps = [
         ":spline1",
@@ -34,7 +34,7 @@ closure_js_library(
 
 closure_js_library(
     name = "spline1",
-    srcs = ["spline1.js"],
+    srcs = ["spline1.js", "spline1.clutz.d.ts"],
     lenient = True,
     deps = [
         ":interpolator1",
