@@ -394,7 +394,7 @@ goog.editor.plugins.BasicTextFormatter.prototype.queryCommandValue = function(
       return this.queryCommandValueInternal_(
           this.getDocument_(), command,
           (goog.editor.BrowserFeature.HAS_STYLE_WITH_CSS &&
-           goog.userAgent.GECKO) ||
+           goog.userAgent.GECKO) ??
               undefined);
 
     case goog.editor.plugins.BasicTextFormatter.COMMAND.UNDERLINE:
@@ -416,7 +416,7 @@ goog.editor.plugins.BasicTextFormatter.prototype.queryCommandValue = function(
        */
       // This only works for commands that use the default execCommand
       return this.queryCommandStateInternal_(
-          this.getDocument_(), command, styleWithCss || undefined);
+          this.getDocument_(), command, styleWithCss ?? undefined);
   }
 };
 
