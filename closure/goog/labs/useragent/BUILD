@@ -20,7 +20,7 @@ closure_js_library(
 
 closure_js_library(
     name = "browser",
-    srcs = ["browser.js"],
+    srcs = ["browser.js", "browser.clutz.d.ts"],
     lenient = True,
     deps = [
         ":util",
@@ -34,14 +34,14 @@ closure_js_library(
 
 closure_js_library(
     name = "device",
-    srcs = ["device.js"],
+    srcs = ["device.js", "device.clutz.d.ts"],
     lenient = True,
     deps = [":util"],
 )
 
 closure_js_library(
     name = "engine",
-    srcs = ["engine.js"],
+    srcs = ["engine.js", "engine.clutz.d.ts"],
     lenient = True,
     deps = [
         ":util",
@@ -52,7 +52,7 @@ closure_js_library(
 
 closure_js_library(
     name = "extra",
-    srcs = ["extra.js"],
+    srcs = ["extra.js", "extra.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browser",
@@ -62,7 +62,7 @@ closure_js_library(
 
 closure_js_library(
     name = "platform",
-    srcs = ["platform.js"],
+    srcs = ["platform.js", "platform.clutz.d.ts"],
     lenient = True,
     deps = [
         ":util",
@@ -75,14 +75,14 @@ closure_js_library(
 closure_js_library(
     name = "test_agents",
     testonly = 1,
-    srcs = ["test_agents.js"],
+    srcs = ["test_agents.js", "test_agents.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "test_agentdata",
     testonly = 1,
-    srcs = ["test_agentdata.js"],
+    srcs = ["test_agentdata.js", "test_agentdata.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -93,7 +93,7 @@ closure_js_library(
 closure_js_library(
     name = "testutil",
     srcs = [
-        "testutil.js",
+        "testutil.js", "testutil.clutz.d.ts",
     ],
     lenient = True,
     deps = [":util"],
@@ -102,8 +102,8 @@ closure_js_library(
 closure_js_library(
     name = "util",
     srcs = [
-        "useragent.js",
-        "util.js",
+        "useragent.js", "useragent.clutz.d.ts",
+        "util.js", "util.clutz.d.ts",
     ],
     lenient = True,
     deps = ["//closure/goog/string:internal"],
@@ -111,6 +111,6 @@ closure_js_library(
 
 closure_js_library(
     name = "verifier",
-    srcs = ["verifier.js"],
+    srcs = ["verifier.js", "verifier.clutz.d.ts"],
     lenient = True,
 )

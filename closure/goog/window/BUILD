@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "window",
-    srcs = ["window.js"],
+    srcs = ["window.js", "window.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom",

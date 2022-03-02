@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "singleton",
-    srcs = ["singleton.js"],
+    srcs = ["singleton.js", "singleton.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",

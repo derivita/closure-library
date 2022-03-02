@@ -6,19 +6,19 @@ licenses(["notice"])
 
 closure_js_library(
     name = "html_test_vectors_js",
-    srcs = ["html_test_vectors.js"],
+    srcs = ["html_test_vectors.js", "html_test_vectors.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "attributeallowlists",
-    srcs = ["attributeallowlists.js"],
+    srcs = ["attributeallowlists.js", "attributeallowlists.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "csspropertysanitizer",
-    srcs = ["csspropertysanitizer.js"],
+    srcs = ["csspropertysanitizer.js", "csspropertysanitizer.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -30,7 +30,7 @@ closure_js_library(
 
 closure_js_library(
     name = "csssanitizer",
-    srcs = ["csssanitizer.js"],
+    srcs = ["csssanitizer.js", "csssanitizer.clutz.d.ts"],
     lenient = True,
     deps = [
         ":csspropertysanitizer",
@@ -54,14 +54,14 @@ closure_js_library(
 
 closure_js_library(
     name = "elementweakmap",
-    srcs = ["elementweakmap.js"],
+    srcs = ["elementweakmap.js", "elementweakmap.clutz.d.ts"],
     lenient = True,
     deps = [":noclobber"],
 )
 
 closure_js_library(
     name = "htmlsanitizer",
-    srcs = ["htmlsanitizer.js"],
+    srcs = ["htmlsanitizer.js", "htmlsanitizer.clutz.d.ts"],
     lenient = True,
     deps = [
         ":attributeallowlists",
@@ -88,7 +88,7 @@ closure_js_library(
 
 closure_js_library(
     name = "noclobber",
-    srcs = ["noclobber.js"],
+    srcs = ["noclobber.js", "noclobber.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -99,7 +99,7 @@ closure_js_library(
 
 closure_js_library(
     name = "safedomtreeprocessor",
-    srcs = ["safedomtreeprocessor.js"],
+    srcs = ["safedomtreeprocessor.js", "safedomtreeprocessor.clutz.d.ts"],
     lenient = True,
     deps = [
         ":elementweakmap",
@@ -117,19 +117,19 @@ closure_js_library(
 
 closure_js_library(
     name = "tagblacklist",
-    srcs = ["tagblacklist.js"],
+    srcs = ["tagblacklist.js", "tagblacklist.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "tagwhitelist",
-    srcs = ["tagwhitelist.js"],
+    srcs = ["tagwhitelist.js", "tagwhitelist.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "unsafe",
-    srcs = ["unsafe.js"],
+    srcs = ["unsafe.js", "unsafe.clutz.d.ts"],
     lenient = True,
     deps = [
         ":htmlsanitizer",

@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "cssspecificity",
-    srcs = ["cssspecificity.js"],
+    srcs = ["cssspecificity.js", "cssspecificity.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/useragent",
@@ -16,7 +16,7 @@ closure_js_library(
 
 closure_js_library(
     name = "legacyconversions",
-    srcs = ["legacyconversions.js"],
+    srcs = ["legacyconversions.js", "legacyconversions.clutz.d.ts"],
     lenient = True,
     deps = [
         ":safehtml",
@@ -30,7 +30,7 @@ closure_js_library(
 
 closure_js_library(
     name = "safehtml",
-    srcs = ["safehtml.js"],
+    srcs = ["safehtml.js", "safehtml.clutz.d.ts"],
     lenient = True,
     deps = [
         ":safescript",
@@ -54,7 +54,7 @@ closure_js_library(
 
 closure_js_library(
     name = "safehtmlformatter",
-    srcs = ["safehtmlformatter.js"],
+    srcs = ["safehtmlformatter.js", "safehtmlformatter.clutz.d.ts"],
     lenient = True,
     deps = [
         ":safehtml",
@@ -66,7 +66,7 @@ closure_js_library(
 
 closure_js_library(
     name = "safescript",
-    srcs = ["safescript.js"],
+    srcs = ["safescript.js", "safescript.clutz.d.ts"],
     lenient = True,
     deps = [
         ":trustedtypes",
@@ -78,7 +78,7 @@ closure_js_library(
 
 closure_js_library(
     name = "safestyle",
-    srcs = ["safestyle.js"],
+    srcs = ["safestyle.js", "safestyle.clutz.d.ts"],
     lenient = True,
     deps = [
         ":safeurl",
@@ -92,7 +92,7 @@ closure_js_library(
 
 closure_js_library(
     name = "safestylesheet",
-    srcs = ["safestylesheet.js"],
+    srcs = ["safestylesheet.js", "safestylesheet.clutz.d.ts"],
     lenient = True,
     deps = [
         ":safestyle",
@@ -107,7 +107,7 @@ closure_js_library(
 
 closure_js_library(
     name = "safeurl",
-    srcs = ["safeurl.js"],
+    srcs = ["safeurl.js", "safeurl.clutz.d.ts"],
     lenient = True,
     deps = [
         ":trustedresourceurl",
@@ -123,14 +123,14 @@ closure_js_library(
 closure_js_library(
     name = "safeurl_test_vectors",
     testonly = 1,
-    srcs = ["safeurl_test_vectors.js"],
+    srcs = ["safeurl_test_vectors.js", "safeurl_test_vectors.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "testing",
     testonly = True,
-    srcs = ["testing.js"],
+    srcs = ["testing.js", "testing.clutz.d.ts"],
     lenient = True,
     deps = [
         ":safehtml",
@@ -146,7 +146,7 @@ closure_js_library(
 
 closure_js_library(
     name = "textextractor",
-    srcs = ["textextractor.js"],
+    srcs = ["textextractor.js", "textextractor.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -159,7 +159,7 @@ closure_js_library(
 
 closure_js_library(
     name = "trustedresourceurl",
-    srcs = ["trustedresourceurl.js"],
+    srcs = ["trustedresourceurl.js", "trustedresourceurl.clutz.d.ts"],
     lenient = True,
     deps = [
         ":safescript",
@@ -175,14 +175,14 @@ closure_js_library(
 
 closure_js_library(
     name = "trustedtypes",
-    srcs = ["trustedtypes.js"],
+    srcs = ["trustedtypes.js", "trustedtypes.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/memoize"],
 )
 
 closure_js_library(
     name = "uncheckedconversions",
-    srcs = ["uncheckedconversions.js"],
+    srcs = ["uncheckedconversions.js", "uncheckedconversions.clutz.d.ts"],
     lenient = True,
     deps = [
         ":safehtml",
@@ -200,7 +200,7 @@ closure_js_library(
 
 closure_js_library(
     name = "utils",
-    srcs = ["utils.js"],
+    srcs = ["utils.js", "utils.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/string"],
 )

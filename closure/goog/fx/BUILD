@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "abstractdragdrop",
-    srcs = ["abstractdragdrop.js"],
+    srcs = ["abstractdragdrop.js", "abstractdragdrop.clutz.d.ts"],
     lenient = True,
     deps = [
         ":dragger",
@@ -28,7 +28,7 @@ closure_js_library(
 
 closure_js_library(
     name = "animation",
-    srcs = ["animation.js"],
+    srcs = ["animation.js", "animation.clutz.d.ts"],
     lenient = True,
     deps = [
         ":transition",
@@ -42,7 +42,7 @@ closure_js_library(
 
 closure_js_library(
     name = "animationqueue",
-    srcs = ["animationqueue.js"],
+    srcs = ["animationqueue.js", "animationqueue.clutz.d.ts"],
     lenient = True,
     deps = [
         ":animation",
@@ -57,7 +57,7 @@ closure_js_library(
 
 closure_js_library(
     name = "cssspriteanimation",
-    srcs = ["cssspriteanimation.js"],
+    srcs = ["cssspriteanimation.js", "cssspriteanimation.clutz.d.ts"],
     lenient = True,
     deps = [
         ":animation",
@@ -68,7 +68,7 @@ closure_js_library(
 
 closure_js_library(
     name = "dom",
-    srcs = ["dom.js"],
+    srcs = ["dom.js", "dom.clutz.d.ts"],
     lenient = True,
     deps = [
         ":animation",
@@ -83,14 +83,14 @@ closure_js_library(
 
 closure_js_library(
     name = "dragdrop",
-    srcs = ["dragdrop.js"],
+    srcs = ["dragdrop.js", "dragdrop.clutz.d.ts"],
     lenient = True,
     deps = [":abstractdragdrop"],
 )
 
 closure_js_library(
     name = "dragdropgroup",
-    srcs = ["dragdropgroup.js"],
+    srcs = ["dragdropgroup.js", "dragdropgroup.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractdragdrop",
@@ -100,7 +100,7 @@ closure_js_library(
 
 closure_js_library(
     name = "dragger",
-    srcs = ["dragger.js"],
+    srcs = ["dragger.js", "dragger.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom",
@@ -121,7 +121,7 @@ closure_js_library(
 
 closure_js_library(
     name = "draglistgroup",
-    srcs = ["draglistgroup.js"],
+    srcs = ["draglistgroup.js", "draglistgroup.clutz.d.ts"],
     lenient = True,
     deps = [
         ":dragger",
@@ -145,7 +145,7 @@ closure_js_library(
 
 closure_js_library(
     name = "dragscrollsupport",
-    srcs = ["dragscrollsupport.js"],
+    srcs = ["dragscrollsupport.js", "dragscrollsupport.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/disposable",
@@ -162,13 +162,13 @@ closure_js_library(
 
 closure_js_library(
     name = "easing",
-    srcs = ["easing.js"],
+    srcs = ["easing.js", "easing.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "fx",
-    srcs = ["fx.js"],
+    srcs = ["fx.js", "fx.clutz.d.ts"],
     lenient = True,
     deps = [
         ":animation",
@@ -180,13 +180,13 @@ closure_js_library(
 
 closure_js_library(
     name = "transition",
-    srcs = ["transition.js"],
+    srcs = ["transition.js", "transition.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "transitionbase",
-    srcs = ["transitionbase.js"],
+    srcs = ["transitionbase.js", "transitionbase.clutz.d.ts"],
     lenient = True,
     deps = [
         ":transition",

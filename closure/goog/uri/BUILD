@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "uri",
-    srcs = ["uri.js"],
+    srcs = ["uri.js", "uri.clutz.d.ts"],
     lenient = True,
     deps = [
         ":utils",
@@ -21,7 +21,7 @@ closure_js_library(
 
 closure_js_library(
     name = "utils",
-    srcs = ["utils.js"],
+    srcs = ["utils.js", "utils.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",

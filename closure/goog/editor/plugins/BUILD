@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "abstractbubbleplugin",
-    srcs = ["abstractbubbleplugin.js"],
+    srcs = ["abstractbubbleplugin.js", "abstractbubbleplugin.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -33,7 +33,7 @@ closure_js_library(
 
 closure_js_library(
     name = "abstractdialogplugin",
-    srcs = ["abstractdialogplugin.js"],
+    srcs = ["abstractdialogplugin.js", "abstractdialogplugin.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom",
@@ -50,7 +50,7 @@ closure_js_library(
 
 closure_js_library(
     name = "abstracttabhandler",
-    srcs = ["abstracttabhandler.js"],
+    srcs = ["abstracttabhandler.js", "abstracttabhandler.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/editor:plugin",
@@ -62,7 +62,7 @@ closure_js_library(
 
 closure_js_library(
     name = "basictextformatter",
-    srcs = ["basictextformatter.js"],
+    srcs = ["basictextformatter.js", "basictextformatter.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -90,7 +90,7 @@ closure_js_library(
 
 closure_js_library(
     name = "blockquote",
-    srcs = ["blockquote.js"],
+    srcs = ["blockquote.js", "blockquote.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom",
@@ -108,7 +108,7 @@ closure_js_library(
 
 closure_js_library(
     name = "emoticons",
-    srcs = ["emoticons.js"],
+    srcs = ["emoticons.js", "emoticons.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom:tagname",
@@ -122,7 +122,7 @@ closure_js_library(
 
 closure_js_library(
     name = "enterhandler",
-    srcs = ["enterhandler.js"],
+    srcs = ["enterhandler.js", "enterhandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":blockquote",
@@ -149,7 +149,7 @@ closure_js_library(
 
 closure_js_library(
     name = "firststrong",
-    srcs = ["firststrong.js"],
+    srcs = ["firststrong.js", "firststrong.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom:nodetype",
@@ -169,7 +169,7 @@ closure_js_library(
 
 closure_js_library(
     name = "headerformatter",
-    srcs = ["headerformatter.js"],
+    srcs = ["headerformatter.js", "headerformatter.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/editor:command",
@@ -180,7 +180,7 @@ closure_js_library(
 
 closure_js_library(
     name = "linkbubble",
-    srcs = ["linkbubble.js"],
+    srcs = ["linkbubble.js", "linkbubble.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractbubbleplugin",
@@ -202,7 +202,7 @@ closure_js_library(
 
 closure_js_library(
     name = "linkdialogplugin",
-    srcs = ["linkdialogplugin.js"],
+    srcs = ["linkdialogplugin.js", "linkdialogplugin.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractdialogplugin",
@@ -222,7 +222,7 @@ closure_js_library(
 
 closure_js_library(
     name = "linkshortcutplugin",
-    srcs = ["linkshortcutplugin.js"],
+    srcs = ["linkshortcutplugin.js", "linkshortcutplugin.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/editor:command",
@@ -233,7 +233,7 @@ closure_js_library(
 
 closure_js_library(
     name = "listtabhandler",
-    srcs = ["listtabhandler.js"],
+    srcs = ["listtabhandler.js", "listtabhandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstracttabhandler",
@@ -246,7 +246,7 @@ closure_js_library(
 
 closure_js_library(
     name = "loremipsum",
-    srcs = ["loremipsum.js"],
+    srcs = ["loremipsum.js", "loremipsum.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -263,7 +263,7 @@ closure_js_library(
 
 closure_js_library(
     name = "removeformatting",
-    srcs = ["removeformatting.js"],
+    srcs = ["removeformatting.js", "removeformatting.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom",
@@ -284,7 +284,7 @@ closure_js_library(
 
 closure_js_library(
     name = "spacestabhandler",
-    srcs = ["spacestabhandler.js"],
+    srcs = ["spacestabhandler.js", "spacestabhandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstracttabhandler",
@@ -295,7 +295,7 @@ closure_js_library(
 
 closure_js_library(
     name = "tableeditor",
-    srcs = ["tableeditor.js"],
+    srcs = ["tableeditor.js", "tableeditor.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -314,7 +314,7 @@ closure_js_library(
 
 closure_js_library(
     name = "tagonenterhandler",
-    srcs = ["tagonenterhandler.js"],
+    srcs = ["tagonenterhandler.js", "tagonenterhandler.clutz.d.ts"],
     lenient = True,
     deps = [
         ":enterhandler",
@@ -337,7 +337,7 @@ closure_js_library(
 
 closure_js_library(
     name = "undoredo",
-    srcs = ["undoredo.js"],
+    srcs = ["undoredo.js", "undoredo.clutz.d.ts"],
     lenient = True,
     deps = [
         ":undoredomanager",
@@ -361,7 +361,7 @@ closure_js_library(
 
 closure_js_library(
     name = "undoredomanager",
-    srcs = ["undoredomanager.js"],
+    srcs = ["undoredomanager.js", "undoredomanager.clutz.d.ts"],
     lenient = True,
     deps = [
         ":undoredostate",
@@ -372,7 +372,7 @@ closure_js_library(
 
 closure_js_library(
     name = "undoredostate",
-    srcs = ["undoredostate.js"],
+    srcs = ["undoredostate.js", "undoredostate.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/events:eventtarget"],
 )

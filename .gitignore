@@ -25,6 +25,6 @@ package-lock.json
 alltests.js
 
 # Generated deps.js
-closure/goog/deps.js
+# closure/goog/deps.js
 closure/goog/deps_with_tests.js
 

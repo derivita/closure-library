@@ -6,14 +6,14 @@ licenses(["notice"])
 
 closure_js_library(
     name = "fx",
-    srcs = ["fx.js"],
+    srcs = ["fx.js", "fx.clutz.d.ts"],
     lenient = True,
     deps = [":transition"],
 )
 
 closure_js_library(
     name = "transition",
-    srcs = ["transition.js"],
+    srcs = ["transition.js", "transition.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",

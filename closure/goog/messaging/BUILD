@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "abstractchannel",
-    srcs = ["abstractchannel.js"],
+    srcs = ["abstractchannel.js", "abstractchannel.clutz.d.ts"],
     lenient = True,
     deps = [
         ":messagechannel",
@@ -18,7 +18,7 @@ closure_js_library(
 
 closure_js_library(
     name = "bufferedchannel",
-    srcs = ["bufferedchannel.js"],
+    srcs = ["bufferedchannel.js", "bufferedchannel.clutz.d.ts"],
     lenient = True,
     deps = [
         ":messagechannel",
@@ -32,7 +32,7 @@ closure_js_library(
 
 closure_js_library(
     name = "deferredchannel",
-    srcs = ["deferredchannel.js"],
+    srcs = ["deferredchannel.js", "deferredchannel.clutz.d.ts"],
     lenient = True,
     deps = [
         ":messagechannel",
@@ -43,7 +43,7 @@ closure_js_library(
 
 closure_js_library(
     name = "loggerclient",
-    srcs = ["loggerclient.js"],
+    srcs = ["loggerclient.js", "loggerclient.clutz.d.ts"],
     lenient = True,
     deps = [
         ":messagechannel",
@@ -55,7 +55,7 @@ closure_js_library(
 
 closure_js_library(
     name = "loggerserver",
-    srcs = ["loggerserver.js"],
+    srcs = ["loggerserver.js", "loggerserver.clutz.d.ts"],
     lenient = True,
     deps = [
         ":messagechannel",
@@ -66,20 +66,20 @@ closure_js_library(
 
 closure_js_library(
     name = "messagechannel",
-    srcs = ["messagechannel.js"],
+    srcs = ["messagechannel.js", "messagechannel.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "messaging",
-    srcs = ["messaging.js"],
+    srcs = ["messaging.js", "messaging.clutz.d.ts"],
     lenient = True,
     deps = [":messagechannel"],
 )
 
 closure_js_library(
     name = "multichannel",
-    srcs = ["multichannel.js"],
+    srcs = ["multichannel.js", "multichannel.clutz.d.ts"],
     lenient = True,
     deps = [
         ":messagechannel",
@@ -91,7 +91,7 @@ closure_js_library(
 
 closure_js_library(
     name = "portcaller",
-    srcs = ["portcaller.js"],
+    srcs = ["portcaller.js", "portcaller.clutz.d.ts"],
     lenient = True,
     deps = [
         ":deferredchannel",
@@ -106,7 +106,7 @@ closure_js_library(
 
 closure_js_library(
     name = "portchannel",
-    srcs = ["portchannel.js"],
+    srcs = ["portchannel.js", "portchannel.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractchannel",
@@ -130,14 +130,14 @@ closure_js_library(
 
 closure_js_library(
     name = "portnetwork",
-    srcs = ["portnetwork.js"],
+    srcs = ["portnetwork.js", "portnetwork.clutz.d.ts"],
     lenient = True,
     deps = [":messagechannel"],
 )
 
 closure_js_library(
     name = "portoperator",
-    srcs = ["portoperator.js"],
+    srcs = ["portoperator.js", "portoperator.clutz.d.ts"],
     lenient = True,
     deps = [
         ":messagechannel",
@@ -152,7 +152,7 @@ closure_js_library(
 
 closure_js_library(
     name = "respondingchannel",
-    srcs = ["respondingchannel.js"],
+    srcs = ["respondingchannel.js", "respondingchannel.clutz.d.ts"],
     lenient = True,
     deps = [
         ":messagechannel",

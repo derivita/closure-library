@@ -6,14 +6,14 @@ licenses(["notice"])
 
 closure_js_library(
     name = "alpha",
-    srcs = ["alpha.js"],
+    srcs = ["alpha.js", "alpha.clutz.d.ts"],
     lenient = True,
     deps = [":color"],
 )
 
 closure_js_library(
     name = "color",
-    srcs = ["color.js"],
+    srcs = ["color.js", "color.clutz.d.ts"],
     lenient = True,
     deps = [
         ":names",
@@ -23,6 +23,6 @@ closure_js_library(
 
 closure_js_library(
     name = "names",
-    srcs = ["names.js"],
+    srcs = ["names.js", "names.clutz.d.ts"],
     lenient = True,
 )

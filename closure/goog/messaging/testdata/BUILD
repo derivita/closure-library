@@ -6,14 +6,14 @@ licenses(["notice"])
 
 closure_js_library(
     name = "portchannel_worker",
-    srcs = ["portchannel_worker.js"],
+    srcs = ["portchannel_worker.js", "portchannel_worker.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/messaging:portchannel"],
 )
 
 closure_js_library(
     name = "portnetwork_worker1",
-    srcs = ["portnetwork_worker1.js"],
+    srcs = ["portnetwork_worker1.js", "portnetwork_worker1.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/messaging:portcaller",
@@ -23,7 +23,7 @@ closure_js_library(
 
 closure_js_library(
     name = "portnetwork_worker2",
-    srcs = ["portnetwork_worker2.js"],
+    srcs = ["portnetwork_worker2.js", "portnetwork_worker2.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/messaging:portcaller",

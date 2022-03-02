@@ -7,9 +7,9 @@ licenses(["notice"])
 closure_js_library(
     name = "crosspagechannel",
     srcs = [
-        "crosspagechannel.js",
-        "directtransport.js",
-        "nativemessagingtransport.js",
+        "crosspagechannel.js", "crosspagechannel.clutz.d.ts",
+        "directtransport.js", "directtransport.clutz.d.ts",
+        "nativemessagingtransport.js", "nativemessagingtransport.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -42,7 +42,7 @@ closure_js_library(
 
 closure_js_library(
     name = "crosspagechannelrole",
-    srcs = ["crosspagechannelrole.js"],
+    srcs = ["crosspagechannelrole.js", "crosspagechannelrole.clutz.d.ts"],
     lenient = True,
 )
 
@@ -58,13 +58,13 @@ alias(
 
 closure_js_library(
     name = "relay",
-    srcs = ["relay.js"],
+    srcs = ["relay.js", "relay.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "transport",
-    srcs = ["transport.js"],
+    srcs = ["transport.js", "transport.clutz.d.ts"],
     lenient = True,
     deps = [
         ":xpc",
@@ -75,7 +75,7 @@ closure_js_library(
 
 closure_js_library(
     name = "xpc",
-    srcs = ["xpc.js"],
+    srcs = ["xpc.js", "xpc.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/log"],
 )

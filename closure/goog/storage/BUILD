@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "collectablestorage",
-    srcs = ["collectablestorage.js"],
+    srcs = ["collectablestorage.js", "collectablestorage.clutz.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -21,7 +21,7 @@ closure_js_library(
 closure_js_library(
     name = "collectablestoragetester",
     testonly = True,
-    srcs = ["collectablestoragetester.js"],
+    srcs = ["collectablestoragetester.js", "collectablestoragetester.clutz.d.ts"],
     lenient = True,
     deps = [
         ":collectablestorage",
@@ -33,7 +33,7 @@ closure_js_library(
 
 closure_js_library(
     name = "encryptedstorage",
-    srcs = ["encryptedstorage.js"],
+    srcs = ["encryptedstorage.js", "encryptedstorage.clutz.d.ts"],
     lenient = True,
     deps = [
         ":collectablestorage",
@@ -50,13 +50,13 @@ closure_js_library(
 
 closure_js_library(
     name = "errorcode",
-    srcs = ["errorcode.js"],
+    srcs = ["errorcode.js", "errorcode.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "expiringstorage",
-    srcs = ["expiringstorage.js"],
+    srcs = ["expiringstorage.js", "expiringstorage.clutz.d.ts"],
     lenient = True,
     deps = [
         ":richstorage",
@@ -66,7 +66,7 @@ closure_js_library(
 
 closure_js_library(
     name = "richstorage",
-    srcs = ["richstorage.js"],
+    srcs = ["richstorage.js", "richstorage.clutz.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -77,7 +77,7 @@ closure_js_library(
 
 closure_js_library(
     name = "storage",
-    srcs = ["storage.js"],
+    srcs = ["storage.js", "storage.clutz.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -89,7 +89,7 @@ closure_js_library(
 closure_js_library(
     name = "storagetester",
     testonly = True,
-    srcs = ["storagetester.js"],
+    srcs = ["storagetester.js", "storagetester.clutz.d.ts"],
     lenient = True,
     deps = [
         ":storage",

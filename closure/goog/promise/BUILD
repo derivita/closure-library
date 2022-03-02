@@ -6,16 +6,16 @@ licenses(["notice"])
 
 closure_js_library(
     name = "nativeresolver",
-    srcs = ["nativeresolver.js"],
+    srcs = ["nativeresolver.js", "nativeresolver.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "promise",
     srcs = [
-        "promise.js",
-        "resolver.js",
-        "thenable.js",
+        "promise.js", "promise.clutz.d.ts",
+        "resolver.js", "resolver.clutz.d.ts",
+        "thenable.js", "thenable.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -35,7 +35,7 @@ alias(
 closure_js_library(
     name = "testsuiteadapter",
     testonly = 1,
-    srcs = ["testsuiteadapter.js"],
+    srcs = ["testsuiteadapter.js", "testsuiteadapter.clutz.d.ts"],
     lenient = True,
     deps = [":promise"],
 )

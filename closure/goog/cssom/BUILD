@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "cssom",
-    srcs = ["cssom.js"],
+    srcs = ["cssom.js", "cssom.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",

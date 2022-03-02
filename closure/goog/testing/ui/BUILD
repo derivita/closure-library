@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "rendererasserts",
     testonly = True,
-    srcs = ["rendererasserts.js"],
+    srcs = ["rendererasserts.js", "rendererasserts.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/testing:asserts",
@@ -18,7 +18,7 @@ closure_js_library(
 closure_js_library(
     name = "rendererharness",
     testonly = True,
-    srcs = ["rendererharness.js"],
+    srcs = ["rendererharness.js", "rendererharness.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/disposable",
@@ -33,7 +33,7 @@ closure_js_library(
 closure_js_library(
     name = "style",
     testonly = True,
-    srcs = ["style.js"],
+    srcs = ["style.js", "style.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",

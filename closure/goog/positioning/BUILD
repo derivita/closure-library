@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "absoluteposition",
-    srcs = ["absoluteposition.js"],
+    srcs = ["absoluteposition.js", "absoluteposition.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractposition",
@@ -19,7 +19,7 @@ closure_js_library(
 
 closure_js_library(
     name = "abstractposition",
-    srcs = ["abstractposition.js"],
+    srcs = ["abstractposition.js", "abstractposition.clutz.d.ts"],
     lenient = True,
     deps = [
         ":positioning",
@@ -30,7 +30,7 @@ closure_js_library(
 
 closure_js_library(
     name = "anchoredposition",
-    srcs = ["anchoredposition.js"],
+    srcs = ["anchoredposition.js", "anchoredposition.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractposition",
@@ -42,7 +42,7 @@ closure_js_library(
 
 closure_js_library(
     name = "anchoredviewportposition",
-    srcs = ["anchoredviewportposition.js"],
+    srcs = ["anchoredviewportposition.js", "anchoredviewportposition.clutz.d.ts"],
     lenient = True,
     deps = [
         ":anchoredposition",
@@ -54,7 +54,7 @@ closure_js_library(
 
 closure_js_library(
     name = "clientposition",
-    srcs = ["clientposition.js"],
+    srcs = ["clientposition.js", "clientposition.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractposition",
@@ -70,7 +70,7 @@ closure_js_library(
 
 closure_js_library(
     name = "menuanchoredposition",
-    srcs = ["menuanchoredposition.js"],
+    srcs = ["menuanchoredposition.js", "menuanchoredposition.clutz.d.ts"],
     lenient = True,
     deps = [
         ":anchoredviewportposition",
@@ -80,7 +80,7 @@ closure_js_library(
 
 closure_js_library(
     name = "positioning",
-    srcs = ["positioning.js"],
+    srcs = ["positioning.js", "positioning.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -97,7 +97,7 @@ closure_js_library(
 
 closure_js_library(
     name = "viewportclientposition",
-    srcs = ["viewportclientposition.js"],
+    srcs = ["viewportclientposition.js", "viewportclientposition.clutz.d.ts"],
     lenient = True,
     deps = [
         ":clientposition",
@@ -112,7 +112,7 @@ closure_js_library(
 
 closure_js_library(
     name = "viewportposition",
-    srcs = ["viewportposition.js"],
+    srcs = ["viewportposition.js", "viewportposition.clutz.d.ts"],
     lenient = True,
     deps = [
         ":abstractposition",

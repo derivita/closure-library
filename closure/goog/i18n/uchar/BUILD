@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "localnamefetcher",
-    srcs = ["localnamefetcher.js"],
+    srcs = ["localnamefetcher.js", "localnamefetcher.clutz.d.ts"],
     lenient = True,
     deps = [
         ":namefetcher",
@@ -17,13 +17,13 @@ closure_js_library(
 
 closure_js_library(
     name = "namefetcher",
-    srcs = ["namefetcher.js"],
+    srcs = ["namefetcher.js", "namefetcher.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "remotenamefetcher",
-    srcs = ["remotenamefetcher.js"],
+    srcs = ["remotenamefetcher.js", "remotenamefetcher.clutz.d.ts"],
     lenient = True,
     deps = [
         ":namefetcher",

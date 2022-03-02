@@ -6,13 +6,13 @@ licenses(["notice"])
 
 closure_js_library(
     name = "emoji",
-    srcs = ["emoji.js"],
+    srcs = ["emoji.js", "emoji.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "emojipalette",
-    srcs = ["emojipalette.js"],
+    srcs = ["emojipalette.js", "emojipalette.clutz.d.ts"],
     lenient = True,
     deps = [
         ":emoji",
@@ -28,7 +28,7 @@ closure_js_library(
 
 closure_js_library(
     name = "emojipaletterenderer",
-    srcs = ["emojipaletterenderer.js"],
+    srcs = ["emojipaletterenderer.js", "emojipaletterenderer.clutz.d.ts"],
     lenient = True,
     deps = [
         ":emoji",
@@ -47,7 +47,7 @@ closure_js_library(
 
 closure_js_library(
     name = "emojipicker",
-    srcs = ["emojipicker.js"],
+    srcs = ["emojipicker.js", "emojipicker.clutz.d.ts"],
     lenient = True,
     deps = [
         ":emoji",
@@ -64,7 +64,7 @@ closure_js_library(
 
 closure_js_library(
     name = "popupemojipicker",
-    srcs = ["popupemojipicker.js"],
+    srcs = ["popupemojipicker.js", "popupemojipicker.clutz.d.ts"],
     lenient = True,
     deps = [
         ":emoji",
@@ -84,7 +84,7 @@ closure_js_library(
 
 closure_js_library(
     name = "progressiveemojipaletterenderer",
-    srcs = ["progressiveemojipaletterenderer.js"],
+    srcs = ["progressiveemojipaletterenderer.js", "progressiveemojipaletterenderer.clutz.d.ts"],
     lenient = True,
     deps = [
         ":emojipaletterenderer",
@@ -95,6 +95,6 @@ closure_js_library(
 
 closure_js_library(
     name = "spriteinfo",
-    srcs = ["spriteinfo.js"],
+    srcs = ["spriteinfo.js", "spriteinfo.clutz.d.ts"],
     lenient = True,
 )

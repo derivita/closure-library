@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "basenode",
-    srcs = ["basenode.js"],
+    srcs = ["basenode.js", "basenode.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/a11y/aria",
@@ -29,7 +29,7 @@ closure_js_library(
 
 closure_js_library(
     name = "treecontrol",
-    srcs = ["treecontrol.js"],
+    srcs = ["treecontrol.js", "treecontrol.clutz.d.ts"],
     lenient = True,
     deps = [
         ":basenode",
@@ -51,7 +51,7 @@ closure_js_library(
 
 closure_js_library(
     name = "treenode",
-    srcs = ["treenode.js"],
+    srcs = ["treenode.js", "treenode.clutz.d.ts"],
     lenient = True,
     deps = [
         ":basenode",
@@ -62,7 +62,7 @@ closure_js_library(
 
 closure_js_library(
     name = "typeahead",
-    srcs = ["typeahead.js"],
+    srcs = ["typeahead.js", "typeahead.clutz.d.ts"],
     lenient = True,
     deps = [
         ":basenode",

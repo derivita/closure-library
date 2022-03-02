@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "adobereader",
-    srcs = ["adobereader.js"],
+    srcs = ["adobereader.js", "adobereader.clutz.d.ts"],
     lenient = True,
     deps = [
         ":useragent",
@@ -16,7 +16,7 @@ closure_js_library(
 
 closure_js_library(
     name = "iphoto",
-    srcs = ["iphoto.js"],
+    srcs = ["iphoto.js", "iphoto.clutz.d.ts"],
     lenient = True,
     deps = [
         ":useragent",
@@ -26,21 +26,21 @@ closure_js_library(
 
 closure_js_library(
     name = "jscript",
-    srcs = ["jscript.js"],
+    srcs = ["jscript.js", "jscript.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/string"],
 )
 
 closure_js_library(
     name = "keyboard",
-    srcs = ["keyboard.js"],
+    srcs = ["keyboard.js", "keyboard.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/labs/useragent:platform"],
 )
 
 closure_js_library(
     name = "platform",
-    srcs = ["platform.js"],
+    srcs = ["platform.js", "platform.clutz.d.ts"],
     lenient = True,
     deps = [
         ":useragent",
@@ -50,7 +50,7 @@ closure_js_library(
 
 closure_js_library(
     name = "product",
-    srcs = ["product.js"],
+    srcs = ["product.js", "product.clutz.d.ts"],
     lenient = True,
     deps = [
         ":useragent",
@@ -61,7 +61,7 @@ closure_js_library(
 
 closure_js_library(
     name = "product_isversion",
-    srcs = ["product_isversion.js"],
+    srcs = ["product_isversion.js", "product_isversion.clutz.d.ts"],
     lenient = True,
     deps = [
         ":product",
@@ -73,7 +73,7 @@ closure_js_library(
 
 closure_js_library(
     name = "useragent",
-    srcs = ["useragent.js"],
+    srcs = ["useragent.js", "useragent.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/labs/useragent:browser",
@@ -88,7 +88,7 @@ closure_js_library(
 closure_js_library(
     name = "useragenttestutil",
     testonly = 1,
-    srcs = ["useragenttestutil.js"],
+    srcs = ["useragenttestutil.js", "useragenttestutil.clutz.d.ts"],
     lenient = True,
     deps = [
         ":keyboard",

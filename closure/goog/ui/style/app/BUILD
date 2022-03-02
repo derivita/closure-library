@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "buttonrenderer",
-    srcs = ["buttonrenderer.js"],
+    srcs = ["buttonrenderer.js", "buttonrenderer.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom",
@@ -22,7 +22,7 @@ closure_js_library(
 
 closure_js_library(
     name = "menubuttonrenderer",
-    srcs = ["menubuttonrenderer.js"],
+    srcs = ["menubuttonrenderer.js", "menubuttonrenderer.clutz.d.ts"],
     lenient = True,
     deps = [
         ":buttonrenderer",
@@ -41,7 +41,7 @@ closure_js_library(
 
 closure_js_library(
     name = "primaryactionbuttonrenderer",
-    srcs = ["primaryactionbuttonrenderer.js"],
+    srcs = ["primaryactionbuttonrenderer.js", "primaryactionbuttonrenderer.clutz.d.ts"],
     lenient = True,
     deps = [
         ":buttonrenderer",

@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "spellcheck",
-    srcs = ["spellcheck.js"],
+    srcs = ["spellcheck.js", "spellcheck.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/events:event",
