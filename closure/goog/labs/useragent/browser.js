@@ -15,11 +15,12 @@
 goog.module('goog.labs.userAgent.browser');
 goog.module.declareLegacyNamespace();
 
-const googAsserts = goog.require('goog.asserts');
 const util = goog.require('goog.labs.userAgent.util');
 const {AsyncValue, Version} = goog.require('goog.labs.userAgent.highEntropy.highEntropyValue');
+const {assert, assertExists} = goog.require('goog.asserts');
 const {compareVersions} = goog.require('goog.string.internal');
-const {fullVersionList, hasFullVersionList} = goog.require('goog.labs.userAgent.highEntropy.highEntropyData');
+const {fullVersionList} = goog.require('goog.labs.userAgent.highEntropy.highEntropyData');
+const {useClientHints} = goog.require('goog.labs.userAgent');
 
 // TODO(nnaze): Refactor to remove excessive exclusion logic in matching
 // functions.
@@ -87,12 +88,33 @@ const Brand = {
 exports.Brand = Brand;
 
 /**
+ * @param {boolean=} ignoreClientHintsFlag Iff truthy, the `useClientHints`
+ *     function will not be called when evaluating if User-Agent Client Hints
+ *     Brand data can be used. For existing labs.userAgent API surfaces with
+ *     widespread use, this should be a falsy value so that usage of the Client
+ *     Hints APIs can be gated behind flags / experiment rollouts.
  * @return {boolean} Whether to use navigator.userAgentData to determine
  * browser's brand.
  */
-function useUserAgentBrand() {
+function useUserAgentDataBrand(ignoreClientHintsFlag = false) {
+  if (util.ASSUME_CLIENT_HINTS_SUPPORT) return true;
+  // High-entropy API surfaces should not be gated behind the useClientHints
+  // check (as in production it is gated behind a define).
+  if (!ignoreClientHintsFlag && !useClientHints()) return false;
   const userAgentData = util.getUserAgentData();
   return !!userAgentData && userAgentData.brands.length > 0;
+}
+
+/**
+ * @return {boolean} Whether this browser is likely to have the fullVersionList
+ * high-entropy Client Hint.
+ */
+function hasFullVersionList() {
+  // https://chromiumdash.appspot.com/commits?commit=1eb643c3057e64ff4d22468432ad16c4cab12879&platform=Linux
+  // indicates that for all platforms Chromium 98 shipped this feature.
+  // See also
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Full-Version-List#browser_compatibility
+  return isAtLeast(Brand.CHROMIUM, 98);
 }
 
 /**
@@ -101,7 +123,7 @@ function useUserAgentBrand() {
  *     casing.
  */
 function matchOpera() {
-  if (util.ASSUME_CLIENT_HINTS_SUPPORT || util.getUserAgentData()) {
+  if (useUserAgentDataBrand()) {
     // Pre-Chromium Edge doesn't support navigator.userAgentData.
     return false;
   }
@@ -110,7 +132,7 @@ function matchOpera() {
 
 /** @return {boolean} Whether the user's browser is IE. */
 function matchIE() {
-  if (util.ASSUME_CLIENT_HINTS_SUPPORT || util.getUserAgentData()) {
+  if (useUserAgentDataBrand()) {
     // IE doesn't support navigator.userAgentData.
     return false;
   }
@@ -122,7 +144,7 @@ function matchIE() {
  *     EdgeHTML based Edge.
  */
 function matchEdgeHtml() {
-  if (util.ASSUME_CLIENT_HINTS_SUPPORT || util.getUserAgentData()) {
+  if (useUserAgentDataBrand()) {
     // Pre-Chromium Edge doesn't support navigator.userAgentData.
     return false;
   }
@@ -131,7 +153,7 @@ function matchEdgeHtml() {
 
 /** @return {boolean} Whether the user's browser is Chromium based Edge. */
 function matchEdgeChromium() {
-  if (useUserAgentBrand()) {
+  if (useUserAgentDataBrand()) {
     return util.matchUserAgentDataBrand(Brand.EDGE);
   }
   return util.matchUserAgent('Edg/');
@@ -139,7 +161,7 @@ function matchEdgeChromium() {
 
 /** @return {boolean} Whether the user's browser is Chromium based Opera. */
 function matchOperaChromium() {
-  if (useUserAgentBrand()) {
+  if (useUserAgentDataBrand()) {
     return util.matchUserAgentDataBrand(Brand.OPERA);
   }
   return util.matchUserAgent('OPR');
@@ -147,19 +169,15 @@ function matchOperaChromium() {
 
 /** @return {boolean} Whether the user's browser is Firefox. */
 function matchFirefox() {
-  if (util.ASSUME_CLIENT_HINTS_SUPPORT || util.getUserAgentData()) {
-    // Firefox doesn't support navigator.userAgentData yet.
-    return false;
-  }
+  // Firefox doesn't support navigator.userAgentData yet, so use
+  // navigator.userAgent.
   return util.matchUserAgent('Firefox') || util.matchUserAgent('FxiOS');
 }
 
 /** @return {boolean} Whether the user's browser is Safari. */
 function matchSafari() {
-  if (useUserAgentBrand()) {
-    // Safari doesn't support navigator.userAgentData yet.
-    return false;
-  }
+  // Apple-based browsers don't support navigator.userAgentData yet, so use
+  // navigator.userAgent.
   return util.matchUserAgent('Safari') &&
       !(matchChrome() || matchCoast() || matchOpera() || matchEdgeHtml() ||
         matchEdgeChromium() || matchOperaChromium() || matchFirefox() ||
@@ -171,7 +189,7 @@ function matchSafari() {
  *     iOS browser).
  */
 function matchCoast() {
-  if (util.ASSUME_CLIENT_HINTS_SUPPORT || util.getUserAgentData()) {
+  if (useUserAgentDataBrand()) {
     // Coast doesn't support navigator.userAgentData.
     return false;
   }
@@ -180,12 +198,9 @@ function matchCoast() {
 
 /** @return {boolean} Whether the user's browser is iOS Webview. */
 function matchIosWebview() {
-  if (util.ASSUME_CLIENT_HINTS_SUPPORT || util.getUserAgentData()) {
-    // iOS Webview doesn't support navigator.userAgentData.
-    return false;
-  }
-  // iOS Webview does not show up as Chrome or Safari. Also check for Opera's
-  // WebKit-based iOS browser, Coast.
+  // Apple-based browsers don't support navigator.userAgentData yet, so use
+  // navigator.userAgent.
+  // iOS Webview does not show up as Chrome or Safari.
   return (util.matchUserAgent('iPad') || util.matchUserAgent('iPhone')) &&
       !matchSafari() && !matchChrome() && !matchCoast() && !matchFirefox() &&
       util.matchUserAgent('AppleWebKit');
@@ -196,7 +211,7 @@ function matchIosWebview() {
  *     returns true for Chrome, Opera 15+, and Edge Chromium.
  */
 function matchChrome() {
-  if (useUserAgentBrand()) {
+  if (useUserAgentDataBrand()) {
     return util.matchUserAgentDataBrand(Brand.CHROMIUM);
   }
   return ((util.matchUserAgent('Chrome') || util.matchUserAgent('CriOS')) &&
@@ -317,9 +332,9 @@ function createVersionMap(versionTuples) {
  * User Agent string freezing is available here:
  * https://www.chromestatus.com/feature/5704553745874944
  *
- * To mitigate both of these potential issues, use versionOf() or
+ * To mitigate both of these potential issues, use
+ * getVersionStringForLogging() or fullVersionOf() instead.
  *
- * fullVersionOf() instead.
  * @return {string} The browser version or empty string if version cannot be
  *     determined. Note that for Internet Explorer, this returns the version of
  *     the browser, not the version of the rendering engine. (IE 8 in
@@ -388,13 +403,13 @@ exports.getVersion = getVersion;
  * User Agent string freezing is available here:
  * https://www.chromestatus.com/feature/5704553745874944
  *
- * To mitigate both of these potential issues, use versionOf() (with a
- * comparison operator), or fullVersionOf() instead.
+ * To mitigate both of these potential issues, use isAtLeast()/isAtMost() or
+ * fullVersionOf() instead.
+ *
  * @param {string|number} version The version to check.
  * @return {boolean} Whether the browser version is higher or the same as the
  *     given version.
- * @deprecated Use versionOf(browserBrand) and do a direct comparison
- *     instead.
+ * @deprecated Use isAtLeast()/isAtMost() instead.
  */
 function isVersionOrHigher(version) {
   return compareVersions(getVersion(), version) >= 0;
@@ -514,16 +529,17 @@ function getFullVersionFromUserAgentString(browser) {
  * Note that the major version number may be different depending on which
  * browser is specified. The returned value can be used to make browser version
  * comparisons using comparison operators.
+ * @private
  * @param {!Brand} browser The brand whose version should be returned.
  * @return {number} The major version number associated with the current
  * browser under the given brand, or NaN if the current browser doesn't match
  * the given brand.
  */
-function versionOf(browser) {
+function versionOf_(browser) {
   let versionParts;
   // Silk currently does not identify itself in its userAgentData.brands array,
   // so if checking its version, always fall back to the user agent string.
-  if (useUserAgentBrand() && browser !== Brand.SILK) {
+  if (useUserAgentDataBrand() && browser !== Brand.SILK) {
     const data = util.getUserAgentData();
     const matchingBrand = data.brands.find(({brand}) => brand === browser);
     if (!matchingBrand || !matchingBrand.version) {
@@ -543,7 +559,42 @@ function versionOf(browser) {
   const majorVersion = versionParts[0];
   return Number(majorVersion);  // Returns NaN if it is not parseable.
 }
-exports.versionOf = versionOf;
+
+/**
+ * Returns true if the current browser matches the given brand and is at least
+ * the given major version. The major version must be a whole number (i.e.
+ * decimals should not be used to represent a minor version).
+ * @param {!Brand} brand The brand whose version should be returned.
+ * @param {number} majorVersion The major version number to compare against.
+ *     This must be a whole number.
+ * @return {boolean} Whether the current browser both matches the given brand
+ *     and is at least the given version.
+ */
+function isAtLeast(brand, majorVersion) {
+  assert(
+      Math.floor(majorVersion) === majorVersion,
+      'Major version must be an integer');
+  return versionOf_(brand) >= majorVersion;
+}
+exports.isAtLeast = isAtLeast;
+
+/**
+ * Returns true if the current browser matches the given brand and is at most
+ * the given version. The major version must be a whole number (i.e. decimals
+ * should not be used to represent a minor version).
+ * @param {!Brand} brand The brand whose version should be returned.
+ * @param {number} majorVersion The major version number to compare against.
+ *     This must be a whole number.
+ * @return {boolean} Whether the current browser both matches the given brand
+ *     and is at most the given version.
+ */
+function isAtMost(brand, majorVersion) {
+  assert(
+      Math.floor(majorVersion) === majorVersion,
+      'Major version must be an integer');
+  return versionOf_(brand) <= majorVersion;
+}
+exports.isAtMost = isAtMost;
 
 /**
  * Loads the high-entropy browser brand/version data and wraps the correct
@@ -554,13 +605,20 @@ class HighEntropyBrandVersion {
   /**
    * @param {string} brand The brand whose version is retrieved in this
    *     container.
+   * @param {boolean} useUach Whether to attempt to use the User-Agent Client
+   *     Hints (UACH) API surface.
+   * @param {string} fallbackVersion The fallback version derived from the
+   *     userAgent string.
    */
-  constructor(brand) {
-    /**
-     * @const {string}
-     * @private
-     */
+  constructor(brand, useUach, fallbackVersion) {
+    /** @private @const {string} */
     this.brand_ = brand;
+
+    /** @private @const {!Version} */
+    this.version_ = new Version(fallbackVersion);
+
+    /** @private @const {boolean} */
+    this.useUach_ = useUach;
   }
 
   /**
@@ -568,12 +626,25 @@ class HighEntropyBrandVersion {
    * @override
    */
   getIfLoaded() {
-    const loadedVersionList = fullVersionList.getIfLoaded();
-    if (loadedVersionList !== undefined) {
-      const matchingBrand =
-          loadedVersionList.find(({brand}) => this.brand_ === brand);
-      googAsserts.assertExists(matchingBrand);
-      return new Version(matchingBrand.version);
+    if (this.useUach_) {
+      const loadedVersionList = fullVersionList.getIfLoaded();
+      if (loadedVersionList !== undefined) {
+        const matchingBrand =
+            loadedVersionList.find(({brand}) => this.brand_ === brand);
+        // We assumed in fullVersionOf that if the fullVersionList is defined
+        // the brands must match. Double-check this here.
+        assertExists(matchingBrand);
+        return new Version(matchingBrand.version);
+      }
+      // Fallthrough to fallback on Pre-UACH implementation
+    }
+    // We want to make sure the loading semantics of the Pre-UACH implementation
+    // match those of the UACH implementation. Loading must happen before any
+    // data can be retrieved from getIfLoaded.
+    // For HighEntropyBrandVersion, loading can either be done by calling #load
+    // or by calling the module-local loadFullVersions function.
+    if (preUachHasLoaded) {
+      return this.version_;
     }
     return;
   }
@@ -583,46 +654,35 @@ class HighEntropyBrandVersion {
    * @override
    */
   async load() {
-    const loadedVersionList = await fullVersionList.load();
-    const matchingBrand =
-        loadedVersionList.find(({brand}) => this.brand_ === brand);
-    googAsserts.assertExists(matchingBrand);
-    return new Version(matchingBrand.version);
+    if (this.useUach_) {
+      const loadedVersionList = await fullVersionList.load();
+      if (loadedVersionList !== undefined) {
+        const matchingBrand =
+            loadedVersionList.find(({brand}) => this.brand_ === brand);
+        assertExists(matchingBrand);
+        return new Version(matchingBrand.version);
+      }
+      // Fallthrough to fallback on Pre-UACH implementation
+    } else {
+      // Await something so that calling load with or without UACH API
+      // availability results in waiting at least one macrotask before allowing
+      // access to the cached version information.
+      await 0;
+    }
+    // Regardless of whether we are using UACH APIs, we can now allow access to
+    // the fallback case
+    preUachHasLoaded = true;
+    return this.version_;
   }
 }
 
 /**
- * Wraps a version string in a Version object.
- * @implements {AsyncValue<!Version>}
+ * Whether full version data should be considered available when using UACH
+ * fallback implementations. This is flipped to true when either
+ * loadFullVersions or HighEntropyBrandVersion.prototype.load are called,
+ * matching the global singleton semantics of the UACH codepaths.
  */
-class UserAgentStringFallbackBrandVersion {
-  /**
-   * @param {string} versionString
-   */
-  constructor(versionString) {
-    /**
-     * @const {!Version}
-     * @private
-     */
-    this.version_ = new Version(versionString);
-  }
-
-  /**
-   * @return {!Version|undefined}
-   * @override
-   */
-  getIfLoaded() {
-    return this.version_;
-  }
-
-  /**
-   * @return {!Promise<!Version>}
-   * @override
-   */
-  async load() {
-    return this.version_;
-  }
-}
+let preUachHasLoaded = false;
 
 /**
  * Requests all full browser versions to be cached.  When the returned promise
@@ -635,11 +695,24 @@ class UserAgentStringFallbackBrandVersion {
  * @return {!Promise<void>}
  */
 async function loadFullVersions() {
-  if (useUserAgentBrand() && hasFullVersionList()) {
+  if (useUserAgentDataBrand(true)) {
     await fullVersionList.load();
   }
+  preUachHasLoaded = true;
 }
 exports.loadFullVersions = loadFullVersions;
+
+/**
+ * Resets module-local caches used by functionality in this module.
+ * This is only for use by goog.labs.userAgent.testUtil.resetUserAgent (and
+ * labs.userAgent tests).
+ * @package
+ */
+exports.resetForTesting = () => {
+  preUachHasLoaded = false;
+  fullVersionList.resetForTesting();
+};
+
 
 /**
  * Returns an object that provides access to the full version string of the
@@ -653,9 +726,18 @@ exports.loadFullVersions = loadFullVersions;
  * undefined if the current browser doesn't match the given brand.
  */
 function fullVersionOf(browser) {
-  // Silk currently does not identify itself in its userAgentData.brands array,
-  // so if checking its version, always fall back to the user agent string.
-  if (useUserAgentBrand() && hasFullVersionList()) {
+  let fallbackVersionString = '';
+  // If we are reasonably certain now that the browser we are on has the
+  // fullVersionList high-entropy hint, then we can skip computing the fallback
+  // value as we won't end up using it.
+  if (!hasFullVersionList()) {
+    fallbackVersionString = getFullVersionFromUserAgentString(browser);
+  }
+  // Silk has the UACH API surface, but currently does not identify itself in
+  // the userAgentData.brands array. Fallback to using userAgent string version
+  // for Silk.
+  const useUach = browser !== Brand.SILK && useUserAgentDataBrand(true);
+  if (useUach) {
     const data = util.getUserAgentData();
     // Operate under the assumption that the low-entropy and high-entropy lists
     // of brand/version pairs contain an identical set of brands. Therefore, if
@@ -663,30 +745,25 @@ function fullVersionOf(browser) {
     if (!data.brands.find(({brand}) => brand === browser)) {
       return undefined;
     }
-    return new HighEntropyBrandVersion(browser);
-  } else {
-    const fullVersionFromUserAgentString =
-        getFullVersionFromUserAgentString(browser);
-    if (fullVersionFromUserAgentString === '') {
-      return undefined;
-    }
-    return new UserAgentStringFallbackBrandVersion(
-        fullVersionFromUserAgentString);
+  } else if (fallbackVersionString === '') {
+    return undefined;
   }
+  return new HighEntropyBrandVersion(browser, useUach, fallbackVersionString);
 }
 exports.fullVersionOf = fullVersionOf;
+
 
 /**
  * Returns a version string for the current browser or undefined, based on
  * whether the current browser is the one specified.
  * This value should ONLY be used for logging/debugging purposes. Do not use it
- * to branch code paths. For comparing versions, use versionOf or fullVersionOf
- * instead.
+ * to branch code paths. For comparing versions, use isAtLeast()/isAtMost() or
+ * fullVersionOf() instead.
  * @param {!Brand} browser The brand whose version should be returned.
  * @return {string} The version as a string.
  */
 function getVersionStringForLogging(browser) {
-  if (useUserAgentBrand()) {
+  if (useUserAgentDataBrand(true)) {
     const fullVersionObj = fullVersionOf(browser);
     if (fullVersionObj) {
       const fullVersion = fullVersionObj.getIfLoaded();
@@ -699,7 +776,7 @@ function getVersionStringForLogging(browser) {
       // Checking for the existence of matchingBrand is not necessary because
       // the existence of fullVersionObj implies that there is already a
       // matching brand.
-      googAsserts.assertExists(matchingBrand);
+      assertExists(matchingBrand);
       return matchingBrand.version;
     }
     // If fullVersionObj is undefined, this doesn't mean that the full version

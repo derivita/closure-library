@@ -33,6 +33,12 @@ testSuite({
     stubs.reset();
   },
 
+  testConstructor_throwsOnBadToken() {
+    assertThrows(() => new (/** @type {?} */ (SafeStyle))(''));
+    assertThrows(
+        () => new (/** @type {?} */ (SafeStyle.EMPTY)).constructor(''));
+  },
+
   testSafeStyle() {
     const style = 'width: 1em;height: 1em;';
     const safeStyle = SafeStyle.fromConstant(Const.from(style));
@@ -137,6 +143,12 @@ testSuite({
         {'grid-template-columns': 'repeat(3, [start] 100px [end])'});
   },
 
+  testCreate_allowsSteps() {
+    assertCreateEquals(
+        'animation-timing-function:steps(2, start);',
+        {'animation-timing-function': 'steps(2, start)'});
+  },
+
   testCreate_allowsCubicBezier() {
     assertCreateEquals(
         'transition-timing-function:cubic-bezier(0.26, 0.86, 0.44, 0.95);',
@@ -198,6 +210,21 @@ testSuite({
     assertCreateEquals(
         'background:linear-gradient(#C0C0C0, #FF0000);',
         {'background': 'linear-gradient(#C0C0C0, #FF0000)'});
+  },
+
+  testCreate_allowsRadialGradient() {
+    assertCreateEquals(
+        'background:radial-gradient(red, blue);',
+        {'background': 'radial-gradient(red, blue)'});
+    assertCreateEquals(
+        'background:radial-gradient(rgb(10,0,0), rgb(0,0,30));',
+        {'background': 'radial-gradient(rgb(10,0,0), rgb(0,0,30))'});
+    assertCreateEquals(
+        'background:radial-gradient(#333, #eee);',
+        {'background': 'radial-gradient(#333, #eee)'});
+    assertCreateEquals(
+        'background:radial-gradient(#C0C0C0, #FF0000);',
+        {'background': 'radial-gradient(#C0C0C0, #FF0000)'});
   },
 
   testCreate_allowsSafeUrl() {

@@ -32,7 +32,6 @@ goog.require('goog.dom.TagName');
 goog.require('goog.object');
 goog.require('goog.testing.CspViolationObserver');
 goog.require('goog.testing.JsUnitException');
-goog.require('goog.testing.asserts');
 goog.require('goog.url');
 
 
@@ -175,7 +174,7 @@ goog.testing.TestCase = function(opt_name) {
   this.order = goog.testing.TestCase.Order.SORTED;
 
   /** @private {function(!goog.testing.TestCase.Result)} */
-  this.runNextTestCallback_ = goog.nullFunction;
+  this.runNextTestCallback_ = () => {};
 
   /**
    * The currently executing test case or null.
@@ -371,6 +370,14 @@ goog.testing.TestCase.prototype.batchTime_ = 0;
  * @private
  */
 goog.testing.TestCase.prototype.currentTestPointer_ = 0;
+
+
+/**
+ * Whether to use Native Promises or goog.Promise.
+ * @type {boolean}
+ * @private
+ */
+goog.testing.TestCase.prototype.useNativePromise_ = false;
 
 
 /**
@@ -803,6 +810,22 @@ goog.testing.TestCase.prototype.runTests = function() {
   goog.testing.TestCase.Continuation_.run(this.runSetUpPage_(this.execute));
 };
 
+/**
+ * Configures the TestCase to use native Promises when waiting for methods that
+ * return Thenables.
+ */
+goog.testing.TestCase.prototype.useNativePromise = function() {
+  this.useNativePromise_ = true;
+};
+
+/**
+ * Configures the TestCase to use goog.Promise when waiting for methods that
+ * return Thenables.
+ */
+goog.testing.TestCase.prototype.useGoogPromise = function() {
+  this.useNativePromise_ = false;
+};
+
 
 /**
  * Executes each of the tests, returning a promise that resolves with the
@@ -813,9 +836,12 @@ goog.testing.TestCase.prototype.runTests = function() {
  */
 goog.testing.TestCase.prototype.runTestsReturningPromise = function() {
   'use strict';
-  return new goog.Promise(function(resolve) {
+  /**
+   * @param {function(!goog.testing.TestCase.Result)} resolve
+   */
+  const resolver = (resolve) => {
     'use strict';
-    goog.testing.TestCase.Continuation_.run(this.runSetUpPage_(function() {
+    goog.testing.TestCase.Continuation_.run(this.runSetUpPage_(() => {
       'use strict';
       if (!this.prepareForRun_()) {
         resolve(this.result_);
@@ -828,7 +854,11 @@ goog.testing.TestCase.prototype.runTestsReturningPromise = function() {
       this.runNextTestCallback_ = resolve;
       goog.testing.TestCase.Continuation_.run(this.runNextTest_());
     }));
-  }, this);
+  };
+  if (this.useNativePromise_) {
+    return new Promise(resolver);
+  }
+  return new goog.Promise(resolver);
 };
 
 
@@ -1086,7 +1116,12 @@ goog.testing.TestCase.prototype.invokeFunction_ = function(
         (retval && typeof retval['then'] === 'function')) {
       // Resolve Thenable into a proper Promise to avoid hard to debug
       // problems.
-      var promise = goog.Promise.resolve(retval);
+      let promise;
+      if (this.useNativePromise_) {
+        promise = Promise.resolve(retval);
+      } else {
+        promise = goog.Promise.resolve(retval);
+      }
       promise = this.rejectIfPromiseTimesOut_(
           promise, self.promiseTimeout,
           'Timed out while waiting for a promise returned from ' + fnName +
@@ -1511,7 +1546,7 @@ goog.testing.TestCase.prototype.setTestObj = function(obj) {
   // Check any previously added (likely auto-discovered) tests, only one source
   // of discovered test and life-cycle methods is allowed.
   if (this.tests_.length > 0) {
-    fail(
+    throw new Error(
         'Test methods have already been configured.\n' +
         'Tests previously found:\n' +
         this.tests_
@@ -1634,7 +1669,7 @@ goog.testing.TestCase.prototype.cycleTests = function() {
   this.saveMessage('Start');
   this.batchTime_ = this.now();
   if (this.running) {
-    this.runNextTestCallback_ = goog.nullFunction;
+    this.runNextTestCallback_ = () => {};
     // Kick off the tests. runNextTest_ will schedule all of the tests,
     // using a mixture of synchronous and asynchronous strategies.
     goog.testing.TestCase.Continuation_.run(this.runNextTest_());
@@ -1731,7 +1766,7 @@ goog.testing.TestCase.prototype.getTimeStamp_ = function() {
 
   // Ensure millis are always 3-digits
   var millis = '00' + d.getMilliseconds();
-  millis = millis.substr(millis.length - 3);
+  millis = millis.slice(-3);
 
   return this.pad_(d.getHours()) + ':' + this.pad_(d.getMinutes()) + ':' +
       this.pad_(d.getSeconds()) + '.' + millis;
@@ -2071,12 +2106,15 @@ goog.testing.TestCase.Test.prototype.stopped = function() {
 };
 
 /**
- * Returns the runtime for this test function
- * @return {number} milliseconds takenn by the test.
+ * Returns the runtime for this test function in milliseconds.
+ * @return {number}
  */
 goog.testing.TestCase.Test.prototype.getElapsedTime = function() {
   'use strict';
-  return this.stoppedTime_ - this.startTime_;
+  // Round the elapsed time to the closest multiple of 0.1ms (the resolution of
+  // performance.now()) to avoid noise due to floating point rounding errors
+  // when it's printed.
+  return Math.round((this.stoppedTime_ - this.startTime_) * 10) / 10;
 };
 
 /**
@@ -2296,7 +2334,7 @@ goog.testing.TestCase.parseRunTests_ = function(href) {
     return null;
   }
 
-  const nonOriginParts = href.substr(queryParamIndex);
+  const nonOriginParts = href.slice(queryParamIndex);
 
   // Use a "fake" origin because tests may load using protocols that goog.url
   // doesn't support
@@ -2332,11 +2370,11 @@ goog.testing.TestCase.parseRunTests_ = function(href) {
 /**
  * Wraps provided promise and returns a new promise which will be rejected
  * if the original promise does not settle within the given timeout.
- * @param {!goog.Promise<T>} promise
+ * @param {!IThenable<T>} promise
  * @param {number} timeoutInMs Number of milliseconds to wait for the promise to
  *     settle before failing it with a timeout error.
  * @param {string} errorMsg Error message to use if the promise times out.
- * @return {!goog.Promise<T>} A promise that will settle with the original
+ * @return {!IThenable<T>} A promise that will settle with the original
        promise unless the timeout is exceeded.
  *     error.
  * @template T
@@ -2345,19 +2383,28 @@ goog.testing.TestCase.parseRunTests_ = function(href) {
 goog.testing.TestCase.prototype.rejectIfPromiseTimesOut_ = function(
     promise, timeoutInMs, errorMsg) {
   'use strict';
-  var self = this;
-  var start = this.now();
-  return new goog.Promise(function(resolve, reject) {
+  const start = this.now();
+  /**
+   * @param {function(?)} resolve
+   * @param {function(*)} reject
+   */
+  const resolver = (resolve, reject) => {
     'use strict';
-    var timeoutId = self.timeout(function() {
+    const timeoutId = this.timeout(() => {
       'use strict';
-      var elapsed = self.now() - start;
-      reject(new Error(errorMsg + '\nElapsed time: ' + elapsed + ' ms.'));
+      const elapsed = this.now() - start;
+      reject(new Error(`${errorMsg}\nElapsed time: ${elapsed} ms.`));
     }, timeoutInMs);
-    promise.then(resolve, reject);
-    var clearTimeout = goog.bind(self.clearTimeout, self, timeoutId);
+    const clearTimeout = () => {
+      this.clearTimeout(timeoutId);
+    };
     promise.then(clearTimeout, clearTimeout);
-  });
+    promise.then(resolve, reject);
+  };
+  if (this.useNativePromise_) {
+    return new Promise(resolver);
+  }
+  return new goog.Promise(resolver);
 };
 
 

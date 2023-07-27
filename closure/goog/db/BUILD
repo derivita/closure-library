@@ -55,15 +55,18 @@ closure_js_library(
 
 closure_js_library(
     name = "indexeddb",
-    srcs = ["indexeddb.js", "indexeddb.clutz.d.ts"],
+    srcs = [
+        "indexeddb.js",  "indexeddb.clutz.d.ts",
+        "transaction.js", "transaction.clutz.d.ts",
+    ],
     lenient = True,
     deps = [
         ":error",
         ":objectstore",
-        ":transaction",
         "//closure/goog/events:event",
         "//closure/goog/events:eventhandler",
         "//closure/goog/events:eventtarget",
+        "//third_party/closure/goog/mochikit/async:deferred",
     ],
 )
 
@@ -87,16 +90,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+alias(
     name = "transaction",
-    srcs = ["transaction.js", "transaction.clutz.d.ts"],
-    lenient = True,
-    deps = [
-        ":error",
-        ":objectstore",
-        "//closure/goog/events",
-        "//closure/goog/events:eventhandler",
-        "//closure/goog/events:eventtarget",
-        "//third_party/closure/goog/mochikit/async:deferred",
-    ],
+    actual = ":indexeddb",
 )

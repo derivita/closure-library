@@ -52,7 +52,6 @@ closure_js_library(
     name = "browserfeature",
     srcs = ["browserfeature.js", "browserfeature.clutz.d.ts"],
     lenient = True,
-    deps = ["//closure/goog/useragent"],
 )
 
 closure_js_library(
@@ -127,7 +126,25 @@ closure_js_library(
 
 closure_js_library(
     name = "eventtype",
-    srcs = ["eventtype.js", "eventtype.clutz.d.ts"],
+    srcs = [
+        "eventtype.js", "eventtype.clutz.d.ts",
+        "mouseasmouseeventtype.js", "mouseasmouseeventtype.clutz.d.ts",
+        "mouseevents.js", "mouseevents.clutz.d.ts",
+        "pointerasmouseeventtype.js", "pointerasmouseeventtype.clutz.d.ts",
+        "pointerastoucheventtype.js", "pointerastoucheventtype.clutz.d.ts",
+        "pointerfallbackeventtype.js", "pointerfallbackeventtype.clutz.d.ts",
+        "pointertouchfallbackeventtype.js", "pointertouchfallbackeventtype.clutz.d.ts",
+    ],
+    lenient = True,
+    deps = [
+        ":eventtypehelpers",
+        "//closure/goog/useragent",
+    ],
+)
+
+closure_js_library(
+    name = "eventtypehelpers",
+    srcs = ["eventtypehelpers.js"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -189,9 +206,7 @@ closure_js_library(
     deps = [
         ":browserevent",
         ":eventhandler",
-        ":eventtarget",
         ":keycodes",
-        "//closure/goog/dom:tagname",
         "//closure/goog/timer",
         "//closure/goog/useragent",
     ],
@@ -330,12 +345,10 @@ closure_js_library(
     deps = [
         ":browserevent",
         ":events",
-        ":eventtarget",
         ":wheelevent",
         "//closure/goog/dom",
         "//closure/goog/style",
         "//closure/goog/useragent",
         "//closure/goog/useragent:product",
-        "//closure/goog/useragent:product_isversion",
     ],
 )

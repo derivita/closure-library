@@ -71,12 +71,13 @@ closure_js_library(
 )
 
 closure_js_library(
-    name = "iterablemechanismtester",
+    name = "iterablemechanismtests",
     testonly = 1,
-    srcs = ["iterablemechanismtester.js", "iterablemechanismtester.clutz.d.ts"],
+    srcs = ["iterablemechanismtests.js", "iterablemechanismtests.clutz.d.ts"],
     lenient = True,
     deps = [
         ":iterablemechanism",
+        ":mechanismtestdefinition",
         "//closure/goog/iter",
         "//closure/goog/testing:asserts",
     ],
@@ -102,11 +103,12 @@ closure_js_library(
 )
 
 closure_js_library(
-    name = "mechanismseparationtester",
+    name = "mechanismseparationtests",
     testonly = 1,
-    srcs = ["mechanismseparationtester.js", "mechanismseparationtester.clutz.d.ts"],
+    srcs = ["mechanismseparationtests.js", "mechanismseparationtests.clutz.d.ts"],
     lenient = True,
     deps = [
+        ":iterablemechanism",
         ":mechanismtestdefinition",
         "//closure/goog/iter",
         "//closure/goog/testing:asserts",
@@ -114,11 +116,12 @@ closure_js_library(
 )
 
 closure_js_library(
-    name = "mechanismsharingtester",
+    name = "mechanismsharingtests",
     testonly = 1,
-    srcs = ["mechanismsharingtester.js", "mechanismsharingtester.clutz.d.ts"],
+    srcs = ["mechanismsharingtests.js", "mechanismsharingtests.clutz.d.ts"],
     lenient = True,
     deps = [
+        ":iterablemechanism",
         ":mechanismtestdefinition",
         "//closure/goog/iter",
         "//closure/goog/testing:asserts",
@@ -130,15 +133,18 @@ closure_js_library(
     testonly = 1,
     srcs = ["mechanismtestdefinition.js", "mechanismtestdefinition.clutz.d.ts"],
     lenient = True,
+    deps = ["//closure/goog/debug"],
 )
 
 closure_js_library(
-    name = "mechanismtester",
+    name = "mechanismtests",
     testonly = 1,
-    srcs = ["mechanismtester.js", "mechanismtester.clutz.d.ts"],
+    srcs = ["mechanismtests.js", "mechanismtests.clutz.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
+        ":mechanism",
+        ":mechanismtestdefinition",
         "//closure/goog/testing:asserts",
         "//closure/goog/useragent",
         "//closure/goog/useragent:product",

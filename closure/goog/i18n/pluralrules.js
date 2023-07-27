@@ -8,7 +8,7 @@
  * @fileoverview Plural rules.
  *
  *
- * File generated from CLDR ver. 39
+ * File generated from CLDR ver. 43
  */
 
 // clang-format off
@@ -147,6 +147,27 @@ goog.i18n.pluralRules.filSelect_ = function(n, precision) {
 };
 
 /**
+ * Plural select rules for he locale
+ *
+ * @param {number} n  The count of items.
+ * @param {number=} precision Precision for number formatting, if not default.
+ * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
+ * @private
+ */
+goog.i18n.pluralRules.heSelect_ = function(n, precision) {
+  "use strict";
+  const i = n | 0;
+  const vf = goog.i18n.pluralRules.get_vf_(n, precision);
+  if (i == 1 && vf.v == 0 || i == 0 && vf.v != 0) {
+    return goog.i18n.pluralRules.Keyword.ONE;
+  }
+  if (i == 2 && vf.v == 0) {
+    return goog.i18n.pluralRules.Keyword.TWO;
+  }
+  return goog.i18n.pluralRules.Keyword.OTHER;
+};
+
+/**
  * Plural select rules for br locale
  *
  * @param {number} n  The count of items.
@@ -193,6 +214,27 @@ goog.i18n.pluralRules.srSelect_ = function(n, precision) {
 };
 
 /**
+ * Plural select rules for ro locale
+ *
+ * @param {number} n  The count of items.
+ * @param {number=} precision Precision for number formatting, if not default.
+ * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
+ * @private
+ */
+goog.i18n.pluralRules.roSelect_ = function(n, precision) {
+  "use strict";
+  const i = n | 0;
+  const vf = goog.i18n.pluralRules.get_vf_(n, precision);
+  if (i == 1 && vf.v == 0) {
+    return goog.i18n.pluralRules.Keyword.ONE;
+  }
+  if (vf.v != 0 || n == 0 || n != 1 && n % 100 >= 1 && n % 100 <= 19) {
+    return goog.i18n.pluralRules.Keyword.FEW;
+  }
+  return goog.i18n.pluralRules.Keyword.OTHER;
+};
+
+/**
  * Plural select rules for hi locale
  *
  * @param {number} n  The count of items.
@@ -205,6 +247,28 @@ goog.i18n.pluralRules.hiSelect_ = function(n, precision) {
   const i = n | 0;
   if (i == 0 || n == 1) {
     return goog.i18n.pluralRules.Keyword.ONE;
+  }
+  return goog.i18n.pluralRules.Keyword.OTHER;
+};
+
+/**
+ * Plural select rules for es locale
+ *
+ * @param {number} n  The count of items.
+ * @param {number=} precision Precision for number formatting, if not default.
+ * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
+ * @private
+ */
+goog.i18n.pluralRules.esSelect_ = function(n, precision) {
+  "use strict";
+  const i = n | 0;
+  const e = goog.i18n.pluralRules.get_e_(n);
+  const vf = goog.i18n.pluralRules.get_vf_(n, precision);
+  if (n == 1) {
+    return goog.i18n.pluralRules.Keyword.ONE;
+  }
+  if (e == 0 && i != 0 && i % 1000000 == 0 && vf.v == 0 || (e < 0 || e > 5)) {
+    return goog.i18n.pluralRules.Keyword.MANY;
   }
   return goog.i18n.pluralRules.Keyword.OTHER;
 };
@@ -237,7 +301,31 @@ goog.i18n.pluralRules.hySelect_ = function(n, precision) {
 goog.i18n.pluralRules.ptSelect_ = function(n, precision) {
   "use strict";
   const i = n | 0;
+  const e = goog.i18n.pluralRules.get_e_(n);
+  const vf = goog.i18n.pluralRules.get_vf_(n, precision);
   if (i >= 0 && i <= 1) {
+    return goog.i18n.pluralRules.Keyword.ONE;
+  }
+  if (e == 0 && i != 0 && i % 1000000 == 0 && vf.v == 0 || (e < 0 || e > 5)) {
+    return goog.i18n.pluralRules.Keyword.MANY;
+  }
+  return goog.i18n.pluralRules.Keyword.OTHER;
+};
+
+/**
+ * Plural select rules for is locale
+ *
+ * @param {number} n  The count of items.
+ * @param {number=} precision Precision for number formatting, if not default.
+ * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
+ * @private
+ */
+goog.i18n.pluralRules.isSelect_ = function(n, precision) {
+  "use strict";
+  const i = n | 0;
+  const vf = goog.i18n.pluralRules.get_vf_(n, precision);
+  const wt = goog.i18n.pluralRules.get_wt_(vf.v, vf.f);
+  if (wt.t == 0 && i % 10 == 1 && i % 100 != 11 || wt.t % 10 == 1 && wt.t % 100 != 11) {
     return goog.i18n.pluralRules.Keyword.ONE;
   }
   return goog.i18n.pluralRules.Keyword.OTHER;
@@ -292,6 +380,28 @@ goog.i18n.pluralRules.plSelect_ = function(n, precision) {
 };
 
 /**
+ * Plural select rules for ca locale
+ *
+ * @param {number} n  The count of items.
+ * @param {number=} precision Precision for number formatting, if not default.
+ * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
+ * @private
+ */
+goog.i18n.pluralRules.caSelect_ = function(n, precision) {
+  "use strict";
+  const i = n | 0;
+  const e = goog.i18n.pluralRules.get_e_(n);
+  const vf = goog.i18n.pluralRules.get_vf_(n, precision);
+  if (i == 1 && vf.v == 0) {
+    return goog.i18n.pluralRules.Keyword.ONE;
+  }
+  if (e == 0 && i != 0 && i % 1000000 == 0 && vf.v == 0 || (e < 0 || e > 5)) {
+    return goog.i18n.pluralRules.Keyword.MANY;
+  }
+  return goog.i18n.pluralRules.Keyword.OTHER;
+};
+
+/**
  * Plural select rules for lv locale
  *
  * @param {number} n  The count of items.
@@ -307,52 +417,6 @@ goog.i18n.pluralRules.lvSelect_ = function(n, precision) {
   }
   if (n % 10 == 1 && n % 100 != 11 || vf.v == 2 && vf.f % 10 == 1 && vf.f % 100 != 11 || vf.v != 2 && vf.f % 10 == 1) {
     return goog.i18n.pluralRules.Keyword.ONE;
-  }
-  return goog.i18n.pluralRules.Keyword.OTHER;
-};
-
-/**
- * Plural select rules for he locale
- *
- * @param {number} n  The count of items.
- * @param {number=} precision Precision for number formatting, if not default.
- * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
- * @private
- */
-goog.i18n.pluralRules.heSelect_ = function(n, precision) {
-  "use strict";
-  const i = n | 0;
-  const vf = goog.i18n.pluralRules.get_vf_(n, precision);
-  if (i == 1 && vf.v == 0) {
-    return goog.i18n.pluralRules.Keyword.ONE;
-  }
-  if (i == 2 && vf.v == 0) {
-    return goog.i18n.pluralRules.Keyword.TWO;
-  }
-  if (vf.v == 0 && (n < 0 || n > 10) && n % 10 == 0) {
-    return goog.i18n.pluralRules.Keyword.MANY;
-  }
-  return goog.i18n.pluralRules.Keyword.OTHER;
-};
-
-/**
- * Plural select rules for mt locale
- *
- * @param {number} n  The count of items.
- * @param {number=} precision Precision for number formatting, if not default.
- * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
- * @private
- */
-goog.i18n.pluralRules.mtSelect_ = function(n, precision) {
-  "use strict";
-  if (n == 1) {
-    return goog.i18n.pluralRules.Keyword.ONE;
-  }
-  if (n == 0 || n % 100 >= 2 && n % 100 <= 10) {
-    return goog.i18n.pluralRules.Keyword.FEW;
-  }
-  if (n % 100 >= 11 && n % 100 <= 19) {
-    return goog.i18n.pluralRules.Keyword.MANY;
   }
   return goog.i18n.pluralRules.Keyword.OTHER;
 };
@@ -516,14 +580,14 @@ goog.i18n.pluralRules.gaSelect_ = function(n, precision) {
 };
 
 /**
- * Plural select rules for es locale
+ * Plural select rules for af locale
  *
  * @param {number} n  The count of items.
  * @param {number=} precision Precision for number formatting, if not default.
  * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
  * @private
  */
-goog.i18n.pluralRules.esSelect_ = function(n, precision) {
+goog.i18n.pluralRules.afSelect_ = function(n, precision) {
   "use strict";
   if (n == 1) {
     return goog.i18n.pluralRules.Keyword.ONE;
@@ -545,46 +609,6 @@ goog.i18n.pluralRules.mkSelect_ = function(n, precision) {
   const vf = goog.i18n.pluralRules.get_vf_(n, precision);
   if (vf.v == 0 && i % 10 == 1 && i % 100 != 11 || vf.f % 10 == 1 && vf.f % 100 != 11) {
     return goog.i18n.pluralRules.Keyword.ONE;
-  }
-  return goog.i18n.pluralRules.Keyword.OTHER;
-};
-
-/**
- * Plural select rules for is locale
- *
- * @param {number} n  The count of items.
- * @param {number=} precision Precision for number formatting, if not default.
- * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
- * @private
- */
-goog.i18n.pluralRules.isSelect_ = function(n, precision) {
-  "use strict";
-  const i = n | 0;
-  const vf = goog.i18n.pluralRules.get_vf_(n, precision);
-  const wt = goog.i18n.pluralRules.get_wt_(vf.v, vf.f);
-  if (wt.t == 0 && i % 10 == 1 && i % 100 != 11 || wt.t != 0) {
-    return goog.i18n.pluralRules.Keyword.ONE;
-  }
-  return goog.i18n.pluralRules.Keyword.OTHER;
-};
-
-/**
- * Plural select rules for ro locale
- *
- * @param {number} n  The count of items.
- * @param {number=} precision Precision for number formatting, if not default.
- * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
- * @private
- */
-goog.i18n.pluralRules.roSelect_ = function(n, precision) {
-  "use strict";
-  const i = n | 0;
-  const vf = goog.i18n.pluralRules.get_vf_(n, precision);
-  if (i == 1 && vf.v == 0) {
-    return goog.i18n.pluralRules.Keyword.ONE;
-  }
-  if (vf.v != 0 || n == 0 || n % 100 >= 2 && n % 100 <= 19) {
-    return goog.i18n.pluralRules.Keyword.FEW;
   }
   return goog.i18n.pluralRules.Keyword.OTHER;
 };
@@ -659,6 +683,31 @@ goog.i18n.pluralRules.ltSelect_ = function(n, precision) {
     return goog.i18n.pluralRules.Keyword.FEW;
   }
   if (vf.f != 0) {
+    return goog.i18n.pluralRules.Keyword.MANY;
+  }
+  return goog.i18n.pluralRules.Keyword.OTHER;
+};
+
+/**
+ * Plural select rules for mt locale
+ *
+ * @param {number} n  The count of items.
+ * @param {number=} precision Precision for number formatting, if not default.
+ * @return {!goog.i18n.pluralRules.Keyword} Locale-specific plural value.
+ * @private
+ */
+goog.i18n.pluralRules.mtSelect_ = function(n, precision) {
+  "use strict";
+  if (n == 1) {
+    return goog.i18n.pluralRules.Keyword.ONE;
+  }
+  if (n == 2) {
+    return goog.i18n.pluralRules.Keyword.TWO;
+  }
+  if (n == 0 || n % 100 >= 3 && n % 100 <= 10) {
+    return goog.i18n.pluralRules.Keyword.FEW;
+  }
+  if (n % 100 >= 11 && n % 100 <= 19) {
     return goog.i18n.pluralRules.Keyword.MANY;
   }
   return goog.i18n.pluralRules.Keyword.OTHER;
@@ -769,7 +818,7 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
    goog.i18n.pluralRules.select = goog.i18n.pluralRules.mapToNativeSelect_();
 } else {
   if (goog.LOCALE === 'af') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'am') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.hiSelect_;
@@ -784,13 +833,13 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.arSelect_;
   }
   if (goog.LOCALE === 'az') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'be') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.beSelect_;
   }
   if (goog.LOCALE === 'bg') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'bn') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.hiSelect_;
@@ -802,10 +851,10 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.srSelect_;
   }
   if (goog.LOCALE === 'ca') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.enSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.caSelect_;
   }
   if (goog.LOCALE === 'chr') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'cs') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.csSelect_;
@@ -826,7 +875,7 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.enSelect_;
   }
   if (goog.LOCALE === 'el') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'en') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.enSelect_;
@@ -874,7 +923,7 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.enSelect_;
   }
   if (goog.LOCALE === 'eu') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'fa') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.hiSelect_;
@@ -898,13 +947,13 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.enSelect_;
   }
   if (goog.LOCALE === 'gsw') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'gu') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.hiSelect_;
   }
   if (goog.LOCALE === 'haw') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'he') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.heSelect_;
@@ -916,7 +965,7 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.srSelect_;
   }
   if (goog.LOCALE === 'hu') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'hy') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.hySelect_;
@@ -931,7 +980,7 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.isSelect_;
   }
   if (goog.LOCALE === 'it') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.enSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.caSelect_;
   }
   if (goog.LOCALE === 'iw') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.heSelect_;
@@ -940,10 +989,10 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.defaultSelect_;
   }
   if (goog.LOCALE === 'ka') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'kk') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'km') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.defaultSelect_;
@@ -955,7 +1004,7 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.defaultSelect_;
   }
   if (goog.LOCALE === 'ky') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'ln') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.lnSelect_;
@@ -973,16 +1022,16 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.mkSelect_;
   }
   if (goog.LOCALE === 'ml') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'mn') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'mo') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.roSelect_;
   }
   if (goog.LOCALE === 'mr') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'ms') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.defaultSelect_;
@@ -994,22 +1043,22 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.defaultSelect_;
   }
   if (goog.LOCALE === 'nb') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'ne') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'nl') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.enSelect_;
   }
   if (goog.LOCALE === 'no') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'no_NO' || goog.LOCALE === 'no-NO') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'or') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'pa') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.lnSelect_;
@@ -1024,7 +1073,7 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.ptSelect_;
   }
   if (goog.LOCALE === 'pt_PT' || goog.LOCALE === 'pt-PT') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.enSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.caSelect_;
   }
   if (goog.LOCALE === 'ro') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.roSelect_;
@@ -1045,7 +1094,7 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.slSelect_;
   }
   if (goog.LOCALE === 'sq') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'sr') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.srSelect_;
@@ -1060,10 +1109,10 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.enSelect_;
   }
   if (goog.LOCALE === 'ta') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'te') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'th') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.defaultSelect_;
@@ -1072,7 +1121,7 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.filSelect_;
   }
   if (goog.LOCALE === 'tr') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'uk') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.ruSelect_;
@@ -1081,7 +1130,7 @@ if (goog.i18n.LocaleFeature.USE_ECMASCRIPT_I18N_PLURALRULES) {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.enSelect_;
   }
   if (goog.LOCALE === 'uz') {
-    goog.i18n.pluralRules.select = goog.i18n.pluralRules.esSelect_;
+    goog.i18n.pluralRules.select = goog.i18n.pluralRules.afSelect_;
   }
   if (goog.LOCALE === 'vi') {
     goog.i18n.pluralRules.select = goog.i18n.pluralRules.defaultSelect_;

@@ -10,10 +10,8 @@ closure_js_library(
     lenient = True,
     deps = [
         ":defines",
-        "//closure/goog/labs/useragent:browser",
         "//closure/goog/useragent",
         "//closure/goog/useragent:product",
-        "//closure/goog/useragent:product_isversion",
     ],
 )
 
@@ -96,6 +94,7 @@ closure_js_library(
         "//closure/goog/html:safehtml",
         "//closure/goog/html:safestylesheet",
         "//closure/goog/html:trustedresourceurl",
+        "//closure/goog/labs/useragent:platform",
         "//closure/goog/log",
         "//closure/goog/object",
         "//closure/goog/reflect",

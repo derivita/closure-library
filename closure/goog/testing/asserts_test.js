@@ -40,7 +40,7 @@ async function internalTestAssertRejects(swallowUnhandledRejections, factory) {
     // TODO(user): Stop the unhandled rejection handler from firing
     // rather than swallowing the errors.
     if (swallowUnhandledRejections) {
-      GoogPromise.setUnhandledRejectionHandler(goog.nullFunction);
+      GoogPromise.setUnhandledRejectionHandler(() => {});
     }
 
     let e;
@@ -753,16 +753,6 @@ testSuite({
           return googIter.ES6_ITERATOR_DONE;
         }
       };
-      const iterNext = iter.next;
-      /**
-       * TODO(user): Please do not remove - this will be cleaned up
-       * centrally.
-       * @override @see {!googIter.Iterator}
-       * @return {string}
-       */
-      iter.nextValueOrThrow = function() {
-        return googIter.toEs4IteratorNext(iterNext.call(iter));
-      };
 
       return iter;
     };
@@ -790,6 +780,22 @@ testSuite({
     assertObjectEquals(new Date(2010, 0, 1), date);
     assertThrowsJsUnitException(
         goog.partial(assertObjectEquals, date, dateWithMilliseconds));
+  },
+
+
+  testAssertObjectEqualsWithCustomComparatorErrorMessage() {
+    class A {}
+
+    asserts.registerComparator(
+        A.prototype, (a, b, cmp) => 'pretty error message');
+    let exception = assertThrowsJsUnitException(() => {
+      assertObjectEquals(new A(), new A());
+    });
+    assertEquals('pretty error message', exception.message);
+    exception = assertThrowsJsUnitException(() => {
+      assertObjectEquals({a: new A()}, {a: new A()});
+    });
+    assertContains('a: pretty error message', exception.message);
   },
 
   testAssertObjectEqualsSparseArrays() {
@@ -1233,7 +1239,7 @@ testSuite({
         error.message);
 
     error = assertThrowsJsUnitException(() => {
-      assertThrowsJsUnitException(goog.nullFunction);
+      assertThrowsJsUnitException(() => {});
     });
     assertEquals('Expected a failure', error.message);
   },
@@ -1500,6 +1506,23 @@ testSuite({
         asserts.findDifferences(new Set(['a', 'b']), new Set(['b', 'a'])));
   },
 
+  testFindDifferences_customNoOpPredicate_equal() {
+    const findDifferences = (a, b) => asserts.findDifferences(
+        a, b, () => asserts.EQUALITY_PREDICATE_CANT_PROCESS);
+    assertNull(findDifferences(true, true));
+    assertNull(findDifferences(null, null));
+    assertNull(findDifferences(undefined, undefined));
+    assertNull(findDifferences(1, 1));
+    assertNull(findDifferences([1, 'a'], [1, 'a']));
+    assertNull(findDifferences([[1, 2], [3, 4]], [[1, 2], [3, 4]]));
+    assertNull(findDifferences([{a: 1, b: 2}], [{b: 2, a: 1}]));
+    assertNull(findDifferences(null, null));
+    assertNull(findDifferences(undefined, undefined));
+    assertNull(findDifferences(
+        new Map([['a', 1], ['b', 2]]), new Map([['b', 2], ['a', 1]])));
+    assertNull(findDifferences(new Set(['a', 'b']), new Set(['b', 'a'])));
+  },
+
   testFindDifferences_unequal() {
     assertNotNull(asserts.findDifferences(true, false));
     assertNotNull(asserts.findDifferences([{a: 1, b: 2}], [{a: 2, b: 1}]));
@@ -1525,6 +1548,35 @@ testSuite({
     assertNotNull(
         'Values have different types"',
         asserts.findDifferences(new Set(['1']), new Set([1])));
+  },
+
+  testFindDifferences_customNoOpPredicate_unequal() {
+    const findDifferences = (a, b) => asserts.findDifferences(
+        a, b, () => asserts.EQUALITY_PREDICATE_CANT_PROCESS);
+    assertNotNull(findDifferences(true, false));
+    assertNotNull(findDifferences([{a: 1, b: 2}], [{a: 2, b: 1}]));
+    assertNotNull(findDifferences([{a: 1}], [{a: 1, b: [2]}]));
+    assertNotNull(findDifferences([{a: 1, b: [2]}], [{a: 1}]));
+
+    assertNotNull(
+        'Second map is missing key "a"; first map is missing key "b"',
+        findDifferences(new Map([['a', 1]]), new Map([['b', 2]])));
+    assertNotNull(
+        'Value for key "a" differs by value',
+        findDifferences(new Map([['a', '1']]), new Map([['a', '2']])));
+    assertNotNull(
+        'Value for key "a" differs by type',
+        findDifferences(new Map([['a', '1']]), new Map([['a', 1]])));
+
+    assertNotNull(
+        'Second set is missing key "a"',
+        findDifferences(new Set(['a', 'b']), new Set(['b'])));
+    assertNotNull(
+        'First set is missing key "b"',
+        findDifferences(new Set(['a']), new Set(['a', 'b'])));
+    assertNotNull(
+        'Values have different types"',
+        findDifferences(new Set(['1']), new Set([1])));
   },
 
   testFindDifferences_arrays_nonNaturalKeys_notConfsuedForSparseness() {

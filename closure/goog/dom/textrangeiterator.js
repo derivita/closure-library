@@ -25,7 +25,6 @@ goog.require('goog.dom.NodeType');
 goog.require('goog.dom.RangeIterator');
 goog.require('goog.dom.TagName');
 goog.require('goog.iter');
-goog.require('goog.iter.StopIteration');
 
 
 
@@ -121,14 +120,7 @@ goog.dom.TextRangeIterator = function(
       this.isReversed_);
 
   if (goNext) {
-    try {
-      this.nextValueOrThrow();
-    } catch (e) {
-      if (e != goog.iter.StopIteration) {
-        throw e;
-      }
-      // Silently drop end-of-iteration error
-    }
+    this.next();
   }
 };
 goog.inherits(goog.dom.TextRangeIterator, goog.dom.RangeIterator);
@@ -204,8 +196,8 @@ goog.dom.TextRangeIterator.prototype.isLast = function() {
 };
 
 /**
- * Returns true if the iterator is on the last step before StopIteration is
- * thrown, otherwise false.
+ * Returns true if the iterator is on the last step before iteration finishes,
+ * false otherwise.
  * @return {boolean}
  * @private
  */
@@ -226,8 +218,8 @@ goog.dom.TextRangeIterator.prototype.isLastTag_ = function() {
 };
 
 /**
- * Move to the next position in the selection.
- * Throws `goog.iter.StopIteration` when it passes the end of the range.
+ * Move to the next position in the selection. Returns `{done: true}` when it
+ * passes the end of the range.
  * @return {!IIterableResult<!Node>} The node at the next position.
  * @override
  */
@@ -238,24 +230,7 @@ goog.dom.TextRangeIterator.prototype.next = function() {
   }
 
   // Call the super function.
-  try {
-    return goog.iter.createEs6IteratorYield(
-        goog.dom.TextRangeIterator.superClass_.nextValueOrThrow.call(this));
-  } catch (ex) {
-    if (ex === goog.iter.StopIteration) return goog.iter.ES6_ITERATOR_DONE;
-    throw ex;
-  }
-};
-
-
-/**
- * TODO(user): Please do not remove - this will be cleaned up centrally.
- * @override @see {!goog.iter.Iterator}
- * @return {!Node}
- */
-goog.dom.TextRangeIterator.prototype.nextValueOrThrow = function() {
-  return goog.iter.toEs4IteratorNext(
-      goog.dom.TextRangeIterator.prototype.next.call(this));
+  return goog.dom.TextRangeIterator.superClass_.next.call(this);
 };
 
 

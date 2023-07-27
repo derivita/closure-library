@@ -286,18 +286,6 @@ goog.dom.TagIterator.prototype.next = function() {
 
 
 /**
- * TODO(user): Please do not remove - this will be cleaned up centrally.
- * @override @see {!goog.iter.Iterator}
- * @return {!Node}
- */
-goog.dom.TagIterator.prototype.nextValueOrThrow = function() {
-  return goog.iter.toEs4IteratorNext(
-      goog.dom.TagIterator.prototype.next.call(this));
-};
-
-
-
-/**
  * @return {boolean} Whether next has ever been called on this iterator.
  * @protected
  */
@@ -364,7 +352,7 @@ goog.dom.TagIterator.prototype.splice = function(var_args) {
   var node = this.node;
   this.restartTag();
   this.reversed = !this.reversed;
-  goog.dom.TagIterator.prototype.nextValueOrThrow.call(this);
+  goog.dom.TagIterator.prototype.next.call(this);
   this.reversed = !this.reversed;
 
   // Replace the node with the arguments.

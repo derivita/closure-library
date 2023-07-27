@@ -20,7 +20,10 @@ closure_js_library(
     name = "mat3",
     srcs = ["mat3.js", "mat3.clutz.d.ts"],
     lenient = True,
-    deps = [":vec"],
+    deps = [
+        ":vec",
+        ":vec3",
+    ],
 )
 
 closure_js_library(

@@ -51,18 +51,26 @@ closure_js_library(
     name = "moduleinfo",
     srcs = [
         "moduleinfo.js", "moduleinfo.clutz.d.ts",
-        "moduleloadfailuretype.js", "moduleloadfailuretype.clutz.d.ts",
     ],
     lenient = True,
     deps = [
         ":basemodule",
         ":module",
         ":moduleloadcallback",
-        "//closure/goog/async:nexttick",
+        ":moduleloadfailure",
+        "//closure/goog/async:throwexception",
         "//closure/goog/disposable",
         "//closure/goog/functions",
         "//closure/goog/html:trustedresourceurl",
     ],
+)
+
+closure_js_library(
+    name = "moduleloadfailure",
+    srcs = [
+        "moduleloadfailure.js",
+    ],
+    lenient = True,
 )
 
 closure_js_library(
@@ -116,6 +124,7 @@ closure_js_library(
         ":module",
         ":moduleinfo",
         ":moduleloadcallback",
+        ":moduleloadfailure",
         "//closure/goog/array",
         "//closure/goog/asserts",
         "//closure/goog/debug:error",

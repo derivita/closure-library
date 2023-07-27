@@ -8,10 +8,6 @@ closure_js_library(
     name = "cssspecificity",
     srcs = ["cssspecificity.js", "cssspecificity.clutz.d.ts"],
     lenient = True,
-    deps = [
-        "//closure/goog/useragent",
-        "//closure/goog/useragent:product",
-    ],
 )
 
 closure_js_library(
@@ -43,7 +39,6 @@ closure_js_library(
         "//closure/goog/asserts",
         "//closure/goog/dom:tagname",
         "//closure/goog/dom:tags",
-        "//closure/goog/i18n:bidi",
         "//closure/goog/labs/useragent:browser",
         "//closure/goog/object",
         "//closure/goog/string:const",
@@ -96,7 +91,6 @@ closure_js_library(
     lenient = True,
     deps = [
         ":safestyle",
-        "//closure/goog/array",
         "//closure/goog/asserts",
         "//closure/goog/object",
         "//closure/goog/string:const",
@@ -113,7 +107,6 @@ closure_js_library(
         ":trustedresourceurl",
         "//closure/goog/asserts",
         "//closure/goog/fs:url",
-        "//closure/goog/i18n:bidi",
         "//closure/goog/string:const",
         "//closure/goog/string:internal",
         "//closure/goog/string:typedstring",
@@ -123,7 +116,10 @@ closure_js_library(
 closure_js_library(
     name = "safeurl_test_vectors",
     testonly = 1,
-    srcs = ["safeurl_test_vectors.js", "safeurl_test_vectors.clutz.d.ts"],
+    srcs = [
+        "javascript_url_test_vectors.js", "javascript_url_test_vectors.clutz.d.ts",
+        "safeurl_test_vectors.js", "safeurl_test_vectors.clutz.d.ts",
+    ],
     lenient = True,
 )
 
@@ -139,7 +135,6 @@ closure_js_library(
         ":safestylesheet",
         ":safeurl",
         ":trustedresourceurl",
-        "//closure/goog/i18n:bidi",
         "//closure/goog/testing:mockmatchers",
     ],
 )
@@ -149,11 +144,9 @@ closure_js_library(
     srcs = ["textextractor.js", "textextractor.clutz.d.ts"],
     lenient = True,
     deps = [
-        "//closure/goog/array",
         "//closure/goog/dom:tagname",
         "//closure/goog/html/sanitizer:htmlsanitizer",
         "//closure/goog/object",
-        "//closure/goog/useragent",
     ],
 )
 
@@ -167,7 +160,6 @@ closure_js_library(
         "//closure/goog/asserts",
         "//closure/goog/fs:blob",
         "//closure/goog/fs:url",
-        "//closure/goog/i18n:bidi",
         "//closure/goog/string:const",
         "//closure/goog/string:typedstring",
     ],
@@ -192,7 +184,6 @@ closure_js_library(
         ":safeurl",
         ":trustedresourceurl",
         "//closure/goog/asserts",
-        "//closure/goog/i18n:bidi",
         "//closure/goog/string:const",
         "//closure/goog/string:internal",
     ],
