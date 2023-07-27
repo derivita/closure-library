@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "abstractspellchecker",
-    srcs = ["abstractspellchecker.js", "abstractspellchecker.clutz.d.ts", "abstractspellchecker.clutz.d.ts"],
+    srcs = ["abstractspellchecker.js", "abstractspellchecker.clutz.d.ts"],
     lenient = True,
     deps = [
         ":component",
