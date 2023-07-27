@@ -21,7 +21,6 @@ closure_js_library(
         "//closure/goog/i18n:bidi",
         "//closure/goog/string:const",
         "//closure/goog/uri",
-        "//third_party/javascript/safevalues",
     ],
 )
 

@@ -89,7 +89,6 @@ closure_js_library(
         "//closure/goog/style",
         "//closure/goog/ui/editor:messages",
         "//closure/goog/useragent",
-        "//third_party/javascript/safevalues/dom",
     ],
 )
 
