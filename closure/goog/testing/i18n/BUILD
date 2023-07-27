@@ -18,6 +18,6 @@ closure_js_library(
 closure_js_library(
     name = "whitespace",
     testonly = True,
-    srcs = ["whitespace.js"],
+    srcs = ["whitespace.js", "whitespace.clutz.d.ts"],
     lenient = True,
 )

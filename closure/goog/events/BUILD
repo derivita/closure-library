@@ -144,7 +144,7 @@ closure_js_library(
 
 closure_js_library(
     name = "eventtypehelpers",
-    srcs = ["eventtypehelpers.js"],
+    srcs = ["eventtypehelpers.js", "eventtypehelpers.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",

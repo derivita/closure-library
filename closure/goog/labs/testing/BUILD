@@ -91,7 +91,7 @@ closure_js_library(
 closure_js_library(
     name = "environmentbase",
     testonly = True,
-    srcs = ["environmentbase.js"],
+    srcs = ["environmentbase.js", "environmentbase.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",

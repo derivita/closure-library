@@ -16,7 +16,7 @@ closure_js_library(
 
 closure_js_library(
     name = "asyncstacktag",
-    srcs = ["asyncstacktag.js"],
+    srcs = ["asyncstacktag.js", "asyncstacktag.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )

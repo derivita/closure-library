@@ -103,7 +103,7 @@ closure_js_library(
 
 closure_js_library(
     name = "cldrversion",
-    srcs = ["cldrversion.js"],
+    srcs = ["cldrversion.js", "cldrversion.clutz.d.ts"],
     lenient = True,
 )
 
@@ -262,7 +262,7 @@ closure_js_library(
 
 closure_js_library(
     name = "dayperiodsymbols",
-    srcs = ["dayperiodsymbols.js"],
+    srcs = ["dayperiodsymbols.js", "dayperiodsymbols.clutz.d.ts"],
     lenient = True,
 )
 
@@ -278,7 +278,7 @@ closure_js_library(
 
 closure_js_library(
     name = "durationformat",
-    srcs = ["durationformat.js"],
+    srcs = ["durationformat.js", "durationformat.clutz.d.ts"],
     lenient = True,
     deps = [
         ":durationsymbols",
@@ -292,14 +292,14 @@ closure_js_library(
 
 closure_js_library(
     name = "durationsymbols",
-    srcs = ["durationsymbols.js"],
+    srcs = ["durationsymbols.js", "durationsymbols.clutz.d.ts"],
     lenient = True,
     deps = [":durationsymboltypes"],
 )
 
 closure_js_library(
     name = "durationsymbolsext",
-    srcs = ["durationsymbolsext.js"],
+    srcs = ["durationsymbolsext.js", "durationsymbolsext.clutz.d.ts"],
     lenient = True,
     deps = [
         ":durationsymbols",
@@ -309,7 +309,7 @@ closure_js_library(
 
 closure_js_library(
     name = "durationsymboltypes",
-    srcs = ["durationsymboltypes.js"],
+    srcs = ["durationsymboltypes.js", "durationsymboltypes.clutz.d.ts"],
     lenient = True,
 )
 
@@ -326,7 +326,7 @@ closure_js_library(
 
 closure_js_library(
     name = "listformat",
-    srcs = ["listformat.js"],
+    srcs = ["listformat.js", "listformat.clutz.d.ts"],
     lenient = True,
     deps = [
         ":listsymbols",
@@ -340,14 +340,14 @@ closure_js_library(
 closure_js_library(
     name = "listsymbols",
     srcs = [
-        "listsymbols.js",
+        "listsymbols.js", "listsymbols.clutz.d.ts",
     ],
     lenient = True,
 )
 
 closure_js_library(
     name = "listsymbolsext",
-    srcs = ["listsymbolsext.js"],
+    srcs = ["listsymbolsext.js", "listsymbolsext.clutz.d.ts"],
     lenient = True,
     deps = [":listsymbols"],
 )
@@ -375,7 +375,7 @@ closure_js_library(
 
 closure_js_library(
     name = "messages",
-    srcs = ["messages.js"],
+    srcs = ["messages.js", "messages.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )

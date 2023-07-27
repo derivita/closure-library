@@ -11,3 +11,5 @@ closure_base_js_library(
     srcs = ["base.js", "base.clutz.d.ts"],
     visibility = ["//visibility:public"],
 )
+
+exports_files(['deps.js'])

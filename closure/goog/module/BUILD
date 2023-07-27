@@ -68,7 +68,7 @@ closure_js_library(
 closure_js_library(
     name = "moduleloadfailure",
     srcs = [
-        "moduleloadfailure.js",
+        "moduleloadfailure.js", "moduleloadfailure.clutz.d.ts",
     ],
     lenient = True,
 )

@@ -4,6 +4,6 @@ package(default_visibility = ["//visibility:public"])
 
 closure_js_library(
     name = "flags",
-    srcs = ["flags.js"],
+    srcs = ["flags.js", "flags.clutz.d.ts"],
     lenient = True,
 )
