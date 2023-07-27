@@ -372,6 +372,34 @@ declare module 'goog:goog.i18n.DateTimePatterns_bg_BG' {
   export default DateTimePatterns_bg_BG;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_bgc : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_bgc' {
+  import DateTimePatterns_bgc = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_bgc;
+  export default DateTimePatterns_bgc;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_bgc_IN : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_bgc_IN' {
+  import DateTimePatterns_bgc_IN = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_bgc_IN;
+  export default DateTimePatterns_bgc_IN;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_bho : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_bho' {
+  import DateTimePatterns_bho = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_bho;
+  export default DateTimePatterns_bho;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_bho_IN : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_bho_IN' {
+  import DateTimePatterns_bho_IN = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_bho_IN;
+  export default DateTimePatterns_bho_IN;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
   let DateTimePatterns_bm : any;
 }
 declare module 'goog:goog.i18n.DateTimePatterns_bm' {
@@ -615,6 +643,20 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.DateTimePatterns_cs_CZ' {
   import DateTimePatterns_cs_CZ = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_cs_CZ;
   export default DateTimePatterns_cs_CZ;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_cv : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_cv' {
+  import DateTimePatterns_cv = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_cv;
+  export default DateTimePatterns_cv;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_cv_RU : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_cv_RU' {
+  import DateTimePatterns_cv_RU = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_cv_RU;
+  export default DateTimePatterns_cv_RU;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   let DateTimePatterns_cy_GB : any;
@@ -1210,6 +1252,13 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.DateTimePatterns_en_MU' {
   import DateTimePatterns_en_MU = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_en_MU;
   export default DateTimePatterns_en_MU;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_en_MV : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_en_MV' {
+  import DateTimePatterns_en_MV = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_en_MV;
+  export default DateTimePatterns_en_MV;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   let DateTimePatterns_en_MW : any;
@@ -2444,6 +2493,20 @@ declare module 'goog:goog.i18n.DateTimePatterns_hi_IN' {
   export default DateTimePatterns_hi_IN;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_hi_Latn : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_hi_Latn' {
+  import DateTimePatterns_hi_Latn = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_hi_Latn;
+  export default DateTimePatterns_hi_Latn;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_hi_Latn_IN : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_hi_Latn_IN' {
+  import DateTimePatterns_hi_Latn_IN = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_hi_Latn_IN;
+  export default DateTimePatterns_hi_Latn_IN;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
   let DateTimePatterns_hr_BA : any;
 }
 declare module 'goog:goog.i18n.DateTimePatterns_hr_BA' {
@@ -2682,6 +2745,20 @@ declare module 'goog:goog.i18n.DateTimePatterns_kea_CV' {
   export default DateTimePatterns_kea_CV;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_kgp : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_kgp' {
+  import DateTimePatterns_kgp = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_kgp;
+  export default DateTimePatterns_kgp;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_kgp_BR : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_kgp_BR' {
+  import DateTimePatterns_kgp_BR = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_kgp_BR;
+  export default DateTimePatterns_kgp_BR;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
   let DateTimePatterns_khq : any;
 }
 declare module 'goog:goog.i18n.DateTimePatterns_khq' {
@@ -2820,6 +2897,20 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.DateTimePatterns_ks_Arab_IN' {
   import DateTimePatterns_ks_Arab_IN = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_ks_Arab_IN;
   export default DateTimePatterns_ks_Arab_IN;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_ks_Deva : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_ks_Deva' {
+  import DateTimePatterns_ks_Deva = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_ks_Deva;
+  export default DateTimePatterns_ks_Deva;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_ks_Deva_IN : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_ks_Deva_IN' {
+  import DateTimePatterns_ks_Deva_IN = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_ks_Deva_IN;
+  export default DateTimePatterns_ks_Deva_IN;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   let DateTimePatterns_ksb : any;
@@ -3697,6 +3788,20 @@ declare module 'goog:goog.i18n.DateTimePatterns_qu_PE' {
   export default DateTimePatterns_qu_PE;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_raj : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_raj' {
+  import DateTimePatterns_raj = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_raj;
+  export default DateTimePatterns_raj;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_raj_IN : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_raj_IN' {
+  import DateTimePatterns_raj_IN = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_raj_IN;
+  export default DateTimePatterns_raj_IN;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
   let DateTimePatterns_rm : any;
 }
 declare module 'goog:goog.i18n.DateTimePatterns_rm' {
@@ -3898,6 +4003,20 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.DateTimePatterns_sbp_TZ' {
   import DateTimePatterns_sbp_TZ = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_sbp_TZ;
   export default DateTimePatterns_sbp_TZ;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_sc : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_sc' {
+  import DateTimePatterns_sc = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_sc;
+  export default DateTimePatterns_sc;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_sc_IT : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_sc_IT' {
+  import DateTimePatterns_sc_IT = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_sc_IT;
+  export default DateTimePatterns_sc_IT;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   let DateTimePatterns_sd : any;
@@ -4696,6 +4815,34 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.DateTimePatterns_yo_NG' {
   import DateTimePatterns_yo_NG = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_yo_NG;
   export default DateTimePatterns_yo_NG;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_yrl : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_yrl' {
+  import DateTimePatterns_yrl = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_yrl;
+  export default DateTimePatterns_yrl;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_yrl_BR : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_yrl_BR' {
+  import DateTimePatterns_yrl_BR = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_yrl_BR;
+  export default DateTimePatterns_yrl_BR;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_yrl_CO : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_yrl_CO' {
+  import DateTimePatterns_yrl_CO = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_yrl_CO;
+  export default DateTimePatterns_yrl_CO;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let DateTimePatterns_yrl_VE : any;
+}
+declare module 'goog:goog.i18n.DateTimePatterns_yrl_VE' {
+  import DateTimePatterns_yrl_VE = ಠ_ಠ.clutz.goog.i18n.DateTimePatterns_yrl_VE;
+  export default DateTimePatterns_yrl_VE;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   let DateTimePatterns_yue : any;

@@ -46,6 +46,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.mock.verification {
    * description returned from `#describe` will be shown in the
    * test failure message.  Sample usage:
    *
+   * ```
    * goog.module('my.package.MyClassTest');
    * goog.setTestOnly('my.package.MyClassTest');
    *
@@ -65,6 +66,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.mock.verification {
    * goog.labs.mock.verify(mockObj, times(1));
    * }
    * });
+   * ```
    *
    * For an example implementation, see `TimesVerificationMode_`.
    */

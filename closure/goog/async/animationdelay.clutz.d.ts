@@ -28,7 +28,7 @@ declare namespace ಠ_ಠ.clutz.goog.async {
      * @param opt_window The window object to execute the delay in. Defaults to the global object.
      * @param opt_handler The object scope to invoke the function in.
      */
-    constructor (listener : PrivateType , opt_window ? : Window | null , opt_handler ? : THIS ) ;
+    constructor (listener : (this : THIS , a : number ) => void , opt_window ? : Window | null , opt_handler ? : THIS ) ;
     disposeInternal ( ) : void ;
     fire ( ) : void ;
     fireIfActive ( ) : void ;

@@ -25,14 +25,10 @@ declare namespace ಠ_ಠ.clutz.goog.dom {
     getStartTextOffset ( ) : any ;
     isLast ( ) : any ;
     /**
-     * Move to the next position in the selection.
-     * Throws `goog.iter.StopIteration` when it passes the end of the range.
+     * Move to the next position in the selection. Returns `{done: true}` when it
+     * passes the end of the range.
      */
     next ( ) : IteratorResult < Node > ;
-    /**
-     * TODO(user): Please do not remove - this will be cleaned up centrally.
-     */
-    nextValueOrThrow ( ) : Node ;
     /**
      * Change the end node of the iterator.
      * @param node The new end node.

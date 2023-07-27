@@ -202,6 +202,18 @@ declare namespace ಠ_ಠ.clutz.goog.net {
      */
     setHandler (handler : ಠ_ಠ.clutz.goog.net.BrowserChannel.Handler | null ) : void ;
     /**
+     * Sets whether the channel is buffered or not. This state is usually updated in
+     * goog.net.BrowserChannel.testConnectionFinished, but can be set manually here.
+     * This updated status will be reflected in subsequent connections and requests
+     * to the channel.
+     * NOTE: This should ONLY be used by clients that are certain of their
+     * connection status, i.e. that have performed additional test channels. Setting
+     * the wrong buffered status on a client can result in undeliverable responses
+     * from the server.
+     * @param isBuffered Whether the channel is buffered.
+     */
+    setIsBuffered (isBuffered : boolean ) : void ;
+    /**
      * Sets a new parser for the response payload.
      * @param parser Parser.
      */

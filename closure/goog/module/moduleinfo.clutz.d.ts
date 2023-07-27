@@ -39,7 +39,7 @@ declare namespace ಠ_ಠ.clutz.goog.module {
      * Calls the error callbacks for the module.
      * @param cause What caused the error.
      */
-    onError (cause : ಠ_ಠ.clutz.goog.module.ModuleLoadFailureType | null ) : void ;
+    onError (cause : ಠ_ಠ.clutz.goog.module.ModuleLoadFailure ) : void ;
     /**
      * Sets this module as loaded.
      * @param contextProvider A function that provides the module context.

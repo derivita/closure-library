@@ -2,8 +2,13 @@
 // Generated from labs/useragent/test_agentdata.js
 declare namespace ಠ_ಠ.clutz.module$exports$goog$labs$userAgent$testAgentData {
   let CHROME_NO_FULLVERSIONLIST_USERAGENT_DATA : ಠ_ಠ.clutz.NavigatorUAData ;
-  let CHROME_USERAGENT_DATA : ಠ_ಠ.clutz.NavigatorUAData ;
+  let CHROME_USERAGENT_DATA_CROS : ಠ_ಠ.clutz.NavigatorUAData ;
+  let CHROME_USERAGENT_DATA_LINUX : ಠ_ಠ.clutz.NavigatorUAData ;
+  let CHROME_USERAGENT_DATA_MACOS : ಠ_ಠ.clutz.NavigatorUAData ;
   let CHROME_USERAGENT_DATA_MOBILE : ಠ_ಠ.clutz.NavigatorUAData ;
+  let CHROME_USERAGENT_DATA_NO_PLATFORM : ಠ_ಠ.clutz.NavigatorUAData ;
+  let CHROME_USERAGENT_DATA_UNKNOWN : ಠ_ಠ.clutz.NavigatorUAData ;
+  let CHROME_USERAGENT_DATA_WINDOWS : ಠ_ಠ.clutz.NavigatorUAData ;
   let EDGECHROMIUM_USERAGENT_DATA : ಠ_ಠ.clutz.NavigatorUAData ;
   let INCOMPLETE_USERAGENT_DATA : ಠ_ಠ.clutz.NavigatorUAData ;
   let OPERACHROMIUM_USERAGENT_DATA : ಠ_ಠ.clutz.NavigatorUAData ;

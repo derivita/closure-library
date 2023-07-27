@@ -225,16 +225,6 @@ declare namespace ಠ_ಠ.clutz.goog.dom.safe {
    */
   function setIframeSrcdoc (iframe : HTMLIFrameElement , html : ಠ_ಠ.clutz.goog.html.SafeHtml ) : void ;
   /**
-   * Safely assigns a URL to an image element's src property.
-   *
-   * If url is of type goog.html.SafeUrl, its value is unwrapped and assigned to
-   * image's src property.  If url is of type string however, it is first
-   * sanitized using goog.html.SafeUrl.sanitize.
-   * @param imageElement The image element whose src property is to be assigned to.
-   * @param url The URL to assign.
-   */
-  function setImageSrc (imageElement : HTMLImageElement , url : string | ಠ_ಠ.clutz.goog.html.SafeUrl ) : void ;
-  /**
    * Assigns known-safe HTML to an element's innerHTML property.
    * @param elem The element whose innerHTML is to be assigned to.
    * @param html The known-safe HTML to assign.

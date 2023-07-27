@@ -16,7 +16,7 @@ declare namespace ಠ_ಠ.clutz.goog.editor.plugins {
      * Handle a tab key press.
      * @param e The key event.
      */
-    protected handleTabKey (a : ಠ_ಠ.clutz.goog.events.Event | null ) : boolean ;
+    protected handleTabKey (a : ಠ_ಠ.clutz.goog.events.BrowserEvent ) : boolean ;
   }
 }
 declare module 'goog:goog.editor.plugins.AbstractTabHandler' {

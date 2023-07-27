@@ -57,7 +57,7 @@ declare namespace ಠ_ಠ.clutz.goog.testing {
    * records its calls. The recorded function will have 3 static methods:
    * `getCallCount`, `getCalls` and `getLastCall` but won't
    * inherit the original function's prototype and static fields.
-   * @param opt_f The function to wrap and record. Defaults to {@link goog.nullFunction}.
+   * @param opt_f The function to wrap and record. Defaults to goog.functions.UNDEFINED.
    */
   function recordFunction (opt_f ? : Function ) : ಠ_ಠ.clutz.goog.testing.recordFunction.Type ;
 }

@@ -72,12 +72,12 @@ declare namespace ಠ_ಠ.clutz.goog.editor.plugins {
      * @param wasCollapsed Whether the selection was collapsed before the key press.  If it was not, code before this function has already cleared the contents of the selection.
      * @param range Object representing the selection.
      */
-    protected handleEnterAtCursorGeckoInternal (a : ಠ_ಠ.clutz.goog.events.BrowserEvent | null , b : boolean , c : ಠ_ಠ.clutz.goog.dom.AbstractRange | null ) : any ;
+    protected handleEnterAtCursorGeckoInternal (e : ಠ_ಠ.clutz.goog.events.BrowserEvent | null , wasCollapsed : boolean , range : ಠ_ಠ.clutz.goog.dom.AbstractRange | null ) : void ;
     /**
      * Handle an enter key press in WebKit.
      * @param e The key press event.
      */
-    protected handleEnterWebkitInternal (a : ಠ_ಠ.clutz.goog.events.BrowserEvent | null ) : any ;
+    protected handleEnterWebkitInternal (e : ಠ_ಠ.clutz.goog.events.BrowserEvent | null ) : void ;
     handleKeyDown (e ? : any ) : any ;
     handleKeyPress (e ? : any ) : any ;
     handleKeyUp (e ? : any ) : any ;

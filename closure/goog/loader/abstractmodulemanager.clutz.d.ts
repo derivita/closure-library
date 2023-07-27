@@ -208,15 +208,3 @@ declare module 'goog:goog.loader.AbstractModuleManager.CallbackType' {
   import CallbackType = ಠ_ಠ.clutz.goog.loader.AbstractModuleManager.CallbackType;
   export default CallbackType;
 }
-// Generated from loader/abstractmodulemanager.js
-declare namespace ಠ_ಠ.clutz.goog.loader.AbstractModuleManager {
-  /**
-   * The possible reasons for a module load failure callback being fired.
-   */
-  //!! goog.loader.AbstractModuleManager.FailureType aliases enum goog.module.ModuleLoadFailureType
-  export import FailureType = goog.module.ModuleLoadFailureType ;
-}
-declare module 'goog:goog.loader.AbstractModuleManager.FailureType' {
-  import FailureType = ಠ_ಠ.clutz.goog.loader.AbstractModuleManager.FailureType;
-  export default FailureType;
-}

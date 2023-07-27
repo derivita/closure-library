@@ -25,13 +25,6 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
      */
     parse (text : string , date : ಠ_ಠ.clutz.goog.date.DateLike | null , options ? : ಠ_ಠ.clutz.goog.i18n.DateTimeParse.ParseOptions ) : number ;
     /**
-     * Parse the given string and fill info into date object. This version will
-     * validate that the result is a valid date/time.
-     * @param text The string being parsed.
-     * @param date The Date object to hold the parsed date.
-     */
-    strictParse (text : string , date : ಠ_ಠ.clutz.goog.date.DateLike | null ) : number ;
-    /**
      * Number of years prior to now that the century used to
      * disambiguate two digit years will begin
      */
@@ -59,6 +52,14 @@ declare namespace ಠ_ಠ.clutz.goog.i18n.DateTimeParse {
      * The date's day of week. Sunday is 0, Saturday is 6.
      */
     dayOfWeek : number | null ;
+    /**
+     * Index of the time's flexible day period in data object.
+     */
+    dayPeriodIndex : number ;
+    /**
+     * The name for flexible time of day.
+     */
+    dayPeriodName : string | null ;
     /**
      * The date's era.
      */
@@ -110,19 +111,20 @@ declare namespace ಠ_ಠ.clutz.goog.i18n.DateTimeParse {
      * using the predictive option with unsupported patterns will result in an
      * error being thrown.
      *
-     * defaults to false
+     * Defaults to false.
      */
     predictive ? : boolean ;
     /**
      * Whether the parsed date/time value should be validated.
      *
-     * Setting this to true is the equivalent of calling the now-deprecated
-     * DateTimeParse.prototype.strictParse.
-     *
      * When true, parsing will fail if any of the parsed fields overflow, e.g.
      * minutes > 60.
      *
-     * defaults to false
+     * Note that setting `validate` to `false` does _not_ mean that parsing will
+     * not fail: if the parser encounters an unknown month or day-of-week name
+     * (for instance) then parsing will still fail. This only checks for overflow.
+     *
+     * Defaults to false.
      */
     validate ? : boolean ;
   }

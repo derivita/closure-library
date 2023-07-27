@@ -19,11 +19,21 @@ declare namespace ಠ_ಠ.clutz {
    *
    * See http://go/jsunit-env for more information.
    */
-  class module$contents$goog$labs$testing$Environment_Environment {
+  class module$contents$goog$labs$testing$Environment_Environment extends ಠ_ಠ.clutz.module$exports$goog$labs$testing$EnvironmentBase.EnvironmentBase {
     private noStructuralTyping_module$contents$goog$labs$testing$Environment_Environment : any;
+    /**
+     * JsUnit environments allow developers to customize the existing testing
+     * lifecycle by hitching additional setUp and tearDown behaviors to tests.
+     *
+     * Environments will run their setUp steps in the order in which they
+     * are instantiated and registered. During tearDown, the environments will
+     * unwind the setUp and execute in reverse order.
+     *
+     * See http://go/jsunit-env for more information.
+     */
+    constructor ( ) ;
     console : ಠ_ಠ.clutz.module$exports$goog$debug$Console ;
     mockClock : ಠ_ಠ.clutz.module$exports$goog$testing$MockClock | null ;
-    protected mockClockOn : boolean ;
     /**
      * Mocks are not type-checkable. To reduce burden on tests that are type
      * checked, this is typed as "?" to turn off JSCompiler checking.
@@ -44,10 +54,6 @@ declare namespace ಠ_ಠ.clutz {
      */
     mock (toMock : null | GlobalObject ) : any ;
     /**
-     * Runs immediately before the setUp phase of JsUnit tests.
-     */
-    setUp ( ) : PromiseLike < any > | undefined ;
-    /**
      * Runs immediately before the setUpPage phase of JsUnit tests.
      */
     setUpPage ( ) : PromiseLike < any > | undefined ;
@@ -55,24 +61,21 @@ declare namespace ಠ_ಠ.clutz {
      * Runs immediately after the tearDown phase of JsUnit tests.
      */
     tearDown ( ) : PromiseLike < any > | undefined ;
-    /**
-     * Runs immediately after the tearDownPage phase of JsUnit tests.
-     */
     tearDownPage ( ) : void ;
     /**
      * Create a {@see MockClock} for each test. The clock will be
      * installed (override i.e. setTimeout) by default. It can be accessed
      * using `env.mockClock`. If your test has more than one testing
      * environment, don't call this on more than one of them.
+     * @param options Options about the mockClock.
      */
-    withMockClock ( ) : module$contents$goog$labs$testing$Environment_Environment ;
+    withMockClock (a ? : { async ? : boolean , install ? : boolean } ) : module$contents$goog$labs$testing$Environment_Environment ;
     /**
      * Create a new {@see MockControl} accessible via
      * `env.mockControl` for each test. If your test has more than one
      * testing environment, don't call this on more than one of them.
      */
     withMockControl ( ) : module$contents$goog$labs$testing$Environment_Environment ;
-    static getTestCaseIfActive ( ) : ಠ_ಠ.clutz.module$exports$goog$testing$TestCase | null ;
   }
 }
 declare namespace ಠ_ಠ.clutz {

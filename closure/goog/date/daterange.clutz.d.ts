@@ -106,10 +106,6 @@ declare namespace ಠ_ಠ.clutz.goog.date.DateRange {
      */
     constructor (dateRange : ಠ_ಠ.clutz.goog.date.DateRange | null ) ;
     next ( ) : IteratorResult < ಠ_ಠ.clutz.goog.date.Date > ;
-    /**
-     * TODO(user): Please do not remove - this will be cleaned up centrally.
-     */
-    nextValueOrThrow ( ) : ಠ_ಠ.clutz.goog.date.Date ;
   }
 }
 declare module 'goog:goog.date.DateRange.Iterator' {

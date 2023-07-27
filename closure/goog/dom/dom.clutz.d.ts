@@ -504,7 +504,7 @@ declare namespace ಠ_ಠ.clutz.goog.dom {
    * docEl.clientWidth  Same as innerWidth.
    * win.innerWidth     Width of viewport excluding scrollbar.
    * win.innerHeight    Height of the viewport including scrollbar.
-   * frame.innerHeight  Height of the viewport exluding scrollbar.
+   * frame.innerHeight  Height of the viewport excluding scrollbar.
    *
    * Safari 3 (tested in 522)
    *

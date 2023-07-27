@@ -12,7 +12,7 @@ declare namespace ಠ_ಠ.clutz {
   /**
    * Interface for all iterable storage mechanisms.
    */
-  abstract class module$contents$goog$storage$mechanism$IterableMechanism_IterableMechanism extends ಠ_ಠ.clutz.module$exports$goog$storage$mechanism$Mechanism implements Iterable < string [] > {
+  abstract class module$contents$goog$storage$mechanism$IterableMechanism_IterableMechanism extends ಠ_ಠ.clutz.module$exports$goog$storage$mechanism$Mechanism implements Iterable < string > {
     private noStructuralTyping_module$contents$goog$storage$mechanism$IterableMechanism_IterableMechanism : any;
     /**
      * Interface for all iterable storage mechanisms.

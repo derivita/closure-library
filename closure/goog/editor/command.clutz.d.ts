@@ -2,10 +2,10 @@
 // Generated from editor/command.js
 declare namespace ಠ_ಠ.clutz.goog.editor {
   /**
-   * Commands that the editor can excute via execCommand or queryCommandValue.
+   * Commands that the editor can execute via execCommand or queryCommandValue.
    */
   /**
-   * Commands that the editor can excute via execCommand or queryCommandValue.
+   * Commands that the editor can execute via execCommand or queryCommandValue.
    */
   enum Command {
     BACKGROUND_COLOR = '+backColor' ,

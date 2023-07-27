@@ -25,6 +25,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.testing.stringmatcher {
      * Determines if input string contains the expected string.
      */
     matches (actualValue ? : any ) : any ;
+    toString ( ) : string ;
     /**
      * Matches a string containing the given string.
      * @param value The expected value.
@@ -46,6 +47,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.testing.stringmatcher {
      * Determines if input string ends with the expected string.
      */
     matches (actualValue ? : any ) : any ;
+    toString ( ) : string ;
     /**
      * Matches a string that ends with the given string.
      * @param value The expected value.
@@ -70,6 +72,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.testing.stringmatcher {
      * has been collapsed down into a single space.  Does a case-insensitive match.
      */
     matches (actualValue : any ) : boolean ;
+    toString ( ) : string ;
     /**
      * Matches a string that equals (ignoring whitespace) the given string.
      * @param value The expected value.
@@ -91,6 +94,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.testing.stringmatcher {
      * Determines if input string is equal to the expected string.
      */
     matches (actualValue ? : any ) : any ;
+    toString ( ) : string ;
     /**
      * Matches a string that equals the given string.
      * @param value The expected value.
@@ -112,6 +116,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.testing.stringmatcher {
      * Determines if input string is equal to the expected string.
      */
     matches (actualValue ? : any ) : any ;
+    toString ( ) : string ;
     /**
      * Matches a string against a regular expression.
      * @param regex The expected regex.
@@ -133,6 +138,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.testing.stringmatcher {
      * Determines if input string starts with the expected string.
      */
     matches (actualValue ? : any ) : any ;
+    toString ( ) : string ;
     /**
      * Matches a string that starts with the given string.
      * @param value The expected value.
@@ -154,6 +160,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.testing.stringmatcher {
      * Determines if input string contains, in order, the expected array of strings.
      */
     matches (actualValue ? : any ) : any ;
+    toString ( ) : string ;
     /**
      * Matches a string that contains the given strings in order.
      * @param values The expected value.

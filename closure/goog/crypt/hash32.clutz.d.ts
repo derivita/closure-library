@@ -12,6 +12,11 @@ declare namespace ಠ_ಠ.clutz.goog.crypt.hash32 {
    */
   let SEED32 : number ;
   /**
+   * Hashes a string to a 32-bit value.
+   * @param str String to hash.
+   */
+  function encodeBinaryString (str : string ) : number ;
+  /**
    * Hashes a "byte" array to a 32-bit value using the supplied seed.
    * @param bytes Array of bytes.
    * @param opt_offset The starting position to use for hash computation.
@@ -27,14 +32,21 @@ declare namespace ಠ_ಠ.clutz.goog.crypt.hash32 {
   /**
    * Hashes a string to a 32-bit value.
    * @param str String to hash.
+   * @param throwSync Whether to throw synchronously on unicode input.
    */
-  function encodeString (str : string ) : number ;
+  function encodeString (str : string , throwSync ? : boolean ) : number ;
   /**
    * Hashes a string to a 32-bit value, converting the string to UTF-8 before
    * doing the encoding.
    * @param str String to hash.
    */
   function encodeStringUtf8 (str : string ) : number ;
+  /**
+   * Hashes a string to a 32-bit value, converting the string to UTF-8 before
+   * doing the encoding.
+   * @param str String to hash.
+   */
+  function encodeText (str : string ) : number ;
 }
 declare module 'goog:goog.crypt.hash32' {
   import hash32 = ಠ_ಠ.clutz.goog.crypt.hash32;

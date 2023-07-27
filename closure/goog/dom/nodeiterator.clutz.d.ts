@@ -74,10 +74,6 @@ declare namespace ಠ_ಠ.clutz.goog.dom {
      * Moves to the next position in the DOM tree.
      */
     next ( ) : IteratorResult < Node > ;
-    /**
-     * TODO(user): Please do not remove - this will be cleaned up centrally.
-     */
-    nextValueOrThrow ( ) : Node ;
   }
 }
 declare module 'goog:goog.dom.NodeIterator' {

@@ -19,16 +19,6 @@ declare namespace ಠ_ಠ.clutz.goog.style.transform {
    */
   function getTranslation (element : GlobalElement ) : ಠ_ಠ.clutz.goog.math.Coordinate ;
   /**
-   * Whether CSS3 transform translate3d() is supported. If the current browser
-   * supports this transform strategy.
-   */
-  function is3dSupported ( ) : boolean ;
-  /**
-   * Whether CSS3 transform translate() is supported. IE 9 supports 2D transforms
-   * and IE 10 supports 3D transforms. IE 8 supports neither.
-   */
-  function isSupported ( ) : boolean ;
-  /**
    * Rotates an element using the CSS3 transform property.
    * NOTE: This replaces all other transforms already defined on the element.
    * @param element The element to rotate.

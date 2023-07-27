@@ -61,6 +61,11 @@ declare namespace ಠ_ಠ.clutz.goog.net {
      * @param ms Timeout interval in milliseconds; 0 means none.
      */
     setTimeoutInterval (ms : number ) : void ;
+    /**
+     * Overrides the XhrIoPool for testing, to be used with
+     * goog.testing.net.XhrIoPool.
+     */
+    setXhrPoolForTesting (testingPool : ಠ_ಠ.clutz.goog.net.XhrIoPool ) : void ;
   }
 }
 declare module 'goog:goog.net.XhrManager' {

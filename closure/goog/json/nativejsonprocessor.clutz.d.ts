@@ -3,33 +3,27 @@
 declare namespace ಠ_ಠ.clutz.goog.json {
   /**
    * A class that parses and stringifies JSON using the browser's built-in JSON
-   * library, if it is available.
-   *
-   * Note that the native JSON api has subtle differences across browsers, so
-   * use this implementation with care.  See json_test#assertSerialize
-   * for details on the differences from goog.json.
-   *
-   * This implementation is signficantly faster than goog.json, at least on
-   * Chrome.  See json_perf.html for a perf test showing the difference.
+   * library.
    */
-  class NativeJsonProcessor implements ಠ_ಠ.clutz.goog.json.Processor {
+  class NativeJsonProcessor implements ಠ_ಠ.clutz.module$exports$goog$string$Parser , ಠ_ಠ.clutz.module$exports$goog$string$Stringifier {
     private noStructuralTyping_goog_json_NativeJsonProcessor : any;
     /**
      * A class that parses and stringifies JSON using the browser's built-in JSON
-     * library, if it is available.
-     *
-     * Note that the native JSON api has subtle differences across browsers, so
-     * use this implementation with care.  See json_test#assertSerialize
-     * for details on the differences from goog.json.
-     *
-     * This implementation is signficantly faster than goog.json, at least on
-     * Chrome.  See json_perf.html for a perf test showing the difference.
-     * @param opt_replacer An optional replacer to use during serialization.
-     * @param opt_reviver An optional reviver to use during parsing.
+     * library.
      */
-    constructor (opt_replacer ? : ಠ_ಠ.clutz.goog.json.Replacer | null , opt_reviver ? : ಠ_ಠ.clutz.goog.json.Reviver | null ) ;
-    parse (s ? : any ) : any ;
-    stringify (object ? : any ) : any ;
+    constructor (opt_replacer ? : ಠ_ಠ.clutz.module$exports$goog$json$types.Replacer | null , opt_reviver ? : any ) ;
+    /**
+     * Parses a string into an object and returns the result.
+     * Agnostic to the format of string and object.
+     * @param s The string to parse.
+     */
+    parse (s : string ) : any ;
+    /**
+     * Serializes an object or a value to a string.
+     * Agnostic to the particular format of object and string.
+     * @param object The object to stringify.
+     */
+    stringify (object : any ) : string ;
   }
 }
 declare module 'goog:goog.json.NativeJsonProcessor' {

@@ -18,7 +18,7 @@ declare namespace ಠ_ಠ.clutz.goog.positioning {
      * @param opt_arg2 Top position.
      */
     constructor (arg1 : number | ಠ_ಠ.clutz.goog.math.Coordinate | null , opt_arg2 ? : number ) ;
-    coordinate : any ;
+    coordinate : ಠ_ಠ.clutz.goog.math.Coordinate ;
     /**
      * Repositions the popup according to the current state
      * @param element The DOM element of the popup.

@@ -30,7 +30,7 @@ declare namespace ಠ_ಠ.clutz.goog.debug {
      * exceptions in that case.
      * @param fn An entry point function to be protected.
      */
-    protectAdditionalEntryPoint (this : ಠ_ಠ.clutz.goog.debug.ErrorReporter , a : Function | null ) : Function | null ;
+    protectAdditionalEntryPoint (this : ಠ_ಠ.clutz.goog.debug.ErrorReporter , a : Function ) : Function | null ;
     /**
      * Sends an error report to the logging URL.  This will not consult the context
      * provider, the report will be sent exactly as specified.

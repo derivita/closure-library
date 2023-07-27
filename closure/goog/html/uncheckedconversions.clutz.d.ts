@@ -10,9 +10,8 @@ declare namespace ಠ_ಠ.clutz.goog.html.uncheckedconversions {
    * possible program states.
    * @param justification A constant string explaining why this use of this method is safe. May include a security review ticket number.
    * @param html A string that is claimed to adhere to the SafeHtml contract.
-   * @param opt_dir The optional directionality of the SafeHtml to be constructed. A null or undefined value signifies an unknown directionality.
    */
-  function safeHtmlFromStringKnownToSatisfyTypeContract (justification : ಠ_ಠ.clutz.goog.string.Const , html : string , opt_dir ? : ಠ_ಠ.clutz.goog.i18n.bidi.Dir | null ) : ಠ_ಠ.clutz.goog.html.SafeHtml ;
+  function safeHtmlFromStringKnownToSatisfyTypeContract (justification : ಠ_ಠ.clutz.goog.string.Const , html : string ) : ಠ_ಠ.clutz.goog.html.SafeHtml ;
   /**
    * Performs an "unchecked conversion" to SafeScript from a plain string that is
    * known to satisfy the SafeScript type contract.

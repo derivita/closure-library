@@ -26,6 +26,10 @@ declare namespace ಠ_ಠ.clutz.goog.ui {
      * Returns the array of colors represented in the color palette.
      */
     getColors ( ) : string [] | null ;
+    /**
+     * Returns the array of tooltip labels for the colors in the color palette.
+     */
+    protected getLabels ( ) : string [] | null ;
     getSelectedColor ( ) : string | null ;
     /**
      * Sets the colors that are contained in the palette.

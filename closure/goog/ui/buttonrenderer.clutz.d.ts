@@ -49,7 +49,7 @@ declare namespace ಠ_ಠ.clutz.goog.ui {
      * No-op in the base class.
      * @param element The button's root element.
      */
-    getValue (a : GlobalElement | null ) : string | undefined ;
+    getValue (element : GlobalElement | null ) : string | undefined ;
     /**
      * Collapses the border on one or both sides of the button, allowing it to be
      * combined with the adjacent button(s), forming a single UI componenet with
@@ -71,7 +71,7 @@ declare namespace ಠ_ಠ.clutz.goog.ui {
      * @param element The button's root element.
      * @param value New value.
      */
-    setValue (a : GlobalElement | null , b : string ) : any ;
+    setValue (element : GlobalElement | null , value : string ) : void ;
     /**
      * Updates the button's ARIA (accessibility) state if the button is being
      * treated as a checkbox. Also makes sure that attributes which aren't

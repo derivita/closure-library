@@ -71,6 +71,7 @@ declare namespace ಠ_ಠ.clutz.goog.i18n.DateTimeFormat {
     SHORT_DATE = 3.0 ,
     SHORT_DATETIME = 11.0 ,
     SHORT_TIME = 7.0 ,
+    WEEKDAY_MONTH_DAY_FULL = 12.0 ,
   }
 }
 declare module 'goog:goog.i18n.DateTimeFormat.Format' {

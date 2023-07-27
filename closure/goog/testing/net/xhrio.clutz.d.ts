@@ -222,7 +222,7 @@ declare namespace ಠ_ಠ.clutz.goog.testing.net {
      * @param response Simulated response.
      * @param opt_headers Simulated response headers.
      */
-    simulateResponse (statusCode : number , response : string | Document | null | ArrayBuffer , opt_headers ? : GlobalObject | null ) : void ;
+    simulateResponse (statusCode : number , response : string | Document | ArrayBuffer | Blob | null , opt_headers ? : GlobalObject | null ) : void ;
     simulateTimeout ( ) : void ;
     /**
      * Alias this array here to make mocking of goog.net.XhrIo easier.

@@ -31,9 +31,8 @@ declare namespace ಠ_ಠ.clutz.goog.testing.dom {
    * descriptors.  Throws an error if any match fails.
    * @param it An iterator over nodes.
    * @param array Array of node descriptors to match against.  Node descriptors can be any of the following: Node: Test if the two nodes are equal. number: Test node.nodeType == number. string starting with '#': Match the node's id with the text after "#". other string: Match the text node's contents.
-   * @param useEs6Iteration Whether or not to iterate through this iterator using ES6 iteration. Iff falsy, uses ES4 iteration.
    */
-  function assertNodesMatch (it : ಠ_ಠ.clutz.goog.iter.Iterator , array : ( Node | number | string ) [] , useEs6Iteration ? : boolean ) : void ;
+  function assertNodesMatch (it : ಠ_ಠ.clutz.goog.iter.Iterator , array : ( Node | number | string ) [] ) : void ;
   /**
    * Assert the end points of a range.
    *

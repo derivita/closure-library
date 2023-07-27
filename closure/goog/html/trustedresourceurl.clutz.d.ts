@@ -22,7 +22,7 @@ declare namespace ಠ_ಠ.clutz.goog.html {
    * Creating TrustedResourceUrl objects HAS SIDE-EFFECTS due to calling
    * Trusted Types Web API.
    */
-  class TrustedResourceUrl implements ಠ_ಠ.clutz.goog.i18n.bidi.DirectionalString , ಠ_ಠ.clutz.goog.string.TypedString {
+  class TrustedResourceUrl implements ಠ_ಠ.clutz.goog.string.TypedString {
     private noStructuralTyping_goog_html_TrustedResourceUrl : any;
     /**
      * A URL which is under application control and from which script, CSS, and
@@ -54,10 +54,6 @@ declare namespace ಠ_ಠ.clutz.goog.html {
      */
     cloneWithParams (searchParams : string | { [ key: string ]: any } | null | undefined , opt_hashParams ? : string | { [ key: string ]: any } | null ) : ಠ_ಠ.clutz.goog.html.TrustedResourceUrl ;
     /**
-     * Returns this URLs directionality, which is always `LTR`.
-     */
-    getDirection ( ) : ಠ_ಠ.clutz.goog.i18n.bidi.Dir ;
-    /**
      * Returns this TrustedResourceUrl's value as a string.
      *
      * IMPORTANT: In code where it is security relevant that an object's type is
@@ -77,7 +73,6 @@ declare namespace ಠ_ಠ.clutz.goog.html {
      * </pre>
      */
     getTypedStringValue ( ) : any ;
-    implementsGoogI18nBidiDirectionalString : boolean ;
     implementsGoogStringTypedString : boolean ;
     /**
      * Returns a string-representation of this value.

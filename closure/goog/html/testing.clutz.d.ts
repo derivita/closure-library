@@ -50,9 +50,8 @@ declare namespace ಠ_ಠ.clutz.goog.html.testing {
    * This function is for use in tests only and must never be used in production
    * code.
    * @param html The string to wrap into a SafeHtml.
-   * @param opt_dir The optional directionality of the SafeHtml to be constructed. A null or undefined value signifies an unknown directionality.
    */
-  function newSafeHtmlForTest (html : string , opt_dir ? : ಠ_ಠ.clutz.goog.i18n.bidi.Dir | null ) : ಠ_ಠ.clutz.goog.html.SafeHtml ;
+  function newSafeHtmlForTest (html : string ) : ಠ_ಠ.clutz.goog.html.SafeHtml ;
   /**
    * Creates a SafeScript wrapping the given value. No validation is performed.
    *

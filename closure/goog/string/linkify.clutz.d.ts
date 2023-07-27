@@ -2,6 +2,26 @@
 // Generated from string/linkify.js
 declare namespace ಠ_ಠ.clutz.goog.string.linkify {
   /**
+   * Options bag for linkifyPlainTextAsHtml's second parameter.
+   */
+  interface LinkifyOptions {
+    /**
+     * HTML attributes to add to all links created.  Default are `rel=nofollow`
+     * and `target=_blank`. To clear these defaults attributes, set them
+     * explicitly to '', i.e. `{rel: '', target: ''}`.
+     */
+    attributes ? : { [ key: string ]: ಠ_ಠ.clutz.goog.html.SafeHtml.AttributeValue | null } ;
+    /**
+     * Whether to preserve newlines with &lt;br&gt;.
+     */
+    preserveNewlines ? : boolean ;
+    /**
+     * Whether to preserve spaces with non-breaking spaces and tabs with
+     * &lt;span style="white-space:pre"&gt;
+     */
+    preserveSpacesAndTabs ? : boolean ;
+  }
+  /**
    * Gets the first email address in text.
    * @param text Plain text.
    */
@@ -17,11 +37,9 @@ declare namespace ಠ_ಠ.clutz.goog.string.linkify {
    * _blank and it will have a rel=nofollow attribute applied to it so that links
    * created by linkify will not be of interest to search engines.
    * @param text Plain text.
-   * @param opt_attributes Attributes to add to all links created. Default are rel=nofollow and target=_blank. To clear those default attributes set rel='' and target=''.
-   * @param opt_preserveNewlines Whether to preserve newlines with &lt;br&gt;.
-   * @param opt_preserveSpacesAndTabs Whether to preserve spaces with non-breaking spaces and tabs with <span style="white-space:pre">
+   * @param opt_options Options bag.
    */
-  function linkifyPlainTextAsHtml (text : string , opt_attributes ? : { [ key: string ]: ಠ_ಠ.clutz.goog.html.SafeHtml.AttributeValue | null } , opt_preserveNewlines ? : boolean , opt_preserveSpacesAndTabs ? : boolean ) : ಠ_ಠ.clutz.goog.html.SafeHtml ;
+  function linkifyPlainTextAsHtml (text : string , opt_options ? : ಠ_ಠ.clutz.goog.string.linkify.LinkifyOptions ) : ಠ_ಠ.clutz.goog.html.SafeHtml ;
 }
 declare module 'goog:goog.string.linkify' {
   import linkify = ಠ_ಠ.clutz.goog.string.linkify;

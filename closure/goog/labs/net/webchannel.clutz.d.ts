@@ -56,7 +56,7 @@ declare namespace ಠ_ಠ.clutz.goog.net {
     halfClose ( ...a : any [] ) : any ;
     open ( ...a : any [] ) : any ;
     /**
-     * Sends a message to the server that maintains the other end point of
+     * Sends a message to the server that maintains the other endpoint of
      * the WebChannel.
      *
      * O-RTT behavior:
@@ -172,9 +172,19 @@ declare namespace ಠ_ಠ.clutz.goog.net.WebChannel {
      */
     data : ArrayBuffer | Blob | { [ key: string ]: GlobalObject | string } | any [] | string ;
     /**
+     * Metadata as HTTP headers. Typically sent before the channel is
+     * half-closed by the server.
+     */
+    headers ? : { [ key: string ]: string } ;
+    /**
      * The metadata key when the MESSAGE event represents a metadata message.
      */
     metadataKey ? : string ;
+    /**
+     * Metadata as HTTP status code. Typically sent before the channel is
+     * half-closed by the server.
+     */
+    statusCode ? : number ;
   }
   interface RuntimeProperties {
     /**
@@ -206,7 +216,7 @@ declare namespace ಠ_ಠ.clutz.goog.net.WebChannel {
      *
      * This is currently implemented only in the client layer and the commit
      * callback will be invoked after all the pending client-sent messages have been
-     * delivered by the server-side webchannel end-point. This semantics is
+     * delivered by the server-side webchannel endpoint. This semantics is
      * different and weaker than what's required for end-to-end ack which requires
      * the server application to ack the in-order delivery of messages that are sent
      * before the commit request is issued.
@@ -223,6 +233,27 @@ declare namespace ಠ_ಠ.clutz.goog.net.WebChannel {
      * during the initial handshake.
      */
     getHttpSessionId ( ) : string | null ;
+    /**
+     * Transport-metadata support.
+     *
+     * Responses from the channel-close (abort) message are not available.
+     *
+     * In future when client-side half-close is supported, its response headers
+     * will be available via this API too.
+     */
+    getLastResponseHeaders ( ) : { [ key: string ]: string } | undefined ;
+    /**
+     * Transport-metadata support.
+     *
+     * TODO: getInitStatusCode   (handshake)
+     * TODO: getInitResponseHeaders  (handshake)
+     *
+     * Note that response headers from client-initiated close (abort) are not
+     * available.
+     *
+     * In future when client-initiated half-close is supported, its response status
+     * will be available via this API.
+     */
     getLastStatusCode ( ) : number ;
     /**
      * This method may be used by the application to recover from a peer failure
@@ -230,9 +261,9 @@ declare namespace ಠ_ಠ.clutz.goog.net.WebChannel {
      *
      * Detail spec: https://github.com/bidiweb/webchannel/blob/master/commit.md
      *
-     * This is not yet implemented.
+     * Note that the caller should NOT modify the list of returned messages.
      */
-    getNonAckedMessageCount ( ) : number ;
+    getNonAckedMessages ( ) : ( ArrayBuffer | Blob | { [ key: string ]: GlobalObject | string } | any [] | string ) [] ;
     getPendingRequestCount ( ) : number ;
     /**
      * For applications that need support multiple channels (e.g. from
@@ -419,10 +450,12 @@ declare namespace ಠ_ಠ.clutz.goog.net.WebChannel {
      */
     httpSessionIdParam ? : string ;
     /**
-     * Similar to messageHeaders, but any custom headers will
-     * be sent only once when the channel is opened. Typical usage is to send
-     * an auth header to the server, which only checks the auth header at the time
-     * when the channel is opened.
+     * Transport-metadata support.
+     *
+     * Similar to messageHeaders, but any custom HTTP headers will be sent only once
+     * when the channel is opened as part of the handshake request. Typical usage is
+     * to send an auth header to the server, which only checks the auth header at
+     * the time during the handshake when the channel is opened.
      */
     initMessageHeaders ? : { [ key: string ]: string } ;
     /**
@@ -434,21 +467,38 @@ declare namespace ಠ_ಠ.clutz.goog.net.WebChannel {
      */
     internalChannelParams ? : { [ key: string ]: boolean | number } ;
     /**
+     * This option informs the server the desired maximum timeout interval (in
+     * Milliseconds) to complete a long-polling GET response, e.g. to accommodate
+     * the timeout enforced by a proxy. The WebChannel server may adjust the
+     * specified timeout or may ignore this client-configured timeout.
+     */
+    longPollingTimeout ? : number ;
+    /**
      * Sent as initMessageHeaders via X-WebChannel-Content-Type,
      * to inform the server the MIME type of WebChannel messages.
      */
     messageContentType ? : string ;
     /**
-     * Custom headers to be added to every message sent to the
-     * server. This object is mutable, and custom headers may be changed, removed,
-     * or added during the runtime after a channel has been
-     * opened
+     * Transport-metadata support.
+     *
+     * Custom HTTP headers to be added to every message sent to the server. This
+     * object is mutable, and custom headers may be changed, removed, or added
+     * during the runtime after a channel has been opened.
+     *
+     * Custom headers may trigger CORS preflight. See other related options.
      */
     messageHeaders ? : { [ key: string ]: string } ;
     /**
-     * Custom url query parameters to be added to every message
-     * sent to the server. This object is mutable, and custom parameters may be
-     * changed, removed or added during the runtime after a channel has been opened.
+     * Transport-metadata support.
+     *
+     * Custom url query parameters to be added to every message sent to the server.
+     * This object is mutable, and custom parameters may be changed, removed or
+     * added during the runtime after a channel has been opened.
+     *
+     * TODO: initMessageUrlParams
+     * TODO: closeMessageUrlParams  (custom url query params to be added to the
+     * channel-close message. Custom headers are not supported due to the use of
+     * SendBeacon)
      */
     messageUrlParams ? : { [ key: string ]: string } ;
     /**

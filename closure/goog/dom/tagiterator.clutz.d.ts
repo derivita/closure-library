@@ -133,10 +133,6 @@ declare namespace ಠ_ಠ.clutz.goog.dom {
      * Move to the next position in the DOM tree.
      */
     next ( ) : IteratorResult < Node > ;
-    /**
-     * TODO(user): Please do not remove - this will be cleaned up centrally.
-     */
-    nextValueOrThrow ( ) : Node ;
     restartTag ( ) : void ;
     /**
      * Set the position of the iterator.  Overwrite the tree node and the position
