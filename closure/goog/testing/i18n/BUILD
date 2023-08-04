@@ -9,5 +9,15 @@ closure_js_library(
     testonly = True,
     srcs = ["asserts.js", "asserts.clutz.d.ts"],
     lenient = True,
-    deps = ["//closure/goog/testing:jsunit"],
+    deps = [
+        ":whitespace",
+        "//closure/goog/testing:asserts",
+    ],
+)
+
+closure_js_library(
+    name = "whitespace",
+    testonly = True,
+    srcs = ["whitespace.js", "whitespace.clutz.d.ts"],
+    lenient = True,
 )

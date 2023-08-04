@@ -45,7 +45,7 @@ goog.dom.iter.SiblingIterator = function(node, opt_includeNode, opt_reverse) {
   this.reverse_ = !!opt_reverse;
 
   if (node && !opt_includeNode) {
-    this.nextValueOrThrow();
+    this.next();
   }
 };
 goog.inherits(goog.dom.iter.SiblingIterator, goog.iter.Iterator);
@@ -64,18 +64,6 @@ goog.dom.iter.SiblingIterator.prototype.next = function() {
   this.node_ = this.reverse_ ? node.previousSibling : node.nextSibling;
   return goog.iter.createEs6IteratorYield(node);
 };
-
-
-/**
- * TODO(user): Please do not remove - this will be cleaned up centrally.
- * @override @see {!goog.iter.Iterator}
- * @return {!Node}
- */
-goog.dom.iter.SiblingIterator.prototype.nextValueOrThrow = function() {
-  return goog.iter.toEs4IteratorNext(
-      goog.dom.iter.SiblingIterator.prototype.next.call(this));
-};
-
 
 
 /**
@@ -121,7 +109,7 @@ goog.dom.iter.AncestorIterator = function(node, opt_includeNode) {
   this.node_ = node;
 
   if (node && !opt_includeNode) {
-    this.nextValueOrThrow();
+    this.next();
   }
 };
 goog.inherits(goog.dom.iter.AncestorIterator, goog.iter.Iterator);
@@ -139,15 +127,4 @@ goog.dom.iter.AncestorIterator.prototype.next = function() {
   }
   this.node_ = node.parentNode;
   return goog.iter.createEs6IteratorYield(node);
-};
-
-
-/**
- * TODO(user): Please do not remove - this will be cleaned up centrally.
- * @override @see {!goog.iter.Iterator}
- * @return {!Node}
- */
-goog.dom.iter.AncestorIterator.prototype.nextValueOrThrow = function() {
-  return goog.iter.toEs4IteratorNext(
-      goog.dom.iter.AncestorIterator.prototype.next.call(this));
 };

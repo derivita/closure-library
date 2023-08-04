@@ -109,17 +109,6 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_ar_AE' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
-   * Number formatting symbols for locale ar_AE_u_nu_latn.
-   */
-  let NumberFormatSymbols_ar_AE_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
-}
-declare module 'goog:goog.i18n.NumberFormatSymbols_ar_AE_u_nu_latn' {
-  import NumberFormatSymbols_ar_AE_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ar_AE_u_nu_latn;
-  export default NumberFormatSymbols_ar_AE_u_nu_latn;
-}
-// Generated from i18n/numberformatsymbolsext.js
-declare namespace ಠ_ಠ.clutz.goog.i18n {
-  /**
    * Number formatting symbols for locale ar_BH.
    */
   let NumberFormatSymbols_ar_BH : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -835,6 +824,94 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_bg_BG' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale bgc.
+   */
+  let NumberFormatSymbols_bgc : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_bgc' {
+  import NumberFormatSymbols_bgc = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_bgc;
+  export default NumberFormatSymbols_bgc;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale bgc_IN.
+   */
+  let NumberFormatSymbols_bgc_IN : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_bgc_IN' {
+  import NumberFormatSymbols_bgc_IN = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_bgc_IN;
+  export default NumberFormatSymbols_bgc_IN;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale bgc_IN_u_nu_latn.
+   */
+  let NumberFormatSymbols_bgc_IN_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_bgc_IN_u_nu_latn' {
+  import NumberFormatSymbols_bgc_IN_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_bgc_IN_u_nu_latn;
+  export default NumberFormatSymbols_bgc_IN_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale bgc_u_nu_latn.
+   */
+  let NumberFormatSymbols_bgc_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_bgc_u_nu_latn' {
+  import NumberFormatSymbols_bgc_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_bgc_u_nu_latn;
+  export default NumberFormatSymbols_bgc_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale bho.
+   */
+  let NumberFormatSymbols_bho : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_bho' {
+  import NumberFormatSymbols_bho = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_bho;
+  export default NumberFormatSymbols_bho;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale bho_IN.
+   */
+  let NumberFormatSymbols_bho_IN : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_bho_IN' {
+  import NumberFormatSymbols_bho_IN = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_bho_IN;
+  export default NumberFormatSymbols_bho_IN;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale bho_IN_u_nu_latn.
+   */
+  let NumberFormatSymbols_bho_IN_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_bho_IN_u_nu_latn' {
+  import NumberFormatSymbols_bho_IN_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_bho_IN_u_nu_latn;
+  export default NumberFormatSymbols_bho_IN_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale bho_u_nu_latn.
+   */
+  let NumberFormatSymbols_bho_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_bho_u_nu_latn' {
+  import NumberFormatSymbols_bho_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_bho_u_nu_latn;
+  export default NumberFormatSymbols_bho_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale bm.
    */
   let NumberFormatSymbols_bm : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -1337,6 +1414,28 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.NumberFormatSymbols_cs_CZ' {
   import NumberFormatSymbols_cs_CZ = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_cs_CZ;
   export default NumberFormatSymbols_cs_CZ;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale cv.
+   */
+  let NumberFormatSymbols_cv : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_cv' {
+  import NumberFormatSymbols_cv = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_cv;
+  export default NumberFormatSymbols_cv;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale cv_RU.
+   */
+  let NumberFormatSymbols_cv_RU : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_cv_RU' {
+  import NumberFormatSymbols_cv_RU = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_cv_RU;
+  export default NumberFormatSymbols_cv_RU;
 }
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -2298,6 +2397,17 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_en_MU' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale en_MV.
+   */
+  let NumberFormatSymbols_en_MV : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_en_MV' {
+  import NumberFormatSymbols_en_MV = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_en_MV;
+  export default NumberFormatSymbols_en_MV;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale en_MW.
    */
   let NumberFormatSymbols_en_MW : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -3178,6 +3288,17 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_BF' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale ff_Adlm_BF_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_BF_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_BF_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_BF_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_BF_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_BF_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale ff_Adlm_CM.
    */
   let NumberFormatSymbols_ff_Adlm_CM : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -3185,6 +3306,17 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_CM' {
   import NumberFormatSymbols_ff_Adlm_CM = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_CM;
   export default NumberFormatSymbols_ff_Adlm_CM;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale ff_Adlm_CM_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_CM_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_CM_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_CM_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_CM_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_CM_u_nu_latn;
 }
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -3200,6 +3332,17 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_GH' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale ff_Adlm_GH_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_GH_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_GH_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_GH_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_GH_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_GH_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale ff_Adlm_GM.
    */
   let NumberFormatSymbols_ff_Adlm_GM : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -3207,6 +3350,17 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_GM' {
   import NumberFormatSymbols_ff_Adlm_GM = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_GM;
   export default NumberFormatSymbols_ff_Adlm_GM;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale ff_Adlm_GM_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_GM_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_GM_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_GM_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_GM_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_GM_u_nu_latn;
 }
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -3222,6 +3376,17 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_GN' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale ff_Adlm_GN_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_GN_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_GN_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_GN_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_GN_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_GN_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale ff_Adlm_GW.
    */
   let NumberFormatSymbols_ff_Adlm_GW : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -3229,6 +3394,17 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_GW' {
   import NumberFormatSymbols_ff_Adlm_GW = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_GW;
   export default NumberFormatSymbols_ff_Adlm_GW;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale ff_Adlm_GW_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_GW_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_GW_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_GW_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_GW_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_GW_u_nu_latn;
 }
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -3244,6 +3420,17 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_LR' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale ff_Adlm_LR_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_LR_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_LR_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_LR_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_LR_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_LR_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale ff_Adlm_MR.
    */
   let NumberFormatSymbols_ff_Adlm_MR : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -3251,6 +3438,17 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_MR' {
   import NumberFormatSymbols_ff_Adlm_MR = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_MR;
   export default NumberFormatSymbols_ff_Adlm_MR;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale ff_Adlm_MR_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_MR_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_MR_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_MR_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_MR_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_MR_u_nu_latn;
 }
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -3266,6 +3464,17 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_NE' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale ff_Adlm_NE_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_NE_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_NE_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_NE_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_NE_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_NE_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale ff_Adlm_NG.
    */
   let NumberFormatSymbols_ff_Adlm_NG : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -3273,6 +3482,17 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_NG' {
   import NumberFormatSymbols_ff_Adlm_NG = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_NG;
   export default NumberFormatSymbols_ff_Adlm_NG;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale ff_Adlm_NG_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_NG_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_NG_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_NG_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_NG_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_NG_u_nu_latn;
 }
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -3288,6 +3508,17 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_SL' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale ff_Adlm_SL_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_SL_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_SL_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_SL_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_SL_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_SL_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale ff_Adlm_SN.
    */
   let NumberFormatSymbols_ff_Adlm_SN : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -3295,6 +3526,28 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_SN' {
   import NumberFormatSymbols_ff_Adlm_SN = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_SN;
   export default NumberFormatSymbols_ff_Adlm_SN;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale ff_Adlm_SN_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_SN_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_SN_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_SN_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_SN_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_SN_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale ff_Adlm_u_nu_latn.
+   */
+  let NumberFormatSymbols_ff_Adlm_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ff_Adlm_u_nu_latn' {
+  import NumberFormatSymbols_ff_Adlm_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ff_Adlm_u_nu_latn;
+  export default NumberFormatSymbols_ff_Adlm_u_nu_latn;
 }
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -4256,6 +4509,28 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_hi_IN' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale hi_Latn.
+   */
+  let NumberFormatSymbols_hi_Latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_hi_Latn' {
+  import NumberFormatSymbols_hi_Latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_hi_Latn;
+  export default NumberFormatSymbols_hi_Latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale hi_Latn_IN.
+   */
+  let NumberFormatSymbols_hi_Latn_IN : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_hi_Latn_IN' {
+  import NumberFormatSymbols_hi_Latn_IN = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_hi_Latn_IN;
+  export default NumberFormatSymbols_hi_Latn_IN;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale hr_BA.
    */
   let NumberFormatSymbols_hr_BA : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -4630,6 +4905,28 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_kea_CV' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale kgp.
+   */
+  let NumberFormatSymbols_kgp : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_kgp' {
+  import NumberFormatSymbols_kgp = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_kgp;
+  export default NumberFormatSymbols_kgp;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale kgp_BR.
+   */
+  let NumberFormatSymbols_kgp_BR : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_kgp_BR' {
+  import NumberFormatSymbols_kgp_BR = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_kgp_BR;
+  export default NumberFormatSymbols_kgp_BR;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale khq.
    */
   let NumberFormatSymbols_khq : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -4868,6 +5165,28 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.NumberFormatSymbols_ks_Arab_u_nu_latn' {
   import NumberFormatSymbols_ks_Arab_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ks_Arab_u_nu_latn;
   export default NumberFormatSymbols_ks_Arab_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale ks_Deva.
+   */
+  let NumberFormatSymbols_ks_Deva : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ks_Deva' {
+  import NumberFormatSymbols_ks_Deva = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ks_Deva;
+  export default NumberFormatSymbols_ks_Deva;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale ks_Deva_IN.
+   */
+  let NumberFormatSymbols_ks_Deva_IN : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_ks_Deva_IN' {
+  import NumberFormatSymbols_ks_Deva_IN = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_ks_Deva_IN;
+  export default NumberFormatSymbols_ks_Deva_IN;
 }
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -6445,6 +6764,50 @@ declare module 'goog:goog.i18n.NumberFormatSymbols_qu_PE' {
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Number formatting symbols for locale raj.
+   */
+  let NumberFormatSymbols_raj : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_raj' {
+  import NumberFormatSymbols_raj = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_raj;
+  export default NumberFormatSymbols_raj;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale raj_IN.
+   */
+  let NumberFormatSymbols_raj_IN : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_raj_IN' {
+  import NumberFormatSymbols_raj_IN = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_raj_IN;
+  export default NumberFormatSymbols_raj_IN;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale raj_IN_u_nu_latn.
+   */
+  let NumberFormatSymbols_raj_IN_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_raj_IN_u_nu_latn' {
+  import NumberFormatSymbols_raj_IN_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_raj_IN_u_nu_latn;
+  export default NumberFormatSymbols_raj_IN_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale raj_u_nu_latn.
+   */
+  let NumberFormatSymbols_raj_u_nu_latn : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_raj_u_nu_latn' {
+  import NumberFormatSymbols_raj_u_nu_latn = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_raj_u_nu_latn;
+  export default NumberFormatSymbols_raj_u_nu_latn;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Number formatting symbols for locale rm.
    */
   let NumberFormatSymbols_rm : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
@@ -6815,6 +7178,28 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.NumberFormatSymbols_sbp_TZ' {
   import NumberFormatSymbols_sbp_TZ = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_sbp_TZ;
   export default NumberFormatSymbols_sbp_TZ;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale sc.
+   */
+  let NumberFormatSymbols_sc : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_sc' {
+  import NumberFormatSymbols_sc = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_sc;
+  export default NumberFormatSymbols_sc;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale sc_IT.
+   */
+  let NumberFormatSymbols_sc_IT : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_sc_IT' {
+  import NumberFormatSymbols_sc_IT = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_sc_IT;
+  export default NumberFormatSymbols_sc_IT;
 }
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -8135,6 +8520,50 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.NumberFormatSymbols_yo_NG' {
   import NumberFormatSymbols_yo_NG = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_yo_NG;
   export default NumberFormatSymbols_yo_NG;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale yrl.
+   */
+  let NumberFormatSymbols_yrl : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_yrl' {
+  import NumberFormatSymbols_yrl = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_yrl;
+  export default NumberFormatSymbols_yrl;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale yrl_BR.
+   */
+  let NumberFormatSymbols_yrl_BR : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_yrl_BR' {
+  import NumberFormatSymbols_yrl_BR = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_yrl_BR;
+  export default NumberFormatSymbols_yrl_BR;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale yrl_CO.
+   */
+  let NumberFormatSymbols_yrl_CO : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_yrl_CO' {
+  import NumberFormatSymbols_yrl_CO = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_yrl_CO;
+  export default NumberFormatSymbols_yrl_CO;
+}
+// Generated from i18n/numberformatsymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Number formatting symbols for locale yrl_VE.
+   */
+  let NumberFormatSymbols_yrl_VE : ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbolsType.Type ;
+}
+declare module 'goog:goog.i18n.NumberFormatSymbols_yrl_VE' {
+  import NumberFormatSymbols_yrl_VE = ಠ_ಠ.clutz.goog.i18n.NumberFormatSymbols_yrl_VE;
+  export default NumberFormatSymbols_yrl_VE;
 }
 // Generated from i18n/numberformatsymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {

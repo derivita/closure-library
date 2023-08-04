@@ -386,6 +386,8 @@ declare namespace ಠ_ಠ.clutz.goog.testing {
      * @param time Delay in milliseconds.
      */
     protected timeout (fn : Function | null , time : number ) : number ;
+    useGoogPromise ( ) : void ;
+    useNativePromise ( ) : void ;
     /**
      * Avoid a dependency on goog.userAgent and keep our own reference of whether
      * the browser is IE.
@@ -594,7 +596,7 @@ declare namespace ಠ_ಠ.clutz.goog.testing.TestCase {
     setUps : ( ( ) => any ) [] ;
     tearDowns : ( ( ) => any ) [] ;
     /**
-     * Returns the runtime for this test function
+     * Returns the runtime for this test function in milliseconds.
      */
     getElapsedTime ( ) : number ;
     started ( ) : void ;

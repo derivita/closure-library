@@ -157,6 +157,8 @@ declare namespace ಠ_ಠ.clutz.goog.events.BrowserEvent {
    * Normalized button constants for the mouse.
    */
   enum MouseButton {
+    BACK = 3.0 ,
+    FORWARD = 4.0 ,
     LEFT = 0.0 ,
     MIDDLE = 1.0 ,
     RIGHT = 2.0 ,

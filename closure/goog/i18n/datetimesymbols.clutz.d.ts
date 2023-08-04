@@ -327,35 +327,15 @@ declare module 'goog:goog.i18n.DateTimeSymbols_en_IN' {
   export default DateTimeSymbols_en_IN;
 }
 // Generated from i18n/datetimesymbols.js
-declare namespace ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_en_ISO {
-  let AMPMS : any [] ;
-  let AVAILABLEFORMATS : { MMMMd : string , MMMd : string , Md : string } ;
-  let DATEFORMATS : any [] ;
-  let DATETIMEFORMATS : any [] ;
-  let ERANAMES : any [] ;
-  let ERAS : any [] ;
-  let FIRSTDAYOFWEEK : number ;
-  let FIRSTWEEKCUTOFFDAY : number ;
-  let MONTHS : any [] ;
-  let NARROWMONTHS : any [] ;
-  let NARROWWEEKDAYS : any [] ;
-  let QUARTERS : any [] ;
-  let SHORTMONTHS : any [] ;
-  let SHORTQUARTERS : any [] ;
-  let SHORTWEEKDAYS : any [] ;
-  let STANDALONEMONTHS : any [] ;
-  let STANDALONENARROWMONTHS : any [] ;
-  let STANDALONENARROWWEEKDAYS : any [] ;
-  let STANDALONESHORTMONTHS : any [] ;
-  let STANDALONESHORTWEEKDAYS : any [] ;
-  let STANDALONEWEEKDAYS : any [] ;
-  let TIMEFORMATS : any [] ;
-  let WEEKDAYS : any [] ;
-  let WEEKENDRANGE : any [] ;
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale en_ISO.
+   */
+  let DateTimeSymbols_en_ISO : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
 }
 declare module 'goog:goog.i18n.DateTimeSymbols_en_ISO' {
   import DateTimeSymbols_en_ISO = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_en_ISO;
-  export = DateTimeSymbols_en_ISO;
+  export default DateTimeSymbols_en_ISO;
 }
 // Generated from i18n/datetimesymbols.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {

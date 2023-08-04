@@ -2,6 +2,10 @@
 // Generated from labs/mock/mock.js
 declare namespace ಠ_ಠ.clutz.goog.labs.mock {
   /**
+   * A type for a mocked accessor descriptor.
+   */
+  type DescriptorStubBinder = { asDataProperty : (a ? : any ) => void , get ? : Function , set ? : Function } ;
+  /**
    * Represents a binding between a method name, args and a stub.
    */
   class MethodBinding_ {

@@ -7,6 +7,8 @@ declare namespace ಠ_ಠ.clutz.goog.labs.userAgent.browser {
   function getVersion ( ) : string ;
   function getVersionStringForLogging (browser : module$contents$goog$labs$userAgent$browser_Brand ) : string ;
   function isAndroidBrowser ( ) : boolean ;
+  function isAtLeast (brand : module$contents$goog$labs$userAgent$browser_Brand , majorVersion : number ) : boolean ;
+  function isAtMost (brand : module$contents$goog$labs$userAgent$browser_Brand , majorVersion : number ) : boolean ;
   function isChrome ( ) : boolean ;
   function isCoast ( ) : boolean ;
   function isEdge ( ) : boolean ;
@@ -20,7 +22,6 @@ declare namespace ಠ_ಠ.clutz.goog.labs.userAgent.browser {
   function isSilk ( ) : boolean ;
   function isVersionOrHigher (version : string | number ) : boolean ;
   function loadFullVersions ( ) : Promise < undefined > ;
-  function versionOf (browser : module$contents$goog$labs$userAgent$browser_Brand ) : number ;
 }
 declare module 'goog:goog.labs.userAgent.browser' {
   import browser = ಠ_ಠ.clutz.goog.labs.userAgent.browser;

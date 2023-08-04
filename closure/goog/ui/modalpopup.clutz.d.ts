@@ -93,6 +93,11 @@ declare namespace ಠ_ಠ.clutz.goog.ui {
      */
     protected setA11YDetectBackground (hide : boolean ) : void ;
     /**
+     * Sets the parent element to center the popup and the background inside the
+     * parent element.
+     */
+    setCenterInsideParentElement (centerInsideParent : boolean ) : void ;
+    /**
      * Sets the transitions to show and hide the popup and background.
      * @param popupShowTransition Transition to show the popup.
      * @param popupHideTransition Transition to hide the popup.

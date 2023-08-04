@@ -26,8 +26,8 @@ declare namespace ಠ_ಠ.clutz {
      */
     format (startDate : ಠ_ಠ.clutz.module$exports$goog$date$DateLike , endDate : ಠ_ಠ.clutz.module$exports$goog$date$DateLike | ಠ_ಠ.clutz.module$exports$goog$date$Interval , opt_timeZone ? : ಠ_ಠ.clutz.module$exports$goog$i18n$TimeZone ) : string ;
     /**
-     * Formats the given date range object according to the present pattern and
-     * current locale.
+     * Formats the given date range object according to the present pattern
+     * and current locale.
      * @param opt_timeZone Timezone to be used in the target representation.
      */
     formatRange (dateRange : ಠ_ಠ.clutz.module$exports$goog$date$DateRange , opt_timeZone ? : ಠ_ಠ.clutz.module$exports$goog$i18n$TimeZone ) : string ;

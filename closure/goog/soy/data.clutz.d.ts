@@ -36,6 +36,8 @@ declare namespace ಠ_ಠ.clutz.goog.soy.data {
      * Gets the already-safe content.
      */
     getContent ( ) : string ;
+    renderAsElement ? : ( ) => GlobalElement ;
+    renderElement ? : (a : GlobalElement | ShadowRoot ) => void ;
     /**
      * Converts sanitized content of kind HTML into SafeHtml
      */
@@ -83,6 +85,10 @@ declare namespace ಠ_ಠ.clutz.goog.soy.data {
    */
   class SanitizedCss extends ಠ_ಠ.clutz.goog.soy.data.SanitizedContent {
     private noStructuralTyping_goog_soy_data_SanitizedCss : any;
+    /**
+     * Converts SanitizedCss into SafeStyle.
+     */
+    toSafeStyle ( ) : ಠ_ಠ.clutz.goog.html.SafeStyle ;
     /**
      * Converts SanitizedCss into SafeStyleSheet.
      * Note: SanitizedCss in Soy represents both SafeStyle and SafeStyleSheet in

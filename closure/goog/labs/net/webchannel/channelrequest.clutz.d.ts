@@ -16,6 +16,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.net.webChannel {
      */
     constructor (channel : ಠ_ಠ.clutz.goog.labs.net.webChannel.Channel | null , channelDebug : ಠ_ಠ.clutz.goog.labs.net.webChannel.WebChannelDebug | null , opt_sessionId ? : string , opt_requestId ? : string | number , opt_retryId ? : number ) ;
     cancel ( ) : void ;
+    getErrorResponseHeaders ( ) : { [ key: string ]: string } | undefined ;
     /**
      * If the request was not successful, returns the reason.
      */

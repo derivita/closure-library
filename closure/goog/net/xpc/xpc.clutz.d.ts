@@ -43,13 +43,6 @@ declare namespace ಠ_ಠ.clutz.goog.net.xpc.CfgFields {
    */
   let CHANNEL_NAME : string ;
   /**
-   * Whether the direct transport runs in synchronous mode. The default is to
-   * emulate the other transports and run asyncronously but there are some
-   * circumstances where syncronous calls are required. If this property is
-   * set to true, the transport will send the messages synchronously.
-   */
-  let DIRECT_TRANSPORT_SYNC_MODE : string ;
-  /**
    * Ifame-ID identifier.
    * The id of the iframe element the peer-document lives in.
    */
@@ -177,7 +170,6 @@ declare namespace ಠ_ಠ.clutz.goog.net.xpc {
    * Enum used to identify transport types.
    */
   enum TransportTypes {
-    DIRECT = 2.0 ,
     NATIVE_MESSAGING = 1.0 ,
     UNDEFINED = 0.0 ,
   }

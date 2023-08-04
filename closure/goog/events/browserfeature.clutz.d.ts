@@ -6,15 +6,9 @@ declare namespace ಠ_ಠ.clutz.goog.events {
    */
   type BrowserFeature = boolean &{clutzEnumBrand: never} ;
   let BrowserFeature : {
-    HAS_HTML5_NETWORK_EVENT_SUPPORT : BrowserFeature ,
-    HAS_NAVIGATOR_ONLINE_PROPERTY : BrowserFeature ,
-    HAS_W3C_BUTTON : BrowserFeature ,
-    HAS_W3C_EVENT_SUPPORT : BrowserFeature ,
-    HTML5_NETWORK_EVENTS_FIRE_ON_BODY : BrowserFeature ,
     MSPOINTER_EVENTS : BrowserFeature ,
     PASSIVE_EVENTS : BrowserFeature ,
     POINTER_EVENTS : BrowserFeature ,
-    SET_KEY_CODE_TO_PREVENT_DEFAULT : BrowserFeature ,
     TOUCH_ENABLED : BrowserFeature ,
   };
 }

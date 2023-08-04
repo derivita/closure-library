@@ -17,7 +17,7 @@ declare namespace ಠ_ಠ.clutz.goog.ui {
      * Returns the default orientation of containers rendered or decorated by this
      * renderer.  This implementation returns `HORIZONTAL`.
      */
-    getDefaultOrientation ( ) : ಠ_ಠ.clutz.goog.ui.Container.Orientation | null ;
+    getDefaultOrientation ( ) : ಠ_ಠ.clutz.goog.ui.Container.Orientation ;
     /**
      * Default CSS class to be applied to the root element of elements rendered
      * by this renderer.

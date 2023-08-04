@@ -121,6 +121,12 @@ declare namespace ಠ_ಠ.clutz.goog.ui {
      */
     getSafeHtmlContent ( ) : ಠ_ಠ.clutz.goog.html.SafeHtml | null ;
     /**
+     * Gets an object containing fields for how many pixels of space there are on
+     * each side of the dialog, or null if this dialog isn't keeping track of that
+     * information.
+     */
+    getSurroundingSpace ( ) : { bottom : number , left : number , right : number , top : number } | null ;
+    /**
      * Gets the title.
      */
     getTitle ( ) : string ;
@@ -139,8 +145,10 @@ declare namespace ಠ_ಠ.clutz.goog.ui {
      * with the text of the title.  Renders if the DOM is not yet created.
      */
     getTitleTextElement ( ) : GlobalElement | null ;
+    handleDrag ( ) : void ;
     isAriaDescribedByContent ( ) : boolean ;
     isEscapeToCancel ( ) : boolean ;
+    maybeUpdateSurroundingSpace_ ( ) : void ;
     onHide ( ) : void ;
     onShow ( ) : void ;
     /**
@@ -210,10 +218,13 @@ declare namespace ಠ_ಠ.clutz.goog.ui {
      */
     setTitle (title : string ) : void ;
     /**
-     * Sets the visibility of the dialog box and moves focus to the
-     * default button. Lazily renders the component if needed. After this
-     * method returns, isVisible() will always return the new state, even
-     * if there is a transition.
+     * Sets whether the dialog keeps track of its surrounding space.
+     */
+    setTrackSurroundingSpace (trackSurroundingSpace : boolean ) : void ;
+    /**
+     * Sets the visibility of the dialog box. Lazily renders the component if
+     * needed. After this method returns, isVisible() will always return the new
+     * state, even if there is a transition.
      * @param visible Whether the dialog should be visible.
      */
     setVisible (visible : boolean ) : void ;

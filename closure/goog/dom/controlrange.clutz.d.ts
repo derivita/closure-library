@@ -82,10 +82,6 @@ declare namespace ಠ_ಠ.clutz.goog.dom {
      * Throws `goog.iter.StopIteration` when it passes the end of the range.
      */
     next ( ) : IteratorResult < Node > ;
-    /**
-     * TODO(user): Please do not remove - this will be cleaned up centrally.
-     */
-    nextValueOrThrow ( ) : Node ;
   }
 }
 declare module 'goog:goog.dom.ControlRangeIterator' {

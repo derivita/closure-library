@@ -31,8 +31,8 @@ declare namespace ಠ_ಠ.clutz.goog.net {
     protected disposeInternal ( ) : void ;
     /**
      * Gets the text of all the headers in the response.
-     * Will only return correct result when called from the context of a callback
-     * and the request has completed.
+     * Will only return correct result after ready state reaches `LOADED` (i.e.
+     * `HEADERS_RECEIVED` as per MDN).
      */
     getAllResponseHeaders ( ) : string ;
     /**

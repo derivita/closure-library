@@ -73,6 +73,7 @@ declare namespace ಠ_ಠ.clutz.goog.editor.plugins {
     static MSG_INVALID_URL_LINK_BUBBLE : string ;
     static MSG_LINK_BUBBLE_CHANGE : string ;
     static MSG_LINK_BUBBLE_REMOVE : string ;
+    static MSG_LINK_BUBBLE_REMOVE_ANNOUNCEMENT : string ;
     static MSG_LINK_BUBBLE_TEST_LINK : string ;
   }
 }

@@ -96,6 +96,13 @@ declare namespace ಠ_ಠ.clutz.goog {
      */
     cancel (opt_message ? : string ) : void ;
     /**
+     * Adds a callback that will be invoked only if the Promise is rejected. This
+     * is equivalent to `then(null, onRejected)`.
+     * @param onRejected A function that will be invoked with the rejection reason if this Promise is rejected.
+     * @param opt_context An optional context object that will be the execution context for the callbacks. By default, functions are executed in the global scope.
+     */
+    catch < THIS = any > (a : (this : THIS , a : any ) => any , b ? : THIS ) : ಠ_ಠ.clutz.goog.Promise < any , any > ;
+    /**
      * Adds callbacks that will operate on the result of the Promise, returning a
      * new child Promise.
      *
@@ -133,6 +140,9 @@ declare namespace ಠ_ಠ.clutz.goog {
     /**
      * Adds a callback that will be invoked only if the Promise is rejected. This
      * is equivalent to `then(null, onRejected)`.
+     *
+     * Note: Prefer using `catch` which is interoperable with native browser
+     * Promises.
      * @param onRejected A function that will be invoked with the rejection reason if this Promise is rejected.
      * @param opt_context An optional context object that will be the execution context for the callbacks. By default, functions are executed in the global scope.
      */

@@ -34,10 +34,6 @@ declare namespace ಠ_ಠ.clutz.goog.iter {
      */
     targetKey : KEY ;
     next ( ) : IteratorResult < any [] > ;
-    /**
-     * TODO(user): Please do not remove - this will be cleaned up centrally.
-     */
-    nextValueOrThrow ( ) : any [] ;
   }
   /**
    * Creates an iterator that returns running totals from the numbers in
@@ -58,15 +54,6 @@ declare namespace ಠ_ಠ.clutz.goog.iter {
    * @param iterable The iterable of iterables to chain.
    */
   function chainFromIterable < VALUE = any > (iterable : null | { length : number } | { __iterator__ : any } ) : ಠ_ಠ.clutz.goog.iter.Iterator < VALUE > ;
-  /**
-   * Checks whether an error is the `goog.iter.StopIteration` error, and if so
-   * throws a different error that warns that using goog.iter.StopIteration is
-   * problematic. ES4 iteration allows `StopIteration` to propagate up the
-   * callstack and terminate iteration far from where it started, but ES6
-   * iteration requires explicit passing and handling of termination signals.
-   * @param ex The error to check.
-   */
-  function checkNoImplicitStopIterationInEs6 (ex : GlobalError ) : void ;
   /**
    * Creates an iterator that returns combinations of elements from
    * `iterable`.
@@ -93,12 +80,12 @@ declare namespace ಠ_ಠ.clutz.goog.iter {
   function combinationsWithReplacement < VALUE = any > (iterable : ಠ_ಠ.clutz.goog.iter.Iterator < VALUE > | { length : number } | { __iterator__ : any } , length : number ) : ಠ_ಠ.clutz.goog.iter.Iterator < VALUE [] > ;
   /**
    * Creates an iterator that filters `iterable` based on a series of
-   * `selectors`. On each call to `nextValueOrThrow()`, one item is taken from
+   * `selectors`. On each call to `next()`, one item is taken from
    * both the `iterable` and `selectors` iterators. If the item from
    * `selectors` evaluates to true, the item from `iterable` is given.
    * Otherwise, it is skipped. Once either `iterable` or `selectors`
-   * is exhausted, subsequent calls to `nextValueOrThrow()` will throw
-   * `goog.iter.StopIteration`.
+   * is exhausted, subsequent calls to `next()` will return
+   * `goog.iter.ES6_ITERATOR_DONE`.
    * @param iterable The iterable to filter.
    * @param selectors An iterable of items to be evaluated in a boolean context to determine if the corresponding element in `iterable` should be included in the result.
    */
@@ -107,7 +94,7 @@ declare namespace ಠ_ಠ.clutz.goog.iter {
    * Creates an iterator that is advanced `count` steps ahead. Consumed
    * values are silently discarded. If `count` is greater than the number
    * of elements in `iterable`, an empty iterator is returned. Subsequent
-   * calls to `nextValueOrThrow()` will throw `goog.iter.StopIteration`.
+   * calls to `next()` will return `goog.iter.ES6_ITERATOR_DONE`.
    * @param iterable The iterable to consume.
    * @param count The number of elements to consume from the iterator.
    */
@@ -264,7 +251,7 @@ declare namespace ಠ_ಠ.clutz.goog.iter {
    * @param val The initial value to pass into the function on the first call.
    * @param opt_obj The object to be used as the value of 'this' within f.
    */
-  function reduce < THIS = any , VALUE = any > (iterable : ಠ_ಠ.clutz.goog.iter.Iterator < VALUE > | null | { length : number } | { __iterator__ : any } , f : (this : THIS , a : VALUE , b : VALUE ) => VALUE , val : VALUE , opt_obj ? : THIS ) : VALUE ;
+  function reduce < THIS = any , VALUE = any , RVALUE = any > (iterable : ಠ_ಠ.clutz.goog.iter.Iterator < VALUE > | { length : number } | { __iterator__ : any } , f : (this : THIS , a : RVALUE , b : VALUE ) => RVALUE , val : RVALUE , opt_obj ? : THIS ) : RVALUE ;
   /**
    * Creates an iterator that returns the same object or value repeatedly.
    * @param value Any object or value to repeat.
@@ -320,12 +307,6 @@ declare namespace ಠ_ಠ.clutz.goog.iter {
    */
   function toArray < VALUE = any > (iterable : ಠ_ಠ.clutz.goog.iter.Iterator < VALUE > | null | { length : number } | { __iterator__ : any } ) : VALUE [] ;
   /**
-   * Converts an ES6 IIterableResult into ES4 iteration semantics. If the result
-   * indicates it is finished iterating, will throw `goog.iter.StopIteration`.
-   * Otherwise, will unwrap the IIterableResult's value and return that.
-   */
-  function toEs4IteratorNext < VALUE = any > (es6NextValue : IteratorResult < VALUE > ) : VALUE ;
-  /**
    * Returns an iterator that knows how to iterate over the values in the object.
    * @param iterable If the object is an iterator it will be returned as is.  If the object has an `__iterator__` method that will be called to get the value iterator.  If the object is an array-like object we create an iterator for that.
    */
@@ -334,8 +315,8 @@ declare namespace ಠ_ಠ.clutz.goog.iter {
    * Creates an iterator that returns arrays containing the ith elements from the
    * provided iterables. The returned arrays will be the same size as the number
    * of iterables given in `var_args`. Once the shortest iterable is
-   * exhausted, subsequent calls to `nextValueOrThrow()` will throw
-   * `goog.iter.StopIteration`.
+   * exhausted, subsequent calls to `next()` will return
+   * `goog.iter.ES6_ITERATOR_DONE`.
    * @param var_args Any number of iterable objects.
    */
   function zip < VALUE = any > ( ...var_args : ( ಠ_ಠ.clutz.goog.iter.Iterator < VALUE > | { length : number } | { __iterator__ : any } ) [] ) : ಠ_ಠ.clutz.goog.iter.Iterator < VALUE [] > ;
@@ -344,7 +325,7 @@ declare namespace ಠ_ಠ.clutz.goog.iter {
    * provided iterables. The returned arrays will be the same size as the number
    * of iterables given in `var_args`. Shorter iterables will be extended
    * with `fillValue`. Once the longest iterable is exhausted, subsequent
-   * calls to `nextValueOrThrow()` will throw `goog.iter.StopIteration`.
+   * calls to `next()` will return `goog.iter.ES6_ITERATOR_DONE`.
    * @param fillValue The object or value used to fill shorter iterables.
    * @param var_args Any number of iterable objects.
    */
@@ -365,11 +346,7 @@ declare module 'goog:goog.iter.Iterable' {
 // Generated from iter/iter.js
 declare namespace ಠ_ಠ.clutz.goog.iter {
   /**
-   * Class/interface for iterators.  An iterator needs to implement a `next`
-   * method and it needs to throw a `goog.iter.StopIteration` when the
-   * iteration passes beyond the end.  Iterators have no `hasNext` method.
-   * It is recommended to always use the helper functions to iterate over the
-   * iterator or in case you are only targeting JavaScript 1.7 for in loops.
+   * Class/interface for iterators.
    */
   class Iterator < VALUE = any > implements Iterator < VALUE > {
     private noStructuralTyping_goog_iter_Iterator : any;
@@ -383,25 +360,9 @@ declare namespace ಠ_ಠ.clutz.goog.iter {
      * Returns the next value of the iteration as an an ES6 IIterableResult.
      */
     next ( ) : IteratorResult < VALUE > ;
-    /**
-     * Returns the next value of the iteration.  This will throw the object
-     * {@see goog.iter.StopIteration} when the iteration passes the end.
-     */
-    nextValueOrThrow ( ) : VALUE ;
   }
 }
 declare module 'goog:goog.iter.Iterator' {
   import Iterator = ಠ_ಠ.clutz.goog.iter.Iterator;
   export default Iterator;
-}
-// Generated from iter/iter.js
-declare namespace ಠ_ಠ.clutz.goog.iter {
-  /**
-   * Singleton Error object that is used to terminate iterations.
-   */
-  let StopIteration : GlobalError ;
-}
-declare module 'goog:goog.iter.StopIteration' {
-  import StopIteration = ಠ_ಠ.clutz.goog.iter.StopIteration;
-  export default StopIteration;
 }

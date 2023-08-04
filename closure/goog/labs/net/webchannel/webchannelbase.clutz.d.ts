@@ -72,10 +72,9 @@ declare namespace ಠ_ಠ.clutz.goog.labs.net.webChannel {
      */
     getInitHeaders ( ) : GlobalObject | null ;
     getLastArrayId ( ) : number ;
-    /**
-     * Return the last status code received for a request.
-     */
+    getLastResponseHeaders ( ) : { [ key: string ]: string } | undefined ;
     getLastStatusCode ( ) : number ;
+    getNonAckedMaps ( ) : ಠ_ಠ.clutz.goog.labs.net.webChannel.Wire.QueuedMap [] ;
     getServerVersion ( ) : number ;
     /**
      * Returns the session id of the channel. Only available after the
@@ -272,7 +271,7 @@ declare namespace ಠ_ಠ.clutz.goog.labs.net.webChannel.WebChannelBase {
      * @param channel The channel.
      * @param array The data array.
      */
-    channelHandleArray (channel : ಠ_ಠ.clutz.goog.labs.net.webChannel.WebChannelBase | null , array : any [] | null ) : void ;
+    channelHandleArray (channel : ಠ_ಠ.clutz.goog.labs.net.webChannel.WebChannelBase | null , array : GlobalObject ) : void ;
     /**
      * Callback handler for when a batch of response arrays is received from the
      * server. When null, batched dispatching is disabled.

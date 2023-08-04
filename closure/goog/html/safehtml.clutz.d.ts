@@ -44,7 +44,7 @@ declare namespace ಠ_ಠ.clutz {
    * There's `goog.dom.constHtmlToNode` to create a node from constant strings
    * only.
    */
-  class module$contents$goog$html$SafeHtml_SafeHtml implements ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString , ಠ_ಠ.clutz.module$exports$goog$string$TypedString {
+  class module$contents$goog$html$SafeHtml_SafeHtml implements ಠ_ಠ.clutz.module$exports$goog$string$TypedString {
     private noStructuralTyping_module$contents$goog$html$SafeHtml_SafeHtml : any;
     /**
      * A string that is safe to use in HTML context in DOM APIs and HTML documents.
@@ -81,10 +81,8 @@ declare namespace ಠ_ಠ.clutz {
      * There's `goog.dom.constHtmlToNode` to create a node from constant strings
      * only.
      */
-    constructor (value : TrustedHTML | string , dir : ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$Dir | null , token : GlobalObject ) ;
-    implementsGoogI18nBidiDirectionalString : boolean ;
+    constructor (value : TrustedHTML | string , token : GlobalObject ) ;
     implementsGoogStringTypedString : boolean ;
-    getDirection ( ) : ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$Dir | null ;
     /**
      * Returns this SafeHtml's value as string.
      *
@@ -146,14 +144,7 @@ declare namespace ಠ_ಠ.clutz {
      * Creates a new SafeHtml object by concatenating values.
      * @param var_args Values to concatenate.
      */
-    static concat ( ...var_args : ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) [] ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
-    /**
-     * Creates a new SafeHtml object with known directionality by concatenating
-     * the values.
-     * @param dir Directionality.
-     * @param var_args Elements of array arguments would be processed recursively.
-     */
-    static concatWithDir (dir : ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$Dir ,  ...var_args : ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) [] ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
+    static concat ( ...var_args : ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString ) [] ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
     /**
      * Creates a SafeHtml content consisting of a tag with optional attributes and
      * optional content.
@@ -193,7 +184,7 @@ declare namespace ಠ_ಠ.clutz {
      * @param attributes Mapping from attribute names to their values. Only attribute names consisting of [a-zA-Z0-9-] are allowed. Value of null or undefined causes the attribute to be omitted.
      * @param content Content to HTML-escape and put inside the tag. This must be empty for void tags like <br>. Array elements are concatenated.
      */
-    static create (tagName : ಠ_ಠ.clutz.module$exports$goog$dom$TagName | string , attributes ? : { [ key: string ]: string | number | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$html$SafeStyle.PropertyMap | undefined | null } | null , content ? : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
+    static create (tagName : ಠ_ಠ.clutz.module$exports$goog$dom$TagName | string , attributes ? : { [ key: string ]: string | number | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$html$SafeStyle.PropertyMap | undefined | null } | null , content ? : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
     /**
      * Creates a SafeHtml representing an iframe tag.
      *
@@ -208,7 +199,7 @@ declare namespace ಠ_ಠ.clutz {
      * @param attributes Mapping from attribute names to their values. Only attribute names consisting of [a-zA-Z0-9-] are allowed. Value of null or undefined causes the attribute to be omitted.
      * @param content Content to HTML-escape and put inside the tag. Array elements are concatenated.
      */
-    static createIframe (src ? : ಠ_ಠ.clutz.module$exports$goog$html$TrustedResourceUrl | null , srcdoc ? : module$contents$goog$html$SafeHtml_SafeHtml | null , attributes ? : { [ key: string ]: string | number | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$html$SafeStyle.PropertyMap | undefined | null } | null , content ? : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
+    static createIframe (src ? : ಠ_ಠ.clutz.module$exports$goog$html$TrustedResourceUrl | null , srcdoc ? : module$contents$goog$html$SafeHtml_SafeHtml | null , attributes ? : { [ key: string ]: string | number | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$html$SafeStyle.PropertyMap | undefined | null } | null , content ? : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
     /**
      * Creates a SafeHtml representing a meta refresh tag.
      * @param url Where to redirect. If a string is passed, it will be sanitized with SafeUrl.sanitize().
@@ -232,7 +223,7 @@ declare namespace ಠ_ಠ.clutz {
      * @param attributes Mapping from attribute names to their values. Only attribute names consisting of [a-zA-Z0-9-] are allowed. Value of null or undefined causes the attribute to be omitted.
      * @param content Content to HTML-escape and put inside the tag. Array elements are concatenated.
      */
-    static createSandboxIframe (src ? : string | ಠ_ಠ.clutz.module$exports$goog$html$SafeUrl , srcdoc ? : string , attributes ? : { [ key: string ]: string | number | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$html$SafeStyle.PropertyMap | undefined | null } , content ? : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
+    static createSandboxIframe (src ? : string | ಠ_ಠ.clutz.module$exports$goog$html$SafeUrl , srcdoc ? : string , attributes ? : { [ key: string ]: string | number | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$html$SafeStyle.PropertyMap | undefined | null } , content ? : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
     /**
      * Creates a SafeHtml representing a script tag. Does not allow the language,
      * src, text or type attributes to be set.
@@ -254,51 +245,37 @@ declare namespace ಠ_ಠ.clutz {
      */
     static createStyle (styleSheet : ಠ_ಠ.clutz.module$exports$goog$html$SafeStyleSheet | ಠ_ಠ.clutz.module$exports$goog$html$SafeStyleSheet [] , attributes ? : { [ key: string ]: string | number | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$html$SafeStyle.PropertyMap | undefined | null } | null ) : module$contents$goog$html$SafeHtml_SafeHtml ;
     /**
-     * Creates a SafeHtml content with known directionality consisting of a tag
-     * with optional attributes and optional content.
-     * @param dir Directionality.
-     */
-    static createWithDir (dir : ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$Dir , tagName : string , attributes ? : { [ key: string ]: string | number | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$html$SafeStyle.PropertyMap | undefined | null } | null , content ? : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
-    /**
      * Coerces an arbitrary object into a SafeHtml object.
      *
      * If `textOrHtml` is already of type `SafeHtml`, the same
      * object is returned. Otherwise, `textOrHtml` is coerced to string, and
-     * HTML-escaped. If `textOrHtml` is of a type that implements
-     * `DirectionalString`, its directionality, if known, is
-     * preserved.
+     * HTML-escaped.
      * @param textOrHtml The text or SafeHtml to coerce.
      */
-    static from (a : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) : module$contents$goog$html$SafeHtml_SafeHtml ;
+    static from (a : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString ) : module$contents$goog$html$SafeHtml_SafeHtml ;
     /**
      * Returns HTML-escaped text as a SafeHtml object.
-     *
-     * If text is of a type that implements
-     * `DirectionalString`, the directionality of the new
-     * `SafeHtml` object is set to `text`'s directionality, if known.
-     * Otherwise, the directionality of the resulting SafeHtml is unknown (i.e.,
-     * `null`).
      * @param textOrHtml The text to escape. If the parameter is of type SafeHtml it is returned directly (no escaping is done).
      */
-    static htmlEscape (textOrHtml : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) : module$contents$goog$html$SafeHtml_SafeHtml ;
+    static htmlEscape (textOrHtml : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString ) : module$contents$goog$html$SafeHtml_SafeHtml ;
     /**
      * Returns HTML-escaped text as a SafeHtml object, with newlines changed to
      * &lt;br&gt;.
      * @param textOrHtml The text to escape. If the parameter is of type SafeHtml it is returned directly (no escaping is done).
      */
-    static htmlEscapePreservingNewlines (textOrHtml : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) : module$contents$goog$html$SafeHtml_SafeHtml ;
+    static htmlEscapePreservingNewlines (textOrHtml : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString ) : module$contents$goog$html$SafeHtml_SafeHtml ;
     /**
      * Returns HTML-escaped text as a SafeHtml object, with newlines changed to
      * &lt;br&gt; and escaping whitespace to preserve spatial formatting.
      * Character entity #160 is used to make it safer for XML.
      * @param textOrHtml The text to escape. If the parameter is of type SafeHtml it is returned directly (no escaping is done).
      */
-    static htmlEscapePreservingNewlinesAndSpaces (textOrHtml : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) : module$contents$goog$html$SafeHtml_SafeHtml ;
+    static htmlEscapePreservingNewlinesAndSpaces (textOrHtml : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString ) : module$contents$goog$html$SafeHtml_SafeHtml ;
     /**
      * Creates a new SafeHtml object by joining the parts with separator.
      * @param parts Parts to join. If a part contains an array then each member of this array is also joined with the separator.
      */
-    static join (separator : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString , parts : ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ಠ_ಠ.clutz.module$exports$goog$i18n$bidi$DirectionalString ) [] ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
+    static join (separator : string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString , parts : ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString | ( string | number | boolean | ಠ_ಠ.clutz.module$exports$goog$string$TypedString ) [] ) [] ) : module$contents$goog$html$SafeHtml_SafeHtml ;
     /**
      * Performs a runtime check that the provided object is indeed a SafeHtml
      * object, and returns its value.

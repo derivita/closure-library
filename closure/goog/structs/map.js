@@ -31,6 +31,7 @@ goog.require('goog.iter.es6');
  * @param {...*} var_args If 2 or more arguments are present then they
  *     will be used as key-value pairs.
  * @constructor
+ * @final
  * @template K, V
  * @deprecated This type is misleading: use ES6 Map instead.
  */
@@ -532,16 +533,6 @@ goog.structs.Map.prototype.__iterator__ = function(opt_keys) {
     }
     var key = selfObj.keys_[i++];
     return goog.iter.createEs6IteratorYield(opt_keys ? key : selfObj.map_[key]);
-  };
-  const iterNext = newIter.next;
-  /**
-   * TODO(user): Please do not remove - this will be cleaned up
-   * centrally.
-   * @override @see {!goog.iter.Iterator}
-   * @return {K|V}
-   */
-  newIter.nextValueOrThrow = function() {
-    return goog.iter.toEs4IteratorNext(iterNext.call(newIter));
   };
 
   return newIter;

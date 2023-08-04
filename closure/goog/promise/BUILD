@@ -21,9 +21,11 @@ closure_js_library(
     deps = [
         "//closure/goog/asserts",
         "//closure/goog/async:freelist",
-        "//closure/goog/async:nexttick",
         "//closure/goog/async:run",
+        "//closure/goog/async:throwexception",
+        "//closure/goog/debug:asyncstacktag",
         "//closure/goog/debug:error",
+        "//closure/goog/functions",
     ],
 )
 

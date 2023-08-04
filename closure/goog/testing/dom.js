@@ -21,9 +21,12 @@ goog.require('goog.dom.NodeType');
 goog.require('goog.dom.TagIterator');
 goog.require('goog.dom.TagName');
 goog.require('goog.dom.classlist');
+goog.require('goog.dom.safe');
+goog.require('goog.html.uncheckedconversions');
 goog.require('goog.iter');
 goog.require('goog.object');
 goog.require('goog.string');
+goog.require('goog.string.Const');
 goog.require('goog.style');
 goog.require('goog.testing.asserts');
 goog.require('goog.userAgent');
@@ -61,11 +64,9 @@ goog.testing.dom.END_TAG_MARKER_ = goog.testing.dom.createEndTagMarker_();
  *         string starting with '#': Match the node's id with the text
  *             after "#".
  *         other string: Match the text node's contents.
- * @param {boolean=} useEs6Iteration Whether or not to iterate through this
- *     iterator using ES6 iteration. Iff falsy, uses ES4 iteration.
+ * @suppress {strictMissingProperties} charAt on union type
  */
-goog.testing.dom.assertNodesMatch = function(
-    it, array, useEs6Iteration = true) {
+goog.testing.dom.assertNodesMatch = function(it, array) {
   let i = 0;
   function checkNode(node) {
     'use strict';
@@ -85,7 +86,7 @@ goog.testing.dom.assertNodesMatch = function(
       assertEquals(
           'Expected element at position ' + i, goog.dom.NodeType.ELEMENT,
           node.nodeType);
-      const expectedId = expected.substr(1);
+      const expectedId = expected.slice(1);
       assertEquals('IDs should match at position ' + i, expectedId, node.id);
 
     } else {
@@ -99,19 +100,12 @@ goog.testing.dom.assertNodesMatch = function(
 
     i++;
   }
-  if (useEs6Iteration) {
-    const iterator = goog.iter.toIterator(it);
-    const iterable = /** @type {!Iterable<?>} */ ({
-      [Symbol.iterator]: () => iterator,
-    });
-    for (const node of iterable) {
-      checkNode(node);
-    }
-  } else {
-    // Check with ES4 Iteration
-    goog.iter.forEach(it, function(node) {
-      checkNode(node);
-    });
+  const iterator = goog.iter.toIterator(it);
+  const iterable = /** @type {!Iterable<?>} */ ({
+    [Symbol.iterator]: () => iterator,
+  });
+  for (const node of iterable) {
+    checkNode(node);
   }
   assertEquals('Used entire match array', array.length, i);
 };
@@ -171,7 +165,7 @@ goog.testing.dom.checkUserAgents_ = function(userAgents) {
     if (goog.string.contains(userAgents, ' ')) {
       throw new Error('Only a single negative user agent may be specified');
     }
-    return !goog.userAgent[userAgents.substr(1)];
+    return !goog.userAgent[userAgents.slice(1)];
   }
 
   var agents = userAgents.split(' ');
@@ -302,7 +296,13 @@ goog.testing.dom.assertHtmlContentsMatch = function(
     htmlPattern, actual, opt_strictAttributes) {
   'use strict';
   var div = goog.dom.createDom(goog.dom.TagName.DIV);
-  div.innerHTML = htmlPattern;
+
+  goog.dom.safe.setInnerHtml(
+      div,
+      goog.html.uncheckedconversions
+          .safeHtmlFromStringKnownToSatisfyTypeContract(
+              goog.string.Const.from('HTML is never attached to DOM'),
+              htmlPattern));
 
   var errorSuffix =
       '\nExpected\n' + div.innerHTML + '\nActual\n' + actual.innerHTML;
@@ -432,7 +432,12 @@ goog.testing.dom.assertHtmlMatches = function(
     htmlPattern, actual, opt_strictAttributes) {
   'use strict';
   var div = goog.dom.createDom(goog.dom.TagName.DIV);
-  div.innerHTML = actual;
+
+  goog.dom.safe.setInnerHtml(
+      div,
+      goog.html.uncheckedconversions
+          .safeHtmlFromStringKnownToSatisfyTypeContract(
+              goog.string.Const.from('HTML is never attached to DOM'), actual));
 
   goog.testing.dom.assertHtmlContentsMatch(
       htmlPattern, div, opt_strictAttributes);

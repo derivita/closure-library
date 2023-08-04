@@ -20,14 +20,8 @@ declare namespace ಠ_ಠ.clutz.goog.collections.iters {
    * given iterator and call the given function `f` with that value until `true`
    * is returned or the given iterator is exhausted.
    */
-  function filter < VALUE = any > (iterable : Iterable < VALUE > , f : (a : VALUE , b : number ) => boolean ) : IterableIterator < VALUE > ;
-  /**
-   * Call a function with every value of an iterable.
-   *
-   * Warning: this function will never halt if given an iterable that
-   * is never exhausted.
-   */
-  function forEach < VALUE = any > (iterable : Iterable < VALUE > , f : (a : VALUE ) => any ) : void ;
+  function filter < VALUE = any > (iterable : Iterable < VALUE > , f : (a : VALUE ) => boolean ) : IterableIterator < VALUE > ;
+  function forEach < VALUE = any > (iterator : Iterator < VALUE > , f : (a : VALUE ) => any ) : void ;
   function getIterator < VALUE = any > (iterable : Iterable < VALUE > ) : Iterator < VALUE > ;
   /**
    * Maps the values of one iterable to create another iterable.
@@ -36,7 +30,11 @@ declare namespace ಠ_ಠ.clutz.goog.collections.iters {
    * function `f` with the next value of the given iterable
    * `iterable` until the given iterable is exhausted.
    */
-  function map < VALUE = any , RESULT = any > (iterable : Iterable < VALUE > , f : (a : VALUE , b : number ) => RESULT ) : IterableIterator < RESULT > ;
+  function map < VALUE = any , RESULT = any > (iterable : Iterable < VALUE > , f : (a : VALUE ) => RESULT ) : IterableIterator < RESULT > ;
+  /**
+   * Creates an array containing the values from the given iterator.
+   */
+  function toArray < VALUE = any > (iterator : Iterator < VALUE > ) : VALUE [] ;
 }
 declare module 'goog:goog.collections.iters' {
   import iters = ಠ_ಠ.clutz.goog.collections.iters;

@@ -72,24 +72,10 @@ goog.inherits(goog.dom.NodeIterator, goog.dom.TagIterator);
 goog.dom.NodeIterator.prototype.next = function() {
   'use strict';
   do {
-    try {
-      goog.dom.NodeIterator.superClass_.nextValueOrThrow.call(this);
-    } catch (ex) {
-      if (ex === goog.iter.StopIteration) return goog.iter.ES6_ITERATOR_DONE;
-      throw ex;
-    }
+    // also updates `this.node` reference on iteration.
+    const it = goog.dom.NodeIterator.superClass_.next.call(this);
+    if (it.done) return it;
   } while (this.isEndTag());
 
   return goog.iter.createEs6IteratorYield(/** @type {!Node} */ (this.node));
-};
-
-
-/**
- * TODO(user): Please do not remove - this will be cleaned up centrally.
- * @override @see {!goog.iter.Iterator}
- * @return {!Node}
- */
-goog.dom.NodeIterator.prototype.nextValueOrThrow = function() {
-  return goog.iter.toEs4IteratorNext(
-      goog.dom.NodeIterator.prototype.next.call(this));
 };

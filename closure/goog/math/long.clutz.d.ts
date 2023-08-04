@@ -130,6 +130,7 @@ declare namespace ಠ_ಠ.clutz {
     toInt ( ) : number ;
     toNumber ( ) : number ;
     toString (opt_radix ? : number ) : string ;
+    toUnsignedString (opt_radix ? : number ) : string ;
     /**
      * Returns the bitwise-XOR of this Long and the given one.
      * @param other The Long with which to XOR.

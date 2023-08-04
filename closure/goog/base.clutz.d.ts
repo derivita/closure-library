@@ -37,7 +37,6 @@ declare namespace goog {
    * This default implementation is designed to load untranspiled, non-module
    * scripts in a web broswer.
    *
-   * For transpiled non-goog.module files {@see goog.TranspiledDependency}.
    * For goog.modules see {@see goog.GoogModuleDependency}.
    * For untranspiled ES6 modules {@see goog.Es6ModuleDependency}.
    */
@@ -49,7 +48,6 @@ declare namespace goog {
      * This default implementation is designed to load untranspiled, non-module
      * scripts in a web broswer.
      *
-     * For transpiled non-goog.module files {@see goog.TranspiledDependency}.
      * For goog.modules see {@see goog.GoogModuleDependency}.
      * For untranspiled ES6 modules {@see goog.Es6ModuleDependency}.
      * @param path Absolute path of this script.
@@ -84,15 +82,7 @@ declare namespace goog {
    */
   class DependencyFactory {
     private noStructuralTyping_goog_DependencyFactory : any;
-    /**
-     * Creates goog.Dependency instances for the debug loader to load.
-     *
-     * Should be overridden to have the debug loader use custom subclasses of
-     * goog.Dependency.
-     */
-    constructor (transpiler : goog.Transpiler ) ;
-    protected transpiler : goog.Transpiler ;
-    createDependency (path : string , relativePath : string , provides : string [] , requires : string [] , loadFlags : { [ key: string ]: string } , needsTranspile : boolean ) : goog.Dependency ;
+    createDependency (path : string , relativePath : string , provides : string [] , requires : string [] , loadFlags : { [ key: string ]: string } ) : goog.Dependency ;
   }
   let ENABLE_CHROME_APP_SAFE_SCRIPT_LOADING : boolean ;
   let ENABLE_DEBUG_LOADER : boolean ;
@@ -102,6 +92,63 @@ declare namespace goog {
     load (controller : goog.LoadController ) : void ;
   }
   let FEATURESET_YEAR : number ;
+  /**
+   * Options bag type for `goog.getMsg()` third argument.
+   *
+   * It is important to note that these options need to be known at compile time,
+   * so they must always be provided to `goog.getMsg()` as an actual object
+   * literal in the function call. Otherwise, closure-compiler will report an
+   * error.
+   */
+  interface GetMsgOptions {
+    /**
+     * Associates placeholder names with example values.
+     *
+     * closure-compiler uses this as the contents of the `<ex>` tag in the
+     * XMB file it generates or defaults to `-` for historical reasons.
+     *
+     * Must be an object literal.
+     * Ignored at runtime.
+     * Keys are placeholder names.
+     * Values are string literals containing example placeholder values.
+     * (e.g. "George McFly" for a name placeholder)
+     */
+    example ? : { [ key: string ]: string } ;
+    /**
+     * If `true`, escape '<' in the message string to '&lt;'.
+     *
+     * Used by Closure Templates where the generated code size and performance is
+     * critical which is why {@link goog.html.SafeHtmlFormatter} is not used.
+     * The value must be literal `true` or `false`.
+     */
+    html ? : boolean ;
+    /**
+     * Associates placeholder names with strings showing how their values are
+     * obtained.
+     *
+     * This field is intended for use in automatically generated JS code.
+     * Human-written code should use meaningful placeholder names instead.
+     *
+     * closure-compiler uses this as the contents of the `<ph>` tag in the
+     * XMB file it generates or defaults to `-` for historical reasons.
+     *
+     * Must be an object literal.
+     * Ignored at runtime.
+     * Keys are placeholder names.
+     * Values are string literals indicating how the value is obtained.
+     * Typically this is a snippet of source code.
+     */
+    original_code ? : { [ key: string ]: string } ;
+    /**
+     * If `true`, unescape common html entities: &gt;, &lt;, &apos;, &quot; and
+     * &amp;.
+     *
+     * Used for messages not in HTML context, such as with the `textContent`
+     * property.
+     * The value must be literal `true` or `false`.
+     */
+    unescapeHtmlEntities ? : boolean ;
+  }
   /**
    * A goog.module, transpiled or not. Will always perform some minimal
    * transformation even when not transpiled to wrap in a goog.loadModule
@@ -118,7 +165,7 @@ declare namespace goog {
      * @param provides goog.provided or goog.module symbols in this file.
      * @param requires goog symbols or relative paths to Closure this depends on.
      */
-    constructor (path : string , relativePath : string , provides : string [] , requires : string [] , loadFlags : { [ key: string ]: string } , needsTranspile : boolean , transpiler : goog.Transpiler ) ;
+    constructor (path : string , relativePath : string , provides : string [] , requires : string [] , loadFlags : { [ key: string ]: string } ) ;
     transform (contents : string ) : string ;
   }
   let LOAD_MODULE_USING_EVAL : boolean ;
@@ -187,8 +234,6 @@ declare namespace goog {
   }
   let SEAL_MODULE_EXPORTS : boolean ;
   let TRANSPILE : string ;
-  let TRANSPILER : string ;
-  let TRANSPILE_TO_LANGUAGE : string ;
   let TRUSTED_SITE : boolean ;
   let TRUSTED_TYPES_POLICY_NAME : string ;
   /**
@@ -208,35 +253,6 @@ declare namespace goog {
     constructor (path : string , relativePath : string , provides : string [] , requires : string [] , loadFlags : { [ key: string ]: string } ) ;
     load (controller : goog.LoadController ) : void ;
     abstract transform (contents : string ) : string ;
-  }
-  /**
-   * Any non-goog.module dependency which needs to be transpiled before eval.
-   */
-  class TranspiledDependency extends goog.TransformedDependency {
-    private noStructuralTyping_goog_TranspiledDependency : any;
-    /**
-     * Any non-goog.module dependency which needs to be transpiled before eval.
-     * @param path Absolute path of this script.
-     * @param relativePath Path of this script relative to goog.basePath.
-     * @param provides goog.provided or goog.module symbols in this file.
-     * @param requires goog symbols or relative paths to Closure this depends on.
-     */
-    constructor (path : string , relativePath : string , provides : string [] , requires : string [] , loadFlags : { [ key: string ]: string } , transpiler : goog.Transpiler ) ;
-    protected transpiler : goog.Transpiler ;
-    transform (contents : string ) : string ;
-  }
-  class Transpiler {
-    private noStructuralTyping_goog_Transpiler : any;
-    /**
-     * Determines whether the given language needs to be transpiled.
-     */
-    needsTranspile (lang : string , module : string | undefined ) : boolean ;
-    /**
-     * Lazily retrieves the transpiler and applies it to the source.
-     * @param code JS code.
-     * @param path Path to the code.
-     */
-    transpile (code : string , path : string ) : string ;
   }
   /**
    * When defining a class Foo with an abstract method bar(), you can do:
@@ -422,15 +438,6 @@ declare namespace goog {
    */
   function getCssName (className : string , opt_modifier ? : string ) : string ;
   /**
-   * This method is intended to be used for bookkeeping purposes.  We would
-   * like to distinguish uses of goog.LOCALE used for code stripping purposes
-   * and uses of goog.LOCALE for other uses (such as URL parameters).
-   *
-   * This allows us to ban direct uses of goog.LOCALE and to ensure that all
-   * code has been transformed to our new localization build scheme.
-   */
-  function getLocale ( ) : string ;
-  /**
    * Gets a localized message.
    *
    * This function is a compiler primitive. If you give the compiler a localized
@@ -447,9 +454,9 @@ declare namespace goog {
    * produce SafeHtml.
    * @param str Translatable string, places holders in the form {$foo}.
    * @param opt_values Maps place holder name to value.
-   * @param opt_options Options: html: Escape '<' in str to '&lt;'. Used by Closure Templates where the generated code size and performance is critical which is why {@link goog.html.SafeHtmlFormatter} is not used. The value must be literal true or false. unescapeHtmlEntities: Unescape common html entities: &gt;, &lt;, &apos;, &quot; and &amp;. Used for messages not in HTML context, such as with `textContent` property.
+   * @param opt_options see `goog.GetMsgOptions`
    */
-  function getMsg (str : string , opt_values ? : { [ key: string ]: string } | null , opt_options ? : { html ? : boolean , unescapeHtmlEntities ? : boolean } ) : string ;
+  function getMsg (str : string , opt_values ? : { [ key: string ]: string } , opt_options ? : goog.GetMsgOptions ) : string ;
   /**
    * Gets a localized message. If the message does not have a translation, gives a
    * fallback message.
@@ -555,20 +562,6 @@ declare namespace goog {
   function loadClosureDeps ( ) : void ;
   function loadModule (moduleDef : ( (a ? : any ) => any ) | string ) : void ;
   /**
-   * Copies all the members of a source object to a target object. This method
-   * does not work on all browsers for all objects that contain keys such as
-   * toString or hasOwnProperty. Use goog.object.extend for this purpose.
-   *
-   * NOTE: Some have advocated for the use of goog.mixin to setup classes
-   * with multiple inheritence (traits, mixins, etc).  However, as it simply
-   * uses "for in", this is not compatible with ES6 classes whose methods are
-   * non-enumerable.  Changing this, would break cases where non-enumerable
-   * properties are not expected.
-   * @param target Target.
-   * @param source Source.
-   */
-  function mixin (target : ಠ_ಠ.clutz.GlobalObject | null , source : ಠ_ಠ.clutz.GlobalObject | null ) : void ;
-  /**
    * Defines a module in Closure.
    *
    * Marks that this file must be loaded as a module and claims the namespace.
@@ -598,10 +591,6 @@ declare namespace goog {
    */
   function module (name : string ) : void ;
   function now ( ) : number ;
-  /**
-   * Null function used for default values of callbacks, etc.
-   */
-  function nullFunction ( ) : void ;
   /**
    * Like goog.bind(), except that a 'this object' is not required. Useful when
    * the target function is already bound.
@@ -721,7 +710,6 @@ declare namespace ಠ_ಠ.clutz.goog.global {
   //!! Intended to visit type alias 'goog.global.Function but type not found in Closure type registry.
   //!! Intended to visit type alias 'goog.global.Infinity but type not found in Closure type registry.
   //!! Intended to visit type alias 'goog.global.JSCompiler_renameProperty but type not found in Closure type registry.
-  //!! Intended to visit type alias 'goog.global.JSON but type not found in Closure type registry.
   //!! Intended to visit type alias 'goog.global.Map but type not found in Closure type registry.
   //!! Intended to visit type alias 'goog.global.Math but type not found in Closure type registry.
   //!! Intended to visit type alias 'goog.global.Number but type not found in Closure type registry.

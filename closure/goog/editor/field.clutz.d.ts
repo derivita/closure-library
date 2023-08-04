@@ -382,8 +382,9 @@ declare namespace ಠ_ಠ.clutz.goog.editor {
      * dispatching of events is stopped until startChangeEvents is called.
      * @param opt_stopChange Whether to ignore base change events.
      * @param opt_stopDelayedChange Whether to ignore delayed change events.
+     * @param opt_cancelPendingDelayedChange Whether to prevent any pending delayed change events from firing when we disable the event.
      */
-    stopChangeEvents (opt_stopChange ? : boolean , opt_stopDelayedChange ? : boolean ) : void ;
+    stopChangeEvents (opt_stopChange ? : boolean , opt_stopDelayedChange ? : boolean , opt_cancelPendingDelayedChange ? : boolean ) : void ;
     /**
      * Stops the event of the given type from being dispatched.
      * @param eventType type of event to stop.

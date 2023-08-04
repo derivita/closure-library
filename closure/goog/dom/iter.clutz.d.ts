@@ -20,10 +20,6 @@ declare namespace ಠ_ಠ.clutz.goog.dom.iter {
      */
     constructor (node : Node | null , opt_includeNode ? : boolean ) ;
     next ( ) : IteratorResult < Node > ;
-    /**
-     * TODO(user): Please do not remove - this will be cleaned up centrally.
-     */
-    nextValueOrThrow ( ) : Node ;
   }
 }
 declare module 'goog:goog.dom.iter.AncestorIterator' {
@@ -65,10 +61,6 @@ declare namespace ಠ_ಠ.clutz.goog.dom.iter {
      */
     constructor (node : Node | null , opt_includeNode ? : boolean , opt_reverse ? : boolean ) ;
     next ( ) : IteratorResult < Node > ;
-    /**
-     * TODO(user): Please do not remove - this will be cleaned up centrally.
-     */
-    nextValueOrThrow ( ) : Node ;
   }
 }
 declare module 'goog:goog.dom.iter.SiblingIterator' {

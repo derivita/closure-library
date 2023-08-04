@@ -47,6 +47,11 @@ declare namespace ಠ_ಠ.clutz.goog.editor.plugins {
      */
     protected handleBeforeTestLink (e : ಠ_ಠ.clutz.goog.ui.editor.LinkDialog.BeforeTestLinkEvent | null ) : void ;
     /**
+     * Handles the CANCEL event from the dialog by clearing the anchor if needed.
+     * @param e Event object.
+     */
+    protected handleCancel (e : ಠ_ಠ.clutz.goog.events.Event | null ) : void ;
+    /**
      * Handles the OK event from the dialog by updating the link in the field.
      * @param e OK event object.
      */

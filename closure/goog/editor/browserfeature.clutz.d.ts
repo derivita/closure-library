@@ -13,7 +13,7 @@ declare namespace ಠ_ಠ.clutz.goog.editor.BrowserFeature {
   let DOESNT_OVERRIDE_FONT_SIZE_IN_STYLE_ATTR : boolean ;
   let EATS_EMPTY_BACKGROUND_COLOR : any ;
   let FOCUSES_EDITABLE_BODY_ON_HTML_CLICK : boolean ;
-  let FOLLOWS_EDITABLE_LINKS : any ;
+  let FOLLOWS_EDITABLE_LINKS : boolean ;
   let FORGETS_FORMATTING_WHEN_LISTIFYING : any ;
   let FORMAT_BLOCK_WORKS_FOR_BLOCKQUOTES : any ;
   let GETS_STUCK_IN_LINKS : boolean ;
@@ -23,7 +23,7 @@ declare namespace ಠ_ಠ.clutz.goog.editor.BrowserFeature {
   let HAS_DOM_SUBTREE_MODIFIED_EVENT : any ;
   let HAS_IE_RANGES : boolean ;
   let HAS_SET_CAPTURE : any ;
-  let HAS_STYLE_WITH_CSS : any ;
+  let HAS_STYLE_WITH_CSS : boolean ;
   let HAS_UNSELECTABLE_STYLE : any ;
   let HAS_W3C_RANGES : boolean ;
   let LEAVES_P_WHEN_REMOVING_LISTS : any ;
@@ -38,14 +38,14 @@ declare namespace ಠ_ಠ.clutz.goog.editor.BrowserFeature {
   let SHOWS_CUSTOM_ATTRS_IN_INNER_HTML : any ;
   let SUPPORTS_FILE_PASTING : any ;
   let SUPPORTS_FOCUSIN : any ;
-  let SUPPORTS_HTML5_FILE_DRAGGING : any ;
+  let SUPPORTS_HTML5_FILE_DRAGGING : boolean ;
   let SUPPORTS_OPERA_DEFAULTBLOCK_COMMAND : boolean ;
   let TABS_THROUGH_IMAGES : any ;
   let TAB_FIRES_KEYPRESS : boolean ;
   let UNESCAPES_URLS_WITHOUT_ASKING : boolean ;
   let USES_KEYDOWN : boolean ;
   let USE_DOCUMENT_FOR_KEY_EVENTS : any ;
-  let USE_MUTATION_EVENTS : any ;
+  let USE_MUTATION_EVENTS : boolean ;
   let WRAPS_BLOCKQUOTE_IN_DIVS : boolean ;
 }
 declare module 'goog:goog.editor.BrowserFeature' {

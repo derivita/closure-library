@@ -96,11 +96,14 @@ closure_js_library(
         "//closure/goog/dom:inputtype",
         "//closure/goog/dom:nodeiterator",
         "//closure/goog/dom:nodetype",
+        "//closure/goog/dom:safe",
         "//closure/goog/dom:tagiterator",
         "//closure/goog/dom:tagname",
+        "//closure/goog/html:uncheckedconversions",
         "//closure/goog/iter",
         "//closure/goog/object",
         "//closure/goog/string",
+        "//closure/goog/string:const",
         "//closure/goog/style",
         "//closure/goog/useragent",
     ],
@@ -180,10 +183,10 @@ closure_js_library(
     srcs = ["jsunit.js", "jsunit.clutz.d.ts"],
     lenient = True,
     deps = [
+        ":asserts",
         ":testcase",
         ":testrunner",
         "//closure/goog/dom:tagname",
-        "//closure/goog/useragent",
     ],
 )
 
@@ -251,6 +254,7 @@ closure_js_library(
     deps = [
         ":propertyreplacer",
         "//closure/goog/asserts",
+        "//closure/goog/async:nexttick",
         "//closure/goog/async:run",
         "//closure/goog/disposable",
         "//closure/goog/promise",
@@ -438,8 +442,8 @@ closure_js_library(
     lenient = True,
     deps = [
         ":asserts",
+        "//closure/goog/functions",
         "//closure/goog/promise",
-        "//closure/goog/promise:resolver",
     ],
 )
 
@@ -487,7 +491,6 @@ closure_js_library(
     srcs = ["testcase.js", "testcase.clutz.d.ts"],
     lenient = True,
     deps = [
-        ":asserts",
         ":cspviolationobserver",
         ":jsunitexception",
         "//closure/goog/array",
@@ -535,7 +538,6 @@ closure_js_library(
         "//closure/goog/dom:safe",
         "//closure/goog/dom:tagname",
         "//closure/goog/json",
-        "//closure/goog/useragent",
     ],
 )
 

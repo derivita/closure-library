@@ -2,6 +2,28 @@
 // Generated from crypt/crypt.js
 declare namespace ಠ_ಠ.clutz.goog.crypt {
   /**
+   * Whether to async-throw on unicode input to the legacy versions of
+   * `goog.crypt.stringToByteArray` (i.e. when `throwSync` is false).
+   * NOTE: The default will change to `true` soon, after notifying users.
+   */
+  let ASYNC_THROW_ON_UNICODE_TO_BYTE : boolean ;
+  /**
+   * Test-only stub to make our use of async.throwException more testable.
+   */
+  let TEST_ONLY : { alwaysThrowSynchronously : boolean , throwException : any } ;
+  /**
+   * Turns a string into an array of bytes; a "byte" being a JS number in the
+   * range 0-255. Multi-byte characters will throw.
+   * @param str String value to arrify.
+   */
+  function binaryStringToByteArray (str : string ) : number [] ;
+  /**
+   * Turns an array of numbers into the string given by the concatenation of the
+   * characters to which the numbers correspond.
+   * @param bytes Array of numbers representing characters.
+   */
+  function byteArrayToBinaryString (bytes : Uint8Array | number [] ) : string ;
+  /**
    * Turns an array of numbers into the hex string given by the concatenation of
    * the hex values to which the numbers correspond.
    * @param array Array of numbers representing characters.
@@ -15,6 +37,11 @@ declare namespace ಠ_ಠ.clutz.goog.crypt {
    */
   function byteArrayToString (bytes : Uint8Array | number [] ) : string ;
   /**
+   * Converts a UTF-8 byte array to JavaScript's 16-bit Unicode.
+   * @param bytes UTF-8 byte array.
+   */
+  function byteArrayToText (bytes : Uint8Array | null | number [] ) : string ;
+  /**
    * Converts a hex string into an integer array.
    * @param hexString Hex string of 16-bit integers (two characters per integer).
    */
@@ -23,13 +50,19 @@ declare namespace ಠ_ಠ.clutz.goog.crypt {
    * Turns a string into an array of bytes; a "byte" being a JS number in the
    * range 0-255. Multi-byte characters are written as little-endian.
    * @param str String value to arrify.
+   * @param throwSync Whether to throw synchronously.
    */
-  function stringToByteArray (str : string ) : number [] ;
+  function stringToByteArray (str : string , throwSync ? : boolean ) : number [] ;
   /**
    * Converts a JS string to a UTF-8 "byte" array.
    * @param str 16-bit unicode string.
    */
   function stringToUtf8ByteArray (str : string ) : number [] ;
+  /**
+   * Converts a JS string to a UTF-8 "byte" array.
+   * @param str 16-bit unicode string.
+   */
+  function textToByteArray (str : string ) : number [] ;
   /**
    * Converts a UTF-8 byte array to JavaScript's 16-bit Unicode.
    * @param bytes UTF-8 byte array.

@@ -372,6 +372,34 @@ declare module 'goog:goog.i18n.CompactNumberFormatSymbols_bg_BG' {
   export default CompactNumberFormatSymbols_bg_BG;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_bgc : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_bgc' {
+  import CompactNumberFormatSymbols_bgc = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_bgc;
+  export default CompactNumberFormatSymbols_bgc;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_bgc_IN : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_bgc_IN' {
+  import CompactNumberFormatSymbols_bgc_IN = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_bgc_IN;
+  export default CompactNumberFormatSymbols_bgc_IN;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_bho : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_bho' {
+  import CompactNumberFormatSymbols_bho = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_bho;
+  export default CompactNumberFormatSymbols_bho;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_bho_IN : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_bho_IN' {
+  import CompactNumberFormatSymbols_bho_IN = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_bho_IN;
+  export default CompactNumberFormatSymbols_bho_IN;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
   let CompactNumberFormatSymbols_bm : any;
 }
 declare module 'goog:goog.i18n.CompactNumberFormatSymbols_bm' {
@@ -615,6 +643,20 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.CompactNumberFormatSymbols_cs_CZ' {
   import CompactNumberFormatSymbols_cs_CZ = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_cs_CZ;
   export default CompactNumberFormatSymbols_cs_CZ;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_cv : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_cv' {
+  import CompactNumberFormatSymbols_cv = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_cv;
+  export default CompactNumberFormatSymbols_cv;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_cv_RU : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_cv_RU' {
+  import CompactNumberFormatSymbols_cv_RU = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_cv_RU;
+  export default CompactNumberFormatSymbols_cv_RU;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   let CompactNumberFormatSymbols_cy_GB : any;
@@ -1210,6 +1252,13 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.CompactNumberFormatSymbols_en_MU' {
   import CompactNumberFormatSymbols_en_MU = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_en_MU;
   export default CompactNumberFormatSymbols_en_MU;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_en_MV : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_en_MV' {
+  import CompactNumberFormatSymbols_en_MV = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_en_MV;
+  export default CompactNumberFormatSymbols_en_MV;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   let CompactNumberFormatSymbols_en_MW : any;
@@ -2444,6 +2493,20 @@ declare module 'goog:goog.i18n.CompactNumberFormatSymbols_hi_IN' {
   export default CompactNumberFormatSymbols_hi_IN;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_hi_Latn : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_hi_Latn' {
+  import CompactNumberFormatSymbols_hi_Latn = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_hi_Latn;
+  export default CompactNumberFormatSymbols_hi_Latn;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_hi_Latn_IN : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_hi_Latn_IN' {
+  import CompactNumberFormatSymbols_hi_Latn_IN = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_hi_Latn_IN;
+  export default CompactNumberFormatSymbols_hi_Latn_IN;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
   let CompactNumberFormatSymbols_hr_BA : any;
 }
 declare module 'goog:goog.i18n.CompactNumberFormatSymbols_hr_BA' {
@@ -2682,6 +2745,20 @@ declare module 'goog:goog.i18n.CompactNumberFormatSymbols_kea_CV' {
   export default CompactNumberFormatSymbols_kea_CV;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_kgp : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_kgp' {
+  import CompactNumberFormatSymbols_kgp = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_kgp;
+  export default CompactNumberFormatSymbols_kgp;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_kgp_BR : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_kgp_BR' {
+  import CompactNumberFormatSymbols_kgp_BR = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_kgp_BR;
+  export default CompactNumberFormatSymbols_kgp_BR;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
   let CompactNumberFormatSymbols_khq : any;
 }
 declare module 'goog:goog.i18n.CompactNumberFormatSymbols_khq' {
@@ -2820,6 +2897,20 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.CompactNumberFormatSymbols_ks_Arab_IN' {
   import CompactNumberFormatSymbols_ks_Arab_IN = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_ks_Arab_IN;
   export default CompactNumberFormatSymbols_ks_Arab_IN;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_ks_Deva : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_ks_Deva' {
+  import CompactNumberFormatSymbols_ks_Deva = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_ks_Deva;
+  export default CompactNumberFormatSymbols_ks_Deva;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_ks_Deva_IN : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_ks_Deva_IN' {
+  import CompactNumberFormatSymbols_ks_Deva_IN = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_ks_Deva_IN;
+  export default CompactNumberFormatSymbols_ks_Deva_IN;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   let CompactNumberFormatSymbols_ksb : any;
@@ -3697,6 +3788,20 @@ declare module 'goog:goog.i18n.CompactNumberFormatSymbols_qu_PE' {
   export default CompactNumberFormatSymbols_qu_PE;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_raj : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_raj' {
+  import CompactNumberFormatSymbols_raj = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_raj;
+  export default CompactNumberFormatSymbols_raj;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_raj_IN : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_raj_IN' {
+  import CompactNumberFormatSymbols_raj_IN = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_raj_IN;
+  export default CompactNumberFormatSymbols_raj_IN;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
   let CompactNumberFormatSymbols_rm : any;
 }
 declare module 'goog:goog.i18n.CompactNumberFormatSymbols_rm' {
@@ -3898,6 +4003,20 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.CompactNumberFormatSymbols_sbp_TZ' {
   import CompactNumberFormatSymbols_sbp_TZ = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_sbp_TZ;
   export default CompactNumberFormatSymbols_sbp_TZ;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_sc : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_sc' {
+  import CompactNumberFormatSymbols_sc = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_sc;
+  export default CompactNumberFormatSymbols_sc;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_sc_IT : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_sc_IT' {
+  import CompactNumberFormatSymbols_sc_IT = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_sc_IT;
+  export default CompactNumberFormatSymbols_sc_IT;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   let CompactNumberFormatSymbols_sd : any;
@@ -4696,6 +4815,34 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.CompactNumberFormatSymbols_yo_NG' {
   import CompactNumberFormatSymbols_yo_NG = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_yo_NG;
   export default CompactNumberFormatSymbols_yo_NG;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_yrl : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_yrl' {
+  import CompactNumberFormatSymbols_yrl = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_yrl;
+  export default CompactNumberFormatSymbols_yrl;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_yrl_BR : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_yrl_BR' {
+  import CompactNumberFormatSymbols_yrl_BR = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_yrl_BR;
+  export default CompactNumberFormatSymbols_yrl_BR;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_yrl_CO : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_yrl_CO' {
+  import CompactNumberFormatSymbols_yrl_CO = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_yrl_CO;
+  export default CompactNumberFormatSymbols_yrl_CO;
+}
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  let CompactNumberFormatSymbols_yrl_VE : any;
+}
+declare module 'goog:goog.i18n.CompactNumberFormatSymbols_yrl_VE' {
+  import CompactNumberFormatSymbols_yrl_VE = ಠ_ಠ.clutz.goog.i18n.CompactNumberFormatSymbols_yrl_VE;
+  export default CompactNumberFormatSymbols_yrl_VE;
 }
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   let CompactNumberFormatSymbols_yue : any;

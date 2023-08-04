@@ -51,7 +51,7 @@ declare namespace ಠ_ಠ.clutz.goog.debug {
      * is thrown from a protected function, a handler will be invoked to handle it.
      * @param fn An entry point function to be protected.
      */
-    protectEntryPoint (fn : Function | null ) : Function ;
+    protectEntryPoint (fn : Function ) : Function ;
     protectWindowRequestAnimationFrame ( ) : void ;
     protectWindowSetInterval ( ) : void ;
     protectWindowSetTimeout ( ) : void ;

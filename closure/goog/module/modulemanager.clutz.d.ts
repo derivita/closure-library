@@ -16,7 +16,7 @@ declare namespace ಠ_ಠ.clutz.goog.module {
      * A mapping from module id to ModuleInfo object.
      */
     protected moduleInfoMap : { [ key: string ]: ಠ_ಠ.clutz.goog.module.ModuleInfo } ;
-    addExtraEdge (fromModule ? : any , toModule ? : any ) : void ;
+    addExtraEdge (fromModule : string , toModule : string ) : void ;
     beforeLoadModuleCode (id ? : any ) : void ;
     dispose ( ) : void ;
     execOnLoad (moduleId ? : any , fn ? : any , opt_handler ? : any , opt_noLoad ? : any , opt_userInitiated ? : any , opt_preferSynchronous ? : any ) : any ;
@@ -32,7 +32,7 @@ declare namespace ಠ_ಠ.clutz.goog.module {
     registerCallback (types ? : any , fn ? : any ) : void ;
     registerInitializationCallback (fn ? : any , opt_handler ? : any ) : void ;
     registerLateInitializationCallback (fn ? : any , opt_handler ? : any ) : void ;
-    removeExtraEdge (fromModule ? : any , toModule ? : any ) : void ;
+    removeExtraEdge (fromModule : string , toModule : string ) : void ;
     setAllModuleInfo (infoMap ? : any ) : void ;
     setAllModuleInfoString (opt_info ? : any , opt_loadingModuleIds ? : any ) : void ;
     setBatchModeEnabled (enabled ? : any ) : void ;
@@ -62,8 +62,8 @@ declare namespace ಠ_ಠ.clutz.goog.module.ModuleManager {
      * Error used to indicate a module has failed.
      * @param moduleID The id of the module that didn't load.
      */
-    constructor (moduleID : string , failureType : ಠ_ಠ.clutz.goog.loader.AbstractModuleManager.FailureType | null ) ;
-    failureType : ಠ_ಠ.clutz.goog.loader.AbstractModuleManager.FailureType | null ;
+    constructor (moduleID : string , failureType : ಠ_ಠ.clutz.goog.module.ModuleLoadFailure | null ) ;
+    failureType : ಠ_ಠ.clutz.goog.module.ModuleLoadFailure | null ;
   }
 }
 declare module 'goog:goog.module.ModuleManager' {
@@ -81,16 +81,4 @@ declare namespace ಠ_ಠ.clutz.goog.module.ModuleManager {
 declare module 'goog:goog.module.ModuleManager.CallbackType' {
   import CallbackType = ಠ_ಠ.clutz.goog.module.ModuleManager.CallbackType;
   export default CallbackType;
-}
-// Generated from module/modulemanager.js
-declare namespace ಠ_ಠ.clutz.goog.module.ModuleManager {
-  /**
-   * The possible reasons for a module load failure callback being fired.
-   */
-  //!! goog.module.ModuleManager.FailureType aliases enum goog.module.ModuleLoadFailureType
-  export import FailureType = goog.module.ModuleLoadFailureType ;
-}
-declare module 'goog:goog.module.ModuleManager.FailureType' {
-  import FailureType = ಠ_ಠ.clutz.goog.module.ModuleManager.FailureType;
-  export default FailureType;
 }

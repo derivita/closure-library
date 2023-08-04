@@ -582,6 +582,50 @@ declare module 'goog:goog.i18n.DateTimeSymbols_bg_BG' {
 // Generated from i18n/datetimesymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Date/time formatting symbols for locale bgc.
+   */
+  let DateTimeSymbols_bgc : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_bgc' {
+  import DateTimeSymbols_bgc = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_bgc;
+  export default DateTimeSymbols_bgc;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale bgc_IN.
+   */
+  let DateTimeSymbols_bgc_IN : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_bgc_IN' {
+  import DateTimeSymbols_bgc_IN = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_bgc_IN;
+  export default DateTimeSymbols_bgc_IN;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale bho.
+   */
+  let DateTimeSymbols_bho : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_bho' {
+  import DateTimeSymbols_bho = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_bho;
+  export default DateTimeSymbols_bho;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale bho_IN.
+   */
+  let DateTimeSymbols_bho_IN : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_bho_IN' {
+  import DateTimeSymbols_bho_IN = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_bho_IN;
+  export default DateTimeSymbols_bho_IN;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Date/time formatting symbols for locale bm.
    */
   let DateTimeSymbols_bm : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
@@ -963,6 +1007,28 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.DateTimeSymbols_cs_CZ' {
   import DateTimeSymbols_cs_CZ = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_cs_CZ;
   export default DateTimeSymbols_cs_CZ;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale cv.
+   */
+  let DateTimeSymbols_cv : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_cv' {
+  import DateTimeSymbols_cv = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_cv;
+  export default DateTimeSymbols_cv;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale cv_RU.
+   */
+  let DateTimeSymbols_cv_RU : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_cv_RU' {
+  import DateTimeSymbols_cv_RU = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_cv_RU;
+  export default DateTimeSymbols_cv_RU;
 }
 // Generated from i18n/datetimesymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -1898,6 +1964,17 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.DateTimeSymbols_en_MU' {
   import DateTimeSymbols_en_MU = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_en_MU;
   export default DateTimeSymbols_en_MU;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale en_MV.
+   */
+  let DateTimeSymbols_en_MV : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_en_MV' {
+  import DateTimeSymbols_en_MV = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_en_MV;
+  export default DateTimeSymbols_en_MV;
 }
 // Generated from i18n/datetimesymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -3838,6 +3915,28 @@ declare module 'goog:goog.i18n.DateTimeSymbols_hi_IN' {
 // Generated from i18n/datetimesymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Date/time formatting symbols for locale hi_Latn.
+   */
+  let DateTimeSymbols_hi_Latn : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_hi_Latn' {
+  import DateTimeSymbols_hi_Latn = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_hi_Latn;
+  export default DateTimeSymbols_hi_Latn;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale hi_Latn_IN.
+   */
+  let DateTimeSymbols_hi_Latn_IN : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_hi_Latn_IN' {
+  import DateTimeSymbols_hi_Latn_IN = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_hi_Latn_IN;
+  export default DateTimeSymbols_hi_Latn_IN;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Date/time formatting symbols for locale hr_BA.
    */
   let DateTimeSymbols_hr_BA : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
@@ -4212,6 +4311,28 @@ declare module 'goog:goog.i18n.DateTimeSymbols_kea_CV' {
 // Generated from i18n/datetimesymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Date/time formatting symbols for locale kgp.
+   */
+  let DateTimeSymbols_kgp : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_kgp' {
+  import DateTimeSymbols_kgp = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_kgp;
+  export default DateTimeSymbols_kgp;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale kgp_BR.
+   */
+  let DateTimeSymbols_kgp_BR : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_kgp_BR' {
+  import DateTimeSymbols_kgp_BR = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_kgp_BR;
+  export default DateTimeSymbols_kgp_BR;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Date/time formatting symbols for locale khq.
    */
   let DateTimeSymbols_khq : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
@@ -4428,6 +4549,28 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.DateTimeSymbols_ks_Arab_IN' {
   import DateTimeSymbols_ks_Arab_IN = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_ks_Arab_IN;
   export default DateTimeSymbols_ks_Arab_IN;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale ks_Deva.
+   */
+  let DateTimeSymbols_ks_Deva : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_ks_Deva' {
+  import DateTimeSymbols_ks_Deva = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_ks_Deva;
+  export default DateTimeSymbols_ks_Deva;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale ks_Deva_IN.
+   */
+  let DateTimeSymbols_ks_Deva_IN : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_ks_Deva_IN' {
+  import DateTimeSymbols_ks_Deva_IN = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_ks_Deva_IN;
+  export default DateTimeSymbols_ks_Deva_IN;
 }
 // Generated from i18n/datetimesymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -5807,6 +5950,28 @@ declare module 'goog:goog.i18n.DateTimeSymbols_qu_PE' {
 // Generated from i18n/datetimesymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
   /**
+   * Date/time formatting symbols for locale raj.
+   */
+  let DateTimeSymbols_raj : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_raj' {
+  import DateTimeSymbols_raj = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_raj;
+  export default DateTimeSymbols_raj;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale raj_IN.
+   */
+  let DateTimeSymbols_raj_IN : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_raj_IN' {
+  import DateTimeSymbols_raj_IN = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_raj_IN;
+  export default DateTimeSymbols_raj_IN;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
    * Date/time formatting symbols for locale rm.
    */
   let DateTimeSymbols_rm : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
@@ -6122,6 +6287,28 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.DateTimeSymbols_sbp_TZ' {
   import DateTimeSymbols_sbp_TZ = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_sbp_TZ;
   export default DateTimeSymbols_sbp_TZ;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale sc.
+   */
+  let DateTimeSymbols_sc : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_sc' {
+  import DateTimeSymbols_sc = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_sc;
+  export default DateTimeSymbols_sc;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale sc_IT.
+   */
+  let DateTimeSymbols_sc_IT : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_sc_IT' {
+  import DateTimeSymbols_sc_IT = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_sc_IT;
+  export default DateTimeSymbols_sc_IT;
 }
 // Generated from i18n/datetimesymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {
@@ -7376,6 +7563,50 @@ declare namespace ಠ_ಠ.clutz.goog.i18n {
 declare module 'goog:goog.i18n.DateTimeSymbols_yo_NG' {
   import DateTimeSymbols_yo_NG = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_yo_NG;
   export default DateTimeSymbols_yo_NG;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale yrl.
+   */
+  let DateTimeSymbols_yrl : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_yrl' {
+  import DateTimeSymbols_yrl = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_yrl;
+  export default DateTimeSymbols_yrl;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale yrl_BR.
+   */
+  let DateTimeSymbols_yrl_BR : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_yrl_BR' {
+  import DateTimeSymbols_yrl_BR = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_yrl_BR;
+  export default DateTimeSymbols_yrl_BR;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale yrl_CO.
+   */
+  let DateTimeSymbols_yrl_CO : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_yrl_CO' {
+  import DateTimeSymbols_yrl_CO = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_yrl_CO;
+  export default DateTimeSymbols_yrl_CO;
+}
+// Generated from i18n/datetimesymbolsext.js
+declare namespace ಠ_ಠ.clutz.goog.i18n {
+  /**
+   * Date/time formatting symbols for locale yrl_VE.
+   */
+  let DateTimeSymbols_yrl_VE : ಠ_ಠ.clutz.goog.i18n.DateTimeSymbolsType ;
+}
+declare module 'goog:goog.i18n.DateTimeSymbols_yrl_VE' {
+  import DateTimeSymbols_yrl_VE = ಠ_ಠ.clutz.goog.i18n.DateTimeSymbols_yrl_VE;
+  export default DateTimeSymbols_yrl_VE;
 }
 // Generated from i18n/datetimesymbolsext.js
 declare namespace ಠ_ಠ.clutz.goog.i18n {

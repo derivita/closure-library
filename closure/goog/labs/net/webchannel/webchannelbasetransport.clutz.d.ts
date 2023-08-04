@@ -25,6 +25,18 @@ declare namespace ಠ_ಠ.clutz.goog.labs.net.webChannel.WebChannelBaseTransport
     disposeInternal ( ) : void ;
     getRuntimeProperties ( ) : any ;
     halfClose ( ) : any ;
+    /**
+     * Converts the map used by the underlying channel to a message.
+     *
+     * NOTE: In the case of the message being JS Object or string, the exact same
+     * object passed during `messageToMapObject_()` is returned. In the case of raw
+     * JSON, an equal (but not the same) object is returned (due to serialization).
+     */
+    mapObjectToMessage_ (map : GlobalObject | ಠ_ಠ.clutz.goog.collections.maps.MapLike ) : ಠ_ಠ.clutz.goog.net.WebChannel.MessageData ;
+    /**
+     * Converts a message to the map used by the underlying channel.
+     */
+    messageToMapObject_ (message : ಠ_ಠ.clutz.goog.net.WebChannel.MessageData ) : GlobalObject | ಠ_ಠ.clutz.goog.collections.maps.MapLike ;
     open ( ) : void ;
     /**
      * The WebChannelBase only supports object types.
@@ -36,15 +48,17 @@ declare namespace ಠ_ಠ.clutz.goog.labs.net.webChannel.WebChannelBaseTransport
     private noStructuralTyping_goog_labs_net_webChannel_WebChannelBaseTransport_ChannelProperties : any;
     /**
      * Implementation of the {@link goog.net.WebChannel.RuntimeProperties}.
+     * @param transportChannel The transport channel object.
      * @param channel The underlying channel object.
      */
-    constructor (channel : ಠ_ಠ.clutz.goog.labs.net.webChannel.WebChannelBase ) ;
+    constructor (transportChannel : ಠ_ಠ.clutz.goog.labs.net.webChannel.WebChannelBaseTransport.Channel , channel : ಠ_ಠ.clutz.goog.labs.net.webChannel.WebChannelBase ) ;
     ackCommit ( ...a : any [] ) : any ;
     commit (callback ? : any ) : void ;
     getConcurrentRequestLimit ( ) : any ;
     getHttpSessionId ( ) : any ;
+    getLastResponseHeaders ( ) : { [ key: string ]: string } | undefined ;
     getLastStatusCode ( ) : any ;
-    getNonAckedMessageCount ( ...a : any [] ) : any ;
+    getNonAckedMessages ( ) : ಠ_ಠ.clutz.goog.net.WebChannel.MessageData [] ;
     getPendingRequestCount ( ) : any ;
     isSpdyEnabled ( ) : any ;
     notifyNonAckedMessageCount ( ...a : any [] ) : any ;
@@ -78,7 +92,9 @@ declare namespace ಠ_ಠ.clutz.goog.labs.net.webChannel.WebChannelBaseTransport
      */
     constructor (array : GlobalObject ) ;
     data : any ;
+    headers : any ;
     metadataKey : any ;
+    statusCode : any ;
   }
 }
 declare module 'goog:goog.labs.net.webChannel.WebChannelBaseTransport' {

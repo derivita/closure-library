@@ -4,19 +4,6 @@ declare namespace ಠ_ಠ.clutz.goog.string {
   let DETECT_DOUBLE_ESCAPING : boolean ;
   let FORCE_NON_DOM_HTML_UNESCAPING : boolean ;
   /**
-   * Concatenates string expressions. This is useful
-   * since some browsers are very inefficient when it comes to using plus to
-   * concat strings. Be careful when using null and undefined here since
-   * these will not be included in the result. If you need to represent these
-   * be sure to cast the argument to a String first.
-   * For example:
-   * <pre>buildString('a', 'b', 'c', 'd') -> 'abcd'
-   * buildString(null, undefined) -> ''
-   * </pre>
-   * @param var_args A list of strings to concatenate. If not a string, it will be casted to one.
-   */
-  function buildString ( ...var_args : any [] ) : string ;
-  /**
    * Replaces Windows and Mac new lines with unix style: \r or \r\n with \n.
    * @param str The string to in which to canonicalize newlines.
    */
@@ -569,6 +556,7 @@ declare namespace ಠ_ಠ.clutz.goog.string {
    */
   enum Unicode {
     NBSP = '\u00A0' ,
+    ZERO_WIDTH_SPACE = '\u200B' ,
   }
 }
 declare module 'goog:goog.string.Unicode' {

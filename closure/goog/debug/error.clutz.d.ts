@@ -29,7 +29,7 @@ declare namespace ಠ_ಠ.clutz {
      * logged on the server.
      */
     reportErrorToServer : boolean ;
-    stack : any ;
+    stack : string ;
     name : string ;
   }
 }

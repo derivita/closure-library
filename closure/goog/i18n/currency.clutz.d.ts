@@ -2,6 +2,43 @@
 // Generated from i18n/currency.js
 declare namespace ಠ_ಠ.clutz.goog.i18n.currency {
   /**
+   * Tier 1 currency information.
+   *
+   * Format of the info array:
+   * 0. {number} the sum of "decimal precision", the "space" bit, and the
+   * "currency sign last" bit.
+   * 1. {string} The global currency sign. See `getGlobalCurrencySign`.
+   * 2. {string} The portable currency sign. See `getPortableCurrencySign`.
+   *
+   * "Decimal precision" is an integer [0..7]; the count of digits to display past
+   * the decimal point.
+   *
+   * "Space" bit mask = 32; whether a space should be inserted between the
+   * currency sign and number.
+   *
+   * "Currency sign last" bit mask = 16; whether the currency sign should be
+   * positioned after the number.
+   *
+   * Examples for info[0]:
+   * 0: no precision (0), currency sign first (0), no space (0)
+   * 2: two decimals precision (2), currency sign first (0), no space (0)
+   * 18: two decimals precision (2), currency sign last (16), no space (0)
+   * 50: two decimals precision (2), currency sign last (16), space (32)
+   *
+   * It's not recommended to read this data directly. Format numbers using
+   * {@link goog.i18n.NumberFormat} with
+   * {@link goog.i18n.NumberFormat.Format.CURRENCY} instead.
+   */
+  let CurrencyInfo : { [ /* warning: coerced from ? */ key: string ]: any [] } ;
+  /**
+   * Tier 2 currency information.
+   *
+   * It's not recommended to read this data directly. Format numbers using
+   * {@link goog.i18n.NumberFormat} with
+   * {@link goog.i18n.NumberFormat.Format.CURRENCY} instead.
+   */
+  let CurrencyInfoTier2 : { [ /* warning: coerced from ? */ key: string ]: any [] } ;
+  /**
    * This function will add tier2 currency support. Be default, only tier1
    * (most popular currencies) are supported. If an application really needs
    * to support some of the rarely used currencies, it should call this function
@@ -127,55 +164,4 @@ declare namespace ಠ_ಠ.clutz.goog.i18n.currency {
 declare module 'goog:goog.i18n.currency' {
   import currency = ಠ_ಠ.clutz.goog.i18n.currency;
   export = currency;
-}
-// Generated from i18n/currency.js
-declare namespace ಠ_ಠ.clutz.goog.i18n.currency {
-  /**
-   * Tier 1 currency information.
-   *
-   * Format of the info array:
-   * 0. {number} the sum of "decimal precision", the "space" bit, and the
-   * "currency sign last" bit.
-   * 1. {string} The global currency sign. See `getGlobalCurrencySign`.
-   * 2. {string} The portable currency sign. See `getPortableCurrencySign`.
-   *
-   * "Decimal precision" is an integer [0..7]; the count of digits to display past
-   * the decimal point.
-   *
-   * "Space" bit mask = 32; whether a space should be inserted between the
-   * currency sign and number.
-   *
-   * "Currency sign last" bit mask = 16; whether the currency sign should be
-   * positioned after the number.
-   *
-   * Examples for info[0]:
-   * 0: no precision (0), currency sign first (0), no space (0)
-   * 2: two decimals precision (2), currency sign first (0), no space (0)
-   * 18: two decimals precision (2), currency sign last (16), no space (0)
-   * 50: two decimals precision (2), currency sign last (16), space (32)
-   *
-   * It's not recommended to read this data directly. Format numbers using
-   * {@link goog.i18n.NumberFormat} with
-   * {@link goog.i18n.NumberFormat.Format.CURRENCY} instead.
-   */
-  let CurrencyInfo : { [ /* warning: coerced from ? */ key: string ]: any [] } ;
-}
-declare module 'goog:goog.i18n.currency.CurrencyInfo' {
-  import CurrencyInfo = ಠ_ಠ.clutz.goog.i18n.currency.CurrencyInfo;
-  export default CurrencyInfo;
-}
-// Generated from i18n/currency.js
-declare namespace ಠ_ಠ.clutz.goog.i18n.currency {
-  /**
-   * Tier 2 currency information.
-   *
-   * It's not recommended to read this data directly. Format numbers using
-   * {@link goog.i18n.NumberFormat} with
-   * {@link goog.i18n.NumberFormat.Format.CURRENCY} instead.
-   */
-  let CurrencyInfoTier2 : { [ /* warning: coerced from ? */ key: string ]: any [] } ;
-}
-declare module 'goog:goog.i18n.currency.CurrencyInfoTier2' {
-  import CurrencyInfoTier2 = ಠ_ಠ.clutz.goog.i18n.currency.CurrencyInfoTier2;
-  export default CurrencyInfoTier2;
 }

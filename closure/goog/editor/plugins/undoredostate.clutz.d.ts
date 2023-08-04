@@ -19,6 +19,10 @@ declare namespace ಠ_ಠ.clutz.goog.editor.plugins {
     isAsynchronous ( ) : boolean ;
     redo ( ...a : any [] ) : any ;
     undo ( ...a : any [] ) : any ;
+    /**
+     * Event type for events indicating that this state has completed an undo or
+     * redo operation.
+     */
     static ACTION_COMPLETED : string ;
   }
 }

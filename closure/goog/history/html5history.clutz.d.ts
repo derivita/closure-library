@@ -23,6 +23,7 @@ declare namespace ಠ_ಠ.clutz.goog.history {
      * Returns the current token.
      */
     getToken ( ) : string ;
+    getUseFragment ( ) : boolean ;
     /**
      * Replaces the current history state without affecting the rest of the history
      * stack.

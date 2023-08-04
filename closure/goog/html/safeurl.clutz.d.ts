@@ -31,7 +31,7 @@ declare namespace ಠ_ಠ.clutz.goog.html {
    * type is immutable; hence only a default instance corresponding to the empty
    * string can be obtained via constructor invocation.
    */
-  class SafeUrl implements ಠ_ಠ.clutz.goog.i18n.bidi.DirectionalString , ಠ_ಠ.clutz.goog.string.TypedString {
+  class SafeUrl implements ಠ_ಠ.clutz.goog.string.TypedString {
     private noStructuralTyping_goog_html_SafeUrl : any;
     /**
      * A string that is safe to use in URL context in DOM APIs and HTML documents.
@@ -65,10 +65,6 @@ declare namespace ಠ_ಠ.clutz.goog.html {
      */
     constructor (value : string , token : GlobalObject ) ;
     /**
-     * Returns this URLs directionality, which is always `LTR`.
-     */
-    getDirection ( ) : ಠ_ಠ.clutz.goog.i18n.bidi.Dir ;
-    /**
      * Returns this SafeUrl's value as a string.
      *
      * IMPORTANT: In code where it is security relevant that an object's type is
@@ -85,7 +81,6 @@ declare namespace ಠ_ಠ.clutz.goog.html {
      * attribute, as opposed to embedding in a href attribute).
      */
     getTypedStringValue ( ) : any ;
-    implementsGoogI18nBidiDirectionalString : boolean ;
     implementsGoogStringTypedString : boolean ;
     /**
      * Returns a string-representation of this value.
@@ -130,6 +125,12 @@ declare namespace ಠ_ಠ.clutz.goog.html {
      * TODO(bangert): Remove SAFE_URL_PATTERN_
      */
     static SAFE_URL_PATTERN : RegExp ;
+    /**
+     * Extracts the scheme from the given URL. If the URL is relative, https: is
+     * assumed.
+     * @param url The URL to extract the scheme from.
+     */
+    static extractScheme (url : string ) : string | undefined ;
     /**
      * Creates a SafeUrl wrapping a blob URL for the given `blob`.
      *
@@ -252,6 +253,17 @@ declare namespace ಠ_ಠ.clutz.goog.html {
      * @param extensionId The extension id to accept, as a compile-time constant or an array of those.
      */
     static sanitizeFirefoxExtensionUrl (url : string , extensionId : ಠ_ಠ.clutz.goog.string.Const | ಠ_ಠ.clutz.goog.string.Const [] ) : ಠ_ಠ.clutz.goog.html.SafeUrl ;
+    /**
+     * Creates a SafeUrl object from `url`. If `url` is a
+     * `goog.html.SafeUrl` then it is simply returned. Otherwise javascript: URLs
+     * are rejected.
+     *
+     * This function asserts (using goog.asserts) that the URL scheme is not
+     * javascript. If it is, in addition to failing the assert, an innocuous URL
+     * will be returned.
+     * @param url The URL to validate.
+     */
+    static sanitizeJavascriptUrlAssertUnchanged (url : string | ಠ_ಠ.clutz.goog.string.TypedString ) : ಠ_ಠ.clutz.goog.html.SafeUrl ;
     /**
      * Attempts to create a SafeUrl wrapping a `data:` URL, after validating it
      * matches a known-safe media MIME type. If it doesn't match, return `null`.

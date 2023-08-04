@@ -14,9 +14,20 @@ declare namespace ಠ_ಠ.clutz.goog.labs.userAgent.platform {
   function isMacintosh ( ) : boolean ;
   function isVersionOrHigher (version : string | number ) : boolean ;
   function isWindows ( ) : boolean ;
-  let version : ಠ_ಠ.clutz.module$exports$goog$labs$userAgent$highEntropy$highEntropyValue.AsyncValue < ಠ_ಠ.clutz.module$exports$goog$labs$userAgent$highEntropy$highEntropyValue.Version > ;
+  let version : module$contents$goog$labs$userAgent$platform_PlatformVersion ;
 }
 declare module 'goog:goog.labs.userAgent.platform' {
   import platform = ಠ_ಠ.clutz.goog.labs.userAgent.platform;
   export = platform;
+}
+// Generated from labs/useragent/platform.js
+declare namespace ಠ_ಠ.clutz {
+  /**
+   * Represents a high-entropy version string.
+   */
+  class module$contents$goog$labs$userAgent$platform_PlatformVersion implements ಠ_ಠ.clutz.module$exports$goog$labs$userAgent$highEntropy$highEntropyValue.AsyncValue < ಠ_ಠ.clutz.module$exports$goog$labs$userAgent$highEntropy$highEntropyValue.Version > {
+    private noStructuralTyping_module$contents$goog$labs$userAgent$platform_PlatformVersion : any;
+    getIfLoaded ( ) : ಠ_ಠ.clutz.module$exports$goog$labs$userAgent$highEntropy$highEntropyValue.Version | undefined ;
+    load ( ) : Promise < ಠ_ಠ.clutz.module$exports$goog$labs$userAgent$highEntropy$highEntropyValue.Version > ;
+  }
 }

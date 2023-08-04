@@ -34,7 +34,7 @@ declare namespace ಠ_ಠ.clutz.goog.ui {
     /**
      * Constants for event names.
      */
-    static Events : { TOGGLE_ANIMATION_BEGIN : any , TOGGLE_ANIMATION_END : any } ;
+    static Events : { TOGGLE_ANIMATION_BEGIN : string , TOGGLE_ANIMATION_END : string } ;
   }
 }
 declare module 'goog:goog.ui.AnimatedZippy' {

@@ -50,7 +50,6 @@ declare namespace ಠ_ಠ.clutz {
     constructor (iter : Iterator < VALUE > ) ;
     iter_ : Iterator < VALUE > ;
     next ( ) : IteratorResult < VALUE > ;
-    nextValueOrThrow ( ) : any ;
     toEs6 ( ) : module$contents$goog$iter$es6_ShimEs6Iterator < VALUE > ;
     toGoog ( ) : module$contents$goog$iter$es6_ShimGoogIterator < any > ;
   }
