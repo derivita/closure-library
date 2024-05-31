@@ -351,7 +351,10 @@ closure_js_library(
 
 closure_js_library(
     name = "safe",
-    srcs = ["safe.js"],
+    srcs = [
+        "safe.clutz.d.ts",
+        "safe.js",
+    ],
     deprecation = "Please use 'safevalues/dom' instead",
     lenient = True,
     deps = [

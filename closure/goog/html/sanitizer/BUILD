@@ -76,7 +76,10 @@ closure_js_library(
 
 closure_js_library(
     name = "htmlsanitizer",
-    srcs = ["htmlsanitizer.js"],
+    srcs = [
+        "htmlsanitizer.clutz.d.ts",
+        "htmlsanitizer.js",
+    ],
     deprecation = "Please use sanitizeHtml, HtmlSanitizer or HtmlSanitizerBuilder from 'safevalues' instead. " +
                   "Note: We are aware the safevalues sanitizer doesn't support more niche use cases (see b/298325699). " +
                   "If you believe you fall in this case, please add a clear explanation to the CL adding you to the visibility allowlist so that we can best help you.",
@@ -118,7 +121,10 @@ closure_js_library(
 
 closure_js_library(
     name = "inertdocument",
-    srcs = ["inertdocument.js"],
+    srcs = [
+        "inertdocument.clutz.d.ts",
+        "inertdocument.js",
+    ],
     lenient = True,
 )
 

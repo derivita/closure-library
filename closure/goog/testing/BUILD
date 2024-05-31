@@ -534,8 +534,11 @@ closure_js_library(
     name = "recordfunction",
     testonly = True,
     srcs = [
+        "functioncall.clutz.d.ts",
         "functioncall.js",
+        "recordconstructor.clutz.d.ts",
         "recordconstructor.js",
+        "recordfunction.clutz.d.ts",
         "recordfunction.js",
     ],
     lenient = True,

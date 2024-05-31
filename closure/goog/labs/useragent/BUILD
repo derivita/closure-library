@@ -20,7 +20,10 @@ closure_js_library(
 
 closure_js_library(
     name = "browser",
-    srcs = ["browser.js", "browser.clutz.d.ts"],
+    srcs = [
+        "browser.clutz.d.ts",
+        "browser.js",
+    ],
     lenient = True,
     deps = [
         ":chromium_rebrands",
@@ -35,6 +38,7 @@ closure_js_library(
 closure_js_library(
     name = "chromium_rebrands",
     srcs = [
+        "chromium_rebrands.clutz.d.ts",
         "chromium_rebrands.js",
     ],
     lenient = True,
@@ -42,14 +46,20 @@ closure_js_library(
 
 closure_js_library(
     name = "device",
-    srcs = ["device.js", "device.clutz.d.ts"],
+    srcs = [
+        "device.clutz.d.ts",
+        "device.js",
+    ],
     lenient = True,
     deps = [":util"],
 )
 
 closure_js_library(
     name = "engine",
-    srcs = ["engine.js", "engine.clutz.d.ts"],
+    srcs = [
+        "engine.clutz.d.ts",
+        "engine.js",
+    ],
     lenient = True,
     deps = [
         ":util",
@@ -60,7 +70,10 @@ closure_js_library(
 
 closure_js_library(
     name = "extra",
-    srcs = ["extra.js", "extra.clutz.d.ts"],
+    srcs = [
+        "extra.clutz.d.ts",
+        "extra.js",
+    ],
     lenient = True,
     deps = [
         ":browser",
@@ -70,7 +83,10 @@ closure_js_library(
 
 closure_js_library(
     name = "platform",
-    srcs = ["platform.js", "platform.clutz.d.ts"],
+    srcs = [
+        "platform.clutz.d.ts",
+        "platform.js",
+    ],
     lenient = True,
     deps = [
         ":util",
@@ -84,26 +100,32 @@ closure_js_library(
 closure_js_library(
     name = "test_agents",
     testonly = 1,
-    srcs = ["test_agents.js", "test_agents.clutz.d.ts"],
+    srcs = [
+        "test_agents.clutz.d.ts",
+        "test_agents.js",
+    ],
     lenient = True,
 )
 
 closure_js_library(
     name = "test_agentdata",
     testonly = 1,
-    srcs = ["test_agentdata.js", "test_agentdata.clutz.d.ts"],
+    srcs = [
+        "test_agentdata.clutz.d.ts",
+        "test_agentdata.js",
+    ],
     lenient = True,
     deps = [
         "//closure/goog/array",
         "//closure/goog/debug:deepfreeze",
-        "//closure/goog/debug:deepfreeze_js",
     ],
 )
 
 closure_js_library(
     name = "testutil",
     srcs = [
-        "testutil.js", "testutil.clutz.d.ts",
+        "testutil.clutz.d.ts",
+        "testutil.js",
     ],
     lenient = True,
     deps = [
@@ -116,8 +138,10 @@ closure_js_library(
 closure_js_library(
     name = "util",
     srcs = [
-        "useragent.js", "useragent.clutz.d.ts",
-        "util.js", "util.clutz.d.ts",
+        "useragent.clutz.d.ts",
+        "useragent.js",
+        "util.clutz.d.ts",
+        "util.js",
     ],
     lenient = True,
     deps = [
@@ -128,6 +152,9 @@ closure_js_library(
 
 closure_js_library(
     name = "verifier",
-    srcs = ["verifier.js", "verifier.clutz.d.ts"],
+    srcs = [
+        "verifier.clutz.d.ts",
+        "verifier.js",
+    ],
     lenient = True,
 )
