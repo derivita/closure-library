@@ -68,6 +68,7 @@ declare namespace ಠ_ಠ.clutz.goog.i18n.DateTimeFormat {
     MEDIUM_DATE = 2.0 ,
     MEDIUM_DATETIME = 10.0 ,
     MEDIUM_TIME = 6.0 ,
+    MONTH_DAY_MEDIUM = 13.0 ,
     SHORT_DATE = 3.0 ,
     SHORT_DATETIME = 11.0 ,
     SHORT_TIME = 7.0 ,

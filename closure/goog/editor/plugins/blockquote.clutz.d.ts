@@ -21,7 +21,7 @@ declare namespace ಠ_ಠ.clutz.goog.editor.plugins {
      * function returns true, the event that caused it to be called should be
      * canceled.
      * @param command The command to execute.
-     * @param var_args Single additional argument representing the current cursor position. If BrowserFeature.HAS_W3C_RANGES it is an object with a `node` key and an `offset` key. In other cases (legacy IE) it is a single node.
+     * @param var_args Single additional argument representing the current cursor position. It is an object with a `node` key and an `offset` key.
      */
     execCommandInternal (command : string ,  ...var_args : any [] ) : boolean | undefined ;
     /**

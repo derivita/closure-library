@@ -66,6 +66,7 @@ declare namespace ಠ_ಠ.clutz.goog.proto2.TextFormatSerializer.Tokenizer_ {
   type Token = { type : ಠ_ಠ.clutz.goog.proto2.TextFormatSerializer.Tokenizer_.TokenTypes , value : string | null } ;
   type TokenTypes = RegExp &{clutzEnumBrand: never} ;
   let TokenTypes : {
+    BAD : TokenTypes ,
     CLOSE_BRACE : TokenTypes ,
     CLOSE_LIST : TokenTypes ,
     CLOSE_TAG : TokenTypes ,

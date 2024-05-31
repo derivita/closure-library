@@ -4,7 +4,7 @@ declare namespace ಠ_ಠ.clutz.goog.crypt {
   class Hmac extends ಠ_ಠ.clutz.goog.crypt.Hash {
     private noStructuralTyping_goog_crypt_Hmac : any;
     constructor (hasher : ಠ_ಠ.clutz.goog.crypt.Hash , key : number [] | null , opt_blockSize ? : number ) ;
-    blockSize : any ;
+    blockSize : number ;
     digest ( ) : any ;
     /**
      * Calculates an HMAC for a given message.

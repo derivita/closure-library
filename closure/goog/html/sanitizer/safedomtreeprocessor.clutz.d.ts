@@ -20,6 +20,7 @@ declare namespace ಠ_ಠ.clutz {
    */
   abstract class module$contents$goog$html$sanitizer$SafeDomTreeProcessor_SafeDomTreeProcessor {
     private noStructuralTyping_module$contents$goog$html$sanitizer$SafeDomTreeProcessor_SafeDomTreeProcessor : any;
+    protected inertDocument_ : Document ;
     /**
      * Creates a new element from the original element. This function should only
      * either create a new element (optionally changing the tag name from the

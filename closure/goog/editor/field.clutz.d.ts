@@ -357,10 +357,6 @@ declare namespace ಠ_ಠ.clutz.goog.editor {
      */
     protected setupFieldObject (field : GlobalElement | null ) : void ;
     /**
-     * Mutation events tell us when something has changed for mozilla.
-     */
-    protected setupMutationEventHandlersGecko ( ) : void ;
-    /**
      * Returns true if the field needs to be loaded asynchrnously.
      */
     protected shouldLoadAsynchronously ( ) : boolean ;
@@ -417,10 +413,6 @@ declare namespace ಠ_ಠ.clutz.goog.editor {
      * Number of milliseconds between delayed change events.
      */
     static DELAYED_CHANGE_FREQUENCY : number ;
-    /**
-     * List of mutation events in Gecko browsers.
-     */
-    protected static MUTATION_EVENTS_GECKO : string [] | null ;
     /**
      * Keycodes that result in a selectionchange event (e.g. the cursor moving).
      */

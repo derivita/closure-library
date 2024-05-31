@@ -51,6 +51,7 @@ declare namespace ಠ_ಠ.clutz.goog.events {
     F8 = 119.0 ,
     F9 = 120.0 ,
     FF_DASH = 173.0 ,
+    FF_DE_PLUS = 171.0 ,
     FF_EQUALS = 61.0 ,
     FF_HASH = 163.0 ,
     FF_JP_QUOTE = 58.0 ,

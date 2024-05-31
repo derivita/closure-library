@@ -5,7 +5,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
    * Drag/drop implementation for creating drag sources/drop targets consisting of
    * a single HTML Element.
    */
-  class DragDrop extends ಠ_ಠ.clutz.goog.fx.AbstractDragDrop {
+  class DragDrop < DRAG_DROP_DATA = any > extends ಠ_ಠ.clutz.goog.fx.AbstractDragDrop {
     private noStructuralTyping_goog_fx_DragDrop : any;
     /**
      * Drag/drop implementation for creating drag sources/drop targets consisting of
@@ -13,7 +13,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
      * @param element Dom Node, or string representation of node id, to be used as drag source/drop target.
      * @param opt_data Data associated with the source/target.
      */
-    constructor (element : GlobalElement | null | string , opt_data ? : GlobalObject | null ) ;
+    constructor (element : GlobalElement | null | string , opt_data ? : DRAG_DROP_DATA ) ;
   }
 }
 declare module 'goog:goog.fx.DragDrop' {

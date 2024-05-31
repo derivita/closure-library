@@ -52,8 +52,6 @@ declare namespace ಠ_ಠ.clutz.goog.editor {
      * @param height The min height specified as a number of pixels, e.g., 75.
      */
     setMinHeight (height : number ) : void ;
-    setupMutationEventHandlersGecko ( ) : void ;
-    turnOnDesignModeGecko ( ) : void ;
     usesIframe ( ) : any ;
     writeIframeContent (iframe ? : any , innerHtml ? : any , extraStyles ? : any ) : void ;
     static scrollbarWidth_ : any ;

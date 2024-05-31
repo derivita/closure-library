@@ -20,7 +20,6 @@ declare namespace ಠ_ಠ.clutz.goog.userAgent {
   let ASSUME_OPERA : boolean ;
   let ASSUME_WEBKIT : boolean ;
   let ASSUME_WINDOWS : boolean ;
-  let ASSUME_X11 : boolean ;
   /**
    * For IE version < 7, documentMode is undefined, so attempt to use the
    * CSS1Compat property to see if we are in standards mode. If we are in
@@ -115,10 +114,6 @@ declare namespace ಠ_ಠ.clutz.goog.userAgent {
    * Whether the user agent is running on a Windows operating system.
    */
   let WINDOWS : boolean ;
-  /**
-   * Whether the user agent is running on a X11 windowing system.
-   */
-  let X11 : boolean ;
   /**
    * Compares two version numbers.
    * @param v1 Version of first item.

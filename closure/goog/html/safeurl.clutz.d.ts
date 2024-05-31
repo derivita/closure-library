@@ -117,15 +117,6 @@ declare namespace ಠ_ಠ.clutz.goog.html {
      */
     static INNOCUOUS_URL : ಠ_ಠ.clutz.goog.html.SafeUrl ;
     /**
-     * Public version of goog.html.SAFE_URL_PATTERN_. Updating
-     * goog.html.SAFE_URL_PATTERN_ doesn't seem to be backward compatible.
-     * Namespace is also changed to goog.html.SafeUrl so it can be imported using
-     * goog.require('goog.dom.SafeUrl').
-     *
-     * TODO(bangert): Remove SAFE_URL_PATTERN_
-     */
-    static SAFE_URL_PATTERN : RegExp ;
-    /**
      * Extracts the scheme from the given URL. If the URL is relative, https: is
      * assumed.
      * @param url The URL to extract the scheme from.
@@ -198,7 +189,6 @@ declare namespace ಠ_ಠ.clutz.goog.html {
      * @param whatsAppUrl A WhatsApp URL.
      */
     static fromWhatsAppUrl (whatsAppUrl : string ) : ಠ_ಠ.clutz.goog.html.SafeUrl ;
-    static isSafeMimeType (mimeType : string ) : boolean ;
     /**
      * Revokes an object URL created for a safe URL created {@link fromBlob()}.
      * @param safeUrl SafeUrl wrapping a blob object.

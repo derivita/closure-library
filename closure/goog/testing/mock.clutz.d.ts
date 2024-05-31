@@ -257,6 +257,10 @@ declare namespace ಠ_ಠ.clutz.goog.testing {
      * The number of times this method is called during the verification phase.
      */
     verificationCalls : number ;
+    /**
+     * The maximum number of error messages to record.
+     */
+    static MAX_RECORDED_ERRORS : number ;
   }
 }
 declare module 'goog:goog.testing.MockExpectation' {

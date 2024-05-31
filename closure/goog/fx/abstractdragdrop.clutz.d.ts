@@ -33,7 +33,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
     /**
      * List of items that makes up the drag source or drop target.
      */
-    protected items_ : ( ಠ_ಠ.clutz.goog.fx.DragDropItem | null ) [] | null ;
+    protected items_ : ( ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null ) [] | null ;
     /**
      * Add item to drag object.
      * @param element Dom Node, or string representation of node id, to be used as drag source/drop target.
@@ -53,7 +53,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
      * Called after a drag operation has finished.
      * @param opt_dropTarget Target for successful drop.
      */
-    protected afterEndDrag (opt_dropTarget ? : ಠ_ಠ.clutz.goog.fx.DragDropItem | null ) : void ;
+    protected afterEndDrag (opt_dropTarget ? : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null ) : void ;
     /**
      * Creates an element for the item being dragged.
      * @param sourceEl Drag source element.
@@ -84,7 +84,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
      * Called when removing an item. Removes event listeners and classes.
      * @param item Item to dispose.
      */
-    protected disposeItem (item : ಠ_ಠ.clutz.goog.fx.DragDropItem | null ) : void ;
+    protected disposeItem (item : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null ) : void ;
     /**
      * Event handler that's used to stop drag. Fires a drop event if over a valid
      * target.
@@ -107,7 +107,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
      * @param item Item that's being dragged.
      * @param element The element to calculate the box.
      */
-    protected getElementBox (item : ಠ_ಠ.clutz.goog.fx.DragDropItem | null , element : GlobalElement | null ) : ಠ_ಠ.clutz.goog.math.Box ;
+    protected getElementBox (item : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null , element : GlobalElement | null ) : ಠ_ಠ.clutz.goog.math.Box ;
     /**
      * Get the position of a drag event.
      * @param event Drag event.
@@ -123,7 +123,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
      * Initializes a single item.
      * @param item Item to initialize.
      */
-    protected initItem (item : ಠ_ಠ.clutz.goog.fx.DragDropItem | null ) : void ;
+    protected initItem (item : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null ) : void ;
     /**
      * Whether the control has been initialized.
      */
@@ -142,7 +142,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
      * @param event Mouse down event.
      * @param item Item that's being dragged.
      */
-    maybeStartDrag (event : ಠ_ಠ.clutz.goog.events.BrowserEvent | null , item : ಠ_ಠ.clutz.goog.fx.DragDropItem | null ) : void ;
+    maybeStartDrag (event : ಠ_ಠ.clutz.goog.events.BrowserEvent | null , item : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null ) : void ;
     recalculateDragTargets ( ) : void ;
     recalculateScrollableContainers ( ) : void ;
     removeAllScrollableContainers ( ) : void ;
@@ -190,11 +190,11 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
      * @param event Mouse move event.
      * @param item Item that's being dragged.
      */
-    startDrag (event : ಠ_ಠ.clutz.goog.events.BrowserEvent | null , item : ಠ_ಠ.clutz.goog.fx.DragDropItem | null ) : void ;
+    startDrag (event : ಠ_ಠ.clutz.goog.events.BrowserEvent | null , item : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null ) : void ;
     /**
      * Test-only exports.
      */
-    static TEST_ONLY : { ActiveDropTarget : { new (box : ಠ_ಠ.clutz.goog.math.Box | null , opt_target ? : ಠ_ಠ.clutz.goog.fx.AbstractDragDrop | null , opt_item ? : ಠ_ಠ.clutz.goog.fx.DragDropItem | null , opt_element ? : GlobalElement | null ) : ಠ_ಠ.clutz.goog.fx.ActiveDropTarget_ } } ;
+    static TEST_ONLY : { ActiveDropTarget : { new (box : ಠ_ಠ.clutz.goog.math.Box | null , opt_target ? : ಠ_ಠ.clutz.goog.fx.AbstractDragDrop | null , opt_item ? : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null , opt_element ? : GlobalElement | null ) : ಠ_ಠ.clutz.goog.fx.ActiveDropTarget_ } } ;
     /**
      * Constant for distance threshold, in pixels, an element has to be moved to
      * initiate a drag operation.
@@ -241,7 +241,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
      * @param opt_subtarget The currently active subtarget.
      * @param opt_browserEvent The browser event that caused this dragdrop event.
      */
-    constructor (type : string , source : ಠ_ಠ.clutz.goog.fx.AbstractDragDrop | null , sourceItem : ಠ_ಠ.clutz.goog.fx.DragDropItem | null , opt_target ? : ಠ_ಠ.clutz.goog.fx.AbstractDragDrop | null , opt_targetItem ? : ಠ_ಠ.clutz.goog.fx.DragDropItem | null , opt_targetElement ? : GlobalElement | null , opt_clientX ? : number , opt_clientY ? : number , opt_x ? : number , opt_y ? : number , opt_subtarget ? : GlobalObject | null , opt_browserEvent ? : ಠ_ಠ.clutz.goog.events.BrowserEvent | null ) ;
+    constructor (type : string , source : ಠ_ಠ.clutz.goog.fx.AbstractDragDrop | null , sourceItem : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null , opt_target ? : ಠ_ಠ.clutz.goog.fx.AbstractDragDrop | null , opt_targetItem ? : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null , opt_targetElement ? : GlobalElement | null , opt_clientX ? : number , opt_clientY ? : number , opt_x ? : number , opt_y ? : number , opt_subtarget ? : GlobalObject | null , opt_browserEvent ? : ಠ_ಠ.clutz.goog.events.BrowserEvent | null ) ;
     /**
      * The browser event that caused this dragdrop event.
      */
@@ -261,7 +261,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
     /**
      * Reference to the source goog.fx.DragDropItem object.
      */
-    dragSourceItem : ಠ_ಠ.clutz.goog.fx.DragDropItem | null ;
+    dragSourceItem : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null ;
     /**
      * Reference to the target goog.fx.AbstractDragDrop object.
      */
@@ -273,7 +273,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
     /**
      * Reference to the target goog.fx.DragDropItem object.
      */
-    dropTargetItem ? : ಠ_ಠ.clutz.goog.fx.DragDropItem | null ;
+    dropTargetItem ? : ಠ_ಠ.clutz.goog.fx.DragDropItem < any > | null ;
     /**
      * The subtarget that is currently active if a subtargeting function
      * is supplied.
@@ -298,18 +298,18 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
   /**
    * Class representing a source or target element for drag and drop operations.
    */
-  class DragDropItem extends ಠ_ಠ.clutz.goog.events.EventTarget {
+  class DragDropItem < DRAG_DROP_DATA = any > extends ಠ_ಠ.clutz.goog.events.EventTarget {
     private noStructuralTyping_goog_fx_DragDropItem : any;
     /**
      * Class representing a source or target element for drag and drop operations.
      * @param element Dom Node, or string representation of node id, to be used as drag source/drop target.
      * @param opt_data Data associated with the source/target.
      */
-    constructor (element : GlobalElement | null | string , opt_data ? : GlobalObject | null ) ;
+    constructor (element : GlobalElement | null | string , opt_data ? : DRAG_DROP_DATA ) ;
     /**
      * Data associated with element.
      */
-    data ? : GlobalObject | null ;
+    data ? : DRAG_DROP_DATA ;
     /**
      * Reference to drag source/target element
      */
@@ -321,7 +321,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
     /**
      * Get the data associated with the source/target.
      */
-    getData ( ) : GlobalObject | null | undefined ;
+    getData ( ) : DRAG_DROP_DATA | undefined ;
     /**
      * Gets the element that is actually draggable given that the given target was
      * attempted to be dragged. This should be overridden when the element that was

@@ -24,7 +24,7 @@ declare namespace ಠ_ಠ.clutz.goog.fx {
      * @param element Dom Node, or string representation of node id, to be used as drag source/drop target.
      * @param opt_data Data associated with the source/target.
      */
-    addItem (element : GlobalElement | null | string , opt_data ? : GlobalObject | null ) : void ;
+    addItem < DRAG_DROP_DATA = any > (element : GlobalElement | null | string , opt_data ? : DRAG_DROP_DATA ) : void ;
     /**
      * Remove item from drag object.
      * @param element Dom Node, or string representation of node id, that was previously added with addItem().

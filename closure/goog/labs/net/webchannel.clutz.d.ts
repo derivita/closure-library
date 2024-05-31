@@ -524,10 +524,10 @@ declare namespace ಠ_ಠ.clutz.goog.net.WebChannel {
      */
     supportsCrossDomainXhr ? : boolean ;
     /**
-     * This is an experimental feature to use WHATWG Fetch/streams (when supported)
-     * for the backchannel. If a custom 'xmlHttpFactory' is speficied, this option
-     * will not be effective. This option defaults to false now and will eventually
-     * be turned on by default.
+     * This is an experimental feature to use WHATWG Fetch/streams (when supported).
+     * If a custom 'xmlHttpFactory' is speficied, this option will not be effective.
+     * This option defaults to false now and will eventually be turned on by
+     * default.
      */
     useFetchStreams ? : boolean ;
     /**
