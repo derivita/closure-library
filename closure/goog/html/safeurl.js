@@ -142,6 +142,7 @@ goog.html.SafeUrl.prototype.implementsGoogStringTypedString = true;
  *
  * @see goog.html.SafeUrl#unwrap
  * @override
+ * @deprecated Use `toString()` or the String constructor instead.
  */
 goog.html.SafeUrl.prototype.getTypedStringValue = function() {
   'use strict';
@@ -197,8 +198,11 @@ goog.html.SafeUrl.unwrap = function(safeUrl) {
  */
 goog.html.SafeUrl.fromConstant = function(url) {
   'use strict';
-  return goog.html.SafeUrl.createSafeUrlSecurityPrivateDoNotAccessOrElse(
-      goog.string.Const.unwrap(url));
+  const str = goog.string.Const.unwrap(url);
+  if (goog.DEBUG && goog.html.SafeUrl.extractScheme(str) === 'javascript:') {
+    throw Error('Building a SafeUrl with a javascript scheme is not supported');
+  }
+  return goog.html.SafeUrl.createSafeUrlSecurityPrivateDoNotAccessOrElse(str);
 };
 
 
@@ -234,6 +238,7 @@ goog.html.SAFE_MIME_TYPE_PATTERN_ = new RegExp(
  * @return {boolean} True if the MIME type is safe and creating a Blob via
  *   `SafeUrl.fromBlob()` with that type will not fail due to the type. False
  *   otherwise.
+ * @package
  */
 goog.html.SafeUrl.isSafeMimeType = function(mimeType) {
   'use strict';
@@ -269,6 +274,7 @@ goog.html.SafeUrl.fromBlob = function(blob) {
  * Revokes an object URL created for a safe URL created {@link fromBlob()}.
  * @param {!goog.html.SafeUrl} safeUrl SafeUrl wrapping a blob object.
  * @return {void}
+ * @deprecated Use `URL.revokeObjectURL` instead.
  */
 goog.html.SafeUrl.revokeObjectUrl = function(safeUrl) {
   'use strict';
@@ -642,17 +648,6 @@ goog.html.SafeUrl.fromTrustedResourceUrl = function(trustedResourceUrl) {
  */
 goog.html.SAFE_URL_PATTERN_ =
     /^(?:(?:https?|mailto|ftp):|[^:/?#]*(?:[/?#]|$))/i;
-
-/**
- * Public version of goog.html.SAFE_URL_PATTERN_. Updating
- * goog.html.SAFE_URL_PATTERN_ doesn't seem to be backward compatible.
- * Namespace is also changed to goog.html.SafeUrl so it can be imported using
- * goog.require('goog.dom.SafeUrl').
- *
- * TODO(bangert): Remove SAFE_URL_PATTERN_
- * @const {!RegExp}
- */
-goog.html.SafeUrl.SAFE_URL_PATTERN = goog.html.SAFE_URL_PATTERN_;
 
 /**
  * Attempts to create a SafeUrl object from `url`. The input string is validated

@@ -14,7 +14,6 @@ const InsertAdjacentHtmlPosition = goog.require('goog.dom.safe.InsertAdjacentHtm
 const SafeHtml = goog.require('goog.html.SafeHtml');
 const SafeScript = goog.require('goog.html.SafeScript');
 const SafeStyle = goog.require('goog.html.SafeStyle');
-const SafeUrl = goog.require('goog.html.SafeUrl');
 const TagName = goog.require('goog.dom.TagName');
 const TrustedResourceUrl = goog.require('goog.html.TrustedResourceUrl');
 const asserts = goog.require('goog.asserts');
@@ -213,13 +212,12 @@ testSuite({
           ...nodeAttributes
         });
 
-    const url = SafeUrl.fromConstant(Const.from('javascript:trusted();'));
     assertThrows(() => {
-      safe.setLinkHrefAndRel(mockLink, url, 'foo, stylesheet, bar');
+      safe.setLinkHrefAndRel(mockLink, 'about:blank', 'foo, stylesheet, bar');
     });
 
-    safe.setLinkHrefAndRel(mockLink, url, 'foo, bar');
-    assertEquals('javascript:trusted();', mockLink.href);
+    safe.setLinkHrefAndRel(mockLink, 'about:blank', 'foo, bar');
+    assertEquals('about:blank', mockLink.href);
   },
 
   testsetLinkHrefAndRel_string() {
@@ -261,13 +259,12 @@ testSuite({
     assertEquals('about:invalid#zClosurez', mockLoc.href);
 
     mockLoc = /** @type {!Location} */ ({'href': 'blarg'});
-    const safeUrl = SafeUrl.fromConstant(Const.from('javascript:trusted();'));
-    safe.setLocationHref(mockLoc, safeUrl);
-    assertEquals('javascript:trusted();', mockLoc.href);
+    safe.setLocationHref(mockLoc, 'about:blank');
+    assertEquals('about:blank', mockLoc.href);
 
     // Asserts correct runtime type.
     const ex = assertThrows(() => {
-      safe.setLocationHref(makeLinkElementTypedAsLocation(), safeUrl);
+      safe.setLocationHref(makeLinkElementTypedAsLocation(), 'about:blank');
     });
     assert(googString.contains(ex.message, 'Argument is not a Location'));
   },
@@ -295,12 +292,11 @@ testSuite({
   },
 
   testReplaceLocationSafeUrl() {
-    const safeUrl = SafeUrl.fromConstant(Const.from('javascript:trusted();'));
     /** @type {?} */
     const mockLoc = new googTesting.StrictMock(window.location);
-    mockLoc.replace('javascript:trusted();');
+    mockLoc.replace('about:blank');
     mockLoc.$replay();
-    safe.replaceLocation(mockLoc, safeUrl);
+    safe.replaceLocation(mockLoc, 'about:blank');
     mockLoc.$verify();
     mockLoc.$reset();
   },
@@ -336,9 +332,8 @@ testSuite({
         location = value;
       },
     });
-    const safeUrl = SafeUrl.fromConstant(Const.from('javascript:trusted();'));
-    safe.assignLocation(fakeLoc, safeUrl);
-    assertEquals(location, 'javascript:trusted();');
+    safe.assignLocation(fakeLoc, 'about:blank');
+    assertEquals(location, 'about:blank');
   },
 
   testSetAnchorHref() {
@@ -350,9 +345,8 @@ testSuite({
     assertEquals('about:invalid#zClosurez', anchor.href);
 
     anchor = /** @type {!HTMLAnchorElement} */ (document.createElement('A'));
-    let safeUrl = SafeUrl.fromConstant(Const.from('javascript:trusted();'));
-    safe.setAnchorHref(anchor, safeUrl);
-    assertEquals('javascript:trusted();', anchor.href);
+    safe.setAnchorHref(anchor, 'about:blank');
+    assertEquals('about:blank', anchor.href);
 
     // Works with mocks too.
     let mockAnchor = /** @type {!HTMLAnchorElement} */ (
@@ -364,15 +358,14 @@ testSuite({
 
     mockAnchor = /** @type {!HTMLAnchorElement} */ (
         {'href': 'blarg', 'tagName': 'A', ...nodeAttributes});
-    safeUrl = SafeUrl.fromConstant(Const.from('javascript:trusted();'));
-    safe.setAnchorHref(mockAnchor, safeUrl);
-    assertEquals('javascript:trusted();', mockAnchor.href);
+    safe.setAnchorHref(mockAnchor, 'about:blank');
+    assertEquals('about:blank', mockAnchor.href);
 
     // Asserts correct runtime type.
     const otherElement = document.createElement('LINK');
     const ex = assertThrows(() => {
       safe.setAnchorHref(
-          /** @type {!HTMLAnchorElement} */ (otherElement), safeUrl);
+          /** @type {!HTMLAnchorElement} */ (otherElement), 'about:blank');
     });
     assert(googString.contains(
         ex.message, 'Argument is not an HTML Element with tag name A'));
@@ -394,9 +387,8 @@ testSuite({
 
   testSetInputFormActionSafeUrl() {
     const element = dom.createElement(TagName.INPUT);
-    safe.setInputFormAction(
-        element, SafeUrl.fromConstant(Const.from('javascript:trusted();')));
-    assertEquals('javascript:trusted();', element.formAction);
+    safe.setInputFormAction(element, 'about:blank');
+    assertEquals('about:blank', element.formAction);
   },
 
   testSetInputFormActionAssertsType() {
@@ -424,9 +416,8 @@ testSuite({
 
   testSetButtonFormActionSafeUrl() {
     const element = dom.createElement(TagName.BUTTON);
-    safe.setButtonFormAction(
-        element, SafeUrl.fromConstant(Const.from('javascript:trusted();')));
-    assertEquals('javascript:trusted();', element.formAction);
+    safe.setButtonFormAction(element, 'about:blank');
+    assertEquals('about:blank', element.formAction);
   },
 
   testSetFormElementActionAssertsType() {
@@ -454,9 +445,8 @@ testSuite({
 
   testSetFormElementActionSafeUrl() {
     const element = dom.createElement(TagName.FORM);
-    safe.setFormElementAction(
-        element, SafeUrl.fromConstant(Const.from('javascript:trusted();')));
-    assertEquals('javascript:trusted();', element.action);
+    safe.setFormElementAction(element, 'about:blank');
+    assertEquals('about:blank', element.action);
   },
 
   testSetAudioSrc() {
@@ -475,9 +465,8 @@ testSuite({
 
     mockAudioElement = /** @type {!HTMLAudioElement} */ (
         {'src': 'blarg', 'tagName': 'AUDIO', ...nodeAttributes});
-    safeUrl = SafeUrl.fromConstant(Const.from('javascript:trusted();'));
-    safe.setAudioSrc(mockAudioElement, safeUrl);
-    assertEquals('javascript:trusted();', mockAudioElement.src);
+    safe.setAudioSrc(mockAudioElement, 'about:blank');
+    assertEquals('about:blank', mockAudioElement.src);
 
     // Asserts correct runtime type.
     const otherElement = document.createElement('SCRIPT');
@@ -514,9 +503,8 @@ testSuite({
 
     mockVideoElement = /** @type {!HTMLVideoElement} */ (
         {'src': 'blarg', 'tagName': 'VIDEO', ...nodeAttributes});
-    safeUrl = SafeUrl.fromConstant(Const.from('javascript:trusted();'));
-    safe.setVideoSrc(mockVideoElement, safeUrl);
-    assertEquals('javascript:trusted();', mockVideoElement.src);
+    safe.setVideoSrc(mockVideoElement, 'about:blank');
+    assertEquals('about:blank', mockVideoElement.src);
 
     // Asserts correct runtime type.
     const otherElement = document.createElement('SCRIPT');
@@ -769,11 +757,10 @@ testSuite({
     mockWindowOpen.$reset();
     retVal = null;
 
-    const safeUrl = SafeUrl.fromConstant(Const.from('javascript:trusted();'));
-    mockWindowOpen('javascript:trusted();', 'name', 'specs')
-        .$returns(fakeWindow);
+    mockWindowOpen('about:blank', 'name', 'specs').$returns(fakeWindow);
     mockWindowOpen.$replay();
-    retVal = safe.openInWindow(safeUrl, window, Const.from('name'), 'specs');
+    retVal =
+        safe.openInWindow('about:blank', window, Const.from('name'), 'specs');
     mockWindowOpen.$verify();
     assertEquals(
         'openInWindow should return the created window', fakeWindow, retVal);

@@ -23,12 +23,21 @@ closure_js_library(
     srcs = ["browser.js", "browser.clutz.d.ts"],
     lenient = True,
     deps = [
+        ":chromium_rebrands",
         ":util",
         "//closure/goog/asserts",
         "//closure/goog/labs/useragent/highentropy:highentropydata",
         "//closure/goog/labs/useragent/highentropy:highentropyvalue",
         "//closure/goog/string:internal",
     ],
+)
+
+closure_js_library(
+    name = "chromium_rebrands",
+    srcs = [
+        "chromium_rebrands.js",
+    ],
+    lenient = True,
 )
 
 closure_js_library(
@@ -87,6 +96,7 @@ closure_js_library(
     deps = [
         "//closure/goog/array",
         "//closure/goog/debug:deepfreeze",
+        "//closure/goog/debug:deepfreeze_js",
     ],
 )
 
