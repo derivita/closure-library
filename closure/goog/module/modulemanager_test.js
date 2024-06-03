@@ -9,6 +9,7 @@ goog.setTestOnly();
 
 const BaseModule = goog.require('goog.module.BaseModule');
 const MockClock = goog.require('goog.testing.MockClock');
+const ModuleLoadFailure = goog.require('goog.module.ModuleLoadFailure');
 const ModuleManager = goog.require('goog.module.ModuleManager');
 const functions = goog.require('goog.functions');
 const googArray = goog.require('goog.array');
@@ -1438,7 +1439,8 @@ testSuite({
         ModuleManager.CallbackType.ERROR, (callbackType, id, cause) => {
           assertEquals(
               'Failure cause was not as expected',
-              ModuleManager.FailureType.UNAUTHORIZED, cause);
+              ModuleLoadFailure.Type.UNAUTHORIZED, cause.type);
+          assertEquals('Failure status was not as expected', 401, cause.status);
         });
     let calledBack = false;
     let error = null;
@@ -1464,10 +1466,12 @@ testSuite({
     // message is human readable and contains the module id.
     assertEquals(
         'Failure cause was not as expected',
-        ModuleManager.FailureType.UNAUTHORIZED, error.failureType);
+        ModuleLoadFailure.Type.UNAUTHORIZED, error.failureType.type);
     assertEquals(
-        'Error message was not as expected', 'Error loading a: Unauthorized',
-        error.message);
+        'Failure status was not as expected', 401, error.failureType.status);
+    assertEquals(
+        'Error message was not as expected',
+        'Error loading a: Unauthorized (401)', error.message);
   },
 
   /**
@@ -1482,7 +1486,7 @@ testSuite({
         ModuleManager.CallbackType.ERROR, (callbackType, id, cause) => {
           assertEquals(
               'Failure cause was not as expected',
-              ModuleManager.FailureType.UNAUTHORIZED, cause);
+              ModuleLoadFailure.Type.UNAUTHORIZED, cause.type);
         });
     let calledBack11 = false;
     let error11 = null;
@@ -1546,25 +1550,25 @@ testSuite({
     // message is human readable and contains the module id.
     assertEquals(
         'Failure cause was not as expected',
-        ModuleManager.FailureType.UNAUTHORIZED, error11.failureType);
+        ModuleLoadFailure.Type.UNAUTHORIZED, error11.failureType.type);
     assertEquals(
-        'Error message was not as expected', 'Error loading a: Unauthorized',
-        error11.message);
+        'Error message was not as expected',
+        'Error loading a: Unauthorized (401)', error11.message);
     assertEquals(
         'Failure cause was not as expected',
-        ModuleManager.FailureType.UNAUTHORIZED, error12.failureType);
+        ModuleLoadFailure.Type.UNAUTHORIZED, error12.failureType.type);
     assertEquals(
-        'Error message was not as expected', 'Error loading b: Unauthorized',
-        error12.message);
+        'Error message was not as expected',
+        'Error loading b: Unauthorized (401)', error12.message);
 
     // The first deferred of the second load should be called since it asks
     // for one of the failed modules.
     assertEquals(
         'Failure cause was not as expected',
-        ModuleManager.FailureType.UNAUTHORIZED, Number(error21.failureType));
+        ModuleLoadFailure.Type.UNAUTHORIZED, Number(error21.failureType.type));
     assertEquals(
-        'Error message was not as expected', 'Error loading b: Unauthorized',
-        error21.message);
+        'Error message was not as expected',
+        'Error loading b: Unauthorized (401)', error21.message);
 
     // The last deferred should be dropped so it is neither called back nor
     // an error.
@@ -1587,7 +1591,7 @@ testSuite({
         ModuleManager.CallbackType.ERROR, (callbackType, id, cause) => {
           assertEquals(
               'Failure cause was not as expected',
-              ModuleManager.FailureType.UNAUTHORIZED, cause);
+              ModuleLoadFailure.Type.UNAUTHORIZED, cause.type);
           cancelledIds.push(id);
         });
     let calledBack11 = false;
@@ -1664,16 +1668,16 @@ testSuite({
     // message is human readable and contains the module id.
     assertEquals(
         'Failure cause was not as expected',
-        ModuleManager.FailureType.UNAUTHORIZED, error11.failureType);
+        ModuleLoadFailure.Type.UNAUTHORIZED, error11.failureType.type);
     assertEquals(
-        'Error message was not as expected', 'Error loading a: Unauthorized',
-        error11.message);
+        'Error message was not as expected',
+        'Error loading a: Unauthorized (401)', error11.message);
     assertEquals(
         'Failure cause was not as expected',
-        ModuleManager.FailureType.UNAUTHORIZED, error12.failureType);
+        ModuleLoadFailure.Type.UNAUTHORIZED, error12.failureType.type);
     assertEquals(
-        'Error message was not as expected', 'Error loading b: Unauthorized',
-        error12.message);
+        'Error message was not as expected',
+        'Error loading b: Unauthorized (401)', error12.message);
 
     // Check that among the failed modules, 'c' and 'd' are also cancelled
     // due to dependencies.
@@ -1824,7 +1828,7 @@ testSuite({
         ModuleManager.CallbackType.ERROR, (callbackType, id, cause) => {
           assertEquals(
               'Failure cause was not as expected',
-              ModuleManager.FailureType.UNAUTHORIZED, cause);
+              ModuleLoadFailure.Type.UNAUTHORIZED, cause.type);
           firedLoadFailed = true;
         });
     mm.execOnLoad('o', () => {});
@@ -1915,7 +1919,7 @@ testSuite({
         ModuleManager.CallbackType.ERROR, (callbackType, id, cause) => {
           assertEquals(
               'Failure cause was not as expected',
-              ModuleManager.FailureType.CONSECUTIVE_FAILURES, cause);
+              ModuleLoadFailure.Type.CONSECUTIVE_FAILURES, cause.type);
           firedLoadFailed = true;
         });
 
@@ -1968,7 +1972,7 @@ testSuite({
         ModuleManager.CallbackType.ERROR, (callbackType, id, cause) => {
           assertEquals(
               'Failure cause was not as expected',
-              ModuleManager.FailureType.OLD_CODE_GONE, cause);
+              ModuleLoadFailure.Type.OLD_CODE_GONE, cause.type);
           firedLoadFailed = true;
         });
 
@@ -1994,7 +1998,7 @@ testSuite({
         ModuleManager.CallbackType.ERROR, (callbackType, id, cause) => {
           assertEquals(
               'Failure cause was not as expected',
-              ModuleManager.FailureType.TIMEOUT, cause);
+              ModuleLoadFailure.Type.TIMEOUT, cause.type);
           firedTimeout = true;
         });
 
@@ -2015,12 +2019,12 @@ testSuite({
     const errorCallback1 = testing.createFunctionMock('callback1');
     errorCallback1(
         ModuleManager.CallbackType.ERROR, 'b',
-        ModuleManager.FailureType.INIT_ERROR);
+        new ModuleLoadFailure(ModuleLoadFailure.Type.INIT_ERROR));
 
     const errorCallback2 = testing.createFunctionMock('callback2');
     errorCallback2(
         ModuleManager.CallbackType.ERROR, 'b',
-        ModuleManager.FailureType.INIT_ERROR);
+        new ModuleLoadFailure(ModuleLoadFailure.Type.INIT_ERROR));
 
     errorCallback1.$replay();
     errorCallback2.$replay();
@@ -2063,7 +2067,7 @@ testSuite({
     const errorCallback = testing.createFunctionMock('callback');
     errorCallback(
         ModuleManager.CallbackType.ERROR, 'b',
-        ModuleManager.FailureType.INIT_ERROR);
+        new ModuleLoadFailure(ModuleLoadFailure.Type.INIT_ERROR));
 
     errorCallback.$replay();
 
@@ -2284,8 +2288,8 @@ testSuite({
     assertEquals(0, callback.getCallCount());
     assertEquals(1, errback.getCallCount());
     assertEquals(
-        ModuleManager.FailureType.INIT_ERROR,
-        errback.getLastCall().getArguments()[0]);
+        ModuleLoadFailure.Type.INIT_ERROR,
+        errback.getLastCall().getArguments()[0].type);
     assertTrue(mm.getModuleInfo('a').isLoaded());
     assertFalse(mm.getModuleInfo('b').isLoaded());
 
@@ -2312,8 +2316,8 @@ testSuite({
     assertEquals('error', e.message);
     assertEquals(1, errback.getCallCount());
     assertEquals(
-        ModuleManager.FailureType.INIT_ERROR,
-        errback.getLastCall().getArguments()[0]);
+        ModuleLoadFailure.Type.INIT_ERROR,
+        errback.getLastCall().getArguments()[0].type);
     assertTrue(mm.getModuleInfo('a').isLoaded());
     assertTrue(mm.getModuleInfo('b').isLoaded());
   },

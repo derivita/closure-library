@@ -323,6 +323,14 @@ WebChannelBaseTransport.Channel.MessageEvent = function(array) {
   'use strict';
   WebChannelBaseTransport.Channel.MessageEvent.base(this, 'constructor');
 
+  // Metadata as HTTP headers and status code (always come in a pair).
+  if (array['__headers__']) {
+    this.headers = array['__headers__'];
+    this.statusCode = array['__status__'];
+    delete array['__headers__'];
+    delete array['__status__'];
+  }
+
   // single-metadata only
   const metadata = array['__sm__'];
   if (metadata) {
@@ -563,6 +571,16 @@ WebChannelBaseTransport.ChannelProperties.prototype.onCommit =
 WebChannelBaseTransport.ChannelProperties.prototype.ackCommit =
     goog.abstractMethod;
 
+
+/**
+ * @override
+ * @return {!Object<string, string>|undefined}
+ */
+WebChannelBaseTransport.ChannelProperties.prototype.getLastResponseHeaders =
+    function() {
+  'use strict';
+  return this.channel_.getLastResponseHeaders();
+};
 
 /** @override */
 WebChannelBaseTransport.ChannelProperties.prototype.getLastStatusCode =

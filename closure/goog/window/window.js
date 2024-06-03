@@ -185,9 +185,9 @@ goog.window.open = function(linkRef, opt_options, opt_parentWin) {
     var a = goog.dom.createElement(goog.dom.TagName.A);
     goog.dom.safe.setAnchorHref(a, safeLinkRef);
 
-    a.setAttribute('target', target);
+    a.target = target;
     if (noReferrerOption) {
-      a.setAttribute('rel', 'noreferrer');
+      a.rel = 'noreferrer';
     }
 
     var click = /** @type {!MouseEvent} */ (document.createEvent('MouseEvent'));
@@ -288,6 +288,13 @@ goog.window.open = function(linkRef, opt_options, opt_parentWin) {
     // will yield a feature-deprived browser. This is an known issue, tracked
     // here: https://github.com/whatwg/html/issues/1902
     if (newWin && opt_options['noopener']) {
+      newWin.opener = null;
+    }
+    // If the caller specified noreferrer and we hit this branch, it means that
+    // we're already running on a modern enough browser that the referrer is
+    // hidden by default. But setting noreferrer implies noopener too, so we
+    // also have to clear the opener here.
+    if (newWin && opt_options['noreferrer']) {
       newWin.opener = null;
     }
   }

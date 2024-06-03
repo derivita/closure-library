@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "mock",
-    srcs = ["mock.js"],
+    srcs = ["mock.js", "mock.clutz.d.ts"],
     lenient = True,
     deps = [
         ":timeoutmode",
@@ -22,12 +22,12 @@ closure_js_library(
 
 closure_js_library(
     name = "timeoutmode",
-    srcs = ["timeoutmode.js"],
+    srcs = ["timeoutmode.js", "timeoutmode.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "verificationmode",
-    srcs = ["verificationmode.js"],
+    srcs = ["verificationmode.js", "verificationmode.clutz.d.ts"],
     lenient = True,
 )

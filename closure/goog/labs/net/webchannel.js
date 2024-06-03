@@ -87,9 +87,9 @@ goog.net.WebChannel.Options = function() {};
 /**
  * Transport-metadata support.
  *
- * Custom HTTP headers to be added to every message sent to the
- * server. This object is mutable, and custom headers may be changed, removed,
- * or added during the runtime after a channel has been opened.
+ * Custom HTTP headers to be added to every message sent to the server. This
+ * object is mutable, and custom headers may be changed, removed, or added
+ * during the runtime after a channel has been opened.
  *
  * Custom headers may trigger CORS preflight. See other related options.
  * @type {!Object<string, string>|undefined}
@@ -99,10 +99,10 @@ goog.net.WebChannel.Options.prototype.messageHeaders;
 /**
  * Transport-metadata support.
  *
- * Similar to messageHeaders, but any custom HTTP headers will
- * be sent only once when the channel is opened as part of the handshae request.
- * Typical usage is to send an auth header to the server, which only checks
- * the auth header at the time during the handshake when the channel is opened.
+ * Similar to messageHeaders, but any custom HTTP headers will be sent only once
+ * when the channel is opened as part of the handshake request. Typical usage is
+ * to send an auth header to the server, which only checks the auth header at
+ * the time during the handshake when the channel is opened.
  * @type {!Object<string, string>|undefined}
  */
 goog.net.WebChannel.Options.prototype.initMessageHeaders;
@@ -117,9 +117,9 @@ goog.net.WebChannel.Options.prototype.messageContentType;
 /**
  * Transport-metadata support.
  *
- * Custom url query parameters to be added to every message
- * sent to the server. This object is mutable, and custom parameters may be
- * changed, removed or added during the runtime after a channel has been opened.
+ * Custom url query parameters to be added to every message sent to the server.
+ * This object is mutable, and custom parameters may be changed, removed or
+ * added during the runtime after a channel has been opened.
  *
  * TODO: initMessageUrlParams
  * TODO: closeMessageUrlParams  (custom url query params to be added to the
@@ -218,6 +218,15 @@ goog.net.WebChannel.Options.prototype.forceLongPolling;
 goog.net.WebChannel.Options.prototype.detectBufferingProxy;
 
 /**
+ * This option informs the server the desired maximum timeout interval (in
+ * Milliseconds) to complete a long-polling GET response, e.g. to accommodate
+ * the timeout enforced by a proxy. The WebChannel server may adjust the
+ * specified timeout or may ignore this client-configured timeout.
+ * @type {number|undefined}
+ */
+goog.net.WebChannel.Options.prototype.longPollingTimeout;
+
+/**
  * Enable true 0-RTT message delivery, including
  * leveraging QUIC 0-RTT (which requires GET to be used). This option
  * defaults to false. Note it is allowed to send messages before Open event is
@@ -289,10 +298,10 @@ goog.net.WebChannel.Options.prototype.xmlHttpFactory;
 goog.net.WebChannel.Options.prototype.requestRefreshThresholds;
 
 /**
- * This is an experimental feature to use WHATWG Fetch/streams (when supported)
- * for the backchannel. If a custom 'xmlHttpFactory' is speficied, this option
- * will not be effective. This option defaults to false now and will eventually
- * be turned on by default.
+ * This is an experimental feature to use WHATWG Fetch/streams (when supported).
+ * If a custom 'xmlHttpFactory' is speficied, this option will not be effective.
+ * This option defaults to false now and will eventually be turned on by
+ * default.
  * @type {boolean|undefined}
  */
 goog.net.WebChannel.Options.prototype.useFetchStreams;
@@ -449,7 +458,7 @@ goog.net.WebChannel.MessageEvent.prototype.metadataKey;
 
 /**
  * Metadata as HTTP status code. Typically sent before the channel is
- * half-closed by the server. To be implemented.
+ * half-closed by the server.
  *
  * @type {number|undefined}
  */
@@ -458,11 +467,11 @@ goog.net.WebChannel.MessageEvent.prototype.statusCode;
 
 /**
  * Metadata as HTTP headers. Typically sent before the channel is
- * half-closed by the server. To be implemented.
+ * half-closed by the server.
  *
  * @type {!Object<string, string>|undefined}
  */
-goog.net.WebChannel.MessageEvent.prototype.responseHeaders;
+goog.net.WebChannel.MessageEvent.prototype.headers;
 
 
 /**
@@ -713,7 +722,19 @@ goog.net.WebChannel.RuntimeProperties.prototype.ackCommit = goog.abstractMethod;
 /**
  * Transport-metadata support.
  *
- * TODO: getLastResponseHeaders (only for non-200 status)
+ * Responses from the channel-close (abort) message are not available.
+ *
+ * In future when client-side half-close is supported, its response headers
+ * will be available via this API too.
+ * @return {!Object<string, string>|undefined} The response headers received
+ * with the non-200 HTTP status code that causes the channel to be aborted.
+ */
+goog.net.WebChannel.RuntimeProperties.prototype.getLastResponseHeaders =
+    goog.abstractMethod;
+
+/**
+ * Transport-metadata support.
+ *
  * TODO: getInitStatusCode   (handshake)
  * TODO: getInitResponseHeaders  (handshake)
  *

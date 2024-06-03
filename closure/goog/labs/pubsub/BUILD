@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "broadcastpubsub",
-    srcs = ["broadcastpubsub.js"],
+    srcs = ["broadcastpubsub.js", "broadcastpubsub.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",

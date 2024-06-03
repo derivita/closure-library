@@ -6,20 +6,18 @@ licenses(["notice"])
 
 closure_js_library(
     name = "browserfeature",
-    srcs = ["browserfeature.js"],
+    srcs = ["browserfeature.js", "browserfeature.clutz.d.ts"],
     lenient = True,
     deps = [
         ":defines",
-        "//closure/goog/labs/useragent:browser",
         "//closure/goog/useragent",
         "//closure/goog/useragent:product",
-        "//closure/goog/useragent:product_isversion",
     ],
 )
 
 closure_js_library(
     name = "clicktoeditwrapper",
-    srcs = ["clicktoeditwrapper.js"],
+    srcs = ["clicktoeditwrapper.js", "clicktoeditwrapper.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -39,13 +37,13 @@ closure_js_library(
 
 closure_js_library(
     name = "command",
-    srcs = ["command.js"],
+    srcs = ["command.js", "command.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "contenteditablefield",
-    srcs = ["contenteditablefield.js"],
+    srcs = ["contenteditablefield.js", "contenteditablefield.clutz.d.ts"],
     lenient = True,
     deps = [
         ":field",
@@ -56,15 +54,15 @@ closure_js_library(
 
 closure_js_library(
     name = "defines",
-    srcs = ["defines.js"],
+    srcs = ["defines.js", "defines.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "field",
     srcs = [
-        "field.js",
-        "plugin_impl.js",
+        "field.js", "field.clutz.d.ts",
+        "plugin_impl.js", "plugin_impl.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -87,8 +85,6 @@ closure_js_library(
         "//closure/goog/dom:tagname",
         "//closure/goog/events",
         "//closure/goog/events:browserevent",
-        "//closure/goog/events:eventhandler",
-        "//closure/goog/events:eventtarget",
         "//closure/goog/events:eventtype",
         "//closure/goog/events:keycodes",
         "//closure/goog/functions",
@@ -96,26 +92,26 @@ closure_js_library(
         "//closure/goog/html:safehtml",
         "//closure/goog/html:safestylesheet",
         "//closure/goog/html:trustedresourceurl",
+        "//closure/goog/labs/useragent:platform",
         "//closure/goog/log",
         "//closure/goog/object",
         "//closure/goog/reflect",
         "//closure/goog/string",
         "//closure/goog/style",
         "//closure/goog/useragent",
-        "//closure/goog/useragent:product",
     ],
 )
 
 closure_js_library(
     name = "focus",
-    srcs = ["focus.js"],
+    srcs = ["focus.js", "focus.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/dom:selection"],
 )
 
 closure_js_library(
     name = "icontent",
-    srcs = ["icontent.js"],
+    srcs = ["icontent.js", "icontent.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -129,18 +125,15 @@ closure_js_library(
 
 closure_js_library(
     name = "link",
-    srcs = ["link.js"],
+    srcs = ["link.js", "link.clutz.d.ts"],
     lenient = True,
     deps = [
-        ":browserfeature",
         ":command",
         ":field",
         ":node",
         ":range",
-        "//closure/goog/array",
         "//closure/goog/dom",
         "//closure/goog/dom:nodetype",
-        "//closure/goog/dom:range",
         "//closure/goog/dom:tagname",
         "//closure/goog/string",
         "//closure/goog/uri:utils",
@@ -149,7 +142,7 @@ closure_js_library(
 
 closure_js_library(
     name = "node",
-    srcs = ["node.js"],
+    srcs = ["node.js", "node.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts:dom",
@@ -168,7 +161,7 @@ closure_js_library(
 
 closure_js_library(
     name = "plugin",
-    srcs = ["plugin.js"],
+    srcs = ["plugin.js", "plugin.clutz.d.ts"],
     lenient = True,
     deps = [
         ":field",
@@ -183,7 +176,7 @@ alias(
 
 closure_js_library(
     name = "range",
-    srcs = ["range.js"],
+    srcs = ["range.js", "range.clutz.d.ts"],
     lenient = True,
     deps = [
         ":node",
@@ -203,7 +196,7 @@ closure_js_library(
 
 closure_js_library(
     name = "seamlessfield",
-    srcs = ["seamlessfield.js"],
+    srcs = ["seamlessfield.js", "seamlessfield.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -216,7 +209,6 @@ closure_js_library(
         "//closure/goog/dom:safe",
         "//closure/goog/dom:tagname",
         "//closure/goog/events",
-        "//closure/goog/events:eventtype",
         "//closure/goog/html:safehtml",
         "//closure/goog/log",
         "//closure/goog/style",
@@ -225,7 +217,7 @@ closure_js_library(
 
 closure_js_library(
     name = "style",
-    srcs = ["style.js"],
+    srcs = ["style.js", "style.clutz.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -246,9 +238,9 @@ closure_js_library(
 closure_js_library(
     name = "table",
     srcs = [
-        "table.js",
-        "tablecell.js",
-        "tablerow.js",
+        "table.js", "table.clutz.d.ts",
+        "tablecell.js", "tablecell.clutz.d.ts",
+        "tablerow.js", "tablerow.clutz.d.ts",
     ],
     lenient = True,
     deps = [

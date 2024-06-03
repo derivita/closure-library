@@ -6,16 +6,16 @@ licenses(["notice"])
 
 closure_js_library(
     name = "nativeresolver",
-    srcs = ["nativeresolver.js"],
+    srcs = ["nativeresolver.js", "nativeresolver.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "promise",
     srcs = [
-        "promise.js",
-        "resolver.js",
-        "thenable.js",
+        "promise.js", "promise.clutz.d.ts",
+        "resolver.js", "resolver.clutz.d.ts",
+        "thenable.js", "thenable.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -23,7 +23,9 @@ closure_js_library(
         "//closure/goog/async:freelist",
         "//closure/goog/async:run",
         "//closure/goog/async:throwexception",
+        "//closure/goog/debug:asyncstacktag",
         "//closure/goog/debug:error",
+        "//closure/goog/functions",
     ],
 )
 
@@ -35,7 +37,7 @@ alias(
 closure_js_library(
     name = "testsuiteadapter",
     testonly = 1,
-    srcs = ["testsuiteadapter.js"],
+    srcs = ["testsuiteadapter.js", "testsuiteadapter.clutz.d.ts"],
     lenient = True,
     deps = [":promise"],
 )

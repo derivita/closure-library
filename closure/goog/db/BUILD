@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "cursor",
-    srcs = ["cursor.js"],
+    srcs = ["cursor.js", "cursor.clutz.d.ts"],
     lenient = True,
     deps = [
         ":error",
@@ -19,7 +19,7 @@ closure_js_library(
 
 closure_js_library(
     name = "db",
-    srcs = ["db.js"],
+    srcs = ["db.js", "db.clutz.d.ts"],
     lenient = True,
     deps = [
         ":error",
@@ -32,7 +32,7 @@ closure_js_library(
 
 closure_js_library(
     name = "error",
-    srcs = ["error.js"],
+    srcs = ["error.js", "error.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -42,7 +42,7 @@ closure_js_library(
 
 closure_js_library(
     name = "index",
-    srcs = ["index.js"],
+    srcs = ["index.js", "index.clutz.d.ts"],
     lenient = True,
     deps = [
         ":cursor",
@@ -55,27 +55,30 @@ closure_js_library(
 
 closure_js_library(
     name = "indexeddb",
-    srcs = ["indexeddb.js"],
+    srcs = [
+        "indexeddb.js",  "indexeddb.clutz.d.ts",
+        "transaction.js", "transaction.clutz.d.ts",
+    ],
     lenient = True,
     deps = [
         ":error",
         ":objectstore",
-        ":transaction",
         "//closure/goog/events:event",
         "//closure/goog/events:eventhandler",
         "//closure/goog/events:eventtarget",
+        "//third_party/closure/goog/mochikit/async:deferred",
     ],
 )
 
 closure_js_library(
     name = "keyrange",
-    srcs = ["keyrange.js"],
+    srcs = ["keyrange.js", "keyrange.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "objectstore",
-    srcs = ["objectstore.js"],
+    srcs = ["objectstore.js", "objectstore.clutz.d.ts"],
     lenient = True,
     deps = [
         ":cursor",
@@ -87,16 +90,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+alias(
     name = "transaction",
-    srcs = ["transaction.js"],
-    lenient = True,
-    deps = [
-        ":error",
-        ":objectstore",
-        "//closure/goog/events",
-        "//closure/goog/events:eventhandler",
-        "//closure/goog/events:eventtarget",
-        "//third_party/closure/goog/mochikit/async:deferred",
-    ],
+    actual = ":indexeddb",
 )

@@ -8,7 +8,6 @@ goog.module('goog.editor.plugins.BlockquoteTest');
 goog.setTestOnly();
 
 const Blockquote = goog.require('goog.editor.plugins.Blockquote');
-const BrowserFeature = goog.require('goog.editor.BrowserFeature');
 const FieldMock = goog.require('goog.testing.editor.FieldMock');
 const Range = goog.require('goog.dom.Range');
 const TagName = goog.require('goog.dom.TagName');
@@ -38,26 +37,20 @@ function createPlugin(requireClassname, paragraphMode = undefined) {
 
 /** @suppress {checkTypes} suppression added to enable type checking */
 function execCommand() {
+  // Change events are stopped during the execution of execCommand because
+  // Blockquote.SPLIT_COMMAND is a silent command.
+  field.stopChangeEvents(true, true);
+  field.startChangeEvents(false, false);
   field.$replay();
 
   // With splitPoint we try to mimic the behavior of EnterHandler's
   // deleteCursorSelection_.
   const splitPoint = dom.getElement('split-point');
-  const position = BrowserFeature.HAS_W3C_RANGES ?
-      {node: splitPoint.nextSibling, offset: 0} :
-      splitPoint;
-  if (BrowserFeature.HAS_W3C_RANGES) {
-    dom.removeNode(splitPoint);
-    Range.createCaret(position.node, 0).select();
-  } else {
-    Range.createCaret(position, 0).select();
-  }
+  const position = {node: splitPoint.nextSibling, offset: 0};
+  dom.removeNode(splitPoint);
+  Range.createCaret(position.node, 0).select();
 
   const result = plugin.execCommand(Blockquote.SPLIT_COMMAND, position);
-  if (!BrowserFeature.HAS_W3C_RANGES) {
-    dom.removeNode(splitPoint);
-  }
-
   return result;
 }
 
@@ -98,7 +91,7 @@ testSuite({
     assertTrue(execCommand());
     helper.assertHtmlMatches(
         '<blockquote>Test</blockquote>' +
-        '<div>' + (BrowserFeature.HAS_W3C_RANGES ? '&nbsp;' : '') + '</div>' +
+        '<div>&nbsp;</div>' +
         '<blockquote>ing</blockquote>');
   },
 
@@ -109,7 +102,7 @@ testSuite({
     assertTrue(execCommand());
     helper.assertHtmlMatches(
         '<blockquote>Test</blockquote>' +
-        '<p>' + (BrowserFeature.HAS_W3C_RANGES ? '&nbsp;' : '') + '</p>' +
+        '<p>&nbsp;</p>' +
         '<blockquote>ing</blockquote>');
   },
 
@@ -121,7 +114,7 @@ testSuite({
 
     helper.assertHtmlMatches(
         '<blockquote class="tr_bq">Test</blockquote>' +
-        '<div>' + (BrowserFeature.HAS_W3C_RANGES ? '&nbsp;' : '') + '</div>' +
+        '<div>&nbsp;</div>' +
         '<blockquote class="tr_bq">ing</blockquote>');
   },
 
@@ -132,7 +125,7 @@ testSuite({
     assertTrue(execCommand());
     helper.assertHtmlMatches(
         '<blockquote class="tr_bq">Test</blockquote>' +
-        '<p>' + (BrowserFeature.HAS_W3C_RANGES ? '&nbsp;' : '') + '</p>' +
+        '<p>&nbsp;</p>' +
         '<blockquote class="tr_bq">ing</blockquote>');
   },
 

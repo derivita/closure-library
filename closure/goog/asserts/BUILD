@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "asserts",
-    srcs = ["asserts.js"],
+    srcs = ["asserts.js", "asserts.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/debug:error",
@@ -16,7 +16,7 @@ closure_js_library(
 
 closure_js_library(
     name = "dom",
-    srcs = ["dom.js"],
+    srcs = ["dom.js", "dom.clutz.d.ts"],
     lenient = True,
     deps = [
         ":asserts",

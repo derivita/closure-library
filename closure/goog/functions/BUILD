@@ -6,6 +6,6 @@ licenses(["notice"])
 
 closure_js_library(
     name = "functions",
-    srcs = ["functions.js"],
+    srcs = ["functions.js", "functions.clutz.d.ts"],
     lenient = True,
 )

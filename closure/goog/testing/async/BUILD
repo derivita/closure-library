@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "mockcontrol",
     testonly = True,
-    srcs = ["mockcontrol.js"],
+    srcs = ["mockcontrol.js", "mockcontrol.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",

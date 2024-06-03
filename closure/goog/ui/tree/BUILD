@@ -12,10 +12,10 @@ alias(
 closure_js_library(
     name = "treecontrol",
     srcs = [
-        "basenode.js",
-        "treecontrol.js",
-        "treenode.js",
-        "typeahead.js",
+        "basenode.js", "basenode.clutz.d.ts",
+        "treecontrol.js", "treecontrol.clutz.d.ts",
+        "treenode.js", "treenode.clutz.d.ts",
+        "typeahead.js", "typeahead.clutz.d.ts",
     ],
     lenient = True,
     deps = [

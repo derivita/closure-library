@@ -6,10 +6,11 @@ licenses(["notice"])
 
 closure_js_library(
     name = "data",
-    srcs = ["data.js"],
+    srcs = ["data.js", "data.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
+        "//closure/goog/dom:safe",
         "//closure/goog/html:safehtml",
         "//closure/goog/html:safescript",
         "//closure/goog/html:safestyle",
@@ -26,8 +27,8 @@ closure_js_library(
 closure_js_library(
     name = "renderer",
     srcs = [
-        "injecteddatasupplier.js",
-        "renderer.js",
+        "injecteddatasupplier.js", "injecteddatasupplier.clutz.d.ts",
+        "renderer.js", "renderer.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -42,7 +43,7 @@ closure_js_library(
 
 closure_js_library(
     name = "soy",
-    srcs = ["soy.js"],
+    srcs = ["soy.js", "soy.clutz.d.ts"],
     lenient = True,
     deps = [
         ":data",
@@ -58,7 +59,7 @@ closure_js_library(
 closure_js_library(
     name = "soy_testhelper",
     testonly = 1,
-    srcs = ["soy_testhelper.js"],
+    srcs = ["soy_testhelper.js", "soy_testhelper.clutz.d.ts"],
     lenient = True,
     deps = [
         ":data",

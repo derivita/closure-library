@@ -32,7 +32,6 @@ goog.require('goog.dom.TagName');
 goog.require('goog.object');
 goog.require('goog.testing.CspViolationObserver');
 goog.require('goog.testing.JsUnitException');
-goog.require('goog.testing.asserts');
 goog.require('goog.url');
 
 
@@ -175,7 +174,7 @@ goog.testing.TestCase = function(opt_name) {
   this.order = goog.testing.TestCase.Order.SORTED;
 
   /** @private {function(!goog.testing.TestCase.Result)} */
-  this.runNextTestCallback_ = goog.nullFunction;
+  this.runNextTestCallback_ = () => {};
 
   /**
    * The currently executing test case or null.
@@ -1547,7 +1546,7 @@ goog.testing.TestCase.prototype.setTestObj = function(obj) {
   // Check any previously added (likely auto-discovered) tests, only one source
   // of discovered test and life-cycle methods is allowed.
   if (this.tests_.length > 0) {
-    fail(
+    throw new Error(
         'Test methods have already been configured.\n' +
         'Tests previously found:\n' +
         this.tests_
@@ -1670,7 +1669,7 @@ goog.testing.TestCase.prototype.cycleTests = function() {
   this.saveMessage('Start');
   this.batchTime_ = this.now();
   if (this.running) {
-    this.runNextTestCallback_ = goog.nullFunction;
+    this.runNextTestCallback_ = () => {};
     // Kick off the tests. runNextTest_ will schedule all of the tests,
     // using a mixture of synchronous and asynchronous strategies.
     goog.testing.TestCase.Continuation_.run(this.runNextTest_());
@@ -1767,7 +1766,7 @@ goog.testing.TestCase.prototype.getTimeStamp_ = function() {
 
   // Ensure millis are always 3-digits
   var millis = '00' + d.getMilliseconds();
-  millis = millis.substr(millis.length - 3);
+  millis = millis.slice(-3);
 
   return this.pad_(d.getHours()) + ':' + this.pad_(d.getMinutes()) + ':' +
       this.pad_(d.getSeconds()) + '.' + millis;
@@ -2107,12 +2106,15 @@ goog.testing.TestCase.Test.prototype.stopped = function() {
 };
 
 /**
- * Returns the runtime for this test function
- * @return {number} milliseconds takenn by the test.
+ * Returns the runtime for this test function in milliseconds.
+ * @return {number}
  */
 goog.testing.TestCase.Test.prototype.getElapsedTime = function() {
   'use strict';
-  return this.stoppedTime_ - this.startTime_;
+  // Round the elapsed time to the closest multiple of 0.1ms (the resolution of
+  // performance.now()) to avoid noise due to floating point rounding errors
+  // when it's printed.
+  return Math.round((this.stoppedTime_ - this.startTime_) * 10) / 10;
 };
 
 /**
@@ -2332,7 +2334,7 @@ goog.testing.TestCase.parseRunTests_ = function(href) {
     return null;
   }
 
-  const nonOriginParts = href.substr(queryParamIndex);
+  const nonOriginParts = href.slice(queryParamIndex);
 
   // Use a "fake" origin because tests may load using protocols that goog.url
   // doesn't support

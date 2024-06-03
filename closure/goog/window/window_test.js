@@ -260,6 +260,7 @@ testSuite({
       await waitForTestWindow(newBlankWin);
       // IE11 never stripped the referrer even when using meta-refresh.
       verifyWindow(newBlankWin, !browser.isIE(), urlParam);
+      assertNull(newBlankWin.opener);
     } finally {
       if (newBlankWin) {
         newBlankWin.close();
@@ -310,6 +311,7 @@ testSuite({
       await waitForTestWindow(newBlankWin);
       // IE11 never stripped the referrer even when using meta-refresh.
       verifyWindow(newBlankWin, !browser.isIE(), urlParam);
+      assertNull(newBlankWin.opener);
     } finally {
       if (newBlankWin) {
         newBlankWin.close();
@@ -318,12 +320,22 @@ testSuite({
   },
 
   async testOpenBlankWithMessage() {
-    newWin = googWindow.openBlank('Loading...');
+    const expectedLoadingMessage = 'Loading...';
+    newWin = googWindow.openBlank(expectedLoadingMessage);
     await new Promise((resolve) => {
       setTimeout(resolve, 5000);
     });
-    assertEquals(
-        newWin.document.body.textContent, !browser.isIE() ? 'Loading...' : '');
+    if (!browser.isIE()) {
+      assertEquals(expectedLoadingMessage, newWin.document.body.textContent);
+    } else {
+      const messageContent = newWin.document.body.textContent;
+      // This is flaky on IE - sometimes the message value updates and sometimes
+      // it will fail (and textContent returns an empty string). This is ok as
+      // the message is best-effort on IE.
+      if (messageContent) {
+        assertEquals(expectedLoadingMessage, messageContent);
+      }
+    }
     const urlParam = 'bogus~';
     newWin.location.href = REDIRECT_URL_PREFIX + urlParam;
     await waitForTestWindow(newWin);
@@ -346,16 +358,17 @@ testSuite({
       // Don't even try this on IE8!
       return;
     }
-    const attrs = {};
     let dispatchedEvent = null;
     const element = {
-      setAttribute: function(name, value) {
-        attrs[name] = value;
-      },
       dispatchEvent: function(event) {
         dispatchedEvent = event;
       },
       href: undefined,
+      target: undefined,
+      rel: undefined,
+      tagName: TagName.A,
+      namespaceURI: 'http://www.w3.org/1999/xhtml',
+      nodeType: Node.ELEMENT_NODE,
     };
     stubs.replace(window.document, 'createElement', (name) => {
       if (name == TagName.A) {
@@ -376,8 +389,8 @@ testSuite({
     // element.href is directly set through goog.dom.safe.setAnchorHref, not
     // with element.setAttribute.
     assertEquals('http://google.com', element.href);
-    assertEquals('_blank', attrs['target']);
-    assertEquals('', attrs['rel'] || '');
+    assertEquals('_blank', element.target);
+    assertEquals('', element.rel || '');
 
     // Click event.
     assertNotNull(dispatchedEvent);
@@ -389,16 +402,17 @@ testSuite({
       // Don't even try this on IE8!
       return;
     }
-    const attrs = {};
     let dispatchedEvent = null;
     const element = {
-      setAttribute: function(name, value) {
-        attrs[name] = value;
-      },
       dispatchEvent: function(event) {
         dispatchedEvent = event;
       },
       href: undefined,
+      target: undefined,
+      rel: undefined,
+      tagName: TagName.A,
+      namespaceURI: 'http://www.w3.org/1999/xhtml',
+      nodeType: Node.ELEMENT_NODE,
     };
     stubs.replace(window.document, 'createElement', (name) => {
       if (name == TagName.A) {
@@ -420,10 +434,10 @@ testSuite({
     // element.href is directly set through goog.dom.safe.setAnchorHref, not
     // with element.setAttribute.
     assertEquals('http://google.com', element.href);
-    assertEquals('_blank', attrs['target']);
+    assertEquals('_blank', element.target);
     const expectedRel =
         self.crossOriginIsolated === undefined ? 'noreferrer' : undefined;
-    assertEquals(expectedRel, attrs['rel']);
+    assertEquals(expectedRel, element.rel);
 
     // Click event.
     assertNotNull(dispatchedEvent);
@@ -446,8 +460,10 @@ testSuite({
         return mockNewWin;
       },
     };
+    mockNewWin.opener = mockWin;
     const options = {noreferrer: true};
-    googWindow.open('https://hello&world', options, mockWin);
+    const win = googWindow.open('https://hello&world', options, mockWin);
+    assertNull(win.opener);
     if (self.crossOriginIsolated !== undefined) {
       assertEquals(undefined, documentWriteHtml);
       assertEquals('https://hello&world', openedUrl);
@@ -473,5 +489,36 @@ testSuite({
     return waitForTestWindow(newWin).then((win) => {
       verifyWindow(win, false, 'theBest');
     });
+  },
+
+  testOpenNewWindowNoreferrerImpliesNoopener() {
+    let documentWriteHtml;
+    let openedUrl;
+    const mockNewWin = {};
+    mockNewWin.document = {
+      write: function(html) {
+        documentWriteHtml = html;
+      },
+      close: function() {},
+    };
+    const /** ? */ mockWin = {
+      open: function(url) {
+        openedUrl = url;
+        return mockNewWin;
+      },
+    };
+    mockNewWin.opener = mockWin;
+    const options = {noreferrer: true};
+    const win = googWindow.open('https://example.com', options, mockWin);
+    assertNull(win.opener);
+    if (self.crossOriginIsolated !== undefined) {
+      assertEquals(undefined, documentWriteHtml);
+      assertEquals('https://example.com', openedUrl);
+    } else {
+      assertEquals(
+          '<meta name="referrer" content="no-referrer"><meta http-equiv="refresh" content="0; url=https://example.com">',
+          documentWriteHtml);
+      assertEquals('', openedUrl);
+    }
   },
 });

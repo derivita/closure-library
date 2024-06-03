@@ -40,7 +40,7 @@ async function internalTestAssertRejects(swallowUnhandledRejections, factory) {
     // TODO(user): Stop the unhandled rejection handler from firing
     // rather than swallowing the errors.
     if (swallowUnhandledRejections) {
-      GoogPromise.setUnhandledRejectionHandler(goog.nullFunction);
+      GoogPromise.setUnhandledRejectionHandler(() => {});
     }
 
     let e;
@@ -753,16 +753,6 @@ testSuite({
           return googIter.ES6_ITERATOR_DONE;
         }
       };
-      const iterNext = iter.next;
-      /**
-       * TODO(user): Please do not remove - this will be cleaned up
-       * centrally.
-       * @override @see {!googIter.Iterator}
-       * @return {string}
-       */
-      iter.nextValueOrThrow = function() {
-        return googIter.toEs4IteratorNext(iterNext.call(iter));
-      };
 
       return iter;
     };
@@ -790,6 +780,22 @@ testSuite({
     assertObjectEquals(new Date(2010, 0, 1), date);
     assertThrowsJsUnitException(
         goog.partial(assertObjectEquals, date, dateWithMilliseconds));
+  },
+
+
+  testAssertObjectEqualsWithCustomComparatorErrorMessage() {
+    class A {}
+
+    asserts.registerComparator(
+        A.prototype, (a, b, cmp) => 'pretty error message');
+    let exception = assertThrowsJsUnitException(() => {
+      assertObjectEquals(new A(), new A());
+    });
+    assertEquals('pretty error message', exception.message);
+    exception = assertThrowsJsUnitException(() => {
+      assertObjectEquals({a: new A()}, {a: new A()});
+    });
+    assertContains('a: pretty error message', exception.message);
   },
 
   testAssertObjectEqualsSparseArrays() {
@@ -1233,7 +1239,7 @@ testSuite({
         error.message);
 
     error = assertThrowsJsUnitException(() => {
-      assertThrowsJsUnitException(goog.nullFunction);
+      assertThrowsJsUnitException(() => {});
     });
     assertEquals('Expected a failure', error.message);
   },

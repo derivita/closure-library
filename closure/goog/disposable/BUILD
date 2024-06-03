@@ -7,9 +7,9 @@ licenses(["notice"])
 closure_js_library(
     name = "disposable",
     srcs = [
-        "disposable.js",
-        "dispose.js",
-        "disposeall.js",
+        "disposable.js", "disposable.clutz.d.ts",
+        "dispose.js", "dispose.clutz.d.ts",
+        "disposeall.js", "disposeall.clutz.d.ts",
     ],
     lenient = True,
     deps = [":idisposable"],
@@ -17,6 +17,6 @@ closure_js_library(
 
 closure_js_library(
     name = "idisposable",
-    srcs = ["idisposable.js"],
+    srcs = ["idisposable.js", "idisposable.clutz.d.ts"],
     lenient = True,
 )

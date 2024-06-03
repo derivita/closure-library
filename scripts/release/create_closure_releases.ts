@@ -22,6 +22,8 @@
  * is simply invoked immediately.
  */
 
+import * as semver from 'semver';
+
 import {Change, GitClient} from './git_client';
 import {DraftReleaseOptions, GitHubClient} from './github_client';
 
@@ -72,7 +74,12 @@ function escapeGitHubMarkdown(note: string) {
   // "Escape" GitHub mentions (i.e., "@user") by surrounding in backticks.
   note = note.replace(/(@\w+)/g, '`$1`');
   // Escape known markdown characters with a leading backslash.
-  note = note.replace(/([*_(){}#!.<>[\]])/g, '\\$1');
+  // NOTE: period has been removed from this list, since its only use is for
+  // autolinks, which are rare in practice, resulting in far more incorrect
+  // escapes (i.e. within a `...` block) than correct escapes. Better to just
+  // manually fix it when it misfires. We may want to consider backing off in
+  // other cases, too, or otherwise improving this process.
+  note = note.replace(/([*_(){}#!<>[\]])/g, '\\$1');
   return note;
 }
 
@@ -242,6 +249,7 @@ export async function createClosureReleases(gitHubApiToken: string) {
   // Get the tag of the latest GitHub release.
   const from = await github.getLatestReleaseTag();
   const versionAtLastRelease = await getMajorVersionAtCommit(git, from);
+  const lastReleaseSemver = semver.coerce(versionAtLastRelease);
 
   // Get the list of commits since `from`.
   const commits = await git.listCommits({from, to: 'HEAD'});
@@ -255,6 +263,13 @@ export async function createClosureReleases(gitHubApiToken: string) {
   for (const commit of commits) {
     const version = await getMajorVersionAtCommit(git, commit.hash);
     seenCommits.push(commit);
+    if (lastReleaseSemver) {
+      const semverV = semver.coerce(version);
+      if (semverV && semver.lt(semverV, lastReleaseSemver)) {
+        // Skip versions that are older than the last version we released.
+        continue;
+      }
+    }
     if (!pJsonVersions.some((entry) => entry.version === version)) {
       pJsonVersions.push({
         version,

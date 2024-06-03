@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "proto2",
     testonly = True,
-    srcs = ["proto2.js"],
+    srcs = ["proto2.js", "proto2.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/proto2:message",

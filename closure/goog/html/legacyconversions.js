@@ -79,7 +79,7 @@ goog.html.legacyconversions.safeHtmlFromString = function(html) {
   'use strict';
   goog.html.legacyconversions.reportCallback_();
   return goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
-      html, null /* dir */);
+      html);
 };
 
 
@@ -174,7 +174,7 @@ goog.html.legacyconversions.trustedResourceUrlFromString = function(url) {
 /**
  * @private {function(): undefined}
  */
-goog.html.legacyconversions.reportCallback_ = goog.nullFunction;
+goog.html.legacyconversions.reportCallback_ = function() {};
 
 
 /**

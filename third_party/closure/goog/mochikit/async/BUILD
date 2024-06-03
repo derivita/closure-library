@@ -16,20 +16,19 @@ closure_js_library(
 
 closure_js_library(
     name = "deferred",
-    srcs = ["deferred.js"],
+    srcs = ["deferred.js", "deferred.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
         "//closure/goog/asserts",
         "//closure/goog/debug:error",
         "//closure/goog/promise",
-        "//closure/goog/promise:thenable",
     ],
 )
 
 closure_js_library(
     name = "deferredlist",
-    srcs = ["deferredlist.js"],
+    srcs = ["deferredlist.js", "deferredlist.clutz.d.ts"],
     lenient = True,
     deps = [":deferred"],
 )

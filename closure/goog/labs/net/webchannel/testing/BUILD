@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "fakewebchannel",
     testonly = True,
-    srcs = ["fakewebchannel.js"],
+    srcs = ["fakewebchannel.js", "fakewebchannel.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",

@@ -374,43 +374,6 @@ testSuite({
     }
   },
 
-  /** @suppress {visibility} suppression added to enable type checking */
-  testStartChangeEvents() {
-    if (BrowserFeature.USE_MUTATION_EVENTS) {
-      const clock = new MockClock(true);
-
-      let field;
-      try {
-        field = initSeamlessField('&nbsp;', {});
-        field.makeEditable();
-
-        let changeCalled = false;
-        events.listenOnce(field, Field.EventType.CHANGE, () => {
-          changeCalled = true;
-        });
-
-        let delayedChangeCalled = false;
-        events.listenOnce(field, Field.EventType.CHANGE, () => {
-          delayedChangeCalled = true;
-        });
-
-        field.stopChangeEvents(true, true);
-        if (field.changeTimerGecko_) {
-          field.changeTimerGecko_.start();
-        }
-
-        field.startChangeEvents();
-        clock.tick(1000);
-
-        assertFalse(changeCalled);
-        assertFalse(delayedChangeCalled);
-      } finally {
-        clock.dispose();
-        field.dispose();
-      }
-    }
-  },
-
   testManipulateDom() {
     // Test in blended field since that is what fires change events.
     const editableField = initSeamlessField('&nbsp;', {});
@@ -422,7 +385,7 @@ testSuite({
     });
 
     assertFalse(editableField.isLoaded());
-    editableField.manipulateDom(goog.nullFunction);
+    editableField.manipulateDom(() => {});
     clock.tick(1000);
     assertEquals(
         'Must not fire delayed change events if field is not loaded.', 0,
@@ -432,13 +395,13 @@ testSuite({
     const usesIframe = editableField.usesIframe();
 
     try {
-      editableField.manipulateDom(goog.nullFunction);
+      editableField.manipulateDom(() => {});
       clock.tick(1000);  // Wait for delayed change to fire.
       assertEquals(
           'By default must fire a single delayed change event.', 1,
           delayedChangeCalled);
 
-      editableField.manipulateDom(goog.nullFunction, true);
+      editableField.manipulateDom(() => {}, true);
       clock.tick(1000);  // Wait for delayed change to fire.
       assertEquals(
           'Must prevent all delayed change events.', 1, delayedChangeCalled);
@@ -446,9 +409,6 @@ testSuite({
       editableField.manipulateDom(function() {
         this.handleChange();
         this.handleChange();
-        if (this.changeTimerGecko_) {
-          this.changeTimerGecko_.fire();
-        }
 
         this.dispatchDelayedChange_();
         this.delayedChangeTimer_.fire();

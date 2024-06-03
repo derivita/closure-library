@@ -342,7 +342,10 @@ goog.dom.MultiRange.prototype.__iterator__ = function(opt_keys) {
 // RANGE ACTIONS
 
 
-/** @override */
+/**
+ * @override
+ * @suppress {strictMissingProperties} Added to tighten compiler checks
+ */
 goog.dom.MultiRange.prototype.select = function() {
   'use strict';
   var selection =
@@ -555,21 +558,10 @@ goog.dom.MultiRangeIterator.prototype.next = function() {
 };
 
 
-/**
- * TODO(user): Please do not remove - this will be cleaned up centrally.
- * @override @see {!goog.iter.Iterator}
- * @return {!Node}
- */
-goog.dom.MultiRangeIterator.prototype.nextValueOrThrow = function() {
-  return goog.iter.toEs4IteratorNext(
-      goog.dom.MultiRangeIterator.prototype.next.call(this));
-};
-
-
-
 /** @override */
 goog.dom.MultiRangeIterator.prototype.copyFrom = function(other) {
   'use strict';
+  /** @suppress {strictMissingProperties} Added to tighten compiler checks */
   this.iterators_ = goog.array.clone(other.iterators_);
   goog.dom.MultiRangeIterator.superClass_.copyFrom.call(this, other);
 };

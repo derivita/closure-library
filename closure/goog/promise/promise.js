@@ -12,6 +12,8 @@ goog.require('goog.async.FreeList');
 goog.require('goog.async.run');
 goog.require('goog.async.throwException');
 goog.require('goog.debug.Error');
+goog.require('goog.debug.asyncStackTag');
+goog.require('goog.functions');
 goog.require('goog.promise.Resolver');
 
 
@@ -156,10 +158,10 @@ goog.Promise = function(resolver, opt_context) {
     this.currentStep_ = 0;
   }
 
-  // As an optimization, we can skip this if resolver is goog.nullFunction.
-  // This value is passed internally when creating a promise which will be
-  // resolved through a more optimized path.
-  if (resolver != goog.nullFunction) {
+  // As an optimization, we can skip this if resolver is
+  // goog.functions.UNDEFINED. This value is passed internally when creating a
+  // promise which will be resolved through a more optimized path.
+  if (resolver != goog.functions.UNDEFINED) {
     try {
       var self = this;
       resolver.call(
@@ -355,9 +357,9 @@ goog.Promise.resolve = function(opt_value) {
     return opt_value;
   }
 
-  // Passing goog.nullFunction will cause the constructor to take an optimized
-  // path that skips calling the resolver function.
-  var promise = new goog.Promise(goog.nullFunction);
+  // Passing goog.functions.UNDEFINED will cause the constructor to take an
+  // optimized path that skips calling the resolver function.
+  var promise = new goog.Promise(goog.functions.UNDEFINED);
   promise.resolve_(goog.Promise.State_.FULFILLED, opt_value);
   return promise;
 };
@@ -681,10 +683,9 @@ goog.Promise.prototype.thenVoid = function(
 
   // Note: no default rejection handler is provided here as we need to
   // distinguish unhandled rejections.
-  this.addCallbackEntry_(
-      goog.Promise.getCallbackEntry_(
-          opt_onFulfilled || goog.nullFunction, opt_onRejected || null,
-          opt_context));
+  this.addCallbackEntry_(goog.Promise.getCallbackEntry_(
+      opt_onFulfilled || (goog.functions.UNDEFINED), opt_onRejected || null,
+      opt_context));
 };
 
 
@@ -909,6 +910,14 @@ goog.Promise.prototype.addCallbackEntry_ = function(callbackEntry) {
 goog.Promise.prototype.addChildPromise_ = function(
     onFulfilled, onRejected, opt_context) {
   'use strict';
+  if (onFulfilled) {
+    onFulfilled =
+        goog.debug.asyncStackTag.wrap(onFulfilled, 'goog.Promise.then');
+  }
+  if (onRejected) {
+    onRejected = goog.debug.asyncStackTag.wrap(onRejected, 'goog.Promise.then');
+  }
+
   /** @type {goog.Promise.CallbackEntry_} */
   var callbackEntry = goog.Promise.getCallbackEntry_(null, null, null);
 

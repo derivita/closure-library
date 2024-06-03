@@ -137,7 +137,7 @@ var _trueTypeOf = function(something) {
     }
   } catch (e) {
   } finally {
-    result = result.substr(0, 1).toUpperCase() + result.substr(1);
+    result = result.slice(0, 1).toUpperCase() + result.slice(1);
   }
   return result;
 };
@@ -208,7 +208,7 @@ var _validateArguments = function(expectedNumberOfNonCommentArgs, args) {
  * @return {?} goog.testing.TestCase or null
  * We suppress the lint error and we explicitly do not goog.require()
  * goog.testing.TestCase to avoid a build time dependency cycle.
- * @suppress {missingRequire|undefinedNames|undefinedVars|missingProperties}
+ * @suppress {missingRequire|undefinedVars|missingProperties}
  * @private
  */
 var _getCurrentTestCase = function() {
@@ -379,12 +379,15 @@ var assertThrows = goog.testing.asserts.assertThrows;
  */
 goog.testing.asserts.removeOperaStacktrace_ = function(e) {
   'use strict';
-  if (goog.isObject(e) && typeof e['stacktrace'] === 'string' &&
-      typeof e['message'] === 'string') {
-    var startIndex = e['message'].length - e['stacktrace'].length;
-    if (e['message'].indexOf(e['stacktrace'], startIndex) == startIndex) {
-      e['message'] = e['message'].substr(0, startIndex - 14);
-    }
+  if (!goog.isObject(e)) return;
+  const stack = e['stacktrace'];
+  const errorMsg = e['message'];
+  if (typeof stack !== 'string' || typeof errorMsg !== 'string') {
+    return;
+  }
+  const stackStartIndex = errorMsg.length - stack.length;
+  if (errorMsg.indexOf(stack, stackStartIndex) == stackStartIndex) {
+    e['message'] = errorMsg.slice(0, stackStartIndex - 14);
   }
 };
 
@@ -947,10 +950,10 @@ goog.testing.asserts.findDifferences = function(
     expected, actual, opt_equalityPredicate) {
   'use strict';
   var failures = [];
-  // True if there a generic error at the root (with no path).  If so, we should
+  // Non-null if there an error at the root (with no path).  If so, we should
   // fail, but not add to the failures array (because it will be included at the
   // top anyway).
-  var rootFailed = false;
+  let /** ?string*/ rootFailure = null;
   var seen1 = [];
   var seen2 = [];
 
@@ -1036,9 +1039,10 @@ goog.testing.asserts.findDifferences = function(
             const result = goog.testing.asserts.applyCustomEqualityFunction(
                 comparator, o1, o2, path);
             if (result != null) {
-              failures.push((path ? path + ': ' : '') + result);
-              if (!path) {
-                rootFailed = true;
+              if (path) {
+                failures.push(path + ': ' + result);
+              } else {
+                rootFailure = result;
               }
             }
             return;
@@ -1071,7 +1075,7 @@ goog.testing.asserts.findDifferences = function(
           if (path) {
             failures.push(path + ': ' + errorMessage);
           } else {
-            rootFailed = true;
+            rootFailure = errorMessage;
           }
         }
       } else if (isArray && var1.length != var2.length) {
@@ -1082,12 +1086,11 @@ goog.testing.asserts.findDifferences = function(
       } else if (typeOfVar1 == 'String') {
         // If the comparer cannot process strings (eg, roughlyEquals).
         if (var1 != var2) {
+          const error = goog.testing.asserts.getDefaultErrorMsg_(var1, var2);
           if (path) {
-            failures.push(
-                path + ': ' +
-                goog.testing.asserts.getDefaultErrorMsg_(var1, var2));
+            failures.push(path + ': ' + error);
           } else {
-            rootFailed = true;
+            rootFailure = error;
           }
         }
       } else {
@@ -1203,14 +1206,14 @@ goog.testing.asserts.findDifferences = function(
       failures.push(
           path + ': ' + goog.testing.asserts.getDefaultErrorMsg_(var1, var2));
     } else {
-      rootFailed = true;
+      rootFailure = goog.testing.asserts.getDefaultErrorMsg_(var1, var2);
     }
   }
 
   innerAssertWithCycleCheck(expected, actual, '');
 
-  if (rootFailed) {
-    return goog.testing.asserts.getDefaultErrorMsg_(expected, actual);
+  if (rootFailure) {
+    return rootFailure;
   }
   return failures.length == 0 ? null : goog.testing.asserts.getDefaultErrorMsg_(
                                            expected, actual) +

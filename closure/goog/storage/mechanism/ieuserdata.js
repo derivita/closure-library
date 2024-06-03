@@ -156,7 +156,7 @@ goog.storage.mechanism.IEUserData.encodeKey_ = function(key) {
  */
 goog.storage.mechanism.IEUserData.decodeKey_ = function(key) {
   'use strict';
-  return decodeURIComponent(key.replace(/\./g, '%')).substr(1);
+  return decodeURIComponent(key.replace(/\./g, '%')).slice(1);
 };
 
 
@@ -239,16 +239,6 @@ goog.storage.mechanism.IEUserData.prototype.__iterator__ = function(opt_keys) {
       throw goog.storage.mechanism.ErrorCode.INVALID_VALUE;
     }
     return goog.iter.createEs6IteratorYield(value);
-  };
-  const iterNext = newIter.next;
-  /**
-   * TODO(user): Please do not remove - this will be cleaned up
-   * centrally.
-   * @override @see {!goog.iter.Iterator}
-   * @return {string}
-   */
-  newIter.nextValueOrThrow = function() {
-    return goog.iter.toEs4IteratorNext(iterNext.call(newIter));
   };
 
   return newIter;

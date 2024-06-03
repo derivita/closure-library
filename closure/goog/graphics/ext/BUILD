@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "coordinates",
-    srcs = ["coordinates.js"],
+    srcs = ["coordinates.js", "coordinates.clutz.d.ts"],
     lenient = True,
     deps = ["//closure/goog/string"],
 )
@@ -18,7 +18,7 @@ alias(
 
 closure_js_library(
     name = "ellipse",
-    srcs = ["ellipse.js"],
+    srcs = ["ellipse.js", "ellipse.clutz.d.ts"],
     lenient = True,
     deps = [
         ":group",
@@ -28,7 +28,7 @@ closure_js_library(
 
 closure_js_library(
     name = "ext",
-    srcs = ["ext.js"],
+    srcs = ["ext.js", "ext.clutz.d.ts"],
     lenient = True,
     deps = [
         ":coordinates",
@@ -43,9 +43,9 @@ closure_js_library(
 closure_js_library(
     name = "graphics",
     srcs = [
-        "element.js",
-        "graphics.js",
-        "group.js",
+        "element.js", "element.clutz.d.ts",
+        "graphics.js", "graphics.clutz.d.ts",
+        "group.js", "group.clutz.d.ts",
     ],
     lenient = True,
     deps = [
@@ -70,14 +70,14 @@ alias(
 
 closure_js_library(
     name = "image",
-    srcs = ["image.js"],
+    srcs = ["image.js", "image.clutz.d.ts"],
     lenient = True,
     deps = [":element"],
 )
 
 closure_js_library(
     name = "path",
-    srcs = ["path.js"],
+    srcs = ["path.js", "path.clutz.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/graphics:affinetransform",
@@ -88,7 +88,7 @@ closure_js_library(
 
 closure_js_library(
     name = "rectangle",
-    srcs = ["rectangle.js"],
+    srcs = ["rectangle.js", "rectangle.clutz.d.ts"],
     lenient = True,
     deps = [
         ":group",
@@ -98,7 +98,7 @@ closure_js_library(
 
 closure_js_library(
     name = "shape",
-    srcs = ["shape.js"],
+    srcs = ["shape.js", "shape.clutz.d.ts"],
     lenient = True,
     deps = [
         ":group",
@@ -111,7 +111,7 @@ closure_js_library(
 
 closure_js_library(
     name = "strokeandfillelement",
-    srcs = ["strokeandfillelement.js"],
+    srcs = ["strokeandfillelement.js", "strokeandfillelement.clutz.d.ts"],
     lenient = True,
     deps = [
         ":element",

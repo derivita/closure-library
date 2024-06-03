@@ -52,6 +52,7 @@ goog.ui.NativeButtonRenderer.prototype.getAriaRole = function() {
  * @return {!Element} Root element for the button (a native HTML button
  *     element).
  * @override
+ * @suppress {strictMissingProperties} Added to tighten compiler checks
  */
 goog.ui.NativeButtonRenderer.prototype.createDom = function(button) {
   'use strict';
@@ -73,6 +74,7 @@ goog.ui.NativeButtonRenderer.prototype.createDom = function(button) {
  * @param {Element} element Element to decorate.
  * @return {boolean} Whether the renderer can decorate the element.
  * @override
+ * @suppress {strictMissingProperties} Added to tighten compiler checks
  */
 goog.ui.NativeButtonRenderer.prototype.canDecorate = function(element) {
   'use strict';
@@ -84,7 +86,10 @@ goog.ui.NativeButtonRenderer.prototype.canDecorate = function(element) {
 };
 
 
-/** @override */
+/**
+ * @override
+ * @suppress {strictMissingProperties} Added to tighten compiler checks
+ */
 goog.ui.NativeButtonRenderer.prototype.decorate = function(button, element) {
   'use strict';
   this.setUpNativeButton_(button);
@@ -121,15 +126,14 @@ goog.ui.NativeButtonRenderer.prototype.initializeDom = function(button) {
  * @override
  * Native buttons don't support text selection.
  */
-goog.ui.NativeButtonRenderer.prototype.setAllowTextSelection =
-    goog.nullFunction;
+goog.ui.NativeButtonRenderer.prototype.setAllowTextSelection = function() {};
 
 
 /**
  * @override
  * Native buttons natively support right-to-left rendering.
  */
-goog.ui.NativeButtonRenderer.prototype.setRightToLeft = goog.nullFunction;
+goog.ui.NativeButtonRenderer.prototype.setRightToLeft = function() {};
 
 
 /**
@@ -146,7 +150,7 @@ goog.ui.NativeButtonRenderer.prototype.isFocusable = function(button) {
  * @override
  * Native buttons natively support keyboard focus.
  */
-goog.ui.NativeButtonRenderer.prototype.setFocusable = goog.nullFunction;
+goog.ui.NativeButtonRenderer.prototype.setFocusable = function() {};
 
 
 /**
@@ -161,6 +165,7 @@ goog.ui.NativeButtonRenderer.prototype.setState = function(
       this, button, state, enable);
   var element = button.getElement();
   if (element && state == goog.ui.Component.State.DISABLED) {
+    /** @suppress {strictMissingProperties} Added to tighten compiler checks */
     element.disabled = enable;
   }
 };
@@ -170,6 +175,7 @@ goog.ui.NativeButtonRenderer.prototype.setState = function(
  * @override
  * Native buttons store their value in the HTML button's `value`
  * attribute.
+ * @suppress {strictMissingProperties} Added to tighten compiler checks
  */
 goog.ui.NativeButtonRenderer.prototype.getValue = function(element) {
   'use strict';
@@ -191,6 +197,7 @@ goog.ui.NativeButtonRenderer.prototype.setValue = function(element, value) {
     // TODO(attila): Make this work on IE!  This never worked...
     // See http://www.fourmilab.ch/fourmilog/archives/2007-03/000824.html
     // for a description of the problem.
+    /** @suppress {strictMissingProperties} Added to tighten compiler checks */
     element.value = value;
   }
 };
@@ -201,7 +208,7 @@ goog.ui.NativeButtonRenderer.prototype.setValue = function(element, value) {
  * Native buttons don't need ARIA states to support accessibility, so this is
  * a no-op.
  */
-goog.ui.NativeButtonRenderer.prototype.updateAriaState = goog.nullFunction;
+goog.ui.NativeButtonRenderer.prototype.updateAriaState = function() {};
 
 
 /**

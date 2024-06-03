@@ -6,39 +6,39 @@ licenses(["notice"])
 
 closure_js_library(
     name = "countries",
-    srcs = ["countries.js"],
+    srcs = ["countries.js", "countries.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "defaultlocalenameconstants",
-    srcs = ["defaultlocalenameconstants.js"],
+    srcs = ["defaultlocalenameconstants.js", "defaultlocalenameconstants.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "locale",
-    srcs = ["locale.js"],
+    srcs = ["locale.js", "locale.clutz.d.ts"],
     lenient = True,
     deps = [":nativenameconstants"],
 )
 
 closure_js_library(
     name = "nativenameconstants",
-    srcs = ["nativenameconstants.js"],
+    srcs = ["nativenameconstants.js", "nativenameconstants.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "scriptToLanguages",
-    srcs = ["scriptToLanguages.js"],
+    srcs = ["scriptToLanguages.js", "scriptToLanguages.clutz.d.ts"],
     lenient = True,
     deps = [":locale"],
 )
 
 closure_js_library(
     name = "timezonedetection",
-    srcs = ["timezonedetection.js"],
+    srcs = ["timezonedetection.js", "timezonedetection.clutz.d.ts"],
     lenient = True,
     deps = [
         ":timezonefingerprint",
@@ -48,13 +48,13 @@ closure_js_library(
 
 closure_js_library(
     name = "timezonefingerprint",
-    srcs = ["timezonefingerprint.js"],
+    srcs = ["timezonefingerprint.js", "timezonefingerprint.clutz.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "timezonelist",
-    srcs = ["timezonelist.js"],
+    srcs = ["timezonelist.js", "timezonelist.clutz.d.ts"],
     lenient = True,
     deps = [":locale"],
 )

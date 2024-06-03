@@ -43,43 +43,41 @@ function stubChannelRequest() {
 /**
  * Simulates the WebChannelBase firing the open event for the given channel.
  * @param {!WebChannelBase} channel The WebChannelBase.
- * @suppress {checkTypes} suppression Accessing private property.
  */
 function simulateOpenEvent(channel) {
   assertNotNull(channel.getHandler());
-  channel.getHandler().channelOpened();
+  channel.getHandler().channelOpened(channel);
 }
 
 /**
  * Simulates the WebChannelBase firing the close event for the given channel.
  * @param {!WebChannelBase} channel The WebChannelBase.
- * @suppress {checkTypes} suppression Accessing private property.
  */
 function simulateCloseEvent(channel) {
   assertNotNull(channel.getHandler());
-  channel.getHandler().channelClosed();
+  channel.getHandler().channelClosed(channel);
 }
 
 /**
  * Simulates the WebChannelBase firing the error event for the given channel.
  * @param {!WebChannelBase} channel The WebChannelBase.
- * @suppress {checkTypes} suppression Accessing private property.
+ * @param {!WebChannelBase.Error} error
  */
-function simulateErrorEvent(channel) {
+function simulateErrorEvent(channel, error) {
   assertNotNull(channel.getHandler());
-  channel.getHandler().channelError();
+  channel.getHandler().channelError(channel, error);
 }
 
 /**
  * Simulates the WebChannelBase firing the message event for the given channel.
  * @param {!WebChannelBase} channel The WebChannelBase.
- * @param {string} data The message data.
- * @suppress {checkTypes} suppression Accessing private property.
+ * @param {!Object} data The message data array.
  */
 function simulateMessageEvent(channel, data) {
   assertNotNull(channel.getHandler());
   channel.getHandler().channelHandleArray(channel, data);
 }
+
 testSuite({
   shouldRunTests() {
     return ChannelRequest.supportsXhrStreaming();
@@ -413,6 +411,7 @@ testSuite({
     const webChannelTransport = new WebChannelBaseTransport();
     webChannel = webChannelTransport.createWebChannel(channelUrl);
 
+    const error = WebChannelBase.Error.NETWORK;
     let eventFired = false;
     events.listen(webChannel, WebChannel.EventType.ERROR, (e) => {
       eventFired = true;
@@ -426,20 +425,19 @@ testSuite({
     const channel = webChannel.channel_;
     assertNotNull(channel);
 
-    simulateErrorEvent(channel);
+    simulateErrorEvent(channel, error);
     assertTrue(eventFired);
   },
 
-  /** @suppress {checkTypes} suppression Accessing private property. */
   testChannelMessage() {
     const webChannelTransport = new WebChannelBaseTransport();
     webChannel = webChannelTransport.createWebChannel(channelUrl);
 
     let eventFired = false;
-    const data = 'foo';
+    const data = {message: 'foo'};
     events.listen(webChannel, WebChannel.EventType.MESSAGE, (e) => {
       eventFired = true;
-      assertEquals(e.data, data);
+      assertEquals(data, e.data);
     });
 
     webChannel.open();
@@ -453,6 +451,59 @@ testSuite({
     assertTrue(eventFired);
   },
 
+  /**
+   * @suppress {checkTypes} Allow sending a string as data, although not
+   * supported by the method API, since it is done by clients.
+   */
+  testChannelMessage_stringDataSupported() {
+    const webChannelTransport = new WebChannelBaseTransport();
+    webChannel = webChannelTransport.createWebChannel(channelUrl);
+
+    let eventFired = false;
+    const data = 'foo';
+    events.listen(webChannel, WebChannel.EventType.MESSAGE, (e) => {
+      eventFired = true;
+      assertEquals(data, e.data);
+    });
+
+    webChannel.open();
+    assertFalse(eventFired);
+
+    /** @suppress {strictMissingProperties} Accessing private property. */
+    const channel = webChannel.channel_;
+    assertNotNull(channel);
+
+    simulateMessageEvent(channel, data);
+    assertTrue(eventFired);
+  },
+
+  testChannelMessage_WithMetadata() {
+    const webChannelTransport = new WebChannelBaseTransport();
+    webChannel = webChannelTransport.createWebChannel(channelUrl);
+
+    let eventFired = false;
+    const headers = {'header': 'value'};
+    const statusCode = 200;
+    const data = {'__headers__': {'header': 'value'}, '__status__': statusCode};
+    events.listen(webChannel, WebChannel.EventType.MESSAGE, (e) => {
+      eventFired = true;
+      assertObjectEquals({}, e.data);
+      assertObjectEquals(headers, e.headers);
+      assertEquals(statusCode, e.statusCode);
+    });
+
+    webChannel.open();
+    assertFalse(eventFired);
+
+    /** @suppress {strictMissingProperties} Accessing private property. */
+    const channel = webChannel.channel_;
+    assertNotNull(channel);
+
+    simulateMessageEvent(channel, data);
+    assertTrue(eventFired);
+  },
+
+  // ALLOW_ORIGIN_TRIAL_FEATURES = false
   testEnableOriginTrials() {
     const webChannelTransport = new WebChannelBaseTransport();
     let options = {
@@ -463,7 +514,7 @@ testSuite({
 
     /** @suppress {strictMissingProperties} Accessing private property. */
     let enabled = webChannel.channel_.enableOriginTrials_;
-    assertTrue(enabled);
+    assertFalse(enabled);
 
     options = {
       'enableOriginTrials': false,
@@ -481,7 +532,7 @@ testSuite({
 
     /** @suppress {strictMissingProperties} Accessing private property. */
     enabled = webChannel.channel_.enableOriginTrials_;
-    assertTrue(enabled);
+    assertFalse(enabled);
 
     options = undefined;
     webChannel = webChannelTransport.createWebChannel(channelUrl, options);
@@ -489,7 +540,7 @@ testSuite({
 
     /** @suppress {strictMissingProperties} Accessing private property. */
     enabled = webChannel.channel_.enableOriginTrials_;
-    assertTrue(enabled);
+    assertFalse(enabled);
   },
 
   testGetNonAckedMessages_withJsObjectReturnsExactMessage() {
