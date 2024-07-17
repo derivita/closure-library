@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "blob",
-    srcs = ["blob.js", "blob.clutz.d.ts"],
+    srcs = ["blob.js", "blob.d.ts"],
     lenient = True,
 )
 
@@ -17,7 +17,7 @@ alias(
 
 closure_js_library(
     name = "entryimpl",
-    srcs = ["entryimpl.js", "entryimpl.clutz.d.ts"],
+    srcs = ["entryimpl.js", "entryimpl.d.ts"],
     lenient = True,
     deps = [
         ":error",
@@ -32,7 +32,7 @@ closure_js_library(
 
 closure_js_library(
     name = "error",
-    srcs = ["error.js", "error.clutz.d.ts"],
+    srcs = ["error.js", "error.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -44,7 +44,7 @@ closure_js_library(
 
 closure_js_library(
     name = "filereader",
-    srcs = ["filereader.js", "filereader.clutz.d.ts"],
+    srcs = ["filereader.js", "filereader.d.ts"],
     lenient = True,
     deps = [
         ":error",
@@ -56,7 +56,7 @@ closure_js_library(
 
 closure_js_library(
     name = "filesaver",
-    srcs = ["filesaver.js", "filesaver.clutz.d.ts"],
+    srcs = ["filesaver.js", "filesaver.d.ts"],
     lenient = True,
     deps = [
         ":error",
@@ -68,8 +68,8 @@ closure_js_library(
 closure_js_library(
     name = "filesystem",
     srcs = [
-        "entry.js", "entry.clutz.d.ts",
-        "filesystem.js", "filesystem.clutz.d.ts",
+        "entry.js", "entry.d.ts",
+        "filesystem.js", "filesystem.d.ts",
     ],
     lenient = True,
     deps = [
@@ -81,7 +81,7 @@ closure_js_library(
 
 closure_js_library(
     name = "filesystemimpl",
-    srcs = ["filesystemimpl.js", "filesystemimpl.clutz.d.ts"],
+    srcs = ["filesystemimpl.js", "filesystemimpl.d.ts"],
     lenient = True,
     deps = [
         ":entryimpl",
@@ -91,7 +91,7 @@ closure_js_library(
 
 closure_js_library(
     name = "filewriter",
-    srcs = ["filewriter.js", "filewriter.clutz.d.ts"],
+    srcs = ["filewriter.js", "filewriter.d.ts"],
     lenient = True,
     deps = [
         ":error",
@@ -101,7 +101,7 @@ closure_js_library(
 
 closure_js_library(
     name = "fs",
-    srcs = ["fs.js", "fs.clutz.d.ts"],
+    srcs = ["fs.js", "fs.d.ts"],
     lenient = True,
     deps = [
         ":error",
@@ -114,13 +114,13 @@ closure_js_library(
 
 closure_js_library(
     name = "progressevent",
-    srcs = ["progressevent.js", "progressevent.clutz.d.ts"],
+    srcs = ["progressevent.js", "progressevent.d.ts"],
     lenient = True,
     deps = ["//closure/goog/events:event"],
 )
 
 closure_js_library(
     name = "url",
-    srcs = ["url.js", "url.clutz.d.ts"],
+    srcs = ["url.js", "url.d.ts"],
     lenient = True,
 )

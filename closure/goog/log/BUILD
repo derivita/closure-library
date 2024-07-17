@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "log",
     srcs = [
-        "log.js", "log.clutz.d.ts",
+        "log.js", "log.d.ts",
     ],
     lenient = True,
     deps = [

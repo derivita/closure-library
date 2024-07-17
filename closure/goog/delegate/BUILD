@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "delegateregistry",
-    srcs = ["delegateregistry.js", "delegateregistry.clutz.d.ts"],
+    srcs = ["delegateregistry.js", "delegateregistry.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -17,6 +17,6 @@ closure_js_library(
 
 closure_js_library(
     name = "delegates",
-    srcs = ["delegates.js", "delegates.clutz.d.ts"],
+    srcs = ["delegates.js", "delegates.d.ts"],
     lenient = True,
 )

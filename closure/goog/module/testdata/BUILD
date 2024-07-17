@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "modA_1",
     testonly = 1,
-    srcs = ["modA_1.js", "modA_1.clutz.d.ts"],
+    srcs = ["modA_1.js", "modA_1.d.ts"],
     lenient = True,
     deps = ["//closure/goog/testing:asserts"],
 )
@@ -15,7 +15,7 @@ closure_js_library(
 closure_js_library(
     name = "modA_2",
     testonly = 1,
-    srcs = ["modA_2.js", "modA_2.clutz.d.ts"],
+    srcs = ["modA_2.js", "modA_2.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/module:modulemanager",
@@ -26,7 +26,7 @@ closure_js_library(
 closure_js_library(
     name = "modB_1",
     testonly = 1,
-    srcs = ["modB_1.js", "modB_1.clutz.d.ts"],
+    srcs = ["modB_1.js", "modB_1.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/module:modulemanager",

@@ -8,8 +8,8 @@ closure_js_library(
     name = "assertthat",
     testonly = True,
     srcs = [
-        "assertthat.js", "assertthat.clutz.d.ts",
-        "matchererror.js", "matchererror.clutz.d.ts",
+        "assertthat.js", "assertthat.d.ts",
+        "matchererror.js", "matchererror.d.ts",
     ],
     lenient = True,
     deps = [
@@ -31,7 +31,7 @@ alias(
 closure_js_library(
     name = "environment",
     testonly = True,
-    srcs = ["environment.js", "environment.clutz.d.ts"],
+    srcs = ["environment.js", "environment.d.ts"],
     lenient = True,
     deps = [
         ":environmentbase",
@@ -46,7 +46,7 @@ closure_js_library(
 closure_js_library(
     name = "json_fuzzing",
     testonly = True,
-    srcs = ["json_fuzzing.js", "json_fuzzing.clutz.d.ts"],
+    srcs = ["json_fuzzing.js", "json_fuzzing.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/string",
@@ -62,7 +62,7 @@ alias(
 closure_js_library(
     name = "matcher",
     testonly = True,
-    srcs = ["matcher.js", "matcher.clutz.d.ts"],
+    srcs = ["matcher.js", "matcher.d.ts"],
     lenient = True,
 )
 
@@ -70,13 +70,13 @@ closure_js_library(
     name = "matchers",
     testonly = True,
     srcs = [
-        "decoratormatcher.js", "decoratormatcher.clutz.d.ts",
-        "dictionarymatcher.js", "dictionarymatcher.clutz.d.ts",
-        "logicmatcher.js", "logicmatcher.clutz.d.ts",
-        "matchers.js", "matchers.clutz.d.ts",
-        "numbermatcher.js", "numbermatcher.clutz.d.ts",
-        "objectmatcher.js", "objectmatcher.clutz.d.ts",
-        "stringmatcher.js", "stringmatcher.clutz.d.ts",
+        "decoratormatcher.js", "decoratormatcher.d.ts",
+        "dictionarymatcher.js", "dictionarymatcher.d.ts",
+        "logicmatcher.js", "logicmatcher.d.ts",
+        "matchers.js", "matchers.d.ts",
+        "numbermatcher.js", "numbermatcher.d.ts",
+        "objectmatcher.js", "objectmatcher.d.ts",
+        "stringmatcher.js", "stringmatcher.d.ts",
     ],
     lenient = True,
     deps = [
@@ -91,7 +91,7 @@ closure_js_library(
 closure_js_library(
     name = "environmentbase",
     testonly = True,
-    srcs = ["environmentbase.js", "environmentbase.clutz.d.ts"],
+    srcs = ["environmentbase.js", "environmentbase.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",

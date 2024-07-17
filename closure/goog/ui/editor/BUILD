@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "abstractdialog",
-    srcs = ["abstractdialog.js", "abstractdialog.clutz.d.ts"],
+    srcs = ["abstractdialog.js", "abstractdialog.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -22,7 +22,7 @@ closure_js_library(
 
 closure_js_library(
     name = "bubble",
-    srcs = ["bubble.js", "bubble.clutz.d.ts"],
+    srcs = ["bubble.js", "bubble.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -51,7 +51,7 @@ closure_js_library(
 
 closure_js_library(
     name = "defaulttoolbar",
-    srcs = ["defaulttoolbar.js", "defaulttoolbar.clutz.d.ts"],
+    srcs = ["defaulttoolbar.js", "defaulttoolbar.d.ts"],
     lenient = True,
     deps = [
         ":messages",
@@ -78,7 +78,7 @@ closure_js_library(
 
 closure_js_library(
     name = "linkdialog",
-    srcs = ["linkdialog.js", "linkdialog.clutz.d.ts"],
+    srcs = ["linkdialog.js", "linkdialog.d.ts"],
     lenient = True,
     deps = [
         ":abstractdialog",
@@ -111,7 +111,7 @@ closure_js_library(
 
 closure_js_library(
     name = "messages",
-    srcs = ["messages.js", "messages.clutz.d.ts"],
+    srcs = ["messages.js", "messages.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/html:safehtml",
@@ -121,7 +121,7 @@ closure_js_library(
 
 closure_js_library(
     name = "tabpane",
-    srcs = ["tabpane.js", "tabpane.clutz.d.ts"],
+    srcs = ["tabpane.js", "tabpane.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -142,7 +142,7 @@ closure_js_library(
 
 closure_js_library(
     name = "toolbarcontroller",
-    srcs = ["toolbarcontroller.js", "toolbarcontroller.clutz.d.ts"],
+    srcs = ["toolbarcontroller.js", "toolbarcontroller.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/editor:field",
@@ -156,7 +156,7 @@ closure_js_library(
 
 closure_js_library(
     name = "toolbarfactory",
-    srcs = ["toolbarfactory.js", "toolbarfactory.clutz.d.ts"],
+    srcs = ["toolbarfactory.js", "toolbarfactory.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",

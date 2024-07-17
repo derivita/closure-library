@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "date",
-    srcs = ["date.js", "date.clutz.d.ts"],
+    srcs = ["date.js", "date.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -22,7 +22,7 @@ alias(
 
 closure_js_library(
     name = "daterange",
-    srcs = ["daterange.js", "daterange.clutz.d.ts"],
+    srcs = ["daterange.js", "daterange.d.ts"],
     lenient = True,
     deps = [
         ":date",
@@ -32,7 +32,7 @@ closure_js_library(
 
 closure_js_library(
     name = "duration",
-    srcs = ["duration.js", "duration.clutz.d.ts"],
+    srcs = ["duration.js", "duration.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/i18n:datetimeformat",
@@ -42,7 +42,7 @@ closure_js_library(
 
 closure_js_library(
     name = "relative",
-    srcs = ["relative.js", "relative.clutz.d.ts"],
+    srcs = ["relative.js", "relative.d.ts"],
     lenient = True,
     deps = [
         ":date",
@@ -55,7 +55,7 @@ closure_js_library(
 closure_js_library(
     name = "relativecommontests",
     testonly = 1,
-    srcs = ["relativecommontests.js", "relativecommontests.clutz.d.ts"],
+    srcs = ["relativecommontests.js", "relativecommontests.d.ts"],
     lenient = True,
     deps = [
         ":date",
@@ -73,7 +73,7 @@ closure_js_library(
 
 closure_js_library(
     name = "utcdatetime",
-    srcs = ["utcdatetime.js", "utcdatetime.clutz.d.ts"],
+    srcs = ["utcdatetime.js", "utcdatetime.d.ts"],
     lenient = True,
     deps = [":date"],
 )

@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "browserfeature",
-    srcs = ["browserfeature.js", "browserfeature.clutz.d.ts"],
+    srcs = ["browserfeature.js", "browserfeature.d.ts"],
     lenient = True,
     deps = [
         ":defines",
@@ -17,7 +17,7 @@ closure_js_library(
 
 closure_js_library(
     name = "clicktoeditwrapper",
-    srcs = ["clicktoeditwrapper.js", "clicktoeditwrapper.clutz.d.ts"],
+    srcs = ["clicktoeditwrapper.js", "clicktoeditwrapper.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -37,13 +37,13 @@ closure_js_library(
 
 closure_js_library(
     name = "command",
-    srcs = ["command.js", "command.clutz.d.ts"],
+    srcs = ["command.js", "command.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "contenteditablefield",
-    srcs = ["contenteditablefield.js", "contenteditablefield.clutz.d.ts"],
+    srcs = ["contenteditablefield.js", "contenteditablefield.d.ts"],
     lenient = True,
     deps = [
         ":field",
@@ -54,15 +54,15 @@ closure_js_library(
 
 closure_js_library(
     name = "defines",
-    srcs = ["defines.js", "defines.clutz.d.ts"],
+    srcs = ["defines.js", "defines.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "field",
     srcs = [
-        "field.js", "field.clutz.d.ts",
-        "plugin_impl.js", "plugin_impl.clutz.d.ts",
+        "field.js", "field.d.ts",
+        "plugin_impl.js", "plugin_impl.d.ts",
     ],
     lenient = True,
     deps = [
@@ -104,14 +104,14 @@ closure_js_library(
 
 closure_js_library(
     name = "focus",
-    srcs = ["focus.js", "focus.clutz.d.ts"],
+    srcs = ["focus.js", "focus.d.ts"],
     lenient = True,
     deps = ["//closure/goog/dom:selection"],
 )
 
 closure_js_library(
     name = "icontent",
-    srcs = ["icontent.js", "icontent.clutz.d.ts"],
+    srcs = ["icontent.js", "icontent.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -125,7 +125,7 @@ closure_js_library(
 
 closure_js_library(
     name = "link",
-    srcs = ["link.js", "link.clutz.d.ts"],
+    srcs = ["link.js", "link.d.ts"],
     lenient = True,
     deps = [
         ":command",
@@ -142,7 +142,7 @@ closure_js_library(
 
 closure_js_library(
     name = "node",
-    srcs = ["node.js", "node.clutz.d.ts"],
+    srcs = ["node.js", "node.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts:dom",
@@ -161,7 +161,7 @@ closure_js_library(
 
 closure_js_library(
     name = "plugin",
-    srcs = ["plugin.js", "plugin.clutz.d.ts"],
+    srcs = ["plugin.js", "plugin.d.ts"],
     lenient = True,
     deps = [
         ":field",
@@ -176,7 +176,7 @@ alias(
 
 closure_js_library(
     name = "range",
-    srcs = ["range.js", "range.clutz.d.ts"],
+    srcs = ["range.js", "range.d.ts"],
     lenient = True,
     deps = [
         ":node",
@@ -196,7 +196,7 @@ closure_js_library(
 
 closure_js_library(
     name = "seamlessfield",
-    srcs = ["seamlessfield.js", "seamlessfield.clutz.d.ts"],
+    srcs = ["seamlessfield.js", "seamlessfield.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -217,7 +217,7 @@ closure_js_library(
 
 closure_js_library(
     name = "style",
-    srcs = ["style.js", "style.clutz.d.ts"],
+    srcs = ["style.js", "style.d.ts"],
     lenient = True,
     deps = [
         ":browserfeature",
@@ -238,9 +238,9 @@ closure_js_library(
 closure_js_library(
     name = "table",
     srcs = [
-        "table.js", "table.clutz.d.ts",
-        "tablecell.js", "tablecell.clutz.d.ts",
-        "tablerow.js", "tablerow.clutz.d.ts",
+        "table.js", "table.d.ts",
+        "tablecell.js", "tablecell.d.ts",
+        "tablerow.js", "tablerow.d.ts",
     ],
     lenient = True,
     deps = [

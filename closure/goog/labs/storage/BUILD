@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "boundedcollectablestorage",
-    srcs = ["boundedcollectablestorage.js", "boundedcollectablestorage.clutz.d.ts"],
+    srcs = ["boundedcollectablestorage.js", "boundedcollectablestorage.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",

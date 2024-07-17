@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "timer",
-    srcs = ["timer.js", "timer.clutz.d.ts"],
+    srcs = ["timer.js", "timer.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/events:eventtarget",

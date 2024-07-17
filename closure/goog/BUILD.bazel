@@ -10,7 +10,7 @@ package(default_visibility = ["//visibility:public"])
 closure_base_js_library(
     name = "base",
     srcs = [
-        "base.clutz.d.ts",
+        "base.d.ts",
         "base.js",
     ],
     visibility = ["//visibility:public"],
@@ -19,7 +19,7 @@ closure_base_js_library(
 closure_js_library(
     name = "goog",
     srcs = [
-        "goog.clutz.d.ts",
+        "goog.d.ts",
         "goog.js",
     ],
     visibility = ["//visibility:public"],

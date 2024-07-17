@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "bidi",
-    srcs = ["bidi.js", "bidi.clutz.d.ts"],
+    srcs = ["bidi.js", "bidi.d.ts"],
     lenient = True,
     deps = [
         ":style",
@@ -20,14 +20,14 @@ closure_js_library(
 
 closure_js_library(
     name = "cursor",
-    srcs = ["cursor.js", "cursor.clutz.d.ts"],
+    srcs = ["cursor.js", "cursor.d.ts"],
     lenient = True,
     deps = ["//closure/goog/useragent"],
 )
 
 closure_js_library(
     name = "style",
-    srcs = ["style.js", "style.clutz.d.ts"],
+    srcs = ["style.js", "style.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -52,7 +52,7 @@ closure_js_library(
 closure_js_library(
     name = "stylescrollbartester",
     testonly = 1,
-    srcs = ["stylescrollbartester.js", "stylescrollbartester.clutz.d.ts"],
+    srcs = ["stylescrollbartester.js", "stylescrollbartester.d.ts"],
     lenient = True,
     deps = [
         ":style",
@@ -64,7 +64,7 @@ closure_js_library(
 
 closure_js_library(
     name = "transform",
-    srcs = ["transform.js", "transform.clutz.d.ts"],
+    srcs = ["transform.js", "transform.d.ts"],
     lenient = True,
     deps = [
         ":style",
@@ -77,7 +77,7 @@ closure_js_library(
 
 closure_js_library(
     name = "transition",
-    srcs = ["transition.js", "transition.clutz.d.ts"],
+    srcs = ["transition.js", "transition.d.ts"],
     lenient = True,
     deps = [
         ":style",

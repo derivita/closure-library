@@ -6,13 +6,13 @@ licenses(["notice"])
 
 closure_js_library(
     name = "animationframe",
-    srcs = ["animationframe.js", "animationframe.clutz.d.ts"],
+    srcs = ["animationframe.js", "animationframe.d.ts"],
     lenient = True,
     deps = [":polyfill"],
 )
 
 closure_js_library(
     name = "polyfill",
-    srcs = ["polyfill.js", "polyfill.clutz.d.ts"],
+    srcs = ["polyfill.js", "polyfill.d.ts"],
     lenient = True,
 )

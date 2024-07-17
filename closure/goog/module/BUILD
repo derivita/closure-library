@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "abstractmoduleloader",
-    srcs = ["abstractmoduleloader.js", "abstractmoduleloader.clutz.d.ts"],
+    srcs = ["abstractmoduleloader.js", "abstractmoduleloader.d.ts"],
     lenient = True,
     deps = [
         ":module",
@@ -16,7 +16,7 @@ closure_js_library(
 
 closure_js_library(
     name = "basemodule",
-    srcs = ["basemodule.js", "basemodule.clutz.d.ts"],
+    srcs = ["basemodule.js", "basemodule.d.ts"],
     lenient = True,
     deps = [
         ":module",
@@ -26,7 +26,7 @@ closure_js_library(
 
 closure_js_library(
     name = "loader",
-    srcs = ["loader.js", "loader.clutz.d.ts"],
+    srcs = ["loader.js", "loader.d.ts"],
     lenient = True,
     deps = [
         ":module",
@@ -43,14 +43,14 @@ closure_js_library(
 
 closure_js_library(
     name = "module",
-    srcs = ["module.js", "module.clutz.d.ts"],
+    srcs = ["module.js", "module.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "moduleinfo",
     srcs = [
-        "moduleinfo.js", "moduleinfo.clutz.d.ts",
+        "moduleinfo.js", "moduleinfo.d.ts",
     ],
     lenient = True,
     deps = [
@@ -68,14 +68,14 @@ closure_js_library(
 closure_js_library(
     name = "moduleloadfailure",
     srcs = [
-        "moduleloadfailure.js", "moduleloadfailure.clutz.d.ts",
+        "moduleloadfailure.js", "moduleloadfailure.d.ts",
     ],
     lenient = True,
 )
 
 closure_js_library(
     name = "moduleloadcallback",
-    srcs = ["moduleloadcallback.js", "moduleloadcallback.clutz.d.ts"],
+    srcs = ["moduleloadcallback.js", "moduleloadcallback.d.ts"],
     lenient = True,
     deps = [
         ":module",
@@ -85,7 +85,7 @@ closure_js_library(
 
 closure_js_library(
     name = "moduleloader",
-    srcs = ["moduleloader.js", "moduleloader.clutz.d.ts"],
+    srcs = ["moduleloader.js", "moduleloader.d.ts"],
     lenient = True,
     deps = [
         ":abstractmoduleloader",
@@ -117,7 +117,7 @@ closure_js_library(
 
 closure_js_library(
     name = "modulemanager",
-    srcs = ["modulemanager.js", "modulemanager.clutz.d.ts"],
+    srcs = ["modulemanager.js", "modulemanager.d.ts"],
     lenient = True,
     deps = [
         ":abstractmoduleloader",

@@ -7,21 +7,21 @@ licenses(["notice"])
 closure_js_library(
     name = "abstractgraphics",
     srcs = [
-        "abstractgraphics.js", "abstractgraphics.clutz.d.ts",
-        "affinetransform.js", "affinetransform.clutz.d.ts",
-        "element.js", "element.clutz.d.ts",
-        "ellipseelement.js", "ellipseelement.clutz.d.ts",
-        "fill.js", "fill.clutz.d.ts",
-        "font.js", "font.clutz.d.ts",
-        "groupelement.js", "groupelement.clutz.d.ts",
-        "imageelement.js", "imageelement.clutz.d.ts",
-        "path.js", "path.clutz.d.ts",
-        "pathelement.js", "pathelement.clutz.d.ts",
-        "rectelement.js", "rectelement.clutz.d.ts",
-        "solidfill.js", "solidfill.clutz.d.ts",
-        "stroke.js", "stroke.clutz.d.ts",
-        "strokeandfillelement.js", "strokeandfillelement.clutz.d.ts",
-        "textelement.js", "textelement.clutz.d.ts",
+        "abstractgraphics.js", "abstractgraphics.d.ts",
+        "affinetransform.js", "affinetransform.d.ts",
+        "element.js", "element.d.ts",
+        "ellipseelement.js", "ellipseelement.d.ts",
+        "fill.js", "fill.d.ts",
+        "font.js", "font.d.ts",
+        "groupelement.js", "groupelement.d.ts",
+        "imageelement.js", "imageelement.d.ts",
+        "path.js", "path.d.ts",
+        "pathelement.js", "pathelement.d.ts",
+        "rectelement.js", "rectelement.d.ts",
+        "solidfill.js", "solidfill.d.ts",
+        "stroke.js", "stroke.d.ts",
+        "strokeandfillelement.js", "strokeandfillelement.d.ts",
+        "textelement.js", "textelement.d.ts",
     ],
     lenient = True,
     deps = [
@@ -52,8 +52,8 @@ alias(
 closure_js_library(
     name = "canvasgraphics",
     srcs = [
-        "canvaselement.js", "canvaselement.clutz.d.ts",
-        "canvasgraphics.js", "canvasgraphics.clutz.d.ts",
+        "canvaselement.js", "canvaselement.d.ts",
+        "canvasgraphics.js", "canvasgraphics.d.ts",
     ],
     lenient = True,
     deps = [
@@ -96,7 +96,7 @@ alias(
 closure_js_library(
     name = "graphics",
     srcs = [
-        "graphics.js", "graphics.clutz.d.ts",
+        "graphics.js", "graphics.d.ts",
     ],
     lenient = True,
     deps = [
@@ -120,7 +120,7 @@ alias(
 
 closure_js_library(
     name = "lineargradient",
-    srcs = ["lineargradient.js", "lineargradient.clutz.d.ts"],
+    srcs = ["lineargradient.js", "lineargradient.d.ts"],
     lenient = True,
     deps = [
         ":abstractgraphics",
@@ -140,7 +140,7 @@ alias(
 
 closure_js_library(
     name = "paths",
-    srcs = ["paths.js", "paths.clutz.d.ts"],
+    srcs = ["paths.js", "paths.d.ts"],
     lenient = True,
     deps = [
         ":abstractgraphics",
@@ -176,8 +176,8 @@ alias(
 closure_js_library(
     name = "svggraphics",
     srcs = [
-        "svgelement.js", "svgelement.clutz.d.ts",
-        "svggraphics.js", "svggraphics.clutz.d.ts",
+        "svgelement.js", "svgelement.d.ts",
+        "svggraphics.js", "svggraphics.d.ts",
     ],
     lenient = True,
     deps = [

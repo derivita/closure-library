@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "console",
-    srcs = ["console.js", "console.clutz.d.ts"],
+    srcs = ["console.js", "console.d.ts"],
     lenient = True,
     deps = [
         ":formatter",
@@ -16,14 +16,14 @@ closure_js_library(
 
 closure_js_library(
     name = "asyncstacktag",
-    srcs = ["asyncstacktag.js", "asyncstacktag.clutz.d.ts"],
+    srcs = ["asyncstacktag.js", "asyncstacktag.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )
 
 closure_js_library(
     name = "debug",
-    srcs = ["debug.js", "debug.clutz.d.ts"],
+    srcs = ["debug.js", "debug.d.ts"],
     lenient = True,
     deps = [
         ":errorcontext",
@@ -34,14 +34,14 @@ closure_js_library(
 
 closure_js_library(
     name = "deepfreeze",
-    srcs = ["deepfreeze.js", "deepfreeze.clutz.d.ts"],
+    srcs = ["deepfreeze.js", "deepfreeze.d.ts"],
     lenient = True,
     deps = [":debug"],
 )
 
 closure_js_library(
     name = "debugwindow",
-    srcs = ["debugwindow.js", "debugwindow.clutz.d.ts"],
+    srcs = ["debugwindow.js", "debugwindow.d.ts"],
     lenient = True,
     deps = [
         ":formatter",
@@ -57,7 +57,7 @@ closure_js_library(
 
 closure_js_library(
     name = "divconsole",
-    srcs = ["divconsole.js", "divconsole.clutz.d.ts"],
+    srcs = ["divconsole.js", "divconsole.d.ts"],
     lenient = True,
     deps = [
         ":formatter",
@@ -74,26 +74,26 @@ closure_js_library(
 
 closure_js_library(
     name = "entrypointregistry",
-    srcs = ["entrypointregistry.js", "entrypointregistry.clutz.d.ts"],
+    srcs = ["entrypointregistry.js", "entrypointregistry.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )
 
 closure_js_library(
     name = "error",
-    srcs = ["error.js", "error.clutz.d.ts"],
+    srcs = ["error.js", "error.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "errorcontext",
-    srcs = ["errorcontext.js", "errorcontext.clutz.d.ts"],
+    srcs = ["errorcontext.js", "errorcontext.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "errorhandler",
-    srcs = ["errorhandler.js", "errorhandler.clutz.d.ts"],
+    srcs = ["errorhandler.js", "errorhandler.d.ts"],
     lenient = True,
     deps = [
         ":entrypointregistry",
@@ -105,7 +105,7 @@ closure_js_library(
 
 closure_js_library(
     name = "errorreporter",
-    srcs = ["errorreporter.js", "errorreporter.clutz.d.ts"],
+    srcs = ["errorreporter.js", "errorreporter.d.ts"],
     lenient = True,
     deps = [
         ":debug",
@@ -126,7 +126,7 @@ closure_js_library(
 
 closure_js_library(
     name = "fancywindow",
-    srcs = ["fancywindow.js", "fancywindow.clutz.d.ts"],
+    srcs = ["fancywindow.js", "fancywindow.d.ts"],
     lenient = True,
     deps = [
         ":debugwindow",
@@ -147,7 +147,7 @@ closure_js_library(
 
 closure_js_library(
     name = "formatter",
-    srcs = ["formatter.js", "formatter.clutz.d.ts"],
+    srcs = ["formatter.js", "formatter.d.ts"],
     lenient = True,
     deps = [
         ":debug",
@@ -162,13 +162,13 @@ closure_js_library(
 
 closure_js_library(
     name = "relativetimeprovider",
-    srcs = ["relativetimeprovider.js", "relativetimeprovider.clutz.d.ts"],
+    srcs = ["relativetimeprovider.js", "relativetimeprovider.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "tracer",
-    srcs = ["tracer.js", "tracer.clutz.d.ts"],
+    srcs = ["tracer.js", "tracer.d.ts"],
     lenient = True,
     deps = [
         ":debug",

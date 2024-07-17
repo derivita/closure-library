@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "announcer",
-    srcs = ["announcer.js", "announcer.clutz.d.ts"],
+    srcs = ["announcer.js", "announcer.d.ts"],
     lenient = True,
     deps = [
         ":aria",
@@ -21,7 +21,7 @@ closure_js_library(
 
 closure_js_library(
     name = "aria",
-    srcs = ["aria.js", "aria.clutz.d.ts"],
+    srcs = ["aria.js", "aria.d.ts"],
     lenient = True,
     deps = [
         ":attributes",
@@ -38,13 +38,13 @@ closure_js_library(
 
 closure_js_library(
     name = "attributes",
-    srcs = ["attributes.js", "attributes.clutz.d.ts"],
+    srcs = ["attributes.js", "attributes.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "datatables",
-    srcs = ["datatables.js", "datatables.clutz.d.ts"],
+    srcs = ["datatables.js", "datatables.d.ts"],
     lenient = True,
     deps = [
         ":attributes",
@@ -54,6 +54,6 @@ closure_js_library(
 
 closure_js_library(
     name = "roles",
-    srcs = ["roles.js", "roles.clutz.d.ts"],
+    srcs = ["roles.js", "roles.d.ts"],
     lenient = True,
 )

@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "abstractrange",
-    srcs = ["abstractrange.js", "abstractrange.clutz.d.ts"],
+    srcs = ["abstractrange.js", "abstractrange.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -27,7 +27,7 @@ closure_js_library(
 
 closure_js_library(
     name = "browserrange",
-    srcs = ["browserrange.js", "browserrange.clutz.d.ts"],
+    srcs = ["browserrange.js", "browserrange.d.ts"],
     lenient = True,
     deps = [
         ":abstractrange",
@@ -43,14 +43,14 @@ closure_js_library(
 
 closure_js_library(
     name = "geckorange",
-    srcs = ["geckorange.js", "geckorange.clutz.d.ts"],
+    srcs = ["geckorange.js", "geckorange.d.ts"],
     lenient = True,
     deps = [":w3crange"],
 )
 
 closure_js_library(
     name = "w3crange",
-    srcs = ["w3crange.js", "w3crange.clutz.d.ts"],
+    srcs = ["w3crange.js", "w3crange.d.ts"],
     lenient = True,
     deps = [
         ":abstractrange",
@@ -66,7 +66,7 @@ closure_js_library(
 
 closure_js_library(
     name = "webkitrange",
-    srcs = ["webkitrange.js", "webkitrange.clutz.d.ts"],
+    srcs = ["webkitrange.js", "webkitrange.d.ts"],
     lenient = True,
     deps = [
         ":w3crange",
