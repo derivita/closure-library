@@ -8,6 +8,9 @@
  * @fileoverview Useful compiler idioms.
  */
 
+goog.declareModuleId('goog.reflect');
+
+goog.reflect = goog.reflect || {};
 /**
  * Syntax for object literal casts.
  * @see http://go/jscompiler-renaming
@@ -19,6 +22,7 @@
  * @param {!Function} type Type to cast to.
  * @param {Object} object Object literal to cast.
  * @return {Object} The object literal.
+ * @closurePrimitive {reflect.object}
  */
 export function object(type, object) {
  return object;
@@ -39,9 +43,10 @@ export function object(type, object) {
  * @param {!Object} object Instance of the object whose type will be used
  *     for renaming
  * @return {string} The renamed property.
+ * @closurePrimitive {reflect.objectProperty}
  */
 export function objectProperty(prop, object) {
- return prop;
+  return prop;
 }
 
 /**
@@ -112,6 +117,7 @@ export function canAccessProperty(obj, prop) {
  * @return {V} The cached or calculated value.
  * @template K
  * @template V
+ * @closurePrimitive {reflect.cache}
  */
 export function cache(cacheObj, key, valueFn, opt_keyFn) {
  const storedKey = opt_keyFn ? opt_keyFn(key) : key;
