@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "hybrid",
-    srcs = ["hybrid.js", "hybrid.clutz.d.ts"],
+    srcs = ["hybrid.js", "hybrid.d.ts"],
     lenient = True,
     deps = [
         ":json",
@@ -16,19 +16,19 @@ closure_js_library(
 
 closure_js_library(
     name = "json",
-    srcs = ["json.js", "json.clutz.d.ts"],
+    srcs = ["json.js", "json.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "jsonable",
-    srcs = ["jsonable.js", "jsonable.clutz.d.ts"],
+    srcs = ["jsonable.js", "jsonable.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "nativejsonprocessor",
-    srcs = ["nativejsonprocessor.js", "nativejsonprocessor.clutz.d.ts"],
+    srcs = ["nativejsonprocessor.js", "nativejsonprocessor.d.ts"],
     lenient = True,
     deps = [
         ":types",
@@ -38,7 +38,7 @@ closure_js_library(
 
 closure_js_library(
     name = "processor",
-    srcs = ["processor.js", "processor.clutz.d.ts"],
+    srcs = ["processor.js", "processor.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/string:parser",
@@ -48,6 +48,6 @@ closure_js_library(
 
 closure_js_library(
     name = "types",
-    srcs = ["types.js", "types.clutz.d.ts"],
+    srcs = ["types.js", "types.d.ts"],
     lenient = True,
 )

@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "mockiframeio",
     testonly = True,
-    srcs = ["mockiframeio.js", "mockiframeio.clutz.d.ts"],
+    srcs = ["mockiframeio.js", "mockiframeio.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/events:eventtarget",
@@ -23,7 +23,7 @@ closure_js_library(
 closure_js_library(
     name = "xhrio",
     testonly = True,
-    srcs = ["xhrio.js", "xhrio.clutz.d.ts"],
+    srcs = ["xhrio.js", "xhrio.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -48,7 +48,7 @@ closure_js_library(
 closure_js_library(
     name = "xhriopool",
     testonly = True,
-    srcs = ["xhriopool.js", "xhriopool.clutz.d.ts"],
+    srcs = ["xhriopool.js", "xhriopool.d.ts"],
     lenient = True,
     deps = [
         ":xhrio",

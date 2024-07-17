@@ -12,9 +12,9 @@ alias(
 closure_js_library(
     name = "abstractrange",
     srcs = [
-        "abstractrange.clutz.d.ts",
+        "abstractrange.d.ts",
         "abstractrange.js",
-        "savedrange.clutz.d.ts",
+        "savedrange.d.ts",
         "savedrange.js",
     ],
     lenient = True,
@@ -32,7 +32,7 @@ closure_js_library(
 closure_js_library(
     name = "annotate",
     srcs = [
-        "annotate.clutz.d.ts",
+        "annotate.d.ts",
         "annotate.js",
     ],
     lenient = True,
@@ -51,7 +51,7 @@ closure_js_library(
 closure_js_library(
     name = "asserts",
     srcs = [
-        "asserts.clutz.d.ts",
+        "asserts.d.ts",
         "asserts.js",
     ],
     lenient = True,
@@ -61,7 +61,7 @@ closure_js_library(
 closure_js_library(
     name = "attr",
     srcs = [
-        "attr.clutz.d.ts",
+        "attr.d.ts",
         "attr.js",
     ],
     lenient = True,
@@ -70,7 +70,7 @@ closure_js_library(
 closure_js_library(
     name = "browserfeature",
     srcs = [
-        "browserfeature.clutz.d.ts",
+        "browserfeature.d.ts",
         "browserfeature.js",
     ],
     lenient = True,
@@ -80,7 +80,7 @@ closure_js_library(
 closure_js_library(
     name = "bufferedviewportsizemonitor",
     srcs = [
-        "bufferedviewportsizemonitor.clutz.d.ts",
+        "bufferedviewportsizemonitor.d.ts",
         "bufferedviewportsizemonitor.js",
     ],
     lenient = True,
@@ -99,7 +99,7 @@ closure_js_library(
 closure_js_library(
     name = "classes",
     srcs = [
-        "classes.clutz.d.ts",
+        "classes.d.ts",
         "classes.js",
     ],
     lenient = True,
@@ -109,7 +109,7 @@ closure_js_library(
 closure_js_library(
     name = "classlist",
     srcs = [
-        "classlist.clutz.d.ts",
+        "classlist.d.ts",
         "classlist.js",
     ],
     lenient = True,
@@ -124,7 +124,7 @@ alias(
 closure_js_library(
     name = "dataset",
     srcs = [
-        "dataset.clutz.d.ts",
+        "dataset.d.ts",
         "dataset.js",
     ],
     lenient = True,
@@ -138,7 +138,7 @@ closure_js_library(
 closure_js_library(
     name = "dom",
     srcs = [
-        "dom.clutz.d.ts",
+        "dom.d.ts",
         "dom.js",
     ],
     lenient = True,
@@ -164,7 +164,7 @@ closure_js_library(
 closure_js_library(
     name = "element",
     srcs = [
-        "element.clutz.d.ts",
+        "element.d.ts",
         "element.js",
     ],
     lenient = True,
@@ -177,7 +177,7 @@ closure_js_library(
 closure_js_library(
     name = "fontsizemonitor",
     srcs = [
-        "fontsizemonitor.clutz.d.ts",
+        "fontsizemonitor.d.ts",
         "fontsizemonitor.js",
     ],
     lenient = True,
@@ -195,7 +195,7 @@ closure_js_library(
 closure_js_library(
     name = "forms",
     srcs = [
-        "forms.clutz.d.ts",
+        "forms.d.ts",
         "forms.js",
     ],
     lenient = True,
@@ -211,7 +211,7 @@ closure_js_library(
 closure_js_library(
     name = "fullscreen",
     srcs = [
-        "fullscreen.clutz.d.ts",
+        "fullscreen.d.ts",
         "fullscreen.js",
     ],
     lenient = True,
@@ -221,7 +221,7 @@ closure_js_library(
 closure_js_library(
     name = "htmlelement",
     srcs = [
-        "htmlelement.clutz.d.ts",
+        "htmlelement.d.ts",
         "htmlelement.js",
     ],
     lenient = True,
@@ -230,7 +230,7 @@ closure_js_library(
 closure_js_library(
     name = "iframe",
     srcs = [
-        "iframe.clutz.d.ts",
+        "iframe.d.ts",
         "iframe.js",
     ],
     lenient = True,
@@ -249,7 +249,7 @@ closure_js_library(
 closure_js_library(
     name = "inputtype",
     srcs = [
-        "inputtype.clutz.d.ts",
+        "inputtype.d.ts",
         "inputtype.js",
     ],
     lenient = True,
@@ -258,7 +258,7 @@ closure_js_library(
 closure_js_library(
     name = "iter",
     srcs = [
-        "iter.clutz.d.ts",
+        "iter.d.ts",
         "iter.js",
     ],
     lenient = True,
@@ -273,7 +273,7 @@ alias(
 closure_js_library(
     name = "nodeiterator",
     srcs = [
-        "nodeiterator.clutz.d.ts",
+        "nodeiterator.d.ts",
         "nodeiterator.js",
     ],
     lenient = True,
@@ -286,7 +286,7 @@ closure_js_library(
 closure_js_library(
     name = "nodeoffset",
     srcs = [
-        "nodeoffset.clutz.d.ts",
+        "nodeoffset.d.ts",
         "nodeoffset.js",
     ],
     lenient = True,
@@ -299,7 +299,7 @@ closure_js_library(
 closure_js_library(
     name = "nodetype",
     srcs = [
-        "nodetype.clutz.d.ts",
+        "nodetype.d.ts",
         "nodetype.js",
     ],
     lenient = True,
@@ -308,17 +308,17 @@ closure_js_library(
 closure_js_library(
     name = "range",
     srcs = [
-        "abstractmultirange.clutz.d.ts",
+        "abstractmultirange.d.ts",
         "abstractmultirange.js",
-        "controlrange.clutz.d.ts",
+        "controlrange.d.ts",
         "controlrange.js",
-        "multirange.clutz.d.ts",
+        "multirange.d.ts",
         "multirange.js",
-        "range.clutz.d.ts",
+        "range.d.ts",
         "range.js",
-        "savedcaretrange.clutz.d.ts",
+        "savedcaretrange.d.ts",
         "savedcaretrange.js",
-        "textrange.clutz.d.ts",
+        "textrange.d.ts",
         "textrange.js",
     ],
     lenient = True,
@@ -343,7 +343,7 @@ closure_js_library(
 closure_js_library(
     name = "rangeendpoint",
     srcs = [
-        "rangeendpoint.clutz.d.ts",
+        "rangeendpoint.d.ts",
         "rangeendpoint.js",
     ],
     lenient = True,
@@ -352,7 +352,7 @@ closure_js_library(
 closure_js_library(
     name = "safe",
     srcs = [
-        "safe.clutz.d.ts",
+        "safe.d.ts",
         "safe.js",
     ],
     deprecation = "Please use 'safevalues/dom' instead",
@@ -386,7 +386,7 @@ alias(
 closure_js_library(
     name = "selection",
     srcs = [
-        "selection.clutz.d.ts",
+        "selection.d.ts",
         "selection.js",
     ],
     lenient = True,
@@ -400,7 +400,7 @@ closure_js_library(
 closure_js_library(
     name = "tagiterator",
     srcs = [
-        "tagiterator.clutz.d.ts",
+        "tagiterator.d.ts",
         "tagiterator.js",
     ],
     lenient = True,
@@ -414,7 +414,7 @@ closure_js_library(
 closure_js_library(
     name = "tagname",
     srcs = [
-        "tagname.clutz.d.ts",
+        "tagname.d.ts",
         "tagname.js",
     ],
     lenient = True,
@@ -424,7 +424,7 @@ closure_js_library(
 closure_js_library(
     name = "tags",
     srcs = [
-        "tags.clutz.d.ts",
+        "tags.d.ts",
         "tags.js",
     ],
     lenient = True,
@@ -434,7 +434,7 @@ closure_js_library(
 closure_js_library(
     name = "textassert",
     srcs = [
-        "textassert.clutz.d.ts",
+        "textassert.d.ts",
         "textassert.js",
     ],
     lenient = True,
@@ -453,7 +453,7 @@ alias(
 closure_js_library(
     name = "textrangeiterator",
     srcs = [
-        "textrangeiterator.clutz.d.ts",
+        "textrangeiterator.d.ts",
         "textrangeiterator.js",
     ],
     lenient = True,
@@ -470,7 +470,7 @@ closure_js_library(
 closure_js_library(
     name = "uri",
     srcs = [
-        "uri.clutz.d.ts",
+        "uri.d.ts",
         "uri.js",
     ],
     lenient = True,
@@ -486,7 +486,7 @@ closure_js_library(
 closure_js_library(
     name = "vendor",
     srcs = [
-        "vendor.clutz.d.ts",
+        "vendor.d.ts",
         "vendor.js",
     ],
     lenient = True,
@@ -499,7 +499,7 @@ closure_js_library(
 closure_js_library(
     name = "viewportsizemonitor",
     srcs = [
-        "viewportsizemonitor.clutz.d.ts",
+        "viewportsizemonitor.d.ts",
         "viewportsizemonitor.js",
     ],
     lenient = True,
@@ -517,7 +517,7 @@ closure_js_library(
 closure_js_library(
     name = "xml",
     srcs = [
-        "xml.clutz.d.ts",
+        "xml.d.ts",
         "xml.js",
     ],
     lenient = True,

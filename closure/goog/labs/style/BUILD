@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "pixeldensitymonitor",
-    srcs = ["pixeldensitymonitor.js", "pixeldensitymonitor.clutz.d.ts"],
+    srcs = ["pixeldensitymonitor.js", "pixeldensitymonitor.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom",

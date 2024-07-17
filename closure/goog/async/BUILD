@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "animationdelay",
-    srcs = ["animationdelay.js", "animationdelay.clutz.d.ts"],
+    srcs = ["animationdelay.js", "animationdelay.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/disposable",
@@ -17,7 +17,7 @@ closure_js_library(
 
 closure_js_library(
     name = "conditionaldelay",
-    srcs = ["conditionaldelay.js", "conditionaldelay.clutz.d.ts"],
+    srcs = ["conditionaldelay.js", "conditionaldelay.d.ts"],
     lenient = True,
     deps = [
         ":delay",
@@ -27,7 +27,7 @@ closure_js_library(
 
 closure_js_library(
     name = "debouncer",
-    srcs = ["debouncer.js", "debouncer.clutz.d.ts"],
+    srcs = ["debouncer.js", "debouncer.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/disposable",
@@ -37,7 +37,7 @@ closure_js_library(
 
 closure_js_library(
     name = "delay",
-    srcs = ["delay.js", "delay.clutz.d.ts"],
+    srcs = ["delay.js", "delay.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/disposable",
@@ -47,14 +47,14 @@ closure_js_library(
 
 closure_js_library(
     name = "freelist",
-    srcs = ["freelist.js", "freelist.clutz.d.ts"],
+    srcs = ["freelist.js", "freelist.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "nexttick",
     srcs = [
-        "nexttick.js", "nexttick.clutz.d.ts",
+        "nexttick.js", "nexttick.d.ts",
     ],
     lenient = True,
     deps = [
@@ -70,21 +70,21 @@ closure_js_library(
 closure_js_library(
     name = "throwexception",
     srcs = [
-        "throwexception.js", "throwexception.clutz.d.ts",
+        "throwexception.js", "throwexception.d.ts",
     ],
     lenient = True,
 )
 
 closure_js_library(
     name = "promises",
-    srcs = ["promises.js", "promises.clutz.d.ts"],
+    srcs = ["promises.js", "promises.d.ts"],
     lenient = True,
     deps = ["//closure/goog/promise"],
 )
 
 closure_js_library(
     name = "run",
-    srcs = ["run.js", "run.clutz.d.ts"],
+    srcs = ["run.js", "run.d.ts"],
     lenient = True,
     deps = [
         ":nexttick",
@@ -98,8 +98,8 @@ closure_js_library(
 closure_js_library(
     name = "throttle",
     srcs = [
-        "legacy_throttle.js", "legacy_throttle.clutz.d.ts",
-        "throttle.js", "throttle.clutz.d.ts",
+        "legacy_throttle.js", "legacy_throttle.d.ts",
+        "throttle.js", "throttle.d.ts",
     ],
     lenient = True,
     deps = [
@@ -110,7 +110,7 @@ closure_js_library(
 
 closure_js_library(
     name = "workqueue",
-    srcs = ["workqueue.js", "workqueue.clutz.d.ts"],
+    srcs = ["workqueue.js", "workqueue.d.ts"],
     lenient = True,
     deps = [
         ":freelist",

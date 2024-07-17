@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "event",
-    srcs = ["event.js", "event.clutz.d.ts"],
+    srcs = ["event.js", "event.d.ts"],
     lenient = True,
     deps = [
         ":eventtype",
@@ -16,13 +16,13 @@ closure_js_library(
 
 closure_js_library(
     name = "eventtype",
-    srcs = ["eventtype.js", "eventtype.clutz.d.ts"],
+    srcs = ["eventtype.js", "eventtype.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "history",
-    srcs = ["history.js", "history.clutz.d.ts"],
+    srcs = ["history.js", "history.d.ts"],
     lenient = True,
     deps = [
         ":event",
@@ -50,7 +50,7 @@ closure_js_library(
 
 closure_js_library(
     name = "html5history",
-    srcs = ["html5history.js", "html5history.clutz.d.ts"],
+    srcs = ["html5history.js", "html5history.d.ts"],
     lenient = True,
     deps = [
         ":event",

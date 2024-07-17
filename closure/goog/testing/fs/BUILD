@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "blob",
     testonly = True,
-    srcs = ["blob.js", "blob.clutz.d.ts"],
+    srcs = ["blob.js", "blob.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/crypt",
@@ -19,9 +19,9 @@ closure_js_library(
     name = "filesystem",
     testonly = True,
     srcs = [
-        "entry.js", "entry.clutz.d.ts",
-        "filesystem.js", "filesystem.clutz.d.ts",
-        "filewriter.js", "filewriter.clutz.d.ts",
+        "entry.js", "entry.d.ts",
+        "filesystem.js", "filesystem.d.ts",
+        "filewriter.js", "filewriter.d.ts",
     ],
     lenient = True,
     deps = [
@@ -46,7 +46,7 @@ closure_js_library(
 closure_js_library(
     name = "file",
     testonly = True,
-    srcs = ["file.js", "file.clutz.d.ts"],
+    srcs = ["file.js", "file.d.ts"],
     lenient = True,
     deps = [":blob"],
 )
@@ -54,7 +54,7 @@ closure_js_library(
 closure_js_library(
     name = "filereader",
     testonly = True,
-    srcs = ["filereader.js", "filereader.clutz.d.ts"],
+    srcs = ["filereader.js", "filereader.d.ts"],
     lenient = True,
     deps = [
         ":blob",
@@ -79,7 +79,7 @@ alias(
 closure_js_library(
     name = "fs",
     testonly = True,
-    srcs = ["fs.js", "fs.clutz.d.ts"],
+    srcs = ["fs.js", "fs.d.ts"],
     lenient = True,
     deps = [
         ":blob",
@@ -96,7 +96,7 @@ closure_js_library(
 closure_js_library(
     name = "progressevent",
     testonly = True,
-    srcs = ["progressevent.js", "progressevent.clutz.d.ts"],
+    srcs = ["progressevent.js", "progressevent.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/events:event",

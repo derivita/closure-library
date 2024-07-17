@@ -6,34 +6,34 @@ licenses(["notice"])
 
 closure_js_library(
     name = "errorcode",
-    srcs = ["errorcode.js", "errorcode.clutz.d.ts"],
+    srcs = ["errorcode.js", "errorcode.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "errorhandlingmechanism",
-    srcs = ["errorhandlingmechanism.js", "errorhandlingmechanism.clutz.d.ts"],
+    srcs = ["errorhandlingmechanism.js", "errorhandlingmechanism.d.ts"],
     lenient = True,
     deps = [":mechanism"],
 )
 
 closure_js_library(
     name = "html5localstorage",
-    srcs = ["html5localstorage.js", "html5localstorage.clutz.d.ts"],
+    srcs = ["html5localstorage.js", "html5localstorage.d.ts"],
     lenient = True,
     deps = [":html5webstorage"],
 )
 
 closure_js_library(
     name = "html5sessionstorage",
-    srcs = ["html5sessionstorage.js", "html5sessionstorage.clutz.d.ts"],
+    srcs = ["html5sessionstorage.js", "html5sessionstorage.d.ts"],
     lenient = True,
     deps = [":html5webstorage"],
 )
 
 closure_js_library(
     name = "html5webstorage",
-    srcs = ["html5webstorage.js", "html5webstorage.clutz.d.ts"],
+    srcs = ["html5webstorage.js", "html5webstorage.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -45,7 +45,7 @@ closure_js_library(
 
 closure_js_library(
     name = "ieuserdata",
-    srcs = ["ieuserdata.js", "ieuserdata.clutz.d.ts"],
+    srcs = ["ieuserdata.js", "ieuserdata.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -59,7 +59,7 @@ closure_js_library(
 
 closure_js_library(
     name = "iterablemechanism",
-    srcs = ["iterablemechanism.js", "iterablemechanism.clutz.d.ts"],
+    srcs = ["iterablemechanism.js", "iterablemechanism.d.ts"],
     lenient = True,
     deps = [
         ":mechanism",
@@ -73,7 +73,7 @@ closure_js_library(
 closure_js_library(
     name = "iterablemechanismtests",
     testonly = 1,
-    srcs = ["iterablemechanismtests.js", "iterablemechanismtests.clutz.d.ts"],
+    srcs = ["iterablemechanismtests.js", "iterablemechanismtests.d.ts"],
     lenient = True,
     deps = [
         ":iterablemechanism",
@@ -85,13 +85,13 @@ closure_js_library(
 
 closure_js_library(
     name = "mechanism",
-    srcs = ["mechanism.js", "mechanism.clutz.d.ts"],
+    srcs = ["mechanism.js", "mechanism.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "mechanismfactory",
-    srcs = ["mechanismfactory.js", "mechanismfactory.clutz.d.ts"],
+    srcs = ["mechanismfactory.js", "mechanismfactory.d.ts"],
     lenient = True,
     deps = [
         ":html5localstorage",
@@ -105,7 +105,7 @@ closure_js_library(
 closure_js_library(
     name = "mechanismseparationtests",
     testonly = 1,
-    srcs = ["mechanismseparationtests.js", "mechanismseparationtests.clutz.d.ts"],
+    srcs = ["mechanismseparationtests.js", "mechanismseparationtests.d.ts"],
     lenient = True,
     deps = [
         ":iterablemechanism",
@@ -118,7 +118,7 @@ closure_js_library(
 closure_js_library(
     name = "mechanismsharingtests",
     testonly = 1,
-    srcs = ["mechanismsharingtests.js", "mechanismsharingtests.clutz.d.ts"],
+    srcs = ["mechanismsharingtests.js", "mechanismsharingtests.d.ts"],
     lenient = True,
     deps = [
         ":iterablemechanism",
@@ -131,7 +131,7 @@ closure_js_library(
 closure_js_library(
     name = "mechanismtestdefinition",
     testonly = 1,
-    srcs = ["mechanismtestdefinition.js", "mechanismtestdefinition.clutz.d.ts"],
+    srcs = ["mechanismtestdefinition.js", "mechanismtestdefinition.d.ts"],
     lenient = True,
     deps = ["//closure/goog/debug"],
 )
@@ -139,7 +139,7 @@ closure_js_library(
 closure_js_library(
     name = "mechanismtests",
     testonly = 1,
-    srcs = ["mechanismtests.js", "mechanismtests.clutz.d.ts"],
+    srcs = ["mechanismtests.js", "mechanismtests.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -154,7 +154,7 @@ closure_js_library(
 
 closure_js_library(
     name = "prefixedmechanism",
-    srcs = ["prefixedmechanism.js", "prefixedmechanism.clutz.d.ts"],
+    srcs = ["prefixedmechanism.js", "prefixedmechanism.d.ts"],
     lenient = True,
     deps = [
         ":iterablemechanism",

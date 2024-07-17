@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "emailaddress",
-    srcs = ["emailaddress.js", "emailaddress.clutz.d.ts"],
+    srcs = ["emailaddress.js", "emailaddress.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/i18n:bidi",
@@ -17,7 +17,7 @@ closure_js_library(
 
 closure_js_library(
     name = "format",
-    srcs = ["format.js", "format.clutz.d.ts"],
+    srcs = ["format.js", "format.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/i18n:graphemebreak",
@@ -28,7 +28,7 @@ closure_js_library(
 
 closure_js_library(
     name = "htmlprettyprinter",
-    srcs = ["htmlprettyprinter.js", "htmlprettyprinter.clutz.d.ts"],
+    srcs = ["htmlprettyprinter.js", "htmlprettyprinter.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom:tagname",
@@ -39,7 +39,7 @@ closure_js_library(
 
 closure_js_library(
     name = "internationalizedemailaddress",
-    srcs = ["internationalizedemailaddress.js", "internationalizedemailaddress.clutz.d.ts"],
+    srcs = ["internationalizedemailaddress.js", "internationalizedemailaddress.d.ts"],
     lenient = True,
     deps = [
         ":emailaddress",
@@ -49,7 +49,7 @@ closure_js_library(
 
 closure_js_library(
     name = "jsonprettyprinter",
-    srcs = ["jsonprettyprinter.js", "jsonprettyprinter.clutz.d.ts"],
+    srcs = ["jsonprettyprinter.js", "jsonprettyprinter.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/html:safehtml",

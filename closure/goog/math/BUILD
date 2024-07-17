@@ -6,13 +6,13 @@ licenses(["notice"])
 
 closure_js_library(
     name = "affinetransform",
-    srcs = ["affinetransform.js", "affinetransform.clutz.d.ts"],
+    srcs = ["affinetransform.js", "affinetransform.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "bezier",
-    srcs = ["bezier.js", "bezier.clutz.d.ts"],
+    srcs = ["bezier.js", "bezier.d.ts"],
     lenient = True,
     deps = [
         ":coordinate",
@@ -22,7 +22,7 @@ closure_js_library(
 
 closure_js_library(
     name = "box",
-    srcs = ["box.js", "box.clutz.d.ts"],
+    srcs = ["box.js", "box.d.ts"],
     lenient = True,
     deps = [
         ":coordinate",
@@ -32,40 +32,40 @@ closure_js_library(
 
 closure_js_library(
     name = "coordinate",
-    srcs = ["coordinate.js", "coordinate.clutz.d.ts"],
+    srcs = ["coordinate.js", "coordinate.d.ts"],
     lenient = True,
     deps = [":math"],
 )
 
 closure_js_library(
     name = "coordinate3",
-    srcs = ["coordinate3.js", "coordinate3.clutz.d.ts"],
+    srcs = ["coordinate3.js", "coordinate3.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "exponentialbackoff",
-    srcs = ["exponentialbackoff.js", "exponentialbackoff.clutz.d.ts"],
+    srcs = ["exponentialbackoff.js", "exponentialbackoff.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )
 
 closure_js_library(
     name = "integer",
-    srcs = ["integer.js", "integer.clutz.d.ts"],
+    srcs = ["integer.js", "integer.d.ts"],
     lenient = True,
     deps = ["//closure/goog/reflect"],
 )
 
 closure_js_library(
     name = "irect",
-    srcs = ["irect.js", "irect.clutz.d.ts"],
+    srcs = ["irect.js", "irect.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "line",
-    srcs = ["line.js", "line.clutz.d.ts"],
+    srcs = ["line.js", "line.d.ts"],
     lenient = True,
     deps = [
         ":coordinate",
@@ -75,7 +75,7 @@ closure_js_library(
 
 closure_js_library(
     name = "long",
-    srcs = ["long.js", "long.clutz.d.ts"],
+    srcs = ["long.js", "long.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -85,14 +85,14 @@ closure_js_library(
 
 closure_js_library(
     name = "math",
-    srcs = ["math.js", "math.clutz.d.ts"],
+    srcs = ["math.js", "math.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )
 
 closure_js_library(
     name = "matrix",
-    srcs = ["matrix.js", "matrix.clutz.d.ts"],
+    srcs = ["matrix.js", "matrix.d.ts"],
     lenient = True,
     deps = [
         ":math",
@@ -105,7 +105,7 @@ closure_js_library(
 
 closure_js_library(
     name = "path",
-    srcs = ["path.js", "path.clutz.d.ts"],
+    srcs = ["path.js", "path.d.ts"],
     lenient = True,
     deps = [
         ":affinetransform",
@@ -116,7 +116,7 @@ closure_js_library(
 
 closure_js_library(
     name = "paths",
-    srcs = ["paths.js", "paths.clutz.d.ts"],
+    srcs = ["paths.js", "paths.d.ts"],
     lenient = True,
     deps = [
         ":coordinate",
@@ -126,14 +126,14 @@ closure_js_library(
 
 closure_js_library(
     name = "range",
-    srcs = ["range.js", "range.clutz.d.ts"],
+    srcs = ["range.js", "range.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )
 
 closure_js_library(
     name = "rangeset",
-    srcs = ["rangeset.js", "rangeset.clutz.d.ts"],
+    srcs = ["rangeset.js", "rangeset.d.ts"],
     lenient = True,
     deps = [
         ":range",
@@ -144,7 +144,7 @@ closure_js_library(
 
 closure_js_library(
     name = "rect",
-    srcs = ["rect.js", "rect.clutz.d.ts"],
+    srcs = ["rect.js", "rect.d.ts"],
     lenient = True,
     deps = [
         ":box",
@@ -157,19 +157,19 @@ closure_js_library(
 
 closure_js_library(
     name = "size",
-    srcs = ["size.js", "size.clutz.d.ts"],
+    srcs = ["size.js", "size.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "tdma",
-    srcs = ["tdma.js", "tdma.clutz.d.ts"],
+    srcs = ["tdma.js", "tdma.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "vec2",
-    srcs = ["vec2.js", "vec2.clutz.d.ts"],
+    srcs = ["vec2.js", "vec2.d.ts"],
     lenient = True,
     deps = [
         ":coordinate",
@@ -179,7 +179,7 @@ closure_js_library(
 
 closure_js_library(
     name = "vec3",
-    srcs = ["vec3.js", "vec3.clutz.d.ts"],
+    srcs = ["vec3.js", "vec3.d.ts"],
     lenient = True,
     deps = [
         ":coordinate3",

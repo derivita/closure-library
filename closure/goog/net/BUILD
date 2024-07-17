@@ -7,12 +7,12 @@ licenses(["notice"])
 closure_js_library(
     name = "browserchannel",
     srcs = [
-        "browserchannel.js", "browserchannel.clutz.d.ts",
-        "browserchannelexecutionhooks.js", "browserchannelexecutionhooks.clutz.d.ts",
-        "browserchannelserverreachability.js", "browserchannelserverreachability.clutz.d.ts",
-        "browserchannelstats.js", "browserchannelstats.clutz.d.ts",
-        "browsertestchannel.js", "browsertestchannel.clutz.d.ts",
-        "channelrequest.js", "channelrequest.clutz.d.ts",
+        "browserchannel.js", "browserchannel.d.ts",
+        "browserchannelexecutionhooks.js", "browserchannelexecutionhooks.d.ts",
+        "browserchannelserverreachability.js", "browserchannelserverreachability.d.ts",
+        "browserchannelstats.js", "browserchannelstats.d.ts",
+        "browsertestchannel.js", "browsertestchannel.d.ts",
+        "channelrequest.js", "channelrequest.d.ts",
     ],
     lenient = True,
     deps = [
@@ -57,7 +57,7 @@ alias(
 
 closure_js_library(
     name = "bulkloader",
-    srcs = ["bulkloader.js", "bulkloader.clutz.d.ts"],
+    srcs = ["bulkloader.js", "bulkloader.d.ts"],
     lenient = True,
     deps = [
         ":bulkloaderhelper",
@@ -73,7 +73,7 @@ closure_js_library(
 
 closure_js_library(
     name = "bulkloaderhelper",
-    srcs = ["bulkloaderhelper.js", "bulkloaderhelper.clutz.d.ts"],
+    srcs = ["bulkloaderhelper.js", "bulkloaderhelper.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/disposable",
@@ -83,7 +83,7 @@ closure_js_library(
 
 closure_js_library(
     name = "channeldebug",
-    srcs = ["channeldebug.js", "channeldebug.clutz.d.ts"],
+    srcs = ["channeldebug.js", "channeldebug.d.ts"],
     lenient = True,
     deps = [
         ":xmlhttp",
@@ -101,7 +101,7 @@ alias(
 closure_js_library(
     name = "cookies",
     srcs = [
-        "cookies.js", "cookies.clutz.d.ts",
+        "cookies.js", "cookies.d.ts",
     ],
     lenient = True,
     deps = ["//closure/goog/string"],
@@ -109,7 +109,7 @@ closure_js_library(
 
 closure_js_library(
     name = "corsxmlhttpfactory",
-    srcs = ["corsxmlhttpfactory.js", "corsxmlhttpfactory.clutz.d.ts"],
+    srcs = ["corsxmlhttpfactory.js", "corsxmlhttpfactory.d.ts"],
     lenient = True,
     deps = [
         ":httpstatus",
@@ -121,7 +121,7 @@ closure_js_library(
 
 closure_js_library(
     name = "crossdomainrpc",
-    srcs = ["crossdomainrpc.js", "crossdomainrpc.clutz.d.ts"],
+    srcs = ["crossdomainrpc.js", "crossdomainrpc.d.ts"],
     lenient = True,
     deps = [
         ":eventtype",
@@ -142,19 +142,19 @@ closure_js_library(
 
 closure_js_library(
     name = "errorcode",
-    srcs = ["errorcode.js", "errorcode.clutz.d.ts"],
+    srcs = ["errorcode.js", "errorcode.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "eventtype",
-    srcs = ["eventtype.js", "eventtype.clutz.d.ts"],
+    srcs = ["eventtype.js", "eventtype.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "fetchxmlhttpfactory",
-    srcs = ["fetchxmlhttpfactory.js", "fetchxmlhttpfactory.clutz.d.ts"],
+    srcs = ["fetchxmlhttpfactory.js", "fetchxmlhttpfactory.d.ts"],
     lenient = True,
     deps = [
         ":xhrlike",
@@ -168,7 +168,7 @@ closure_js_library(
 
 closure_js_library(
     name = "filedownloader",
-    srcs = ["filedownloader.js", "filedownloader.clutz.d.ts"],
+    srcs = ["filedownloader.js", "filedownloader.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -194,19 +194,19 @@ closure_js_library(
 
 closure_js_library(
     name = "httpstatus",
-    srcs = ["httpstatus.js", "httpstatus.clutz.d.ts"],
+    srcs = ["httpstatus.js", "httpstatus.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "httpstatusname",
-    srcs = ["httpstatusname.js", "httpstatusname.clutz.d.ts"],
+    srcs = ["httpstatusname.js", "httpstatusname.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "iframeio",
-    srcs = ["iframeio.js", "iframeio.clutz.d.ts"],
+    srcs = ["iframeio.js", "iframeio.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -241,7 +241,7 @@ closure_js_library(
 
 closure_js_library(
     name = "iframeloadmonitor",
-    srcs = ["iframeloadmonitor.js", "iframeloadmonitor.clutz.d.ts"],
+    srcs = ["iframeloadmonitor.js", "iframeloadmonitor.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom",
@@ -252,7 +252,7 @@ closure_js_library(
 
 closure_js_library(
     name = "imageloader",
-    srcs = ["imageloader.js", "imageloader.clutz.d.ts"],
+    srcs = ["imageloader.js", "imageloader.d.ts"],
     lenient = True,
     deps = [
         ":eventtype",
@@ -268,7 +268,7 @@ closure_js_library(
 
 closure_js_library(
     name = "ipaddress",
-    srcs = ["ipaddress.js", "ipaddress.clutz.d.ts"],
+    srcs = ["ipaddress.js", "ipaddress.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -280,7 +280,7 @@ closure_js_library(
 
 closure_js_library(
     name = "jsloader",
-    srcs = ["jsloader.js", "jsloader.clutz.d.ts"],
+    srcs = ["jsloader.js", "jsloader.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -296,7 +296,7 @@ closure_js_library(
 
 closure_js_library(
     name = "jsonp",
-    srcs = ["jsonp.js", "jsonp.clutz.d.ts"],
+    srcs = ["jsonp.js", "jsonp.d.ts"],
     lenient = True,
     deps = [
         ":jsloader",
@@ -308,7 +308,7 @@ closure_js_library(
 
 closure_js_library(
     name = "mockiframeio",
-    srcs = ["mockiframeio.js", "mockiframeio.clutz.d.ts"],
+    srcs = ["mockiframeio.js", "mockiframeio.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -323,7 +323,7 @@ closure_js_library(
 
 closure_js_library(
     name = "multiiframeloadmonitor",
-    srcs = ["multiiframeloadmonitor.js", "multiiframeloadmonitor.clutz.d.ts"],
+    srcs = ["multiiframeloadmonitor.js", "multiiframeloadmonitor.d.ts"],
     lenient = True,
     deps = [
         ":iframeloadmonitor",
@@ -334,14 +334,14 @@ closure_js_library(
 
 closure_js_library(
     name = "networkstatusmonitor",
-    srcs = ["networkstatusmonitor.js", "networkstatusmonitor.clutz.d.ts"],
+    srcs = ["networkstatusmonitor.js", "networkstatusmonitor.d.ts"],
     lenient = True,
     deps = ["//closure/goog/events:listenable"],
 )
 
 closure_js_library(
     name = "networktester",
-    srcs = ["networktester.js", "networktester.clutz.d.ts"],
+    srcs = ["networktester.js", "networktester.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/log",
@@ -352,7 +352,7 @@ closure_js_library(
 
 closure_js_library(
     name = "tmpnetwork",
-    srcs = ["tmpnetwork.js", "tmpnetwork.clutz.d.ts"],
+    srcs = ["tmpnetwork.js", "tmpnetwork.d.ts"],
     lenient = True,
     deps = [
         ":channeldebug",
@@ -362,7 +362,7 @@ closure_js_library(
 
 closure_js_library(
     name = "websocket",
-    srcs = ["websocket.js", "websocket.clutz.d.ts"],
+    srcs = ["websocket.js", "websocket.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -378,7 +378,7 @@ closure_js_library(
 
 closure_js_library(
     name = "wrapperxmlhttpfactory",
-    srcs = ["wrapperxmlhttpfactory.js", "wrapperxmlhttpfactory.clutz.d.ts"],
+    srcs = ["wrapperxmlhttpfactory.js", "wrapperxmlhttpfactory.d.ts"],
     lenient = True,
     deps = [
         ":xhrlike",
@@ -388,7 +388,7 @@ closure_js_library(
 
 closure_js_library(
     name = "xhrio",
-    srcs = ["xhrio.js", "xhrio.clutz.d.ts"],
+    srcs = ["xhrio.js", "xhrio.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -416,7 +416,7 @@ closure_js_library(
 
 closure_js_library(
     name = "xhriopool",
-    srcs = ["xhriopool.js", "xhriopool.clutz.d.ts"],
+    srcs = ["xhriopool.js", "xhriopool.d.ts"],
     lenient = True,
     deps = [
         ":xhrio",
@@ -427,13 +427,13 @@ closure_js_library(
 
 closure_js_library(
     name = "xhrlike",
-    srcs = ["xhrlike.js", "xhrlike.clutz.d.ts"],
+    srcs = ["xhrlike.js", "xhrlike.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "xhrmanager",
-    srcs = ["xhrmanager.js", "xhrmanager.clutz.d.ts"],
+    srcs = ["xhrmanager.js", "xhrmanager.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -450,7 +450,7 @@ closure_js_library(
 
 closure_js_library(
     name = "xmlhttp",
-    srcs = ["xmlhttp.js", "xmlhttp.clutz.d.ts"],
+    srcs = ["xmlhttp.js", "xmlhttp.d.ts"],
     lenient = True,
     deps = [
         ":wrapperxmlhttpfactory",
@@ -462,7 +462,7 @@ closure_js_library(
 
 closure_js_library(
     name = "xmlhttpfactory",
-    srcs = ["xmlhttpfactory.js", "xmlhttpfactory.clutz.d.ts"],
+    srcs = ["xmlhttpfactory.js", "xmlhttpfactory.d.ts"],
     lenient = True,
     deps = [":xhrlike"],
 )

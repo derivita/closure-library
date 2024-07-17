@@ -6,19 +6,19 @@ licenses(["notice"])
 
 closure_js_library(
     name = "sets",
-    srcs = ["sets.js", "sets.clutz.d.ts"],
+    srcs = ["sets.js", "sets.d.ts"],
     lenient = True,
     deps = ["//closure/goog/collections:iters"],
 )
 
 closure_js_library(
     name = "iters",
-    srcs = ["iters.js", "iters.clutz.d.ts"],
+    srcs = ["iters.js", "iters.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "maps",
-    srcs = ["maps.js", "maps.clutz.d.ts"],
+    srcs = ["maps.js", "maps.d.ts"],
     lenient = True,
 )

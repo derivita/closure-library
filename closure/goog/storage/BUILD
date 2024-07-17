@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "collectablestorage",
-    srcs = ["collectablestorage.js", "collectablestorage.clutz.d.ts"],
+    srcs = ["collectablestorage.js", "collectablestorage.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -21,7 +21,7 @@ closure_js_library(
 closure_js_library(
     name = "collectablestoragetester",
     testonly = True,
-    srcs = ["collectablestoragetester.js", "collectablestoragetester.clutz.d.ts"],
+    srcs = ["collectablestoragetester.js", "collectablestoragetester.d.ts"],
     lenient = True,
     deps = [
         ":collectablestorage",
@@ -33,7 +33,7 @@ closure_js_library(
 
 closure_js_library(
     name = "encryptedstorage",
-    srcs = ["encryptedstorage.js", "encryptedstorage.clutz.d.ts"],
+    srcs = ["encryptedstorage.js", "encryptedstorage.d.ts"],
     lenient = True,
     deps = [
         ":collectablestorage",
@@ -50,13 +50,13 @@ closure_js_library(
 
 closure_js_library(
     name = "errorcode",
-    srcs = ["errorcode.js", "errorcode.clutz.d.ts"],
+    srcs = ["errorcode.js", "errorcode.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "expiringstorage",
-    srcs = ["expiringstorage.js", "expiringstorage.clutz.d.ts"],
+    srcs = ["expiringstorage.js", "expiringstorage.d.ts"],
     lenient = True,
     deps = [
         ":richstorage",
@@ -66,7 +66,7 @@ closure_js_library(
 
 closure_js_library(
     name = "richstorage",
-    srcs = ["richstorage.js", "richstorage.clutz.d.ts"],
+    srcs = ["richstorage.js", "richstorage.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -77,7 +77,7 @@ closure_js_library(
 
 closure_js_library(
     name = "storage",
-    srcs = ["storage.js", "storage.clutz.d.ts"],
+    srcs = ["storage.js", "storage.d.ts"],
     lenient = True,
     deps = [
         ":errorcode",
@@ -89,7 +89,7 @@ closure_js_library(
 closure_js_library(
     name = "storagetester",
     testonly = True,
-    srcs = ["storagetester.js", "storagetester.clutz.d.ts"],
+    srcs = ["storagetester.js", "storagetester.d.ts"],
     lenient = True,
     deps = [
         ":storage",

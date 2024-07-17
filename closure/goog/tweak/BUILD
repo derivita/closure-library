@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "entries",
-    srcs = ["entries.js", "entries.clutz.d.ts"],
+    srcs = ["entries.js", "entries.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -18,7 +18,7 @@ closure_js_library(
 
 closure_js_library(
     name = "registry",
-    srcs = ["registry.js", "registry.clutz.d.ts"],
+    srcs = ["registry.js", "registry.d.ts"],
     lenient = True,
     deps = [
         ":entries",
@@ -33,7 +33,7 @@ closure_js_library(
 closure_js_library(
     name = "testhelpers",
     testonly = 1,
-    srcs = ["testhelpers.js", "testhelpers.clutz.d.ts"],
+    srcs = ["testhelpers.js", "testhelpers.d.ts"],
     lenient = True,
     deps = [
         ":entries",
@@ -44,7 +44,7 @@ closure_js_library(
 
 closure_js_library(
     name = "tweak",
-    srcs = ["tweak.js", "tweak.clutz.d.ts"],
+    srcs = ["tweak.js", "tweak.d.ts"],
     lenient = True,
     deps = [
         ":entries",
@@ -55,7 +55,7 @@ closure_js_library(
 
 closure_js_library(
     name = "tweakui",
-    srcs = ["tweakui.js", "tweakui.clutz.d.ts"],
+    srcs = ["tweakui.js", "tweakui.d.ts"],
     lenient = True,
     deps = [
         ":entries",

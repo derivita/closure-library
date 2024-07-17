@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "cssspecificity",
     srcs = [
-        "cssspecificity.clutz.d.ts",
+        "cssspecificity.d.ts",
         "cssspecificity.js",
     ],
     lenient = True,
@@ -16,7 +16,7 @@ closure_js_library(
 closure_js_library(
     name = "legacyconversions",
     srcs = [
-        "legacyconversions.clutz.d.ts",
+        "legacyconversions.d.ts",
         "legacyconversions.js",
     ],
     deprecation = "Please use 'safevalues/restricted/legacy' instead",
@@ -34,7 +34,7 @@ closure_js_library(
 closure_js_library(
     name = "safehtml",
     srcs = [
-        "safehtml.clutz.d.ts",
+        "safehtml.d.ts",
         "safehtml.js",
     ],
     deprecation = "Please use 'safevalues' instead",
@@ -61,7 +61,7 @@ closure_js_library(
 closure_js_library(
     name = "safehtmlformatter",
     srcs = [
-        "safehtmlformatter.clutz.d.ts",
+        "safehtmlformatter.d.ts",
         "safehtmlformatter.js",
     ],
     lenient = True,
@@ -76,7 +76,7 @@ closure_js_library(
 closure_js_library(
     name = "safescript",
     srcs = [
-        "safescript.clutz.d.ts",
+        "safescript.d.ts",
         "safescript.js",
     ],
     deprecation = "Please use 'safevalues' instead",
@@ -92,7 +92,7 @@ closure_js_library(
 closure_js_library(
     name = "safestyle",
     srcs = [
-        "safestyle.clutz.d.ts",
+        "safestyle.d.ts",
         "safestyle.js",
     ],
     deprecation = "Please use 'safevalues' instead",
@@ -110,7 +110,7 @@ closure_js_library(
 closure_js_library(
     name = "safestylesheet",
     srcs = [
-        "safestylesheet.clutz.d.ts",
+        "safestylesheet.d.ts",
         "safestylesheet.js",
     ],
     deprecation = "Please use 'safevalues' instead",
@@ -128,7 +128,7 @@ closure_js_library(
 closure_js_library(
     name = "safeurl",
     srcs = [
-        "safeurl.clutz.d.ts",
+        "safeurl.d.ts",
         "safeurl.js",
     ],
     deprecation = "Please use 'safevalues' instead",
@@ -147,9 +147,9 @@ closure_js_library(
     name = "safeurl_test_vectors",
     testonly = 1,
     srcs = [
-        "javascript_url_test_vectors.clutz.d.ts",
+        "javascript_url_test_vectors.d.ts",
         "javascript_url_test_vectors.js",
-        "safeurl_test_vectors.clutz.d.ts",
+        "safeurl_test_vectors.d.ts",
         "safeurl_test_vectors.js",
     ],
     lenient = True,
@@ -159,7 +159,7 @@ closure_js_library(
     name = "testing",
     testonly = True,
     srcs = [
-        "testing.clutz.d.ts",
+        "testing.d.ts",
         "testing.js",
     ],
     deprecation = "Please use 'safevalues/testing/conversions' instead",
@@ -178,7 +178,7 @@ closure_js_library(
 closure_js_library(
     name = "textextractor",
     srcs = [
-        "textextractor.clutz.d.ts",
+        "textextractor.d.ts",
         "textextractor.js",
     ],
     lenient = True,
@@ -192,7 +192,7 @@ closure_js_library(
 closure_js_library(
     name = "trustedresourceurl",
     srcs = [
-        "trustedresourceurl.clutz.d.ts",
+        "trustedresourceurl.d.ts",
         "trustedresourceurl.js",
     ],
     deprecation = "Please use 'safevalues' instead",
@@ -211,7 +211,7 @@ closure_js_library(
 closure_js_library(
     name = "trustedtypes",
     srcs = [
-        "trustedtypes.clutz.d.ts",
+        "trustedtypes.d.ts",
         "trustedtypes.js",
     ],
     lenient = True,
@@ -221,7 +221,7 @@ closure_js_library(
 closure_js_library(
     name = "uncheckedconversions",
     srcs = [
-        "uncheckedconversions.clutz.d.ts",
+        "uncheckedconversions.d.ts",
         "uncheckedconversions.js",
     ],
     deprecation = "Please use 'safevalues/restricted/reviewed' instead",
@@ -242,7 +242,7 @@ closure_js_library(
 closure_js_library(
     name = "utils",
     srcs = [
-        "utils.clutz.d.ts",
+        "utils.d.ts",
         "utils.js",
     ],
     lenient = True,

@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "eventobserver",
     testonly = True,
-    srcs = ["eventobserver.js", "eventobserver.clutz.d.ts"],
+    srcs = ["eventobserver.js", "eventobserver.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -19,7 +19,7 @@ closure_js_library(
 closure_js_library(
     name = "events",
     testonly = True,
-    srcs = ["events.js", "events.clutz.d.ts"],
+    srcs = ["events.js", "events.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -41,7 +41,7 @@ closure_js_library(
 closure_js_library(
     name = "matchers",
     testonly = True,
-    srcs = ["matchers.js", "matchers.clutz.d.ts"],
+    srcs = ["matchers.js", "matchers.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/events:event",
@@ -52,7 +52,7 @@ closure_js_library(
 closure_js_library(
     name = "onlinehandler",
     testonly = True,
-    srcs = ["onlinehandler.js", "onlinehandler.clutz.d.ts"],
+    srcs = ["onlinehandler.js", "onlinehandler.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/events:eventtarget",

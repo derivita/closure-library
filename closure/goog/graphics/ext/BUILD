@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "coordinates",
-    srcs = ["coordinates.js", "coordinates.clutz.d.ts"],
+    srcs = ["coordinates.js", "coordinates.d.ts"],
     lenient = True,
     deps = ["//closure/goog/string"],
 )
@@ -18,7 +18,7 @@ alias(
 
 closure_js_library(
     name = "ellipse",
-    srcs = ["ellipse.js", "ellipse.clutz.d.ts"],
+    srcs = ["ellipse.js", "ellipse.d.ts"],
     lenient = True,
     deps = [
         ":group",
@@ -28,7 +28,7 @@ closure_js_library(
 
 closure_js_library(
     name = "ext",
-    srcs = ["ext.js", "ext.clutz.d.ts"],
+    srcs = ["ext.js", "ext.d.ts"],
     lenient = True,
     deps = [
         ":coordinates",
@@ -43,9 +43,9 @@ closure_js_library(
 closure_js_library(
     name = "graphics",
     srcs = [
-        "element.js", "element.clutz.d.ts",
-        "graphics.js", "graphics.clutz.d.ts",
-        "group.js", "group.clutz.d.ts",
+        "element.js", "element.d.ts",
+        "graphics.js", "graphics.d.ts",
+        "group.js", "group.d.ts",
     ],
     lenient = True,
     deps = [
@@ -70,14 +70,14 @@ alias(
 
 closure_js_library(
     name = "image",
-    srcs = ["image.js", "image.clutz.d.ts"],
+    srcs = ["image.js", "image.d.ts"],
     lenient = True,
     deps = [":element"],
 )
 
 closure_js_library(
     name = "path",
-    srcs = ["path.js", "path.clutz.d.ts"],
+    srcs = ["path.js", "path.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/graphics:affinetransform",
@@ -88,7 +88,7 @@ closure_js_library(
 
 closure_js_library(
     name = "rectangle",
-    srcs = ["rectangle.js", "rectangle.clutz.d.ts"],
+    srcs = ["rectangle.js", "rectangle.d.ts"],
     lenient = True,
     deps = [
         ":group",
@@ -98,7 +98,7 @@ closure_js_library(
 
 closure_js_library(
     name = "shape",
-    srcs = ["shape.js", "shape.clutz.d.ts"],
+    srcs = ["shape.js", "shape.d.ts"],
     lenient = True,
     deps = [
         ":group",
@@ -111,7 +111,7 @@ closure_js_library(
 
 closure_js_library(
     name = "strokeandfillelement",
-    srcs = ["strokeandfillelement.js", "strokeandfillelement.clutz.d.ts"],
+    srcs = ["strokeandfillelement.js", "strokeandfillelement.d.ts"],
     lenient = True,
     deps = [
         ":element",

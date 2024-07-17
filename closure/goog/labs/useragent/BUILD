@@ -21,7 +21,7 @@ closure_js_library(
 closure_js_library(
     name = "browser",
     srcs = [
-        "browser.clutz.d.ts",
+        "browser.d.ts",
         "browser.js",
     ],
     lenient = True,
@@ -38,7 +38,7 @@ closure_js_library(
 closure_js_library(
     name = "chromium_rebrands",
     srcs = [
-        "chromium_rebrands.clutz.d.ts",
+        "chromium_rebrands.d.ts",
         "chromium_rebrands.js",
     ],
     lenient = True,
@@ -47,7 +47,7 @@ closure_js_library(
 closure_js_library(
     name = "device",
     srcs = [
-        "device.clutz.d.ts",
+        "device.d.ts",
         "device.js",
     ],
     lenient = True,
@@ -57,7 +57,7 @@ closure_js_library(
 closure_js_library(
     name = "engine",
     srcs = [
-        "engine.clutz.d.ts",
+        "engine.d.ts",
         "engine.js",
     ],
     lenient = True,
@@ -71,7 +71,7 @@ closure_js_library(
 closure_js_library(
     name = "extra",
     srcs = [
-        "extra.clutz.d.ts",
+        "extra.d.ts",
         "extra.js",
     ],
     lenient = True,
@@ -84,7 +84,7 @@ closure_js_library(
 closure_js_library(
     name = "platform",
     srcs = [
-        "platform.clutz.d.ts",
+        "platform.d.ts",
         "platform.js",
     ],
     lenient = True,
@@ -101,7 +101,7 @@ closure_js_library(
     name = "test_agents",
     testonly = 1,
     srcs = [
-        "test_agents.clutz.d.ts",
+        "test_agents.d.ts",
         "test_agents.js",
     ],
     lenient = True,
@@ -111,7 +111,7 @@ closure_js_library(
     name = "test_agentdata",
     testonly = 1,
     srcs = [
-        "test_agentdata.clutz.d.ts",
+        "test_agentdata.d.ts",
         "test_agentdata.js",
     ],
     lenient = True,
@@ -124,7 +124,7 @@ closure_js_library(
 closure_js_library(
     name = "testutil",
     srcs = [
-        "testutil.clutz.d.ts",
+        "testutil.d.ts",
         "testutil.js",
     ],
     lenient = True,
@@ -138,9 +138,9 @@ closure_js_library(
 closure_js_library(
     name = "util",
     srcs = [
-        "useragent.clutz.d.ts",
+        "useragent.d.ts",
         "useragent.js",
-        "util.clutz.d.ts",
+        "util.d.ts",
         "util.js",
     ],
     lenient = True,
@@ -153,7 +153,7 @@ closure_js_library(
 closure_js_library(
     name = "verifier",
     srcs = [
-        "verifier.clutz.d.ts",
+        "verifier.d.ts",
         "verifier.js",
     ],
     lenient = True,

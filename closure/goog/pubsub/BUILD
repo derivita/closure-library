@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "pubsub",
-    srcs = ["pubsub.js", "pubsub.clutz.d.ts"],
+    srcs = ["pubsub.js", "pubsub.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -17,13 +17,13 @@ closure_js_library(
 
 closure_js_library(
     name = "topicid",
-    srcs = ["topicid.js", "topicid.clutz.d.ts"],
+    srcs = ["topicid.js", "topicid.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "typedpubsub",
-    srcs = ["typedpubsub.js", "typedpubsub.clutz.d.ts"],
+    srcs = ["typedpubsub.js", "typedpubsub.d.ts"],
     lenient = True,
     deps = [
         ":pubsub",

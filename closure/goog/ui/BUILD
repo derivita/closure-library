@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "abstractspellchecker",
-    srcs = ["abstractspellchecker.js", "abstractspellchecker.clutz.d.ts"],
+    srcs = ["abstractspellchecker.js", "abstractspellchecker.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -35,7 +35,7 @@ closure_js_library(
 
 closure_js_library(
     name = "activitymonitor",
-    srcs = ["activitymonitor.js", "activitymonitor.clutz.d.ts"],
+    srcs = ["activitymonitor.js", "activitymonitor.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -50,7 +50,7 @@ closure_js_library(
 
 closure_js_library(
     name = "advancedtooltip",
-    srcs = ["advancedtooltip.js", "advancedtooltip.clutz.d.ts"],
+    srcs = ["advancedtooltip.js", "advancedtooltip.d.ts"],
     lenient = True,
     deps = [
         ":tooltip",
@@ -67,7 +67,7 @@ closure_js_library(
 
 closure_js_library(
     name = "animatedzippy",
-    srcs = ["animatedzippy.js", "animatedzippy.clutz.d.ts"],
+    srcs = ["animatedzippy.js", "animatedzippy.d.ts"],
     lenient = True,
     deps = [
         ":zippy",
@@ -84,7 +84,7 @@ closure_js_library(
 
 closure_js_library(
     name = "attachablemenu",
-    srcs = ["attachablemenu.js", "attachablemenu.clutz.d.ts"],
+    srcs = ["attachablemenu.js", "attachablemenu.d.ts"],
     lenient = True,
     deps = [
         ":itemevent",
@@ -107,7 +107,7 @@ closure_js_library(
 
 closure_js_library(
     name = "bidiinput",
-    srcs = ["bidiinput.js", "bidiinput.clutz.d.ts"],
+    srcs = ["bidiinput.js", "bidiinput.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -122,7 +122,7 @@ closure_js_library(
 
 closure_js_library(
     name = "bubble",
-    srcs = ["bubble.js", "bubble.clutz.d.ts"],
+    srcs = ["bubble.js", "bubble.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -146,9 +146,9 @@ closure_js_library(
 closure_js_library(
     name = "button",
     srcs = [
-        "button.js", "button.clutz.d.ts",
-        "buttonrenderer.js", "buttonrenderer.clutz.d.ts",
-        "nativebuttonrenderer.js", "nativebuttonrenderer.clutz.d.ts",
+        "button.js", "button.d.ts",
+        "buttonrenderer.js", "buttonrenderer.d.ts",
+        "nativebuttonrenderer.js", "nativebuttonrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -178,13 +178,13 @@ alias(
 
 closure_js_library(
     name = "buttonside",
-    srcs = ["buttonside.js", "buttonside.clutz.d.ts"],
+    srcs = ["buttonside.js", "buttonside.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "charcounter",
-    srcs = ["charcounter.js", "charcounter.clutz.d.ts"],
+    srcs = ["charcounter.js", "charcounter.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom",
@@ -197,7 +197,7 @@ closure_js_library(
 
 closure_js_library(
     name = "charpicker",
-    srcs = ["charpicker.js", "charpicker.clutz.d.ts"],
+    srcs = ["charpicker.js", "charpicker.d.ts"],
     lenient = True,
     deps = [
         ":button",
@@ -237,8 +237,8 @@ closure_js_library(
 closure_js_library(
     name = "checkbox",
     srcs = [
-        "checkbox.js", "checkbox.clutz.d.ts",
-        "checkboxrenderer.js", "checkboxrenderer.clutz.d.ts",
+        "checkbox.js", "checkbox.d.ts",
+        "checkboxrenderer.js", "checkboxrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -263,7 +263,7 @@ closure_js_library(
 
 closure_js_library(
     name = "checkboxmenuitem",
-    srcs = ["checkboxmenuitem.js", "checkboxmenuitem.clutz.d.ts"],
+    srcs = ["checkboxmenuitem.js", "checkboxmenuitem.d.ts"],
     lenient = True,
     deps = [
         ":controlcontent",
@@ -281,8 +281,8 @@ alias(
 closure_js_library(
     name = "colormenubutton",
     srcs = [
-        "colormenubutton.js", "colormenubutton.clutz.d.ts",
-        "colormenubuttonrenderer.js", "colormenubuttonrenderer.clutz.d.ts",
+        "colormenubutton.js", "colormenubutton.d.ts",
+        "colormenubuttonrenderer.js", "colormenubuttonrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -311,7 +311,7 @@ alias(
 
 closure_js_library(
     name = "colorpalette",
-    srcs = ["colorpalette.js", "colorpalette.clutz.d.ts"],
+    srcs = ["colorpalette.js", "colorpalette.d.ts"],
     lenient = True,
     deps = [
         ":palette",
@@ -325,7 +325,7 @@ closure_js_library(
 
 closure_js_library(
     name = "colorpicker",
-    srcs = ["colorpicker.js", "colorpicker.clutz.d.ts"],
+    srcs = ["colorpicker.js", "colorpicker.d.ts"],
     lenient = True,
     deps = [
         ":colorpalette",
@@ -338,7 +338,7 @@ closure_js_library(
 
 closure_js_library(
     name = "combobox",
-    srcs = ["combobox.js", "combobox.clutz.d.ts"],
+    srcs = ["combobox.js", "combobox.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -373,8 +373,8 @@ closure_js_library(
 closure_js_library(
     name = "component",
     srcs = [
-        "component.js", "component.clutz.d.ts",
-        "componentutil.js", "componentutil.clutz.d.ts",
+        "component.js", "component.d.ts",
+        "componentutil.js", "componentutil.d.ts",
     ],
     lenient = True,
     deps = [
@@ -400,8 +400,8 @@ alias(
 closure_js_library(
     name = "container",
     srcs = [
-        "container.js", "container.clutz.d.ts",
-        "containerrenderer.js", "containerrenderer.clutz.d.ts",
+        "container.js", "container.d.ts",
+        "containerrenderer.js", "containerrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -436,7 +436,7 @@ alias(
 
 closure_js_library(
     name = "containerscroller",
-    srcs = ["containerscroller.js", "containerscroller.clutz.d.ts"],
+    srcs = ["containerscroller.js", "containerscroller.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -456,7 +456,7 @@ alias(
 
 closure_js_library(
     name = "controlcontent",
-    srcs = ["controlcontent.js", "controlcontent.clutz.d.ts"],
+    srcs = ["controlcontent.js", "controlcontent.d.ts"],
     lenient = True,
 )
 
@@ -467,7 +467,7 @@ alias(
 
 closure_js_library(
     name = "cookieeditor",
-    srcs = ["cookieeditor.js", "cookieeditor.clutz.d.ts"],
+    srcs = ["cookieeditor.js", "cookieeditor.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -484,7 +484,7 @@ closure_js_library(
 
 closure_js_library(
     name = "css3buttonrenderer",
-    srcs = ["css3buttonrenderer.js", "css3buttonrenderer.clutz.d.ts"],
+    srcs = ["css3buttonrenderer.js", "css3buttonrenderer.d.ts"],
     lenient = True,
     deps = [
         ":button",
@@ -500,7 +500,7 @@ closure_js_library(
 
 closure_js_library(
     name = "css3menubuttonrenderer",
-    srcs = ["css3menubuttonrenderer.js", "css3menubuttonrenderer.clutz.d.ts"],
+    srcs = ["css3menubuttonrenderer.js", "css3menubuttonrenderer.d.ts"],
     lenient = True,
     deps = [
         ":controlcontent",
@@ -514,15 +514,15 @@ closure_js_library(
 
 closure_js_library(
     name = "cssnames",
-    srcs = ["cssnames.js", "cssnames.clutz.d.ts"],
+    srcs = ["cssnames.js", "cssnames.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "custombutton",
     srcs = [
-        "custombutton.js", "custombutton.clutz.d.ts",
-        "custombuttonrenderer.js", "custombuttonrenderer.clutz.d.ts",
+        "custombutton.js", "custombutton.d.ts",
+        "custombuttonrenderer.js", "custombuttonrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -548,7 +548,7 @@ alias(
 
 closure_js_library(
     name = "customcolorpalette",
-    srcs = ["customcolorpalette.js", "customcolorpalette.clutz.d.ts"],
+    srcs = ["customcolorpalette.js", "customcolorpalette.d.ts"],
     lenient = True,
     deps = [
         ":colorpalette",
@@ -565,9 +565,9 @@ closure_js_library(
 closure_js_library(
     name = "datepicker",
     srcs = [
-        "datepicker.js", "datepicker.clutz.d.ts",
-        "datepickerrenderer.js", "datepickerrenderer.clutz.d.ts",
-        "defaultdatepickerrenderer.js", "defaultdatepickerrenderer.clutz.d.ts",
+        "datepicker.js", "datepicker.d.ts",
+        "datepickerrenderer.js", "datepickerrenderer.d.ts",
+        "defaultdatepickerrenderer.js", "defaultdatepickerrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -600,7 +600,7 @@ alias(
 
 closure_js_library(
     name = "decorate",
-    srcs = ["decorate.js", "decorate.clutz.d.ts"],
+    srcs = ["decorate.js", "decorate.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -615,7 +615,7 @@ alias(
 
 closure_js_library(
     name = "dialog",
-    srcs = ["dialog.js", "dialog.clutz.d.ts"],
+    srcs = ["dialog.js", "dialog.d.ts"],
     lenient = True,
     deps = [
         ":map",
@@ -646,8 +646,8 @@ closure_js_library(
 closure_js_library(
     name = "dimensionpicker",
     srcs = [
-        "dimensionpicker.js", "dimensionpicker.clutz.d.ts",
-        "dimensionpickerrenderer.js", "dimensionpickerrenderer.clutz.d.ts",
+        "dimensionpicker.js", "dimensionpicker.d.ts",
+        "dimensionpickerrenderer.js", "dimensionpickerrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -678,7 +678,7 @@ alias(
 
 closure_js_library(
     name = "dragdropdetector",
-    srcs = ["dragdropdetector.js", "dragdropdetector.clutz.d.ts"],
+    srcs = ["dragdropdetector.js", "dragdropdetector.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/dom",
@@ -698,7 +698,7 @@ closure_js_library(
 
 closure_js_library(
     name = "drilldownrow",
-    srcs = ["drilldownrow.js", "drilldownrow.clutz.d.ts"],
+    srcs = ["drilldownrow.js", "drilldownrow.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -714,7 +714,7 @@ closure_js_library(
 
 closure_js_library(
     name = "filteredmenu",
-    srcs = ["filteredmenu.js", "filteredmenu.clutz.d.ts"],
+    srcs = ["filteredmenu.js", "filteredmenu.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -742,8 +742,8 @@ closure_js_library(
 closure_js_library(
     name = "filterobservingmenuitem",
     srcs = [
-        "filterobservingmenuitem.js", "filterobservingmenuitem.clutz.d.ts",
-        "filterobservingmenuitemrenderer.js", "filterobservingmenuitemrenderer.clutz.d.ts",
+        "filterobservingmenuitem.js", "filterobservingmenuitem.d.ts",
+        "filterobservingmenuitemrenderer.js", "filterobservingmenuitemrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -761,7 +761,7 @@ alias(
 
 closure_js_library(
     name = "flatbuttonrenderer",
-    srcs = ["flatbuttonrenderer.js", "flatbuttonrenderer.clutz.d.ts"],
+    srcs = ["flatbuttonrenderer.js", "flatbuttonrenderer.d.ts"],
     lenient = True,
     deps = [
         ":button",
@@ -777,7 +777,7 @@ closure_js_library(
 
 closure_js_library(
     name = "flatmenubuttonrenderer",
-    srcs = ["flatmenubuttonrenderer.js", "flatmenubuttonrenderer.clutz.d.ts"],
+    srcs = ["flatmenubuttonrenderer.js", "flatmenubuttonrenderer.d.ts"],
     lenient = True,
     deps = [
         ":button",
@@ -796,7 +796,7 @@ closure_js_library(
 
 closure_js_library(
     name = "formpost",
-    srcs = ["formpost.js", "formpost.clutz.d.ts"],
+    srcs = ["formpost.js", "formpost.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -811,7 +811,7 @@ closure_js_library(
 
 closure_js_library(
     name = "gauge",
-    srcs = ["gauge.js", "gauge.clutz.d.ts"],
+    srcs = ["gauge.js", "gauge.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -834,7 +834,7 @@ closure_js_library(
 
 closure_js_library(
     name = "gaugetheme",
-    srcs = ["gaugetheme.js", "gaugetheme.clutz.d.ts"],
+    srcs = ["gaugetheme.js", "gaugetheme.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/graphics:lineargradient",
@@ -845,7 +845,7 @@ closure_js_library(
 
 closure_js_library(
     name = "hovercard",
-    srcs = ["hovercard.js", "hovercard.clutz.d.ts"],
+    srcs = ["hovercard.js", "hovercard.d.ts"],
     lenient = True,
     deps = [
         ":advancedtooltip",
@@ -863,7 +863,7 @@ closure_js_library(
 
 closure_js_library(
     name = "hsvapalette",
-    srcs = ["hsvapalette.js", "hsvapalette.clutz.d.ts"],
+    srcs = ["hsvapalette.js", "hsvapalette.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -882,7 +882,7 @@ closure_js_library(
 
 closure_js_library(
     name = "hsvpalette",
-    srcs = ["hsvpalette.js", "hsvpalette.clutz.d.ts"],
+    srcs = ["hsvpalette.js", "hsvpalette.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -904,13 +904,13 @@ closure_js_library(
 
 closure_js_library(
     name = "idgenerator",
-    srcs = ["idgenerator.js", "idgenerator.clutz.d.ts"],
+    srcs = ["idgenerator.js", "idgenerator.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "idletimer",
-    srcs = ["idletimer.js", "idletimer.clutz.d.ts"],
+    srcs = ["idletimer.js", "idletimer.d.ts"],
     lenient = True,
     deps = [
         ":activitymonitor",
@@ -924,7 +924,7 @@ closure_js_library(
 
 closure_js_library(
     name = "iframemask",
-    srcs = ["iframemask.js", "iframemask.clutz.d.ts"],
+    srcs = ["iframemask.js", "iframemask.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/disposable",
@@ -939,7 +939,7 @@ closure_js_library(
 
 closure_js_library(
     name = "imagelessbuttonrenderer",
-    srcs = ["imagelessbuttonrenderer.js", "imagelessbuttonrenderer.clutz.d.ts"],
+    srcs = ["imagelessbuttonrenderer.js", "imagelessbuttonrenderer.d.ts"],
     lenient = True,
     deps = [
         ":button",
@@ -956,7 +956,7 @@ closure_js_library(
 
 closure_js_library(
     name = "imagelessmenubuttonrenderer",
-    srcs = ["imagelessmenubuttonrenderer.js", "imagelessmenubuttonrenderer.clutz.d.ts"],
+    srcs = ["imagelessmenubuttonrenderer.js", "imagelessmenubuttonrenderer.d.ts"],
     lenient = True,
     deps = [
         ":button",
@@ -972,7 +972,7 @@ closure_js_library(
 
 closure_js_library(
     name = "inputdatepicker",
-    srcs = ["inputdatepicker.js", "inputdatepicker.clutz.d.ts"],
+    srcs = ["inputdatepicker.js", "inputdatepicker.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -993,14 +993,14 @@ closure_js_library(
 
 closure_js_library(
     name = "itemevent",
-    srcs = ["itemevent.js", "itemevent.clutz.d.ts"],
+    srcs = ["itemevent.js", "itemevent.d.ts"],
     lenient = True,
     deps = ["//closure/goog/events:event"],
 )
 
 closure_js_library(
     name = "keyboardeventdata",
-    srcs = ["keyboardeventdata.js", "keyboardeventdata.clutz.d.ts"],
+    srcs = ["keyboardeventdata.js", "keyboardeventdata.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -1011,8 +1011,8 @@ closure_js_library(
 closure_js_library(
     name = "keyboardshortcuthandler",
     srcs = [
-        "keyboardshortcutevent.js", "keyboardshortcutevent.clutz.d.ts",
-        "keyboardshortcuthandler.js", "keyboardshortcuthandler.clutz.d.ts",
+        "keyboardshortcutevent.js", "keyboardshortcutevent.d.ts",
+        "keyboardshortcuthandler.js", "keyboardshortcuthandler.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1036,7 +1036,7 @@ closure_js_library(
 
 closure_js_library(
     name = "labelinput",
-    srcs = ["labelinput.js", "labelinput.clutz.d.ts"],
+    srcs = ["labelinput.js", "labelinput.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1058,7 +1058,7 @@ closure_js_library(
 
 closure_js_library(
     name = "linkbuttonrenderer",
-    srcs = ["linkbuttonrenderer.js", "linkbuttonrenderer.clutz.d.ts"],
+    srcs = ["linkbuttonrenderer.js", "linkbuttonrenderer.d.ts"],
     lenient = True,
     deps = [
         ":button",
@@ -1069,17 +1069,17 @@ closure_js_library(
 
 closure_js_library(
     name = "map",
-    srcs = ["map.js", "map.clutz.d.ts"],
+    srcs = ["map.js", "map.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "menu",
     srcs = [
-        "menu.js", "menu.clutz.d.ts",
-        "menuitem.js", "menuitem.clutz.d.ts",
-        "menuitemrenderer.js", "menuitemrenderer.clutz.d.ts",
-        "menurenderer.js", "menurenderer.clutz.d.ts",
+        "menu.js", "menu.d.ts",
+        "menuitem.js", "menuitem.d.ts",
+        "menuitemrenderer.js", "menuitemrenderer.d.ts",
+        "menurenderer.js", "menurenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1110,8 +1110,8 @@ closure_js_library(
 closure_js_library(
     name = "menubar",
     srcs = [
-        "menubar.js", "menubar.clutz.d.ts",
-        "menubarrenderer.js", "menubarrenderer.clutz.d.ts",
+        "menubar.js", "menubar.d.ts",
+        "menubarrenderer.js", "menubarrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1123,7 +1123,7 @@ closure_js_library(
 
 closure_js_library(
     name = "menubardecorator",
-    srcs = ["menubardecorator.js", "menubardecorator.clutz.d.ts"],
+    srcs = ["menubardecorator.js", "menubardecorator.d.ts"],
     lenient = True,
     deps = [
         ":menubar",
@@ -1138,7 +1138,7 @@ alias(
 
 closure_js_library(
     name = "menubase",
-    srcs = ["menubase.js", "menubase.clutz.d.ts"],
+    srcs = ["menubase.js", "menubase.d.ts"],
     lenient = True,
     deps = [
         ":popup",
@@ -1152,8 +1152,8 @@ closure_js_library(
 closure_js_library(
     name = "menubutton",
     srcs = [
-        "menubutton.js", "menubutton.clutz.d.ts",
-        "menubuttonrenderer.js", "menubuttonrenderer.clutz.d.ts",
+        "menubutton.js", "menubutton.d.ts",
+        "menubuttonrenderer.js", "menubuttonrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1202,8 +1202,8 @@ alias(
 closure_js_library(
     name = "menuheader",
     srcs = [
-        "menuheader.js", "menuheader.clutz.d.ts",
-        "menuheaderrenderer.js", "menuheaderrenderer.clutz.d.ts",
+        "menuheader.js", "menuheader.d.ts",
+        "menuheaderrenderer.js", "menuheaderrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1247,7 +1247,7 @@ alias(
 
 closure_js_library(
     name = "mockactivitymonitor",
-    srcs = ["mockactivitymonitor.js", "mockactivitymonitor.clutz.d.ts"],
+    srcs = ["mockactivitymonitor.js", "mockactivitymonitor.d.ts"],
     lenient = True,
     deps = [
         ":activitymonitor",
@@ -1257,7 +1257,7 @@ closure_js_library(
 
 closure_js_library(
     name = "modalariavisibilityhelper",
-    srcs = ["modalariavisibilityhelper.js", "modalariavisibilityhelper.clutz.d.ts"],
+    srcs = ["modalariavisibilityhelper.js", "modalariavisibilityhelper.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/a11y/aria",
@@ -1268,7 +1268,7 @@ closure_js_library(
 
 closure_js_library(
     name = "modalpopup",
-    srcs = ["modalpopup.js", "modalpopup.clutz.d.ts"],
+    srcs = ["modalpopup.js", "modalpopup.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1301,7 +1301,7 @@ alias(
 
 closure_js_library(
     name = "option",
-    srcs = ["option.js", "option.clutz.d.ts"],
+    srcs = ["option.js", "option.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1316,8 +1316,8 @@ closure_js_library(
 closure_js_library(
     name = "palette",
     srcs = [
-        "palette.js", "palette.clutz.d.ts",
-        "paletterenderer.js", "paletterenderer.clutz.d.ts",
+        "palette.js", "palette.d.ts",
+        "paletterenderer.js", "paletterenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1356,7 +1356,7 @@ alias(
 
 closure_js_library(
     name = "plaintextspellchecker",
-    srcs = ["plaintextspellchecker.js", "plaintextspellchecker.clutz.d.ts"],
+    srcs = ["plaintextspellchecker.js", "plaintextspellchecker.d.ts"],
     lenient = True,
     deps = [
         ":abstractspellchecker",
@@ -1382,7 +1382,7 @@ closure_js_library(
 
 closure_js_library(
     name = "popup",
-    srcs = ["popup.js", "popup.clutz.d.ts"],
+    srcs = ["popup.js", "popup.d.ts"],
     lenient = True,
     deps = [
         ":popupbase",
@@ -1395,7 +1395,7 @@ closure_js_library(
 
 closure_js_library(
     name = "popupbase",
-    srcs = ["popupbase.js", "popupbase.clutz.d.ts"],
+    srcs = ["popupbase.js", "popupbase.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -1417,7 +1417,7 @@ closure_js_library(
 
 closure_js_library(
     name = "popupcolorpicker",
-    srcs = ["popupcolorpicker.js", "popupcolorpicker.clutz.d.ts"],
+    srcs = ["popupcolorpicker.js", "popupcolorpicker.d.ts"],
     lenient = True,
     deps = [
         ":colorpicker",
@@ -1437,7 +1437,7 @@ closure_js_library(
 
 closure_js_library(
     name = "popupdatepicker",
-    srcs = ["popupdatepicker.js", "popupdatepicker.clutz.d.ts"],
+    srcs = ["popupdatepicker.js", "popupdatepicker.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1456,7 +1456,7 @@ closure_js_library(
 
 closure_js_library(
     name = "popupmenu",
-    srcs = ["popupmenu.js", "popupmenu.clutz.d.ts"],
+    srcs = ["popupmenu.js", "popupmenu.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1481,7 +1481,7 @@ closure_js_library(
 
 closure_js_library(
     name = "progressbar",
-    srcs = ["progressbar.js", "progressbar.clutz.d.ts"],
+    srcs = ["progressbar.js", "progressbar.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1500,7 +1500,7 @@ closure_js_library(
 
 closure_js_library(
     name = "prompt",
-    srcs = ["prompt.js", "prompt.clutz.d.ts"],
+    srcs = ["prompt.js", "prompt.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1519,7 +1519,7 @@ closure_js_library(
 
 closure_js_library(
     name = "rangemodel",
-    srcs = ["rangemodel.js", "rangemodel.clutz.d.ts"],
+    srcs = ["rangemodel.js", "rangemodel.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1529,7 +1529,7 @@ closure_js_library(
 
 closure_js_library(
     name = "ratings",
-    srcs = ["ratings.js", "ratings.clutz.d.ts"],
+    srcs = ["ratings.js", "ratings.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1548,9 +1548,9 @@ closure_js_library(
 closure_js_library(
     name = "registry",
     srcs = [
-        "control.js", "control.clutz.d.ts",
-        "controlrenderer.js", "controlrenderer.clutz.d.ts",
-        "registry.js", "registry.clutz.d.ts",
+        "control.js", "control.d.ts",
+        "controlrenderer.js", "controlrenderer.d.ts",
+        "registry.js", "registry.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1581,7 +1581,7 @@ closure_js_library(
 
 closure_js_library(
     name = "richtextspellchecker",
-    srcs = ["richtextspellchecker.js", "richtextspellchecker.clutz.d.ts"],
+    srcs = ["richtextspellchecker.js", "richtextspellchecker.d.ts"],
     lenient = True,
     deps = [
         ":abstractspellchecker",
@@ -1607,7 +1607,7 @@ closure_js_library(
 
 closure_js_library(
     name = "roundedpanel",
-    srcs = ["roundedpanel.js", "roundedpanel.clutz.d.ts"],
+    srcs = ["roundedpanel.js", "roundedpanel.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1629,7 +1629,7 @@ closure_js_library(
 
 closure_js_library(
     name = "roundedtabrenderer",
-    srcs = ["roundedtabrenderer.js", "roundedtabrenderer.clutz.d.ts"],
+    srcs = ["roundedtabrenderer.js", "roundedtabrenderer.d.ts"],
     lenient = True,
     deps = [
         ":control",
@@ -1644,7 +1644,7 @@ closure_js_library(
 
 closure_js_library(
     name = "scrollfloater",
-    srcs = ["scrollfloater.js", "scrollfloater.clutz.d.ts"],
+    srcs = ["scrollfloater.js", "scrollfloater.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1663,7 +1663,7 @@ closure_js_library(
 
 closure_js_library(
     name = "select",
-    srcs = ["select.js", "select.clutz.d.ts"],
+    srcs = ["select.js", "select.d.ts"],
     lenient = True,
     deps = [
         ":button",
@@ -1689,7 +1689,7 @@ closure_js_library(
 
 closure_js_library(
     name = "selectionmenubutton",
-    srcs = ["selectionmenubutton.js", "selectionmenubutton.clutz.d.ts"],
+    srcs = ["selectionmenubutton.js", "selectionmenubutton.d.ts"],
     lenient = True,
     deps = [
         ":button",
@@ -1709,7 +1709,7 @@ closure_js_library(
 
 closure_js_library(
     name = "selectionmodel",
-    srcs = ["selectionmodel.js", "selectionmodel.clutz.d.ts"],
+    srcs = ["selectionmodel.js", "selectionmodel.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -1721,9 +1721,9 @@ closure_js_library(
 closure_js_library(
     name = "separator",
     srcs = [
-        "menuseparator.js", "menuseparator.clutz.d.ts",
-        "menuseparatorrenderer.js", "menuseparatorrenderer.clutz.d.ts",
-        "separator.js", "separator.clutz.d.ts",
+        "menuseparator.js", "menuseparator.d.ts",
+        "menuseparatorrenderer.js", "menuseparatorrenderer.d.ts",
+        "separator.js", "separator.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1741,7 +1741,7 @@ closure_js_library(
 
 closure_js_library(
     name = "serverchart",
-    srcs = ["serverchart.js", "serverchart.clutz.d.ts"],
+    srcs = ["serverchart.js", "serverchart.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1758,7 +1758,7 @@ closure_js_library(
 
 closure_js_library(
     name = "slider",
-    srcs = ["slider.js", "slider.clutz.d.ts"],
+    srcs = ["slider.js", "slider.d.ts"],
     lenient = True,
     deps = [
         ":sliderbase",
@@ -1771,7 +1771,7 @@ closure_js_library(
 
 closure_js_library(
     name = "sliderbase",
-    srcs = ["sliderbase.js", "sliderbase.clutz.d.ts"],
+    srcs = ["sliderbase.js", "sliderbase.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1808,7 +1808,7 @@ closure_js_library(
 
 closure_js_library(
     name = "splitpane",
-    srcs = ["splitpane.js", "splitpane.clutz.d.ts"],
+    srcs = ["splitpane.js", "splitpane.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1829,8 +1829,8 @@ closure_js_library(
 closure_js_library(
     name = "submenu",
     srcs = [
-        "submenu.js", "submenu.clutz.d.ts",
-        "submenurenderer.js", "submenurenderer.clutz.d.ts",
+        "submenu.js", "submenu.d.ts",
+        "submenurenderer.js", "submenurenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1866,7 +1866,7 @@ alias(
 
 closure_js_library(
     name = "synthetickeyboardevent",
-    srcs = ["synthetickeyboardevent.js", "synthetickeyboardevent.clutz.d.ts"],
+    srcs = ["synthetickeyboardevent.js", "synthetickeyboardevent.d.ts"],
     lenient = True,
     deps = [
         ":keyboardeventdata",
@@ -1877,8 +1877,8 @@ closure_js_library(
 closure_js_library(
     name = "tab",
     srcs = [
-        "tab.js", "tab.clutz.d.ts",
-        "tabrenderer.js", "tabrenderer.clutz.d.ts",
+        "tab.js", "tab.d.ts",
+        "tabrenderer.js", "tabrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1894,8 +1894,8 @@ closure_js_library(
 closure_js_library(
     name = "tabbar",
     srcs = [
-        "tabbar.js", "tabbar.clutz.d.ts",
-        "tabbarrenderer.js", "tabbarrenderer.clutz.d.ts",
+        "tabbar.js", "tabbar.d.ts",
+        "tabbarrenderer.js", "tabbarrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1918,7 +1918,7 @@ alias(
 
 closure_js_library(
     name = "tablesorter",
-    srcs = ["tablesorter.js", "tablesorter.clutz.d.ts"],
+    srcs = ["tablesorter.js", "tablesorter.d.ts"],
     lenient = True,
     deps = [
         ":component",
@@ -1934,7 +1934,7 @@ closure_js_library(
 
 closure_js_library(
     name = "tabpane",
-    srcs = ["tabpane.js", "tabpane.clutz.d.ts"],
+    srcs = ["tabpane.js", "tabpane.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -1960,8 +1960,8 @@ alias(
 closure_js_library(
     name = "textarea",
     srcs = [
-        "textarea.js", "textarea.clutz.d.ts",
-        "textarearenderer.js", "textarearenderer.clutz.d.ts",
+        "textarea.js", "textarea.d.ts",
+        "textarearenderer.js", "textarearenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -1987,7 +1987,7 @@ alias(
 
 closure_js_library(
     name = "togglebutton",
-    srcs = ["togglebutton.js", "togglebutton.clutz.d.ts"],
+    srcs = ["togglebutton.js", "togglebutton.d.ts"],
     lenient = True,
     deps = [
         ":button",
@@ -2002,8 +2002,8 @@ closure_js_library(
 closure_js_library(
     name = "toolbar",
     srcs = [
-        "toolbar.js", "toolbar.clutz.d.ts",
-        "toolbarrenderer.js", "toolbarrenderer.clutz.d.ts",
+        "toolbar.js", "toolbar.d.ts",
+        "toolbarrenderer.js", "toolbarrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -2020,8 +2020,8 @@ closure_js_library(
 closure_js_library(
     name = "toolbarbutton",
     srcs = [
-        "toolbarbutton.js", "toolbarbutton.clutz.d.ts",
-        "toolbarbuttonrenderer.js", "toolbarbuttonrenderer.clutz.d.ts",
+        "toolbarbutton.js", "toolbarbutton.d.ts",
+        "toolbarbuttonrenderer.js", "toolbarbuttonrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -2042,8 +2042,8 @@ alias(
 closure_js_library(
     name = "toolbarcolormenubutton",
     srcs = [
-        "toolbarcolormenubutton.js", "toolbarcolormenubutton.clutz.d.ts",
-        "toolbarcolormenubuttonrenderer.js", "toolbarcolormenubuttonrenderer.clutz.d.ts",
+        "toolbarcolormenubutton.js", "toolbarcolormenubutton.d.ts",
+        "toolbarcolormenubuttonrenderer.js", "toolbarcolormenubuttonrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -2068,8 +2068,8 @@ alias(
 closure_js_library(
     name = "toolbarmenubutton",
     srcs = [
-        "toolbarmenubutton.js", "toolbarmenubutton.clutz.d.ts",
-        "toolbarmenubuttonrenderer.js", "toolbarmenubuttonrenderer.clutz.d.ts",
+        "toolbarmenubutton.js", "toolbarmenubutton.d.ts",
+        "toolbarmenubuttonrenderer.js", "toolbarmenubuttonrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -2094,7 +2094,7 @@ alias(
 
 closure_js_library(
     name = "toolbarselect",
-    srcs = ["toolbarselect.js", "toolbarselect.clutz.d.ts"],
+    srcs = ["toolbarselect.js", "toolbarselect.d.ts"],
     lenient = True,
     deps = [
         ":controlcontent",
@@ -2110,8 +2110,8 @@ closure_js_library(
 closure_js_library(
     name = "toolbarseparator",
     srcs = [
-        "toolbarseparator.js", "toolbarseparator.clutz.d.ts",
-        "toolbarseparatorrenderer.js", "toolbarseparatorrenderer.clutz.d.ts",
+        "toolbarseparator.js", "toolbarseparator.d.ts",
+        "toolbarseparatorrenderer.js", "toolbarseparatorrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -2133,7 +2133,7 @@ alias(
 
 closure_js_library(
     name = "toolbartogglebutton",
-    srcs = ["toolbartogglebutton.js", "toolbartogglebutton.clutz.d.ts"],
+    srcs = ["toolbartogglebutton.js", "toolbartogglebutton.d.ts"],
     lenient = True,
     deps = [
         ":controlcontent",
@@ -2146,7 +2146,7 @@ closure_js_library(
 
 closure_js_library(
     name = "tooltip",
-    srcs = ["tooltip.js", "tooltip.clutz.d.ts"],
+    srcs = ["tooltip.js", "tooltip.d.ts"],
     lenient = True,
     deps = [
         ":popup",
@@ -2177,8 +2177,8 @@ closure_js_library(
 closure_js_library(
     name = "tristatemenuitem",
     srcs = [
-        "tristatemenuitem.js", "tristatemenuitem.clutz.d.ts",
-        "tristatemenuitemrenderer.js", "tristatemenuitemrenderer.clutz.d.ts",
+        "tristatemenuitem.js", "tristatemenuitem.d.ts",
+        "tristatemenuitemrenderer.js", "tristatemenuitemrenderer.d.ts",
     ],
     lenient = True,
     deps = [
@@ -2199,7 +2199,7 @@ alias(
 
 closure_js_library(
     name = "twothumbslider",
-    srcs = ["twothumbslider.js", "twothumbslider.clutz.d.ts"],
+    srcs = ["twothumbslider.js", "twothumbslider.d.ts"],
     lenient = True,
     deps = [
         ":sliderbase",
@@ -2212,7 +2212,7 @@ closure_js_library(
 
 closure_js_library(
     name = "zippy",
-    srcs = ["zippy.js", "zippy.clutz.d.ts"],
+    srcs = ["zippy.js", "zippy.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/a11y/aria",

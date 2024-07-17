@@ -8,7 +8,7 @@ closure_js_library(
     name = "assertionfailure",
     testonly = True,
     srcs = [
-        "assertionfailure.clutz.d.ts",
+        "assertionfailure.d.ts",
         "assertionfailure.js",
     ],
     lenient = True,
@@ -22,7 +22,7 @@ closure_js_library(
     name = "asserts",
     testonly = True,
     srcs = [
-        "asserts.clutz.d.ts",
+        "asserts.d.ts",
         "asserts.js",
     ],
     lenient = True,
@@ -39,7 +39,7 @@ closure_js_library(
     name = "asynctestcase",
     testonly = True,
     srcs = [
-        "asynctestcase.clutz.d.ts",
+        "asynctestcase.d.ts",
         "asynctestcase.js",
     ],
     lenient = True,
@@ -54,7 +54,7 @@ closure_js_library(
     name = "benchmark",
     testonly = True,
     srcs = [
-        "benchmark.clutz.d.ts",
+        "benchmark.d.ts",
         "benchmark.js",
     ],
     lenient = True,
@@ -71,7 +71,7 @@ closure_js_library(
     name = "continuationtestcase",
     testonly = True,
     srcs = [
-        "continuationtestcase.clutz.d.ts",
+        "continuationtestcase.d.ts",
         "continuationtestcase.js",
     ],
     lenient = True,
@@ -88,7 +88,7 @@ closure_js_library(
     name = "deferredtestcase",
     testonly = True,
     srcs = [
-        "deferredtestcase.clutz.d.ts",
+        "deferredtestcase.d.ts",
         "deferredtestcase.js",
     ],
     lenient = True,
@@ -103,7 +103,7 @@ closure_js_library(
     name = "dom",
     testonly = True,
     srcs = [
-        "dom.clutz.d.ts",
+        "dom.d.ts",
         "dom.js",
     ],
     lenient = True,
@@ -134,7 +134,7 @@ closure_js_library(
     name = "expectedfailures",
     testonly = True,
     srcs = [
-        "expectedfailures.clutz.d.ts",
+        "expectedfailures.d.ts",
         "expectedfailures.js",
     ],
     lenient = True,
@@ -157,7 +157,7 @@ closure_js_library(
     name = "functionmock",
     testonly = True,
     srcs = [
-        "functionmock.clutz.d.ts",
+        "functionmock.d.ts",
         "functionmock.js",
     ],
     lenient = True,
@@ -175,7 +175,7 @@ closure_js_library(
     name = "graphics",
     testonly = True,
     srcs = [
-        "graphics.clutz.d.ts",
+        "graphics.d.ts",
         "graphics.js",
     ],
     lenient = True,
@@ -189,7 +189,7 @@ closure_js_library(
     name = "jstdasyncwrapper",
     testonly = True,
     srcs = [
-        "jstdasyncwrapper.clutz.d.ts",
+        "jstdasyncwrapper.d.ts",
         "jstdasyncwrapper.js",
     ],
     lenient = True,
@@ -200,7 +200,7 @@ closure_js_library(
     name = "jstdtestcaseadapter",
     testonly = True,
     srcs = [
-        "jstdtestcaseadapter.clutz.d.ts",
+        "jstdtestcaseadapter.d.ts",
         "jstdtestcaseadapter.js",
     ],
     lenient = True,
@@ -217,7 +217,7 @@ closure_js_library(
     name = "jsunit",
     testonly = True,
     srcs = [
-        "jsunit.clutz.d.ts",
+        "jsunit.d.ts",
         "jsunit.js",
     ],
     lenient = True,
@@ -233,7 +233,7 @@ closure_js_library(
     name = "jsunitexception",
     testonly = True,
     srcs = [
-        "jsunitexception.clutz.d.ts",
+        "jsunitexception.d.ts",
         "jsunitexception.js",
     ],
     lenient = True,
@@ -244,7 +244,7 @@ closure_js_library(
     name = "loosemock",
     testonly = True,
     srcs = [
-        "loosemock.clutz.d.ts",
+        "loosemock.d.ts",
         "loosemock.js",
     ],
     lenient = True,
@@ -259,9 +259,9 @@ closure_js_library(
     name = "mock",
     testonly = True,
     srcs = [
-        "mock.clutz.d.ts",
+        "mock.d.ts",
         "mock.js",
-        "mockmatchers.clutz.d.ts",
+        "mockmatchers.d.ts",
         "mockmatchers.js",
     ],
     lenient = True,
@@ -282,7 +282,7 @@ closure_js_library(
     name = "mockclassfactory",
     testonly = True,
     srcs = [
-        "mockclassfactory.clutz.d.ts",
+        "mockclassfactory.d.ts",
         "mockclassfactory.js",
     ],
     lenient = True,
@@ -300,7 +300,7 @@ closure_js_library(
     name = "mockclock",
     testonly = True,
     srcs = [
-        "mockclock.clutz.d.ts",
+        "mockclock.d.ts",
         "mockclock.js",
     ],
     lenient = True,
@@ -320,7 +320,7 @@ closure_js_library(
     name = "mockcontrol",
     testonly = True,
     srcs = [
-        "mockcontrol.clutz.d.ts",
+        "mockcontrol.d.ts",
         "mockcontrol.js",
     ],
     lenient = True,
@@ -338,7 +338,7 @@ closure_js_library(
     name = "mockinterface",
     testonly = True,
     srcs = [
-        "mockinterface.clutz.d.ts",
+        "mockinterface.d.ts",
         "mockinterface.js",
     ],
     lenient = True,
@@ -356,7 +356,7 @@ closure_js_library(
     name = "mockrandom",
     testonly = True,
     srcs = [
-        "mockrandom.clutz.d.ts",
+        "mockrandom.d.ts",
         "mockrandom.js",
     ],
     lenient = True,
@@ -367,7 +367,7 @@ closure_js_library(
     name = "mockrange",
     testonly = True,
     srcs = [
-        "mockrange.clutz.d.ts",
+        "mockrange.d.ts",
         "mockrange.js",
     ],
     lenient = True,
@@ -382,7 +382,7 @@ closure_js_library(
     name = "mockstorage",
     testonly = True,
     srcs = [
-        "mockstorage.clutz.d.ts",
+        "mockstorage.d.ts",
         "mockstorage.js",
     ],
     lenient = True,
@@ -392,7 +392,7 @@ closure_js_library(
     name = "mockuseragent",
     testonly = True,
     srcs = [
-        "mockuseragent.clutz.d.ts",
+        "mockuseragent.d.ts",
         "mockuseragent.js",
     ],
     lenient = True,
@@ -408,7 +408,7 @@ closure_js_library(
     name = "multitestrunner",
     testonly = True,
     srcs = [
-        "multitestrunner.clutz.d.ts",
+        "multitestrunner.d.ts",
         "multitestrunner.js",
     ],
     lenient = True,
@@ -435,7 +435,7 @@ closure_js_library(
     name = "objectpropertystring",
     testonly = True,
     srcs = [
-        "objectpropertystring.clutz.d.ts",
+        "objectpropertystring.d.ts",
         "objectpropertystring.js",
     ],
     lenient = True,
@@ -445,7 +445,7 @@ closure_js_library(
     name = "objects",
     testonly = True,
     srcs = [
-        "objects.clutz.d.ts",
+        "objects.d.ts",
         "objects.js",
     ],
     lenient = True,
@@ -456,7 +456,7 @@ closure_js_library(
     name = "parallel_closure_test_suite",
     testonly = True,
     srcs = [
-        "parallel_closure_test_suite.clutz.d.ts",
+        "parallel_closure_test_suite.d.ts",
         "parallel_closure_test_suite.js",
     ],
     lenient = True,
@@ -475,7 +475,7 @@ closure_js_library(
     name = "performancetable",
     testonly = True,
     srcs = [
-        "performancetable.clutz.d.ts",
+        "performancetable.d.ts",
         "performancetable.js",
     ],
     lenient = True,
@@ -493,7 +493,7 @@ closure_js_library(
     name = "performancetimer",
     testonly = True,
     srcs = [
-        "performancetimer.clutz.d.ts",
+        "performancetimer.d.ts",
         "performancetimer.js",
     ],
     lenient = True,
@@ -509,7 +509,7 @@ closure_js_library(
     name = "propertyreplacer",
     testonly = True,
     srcs = [
-        "propertyreplacer.clutz.d.ts",
+        "propertyreplacer.d.ts",
         "propertyreplacer.js",
     ],
     lenient = True,
@@ -523,7 +523,7 @@ closure_js_library(
     name = "pseudorandom",
     testonly = True,
     srcs = [
-        "pseudorandom.clutz.d.ts",
+        "pseudorandom.d.ts",
         "pseudorandom.js",
     ],
     lenient = True,
@@ -534,11 +534,11 @@ closure_js_library(
     name = "recordfunction",
     testonly = True,
     srcs = [
-        "functioncall.clutz.d.ts",
+        "functioncall.d.ts",
         "functioncall.js",
-        "recordconstructor.clutz.d.ts",
+        "recordconstructor.d.ts",
         "recordconstructor.js",
-        "recordfunction.clutz.d.ts",
+        "recordfunction.d.ts",
         "recordfunction.js",
     ],
     lenient = True,
@@ -553,7 +553,7 @@ closure_js_library(
     name = "shardingtestcase",
     testonly = True,
     srcs = [
-        "shardingtestcase.clutz.d.ts",
+        "shardingtestcase.d.ts",
         "shardingtestcase.js",
     ],
     lenient = True,
@@ -567,7 +567,7 @@ closure_js_library(
     name = "singleton",
     testonly = True,
     srcs = [
-        "singleton.clutz.d.ts",
+        "singleton.d.ts",
         "singleton.js",
     ],
     lenient = True,
@@ -578,7 +578,7 @@ closure_js_library(
     name = "stacktrace",
     testonly = True,
     srcs = [
-        "stacktrace.clutz.d.ts",
+        "stacktrace.d.ts",
         "stacktrace.js",
     ],
     lenient = True,
@@ -588,7 +588,7 @@ closure_js_library(
     name = "strictmock",
     testonly = True,
     srcs = [
-        "strictmock.clutz.d.ts",
+        "strictmock.d.ts",
         "strictmock.js",
     ],
     lenient = True,
@@ -603,7 +603,7 @@ closure_js_library(
     name = "testcase",
     testonly = True,
     srcs = [
-        "testcase.clutz.d.ts",
+        "testcase.d.ts",
         "testcase.js",
     ],
     lenient = True,
@@ -625,7 +625,7 @@ closure_js_library(
     name = "cspviolationobserver",
     testonly = True,
     srcs = [
-        "cspviolationobserver.clutz.d.ts",
+        "cspviolationobserver.d.ts",
         "cspviolationobserver.js",
     ],
     lenient = True,
@@ -636,7 +636,7 @@ closure_js_library(
     name = "cspviolationobserver_externs",
     testonly = True,
     srcs = [
-        "cspviolationobserver_externs.clutz.d.ts",
+        "cspviolationobserver_externs.d.ts",
         "cspviolationobserver_externs.js",
     ],
     lenient = True,
@@ -646,7 +646,7 @@ closure_js_library(
     name = "testqueue",
     testonly = True,
     srcs = [
-        "testqueue.clutz.d.ts",
+        "testqueue.d.ts",
         "testqueue.js",
     ],
     lenient = True,
@@ -656,7 +656,7 @@ closure_js_library(
     name = "testrunner",
     testonly = True,
     srcs = [
-        "testrunner.clutz.d.ts",
+        "testrunner.d.ts",
         "testrunner.js",
     ],
     lenient = True,
@@ -674,7 +674,7 @@ closure_js_library(
     name = "testsuite",
     testonly = True,
     srcs = [
-        "testsuite.clutz.d.ts",
+        "testsuite.d.ts",
         "testsuite.js",
     ],
     lenient = True,

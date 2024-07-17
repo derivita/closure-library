@@ -7,9 +7,9 @@ licenses(["notice"])
 closure_js_library(
     name = "pagevisibilitymonitor",
     srcs = [
-        "pagevisibilityevent.js", "pagevisibilityevent.clutz.d.ts",
-        "pagevisibilitymonitor.js", "pagevisibilitymonitor.clutz.d.ts",
-        "pagevisibilitystate.js", "pagevisibilitystate.clutz.d.ts",
+        "pagevisibilityevent.js", "pagevisibilityevent.d.ts",
+        "pagevisibilitymonitor.js", "pagevisibilitymonitor.d.ts",
+        "pagevisibilitystate.js", "pagevisibilitystate.d.ts",
     ],
     lenient = True,
     deps = [

@@ -7,7 +7,7 @@ licenses(["notice"])
 closure_js_library(
     name = "asserts",
     testonly = True,
-    srcs = ["asserts.js", "asserts.clutz.d.ts"],
+    srcs = ["asserts.js", "asserts.d.ts"],
     lenient = True,
     deps = [
         ":whitespace",
@@ -18,6 +18,6 @@ closure_js_library(
 closure_js_library(
     name = "whitespace",
     testonly = True,
-    srcs = ["whitespace.js", "whitespace.clutz.d.ts"],
+    srcs = ["whitespace.js", "whitespace.d.ts"],
     lenient = True,
 )

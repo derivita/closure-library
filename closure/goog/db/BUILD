@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "cursor",
-    srcs = ["cursor.js", "cursor.clutz.d.ts"],
+    srcs = ["cursor.js", "cursor.d.ts"],
     lenient = True,
     deps = [
         ":error",
@@ -19,7 +19,7 @@ closure_js_library(
 
 closure_js_library(
     name = "db",
-    srcs = ["db.js", "db.clutz.d.ts"],
+    srcs = ["db.js", "db.d.ts"],
     lenient = True,
     deps = [
         ":error",
@@ -32,7 +32,7 @@ closure_js_library(
 
 closure_js_library(
     name = "error",
-    srcs = ["error.js", "error.clutz.d.ts"],
+    srcs = ["error.js", "error.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -42,7 +42,7 @@ closure_js_library(
 
 closure_js_library(
     name = "index",
-    srcs = ["index.js", "index.clutz.d.ts"],
+    srcs = ["index.js", "index.d.ts"],
     lenient = True,
     deps = [
         ":cursor",
@@ -56,8 +56,8 @@ closure_js_library(
 closure_js_library(
     name = "indexeddb",
     srcs = [
-        "indexeddb.js",  "indexeddb.clutz.d.ts",
-        "transaction.js", "transaction.clutz.d.ts",
+        "indexeddb.js",  "indexeddb.d.ts",
+        "transaction.js", "transaction.d.ts",
     ],
     lenient = True,
     deps = [
@@ -72,13 +72,13 @@ closure_js_library(
 
 closure_js_library(
     name = "keyrange",
-    srcs = ["keyrange.js", "keyrange.clutz.d.ts"],
+    srcs = ["keyrange.js", "keyrange.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "objectstore",
-    srcs = ["objectstore.js", "objectstore.clutz.d.ts"],
+    srcs = ["objectstore.js", "objectstore.d.ts"],
     lenient = True,
     deps = [
         ":cursor",

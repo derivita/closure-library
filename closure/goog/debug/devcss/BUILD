@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "devcss",
-    srcs = ["devcss.js", "devcss.clutz.d.ts"],
+    srcs = ["devcss.js", "devcss.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/asserts",
@@ -21,7 +21,7 @@ closure_js_library(
 
 closure_js_library(
     name = "devcssrunner",
-    srcs = ["devcssrunner.js", "devcssrunner.clutz.d.ts"],
+    srcs = ["devcssrunner.js", "devcssrunner.d.ts"],
     lenient = True,
     deps = [":devcss"],
 )

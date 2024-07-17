@@ -17,8 +17,8 @@ closure_js_library(
 closure_js_library(
     name = "channel",
     srcs = [
-        "channel.js", "channel.clutz.d.ts",
-        "channelrequest.js", "channelrequest.clutz.d.ts",
+        "channel.js", "channel.d.ts",
+        "channelrequest.js", "channelrequest.d.ts",
     ],
     lenient = True,
     deps = [
@@ -52,20 +52,20 @@ alias(
 
 closure_js_library(
     name = "connectionstate",
-    srcs = ["connectionstate.js", "connectionstate.clutz.d.ts"],
+    srcs = ["connectionstate.js", "connectionstate.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "environment",
-    srcs = ["environment.js", "environment.clutz.d.ts"],
+    srcs = ["environment.js", "environment.d.ts"],
     lenient = True,
     deps = ["//closure/goog/useragent"],
 )
 
 closure_js_library(
     name = "forwardchannelrequestpool",
-    srcs = ["forwardchannelrequestpool.js", "forwardchannelrequestpool.clutz.d.ts"],
+    srcs = ["forwardchannelrequestpool.js", "forwardchannelrequestpool.d.ts"],
     lenient = True,
     deps = [
         ":channelrequest",
@@ -77,7 +77,7 @@ closure_js_library(
 
 closure_js_library(
     name = "netutils",
-    srcs = ["netutils.js", "netutils.clutz.d.ts"],
+    srcs = ["netutils.js", "netutils.d.ts"],
     lenient = True,
     deps = [
         ":webchanneldebug",
@@ -87,7 +87,7 @@ closure_js_library(
 
 closure_js_library(
     name = "requeststats",
-    srcs = ["requeststats.js", "requeststats.clutz.d.ts"],
+    srcs = ["requeststats.js", "requeststats.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/events:event",
@@ -97,7 +97,7 @@ closure_js_library(
 
 closure_js_library(
     name = "webchannelbase",
-    srcs = ["webchannelbase.js", "webchannelbase.clutz.d.ts"],
+    srcs = ["webchannelbase.js", "webchannelbase.d.ts"],
     lenient = True,
     deps = [
         ":channel",
@@ -129,7 +129,7 @@ closure_js_library(
 
 closure_js_library(
     name = "webchannelbasetransport",
-    srcs = ["webchannelbasetransport.js", "webchannelbasetransport.clutz.d.ts"],
+    srcs = ["webchannelbasetransport.js", "webchannelbasetransport.d.ts"],
     lenient = True,
     deps = [
         ":channelrequest",
@@ -150,7 +150,7 @@ closure_js_library(
 
 closure_js_library(
     name = "webchanneldebug",
-    srcs = ["webchanneldebug.js", "webchanneldebug.clutz.d.ts"],
+    srcs = ["webchanneldebug.js", "webchanneldebug.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/json",
@@ -162,14 +162,14 @@ closure_js_library(
 
 closure_js_library(
     name = "wire",
-    srcs = ["wire.js", "wire.clutz.d.ts"],
+    srcs = ["wire.js", "wire.d.ts"],
     lenient = True,
     deps = ["//closure/goog/collections:maps"],
 )
 
 closure_js_library(
     name = "wirev8",
-    srcs = ["wirev8.js", "wirev8.clutz.d.ts"],
+    srcs = ["wirev8.js", "wirev8.d.ts"],
     lenient = True,
     deps = [
         ":wire",

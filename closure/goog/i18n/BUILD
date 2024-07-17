@@ -71,13 +71,13 @@ closure_js_library(
 
 closure_js_library(
     name = "bidi",
-    srcs = ["bidi.js", "bidi.clutz.d.ts"],
+    srcs = ["bidi.js", "bidi.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "bidiformatter",
-    srcs = ["bidiformatter.js", "bidiformatter.clutz.d.ts"],
+    srcs = ["bidiformatter.js", "bidiformatter.d.ts"],
     lenient = True,
     deps = [
         ":bidi",
@@ -87,7 +87,7 @@ closure_js_library(
 
 closure_js_library(
     name = "charlistdecompressor",
-    srcs = ["charlistdecompressor.js", "charlistdecompressor.clutz.d.ts"],
+    srcs = ["charlistdecompressor.js", "charlistdecompressor.d.ts"],
     lenient = True,
     deps = [
         ":uchar",
@@ -97,50 +97,50 @@ closure_js_library(
 
 closure_js_library(
     name = "charpickerdata",
-    srcs = ["charpickerdata.js", "charpickerdata.clutz.d.ts"],
+    srcs = ["charpickerdata.js", "charpickerdata.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "cldrversion",
-    srcs = ["cldrversion.js", "cldrversion.clutz.d.ts"],
+    srcs = ["cldrversion.js", "cldrversion.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "collation",
-    srcs = ["collation.js", "collation.clutz.d.ts"],
+    srcs = ["collation.js", "collation.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "compactnumberformatsymbols",
-    srcs = ["compactnumberformatsymbols.js", "compactnumberformatsymbols.clutz.d.ts"],
+    srcs = ["compactnumberformatsymbols.js", "compactnumberformatsymbols.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "compactnumberformatsymbolsext",
-    srcs = ["compactnumberformatsymbolsext.js", "compactnumberformatsymbolsext.clutz.d.ts"],
+    srcs = ["compactnumberformatsymbolsext.js", "compactnumberformatsymbolsext.d.ts"],
     lenient = True,
     deps = [":compactnumberformatsymbols"],
 )
 
 closure_js_library(
     name = "currency",
-    srcs = ["currency.js", "currency.clutz.d.ts"],
+    srcs = ["currency.js", "currency.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "currencycodemap",
-    srcs = ["currencycodemap.js", "currencycodemap.clutz.d.ts"],
+    srcs = ["currencycodemap.js", "currencycodemap.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "dateintervalformat",
-    srcs = ["dateintervalformat.js", "dateintervalformat.clutz.d.ts"],
+    srcs = ["dateintervalformat.js", "dateintervalformat.d.ts"],
     lenient = True,
     deps = [
         ":dateintervalsymbols",
@@ -159,7 +159,7 @@ closure_js_library(
 
 closure_js_library(
     name = "dateintervalpatterns",
-    srcs = ["dateintervalpatterns.js", "dateintervalpatterns.clutz.d.ts"],
+    srcs = ["dateintervalpatterns.js", "dateintervalpatterns.d.ts"],
     lenient = True,
     deps = [
         ":cldrversion",
@@ -169,7 +169,7 @@ closure_js_library(
 
 closure_js_library(
     name = "dateintervalpatternsext",
-    srcs = ["dateintervalpatternsext.js", "dateintervalpatternsext.clutz.d.ts"],
+    srcs = ["dateintervalpatternsext.js", "dateintervalpatternsext.d.ts"],
     lenient = True,
     deps = [
         ":cldrversion",
@@ -179,14 +179,14 @@ closure_js_library(
 
 closure_js_library(
     name = "dateintervalsymbols",
-    srcs = ["dateintervalsymbols.js", "dateintervalsymbols.clutz.d.ts"],
+    srcs = ["dateintervalsymbols.js", "dateintervalsymbols.d.ts"],
     lenient = True,
     deps = [":cldrversion"],
 )
 
 closure_js_library(
     name = "dateintervalsymbolsext",
-    srcs = ["dateintervalsymbolsext.js", "dateintervalsymbolsext.clutz.d.ts"],
+    srcs = ["dateintervalsymbolsext.js", "dateintervalsymbolsext.d.ts"],
     lenient = True,
     deps = [
         ":cldrversion",
@@ -196,7 +196,7 @@ closure_js_library(
 
 closure_js_library(
     name = "datetimeformat",
-    srcs = ["datetimeformat.js", "datetimeformat.clutz.d.ts"],
+    srcs = ["datetimeformat.js", "datetimeformat.d.ts"],
     lenient = True,
     deps = [
         ":datetimepatterns",
@@ -214,7 +214,7 @@ closure_js_library(
 
 closure_js_library(
     name = "datetimeparse",
-    srcs = ["datetimeparse.js", "datetimeparse.clutz.d.ts"],
+    srcs = ["datetimeparse.js", "datetimeparse.d.ts"],
     lenient = True,
     deps = [
         ":datetimeformat",
@@ -228,13 +228,13 @@ closure_js_library(
 
 closure_js_library(
     name = "datetimepatternstype",
-    srcs = ["datetimepatternstype.js", "datetimepatternstype.clutz.d.ts"],
+    srcs = ["datetimepatternstype.js", "datetimepatternstype.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "datetimepatterns",
-    srcs = ["datetimepatterns.js", "datetimepatterns.clutz.d.ts"],
+    srcs = ["datetimepatterns.js", "datetimepatterns.d.ts"],
     lenient = True,
     deps = [
         ":cldrversion",
@@ -244,7 +244,7 @@ closure_js_library(
 
 closure_js_library(
     name = "datetimepatternsext",
-    srcs = ["datetimepatternsext.js", "datetimepatternsext.clutz.d.ts"],
+    srcs = ["datetimepatternsext.js", "datetimepatternsext.d.ts"],
     lenient = True,
     deps = [
         ":cldrversion",
@@ -255,20 +255,20 @@ closure_js_library(
 
 closure_js_library(
     name = "datetimesymbols",
-    srcs = ["datetimesymbols.js", "datetimesymbols.clutz.d.ts"],
+    srcs = ["datetimesymbols.js", "datetimesymbols.d.ts"],
     lenient = True,
     deps = [":cldrversion"],
 )
 
 closure_js_library(
     name = "dayperiodsymbols",
-    srcs = ["dayperiodsymbols.js", "dayperiodsymbols.clutz.d.ts"],
+    srcs = ["dayperiodsymbols.js", "dayperiodsymbols.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "datetimesymbolsext",
-    srcs = ["datetimesymbolsext.js", "datetimesymbolsext.clutz.d.ts"],
+    srcs = ["datetimesymbolsext.js", "datetimesymbolsext.d.ts"],
     lenient = True,
     deps = [
         ":cldrversion",
@@ -278,7 +278,7 @@ closure_js_library(
 
 closure_js_library(
     name = "durationformat",
-    srcs = ["durationformat.js", "durationformat.clutz.d.ts"],
+    srcs = ["durationformat.js", "durationformat.d.ts"],
     lenient = True,
     deps = [
         ":durationsymbols",
@@ -292,14 +292,14 @@ closure_js_library(
 
 closure_js_library(
     name = "durationsymbols",
-    srcs = ["durationsymbols.js", "durationsymbols.clutz.d.ts"],
+    srcs = ["durationsymbols.js", "durationsymbols.d.ts"],
     lenient = True,
     deps = [":durationsymboltypes"],
 )
 
 closure_js_library(
     name = "durationsymbolsext",
-    srcs = ["durationsymbolsext.js", "durationsymbolsext.clutz.d.ts"],
+    srcs = ["durationsymbolsext.js", "durationsymbolsext.d.ts"],
     lenient = True,
     deps = [
         ":durationsymbols",
@@ -309,13 +309,13 @@ closure_js_library(
 
 closure_js_library(
     name = "durationsymboltypes",
-    srcs = ["durationsymboltypes.js", "durationsymboltypes.clutz.d.ts"],
+    srcs = ["durationsymboltypes.js", "durationsymboltypes.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "graphemebreak",
-    srcs = ["graphemebreak.js", "graphemebreak.clutz.d.ts"],
+    srcs = ["graphemebreak.js", "graphemebreak.d.ts"],
     lenient = True,
     deps = [
         ":uchar",
@@ -326,7 +326,7 @@ closure_js_library(
 
 closure_js_library(
     name = "listformat",
-    srcs = ["listformat.js", "listformat.clutz.d.ts"],
+    srcs = ["listformat.js", "listformat.d.ts"],
     lenient = True,
     deps = [
         ":listsymbols",
@@ -340,27 +340,27 @@ closure_js_library(
 closure_js_library(
     name = "listsymbols",
     srcs = [
-        "listsymbols.js", "listsymbols.clutz.d.ts",
+        "listsymbols.js", "listsymbols.d.ts",
     ],
     lenient = True,
 )
 
 closure_js_library(
     name = "listsymbolsext",
-    srcs = ["listsymbolsext.js", "listsymbolsext.clutz.d.ts"],
+    srcs = ["listsymbolsext.js", "listsymbolsext.d.ts"],
     lenient = True,
     deps = [":listsymbols"],
 )
 
 closure_js_library(
     name = "localefeature",
-    srcs = ["localefeature.js", "localefeature.clutz.d.ts"],
+    srcs = ["localefeature.js", "localefeature.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "messageformat",
-    srcs = ["messageformat.js", "messageformat.clutz.d.ts"],
+    srcs = ["messageformat.js", "messageformat.d.ts"],
     lenient = True,
     deps = [
         ":compactnumberformatsymbols",
@@ -375,14 +375,14 @@ closure_js_library(
 
 closure_js_library(
     name = "messages",
-    srcs = ["messages.js", "messages.clutz.d.ts"],
+    srcs = ["messages.js", "messages.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )
 
 closure_js_library(
     name = "mime",
-    srcs = ["mime.js", "mime.clutz.d.ts"],
+    srcs = ["mime.js", "mime.d.ts"],
     lenient = True,
     deps = [
         ":uchar",
@@ -392,13 +392,13 @@ closure_js_library(
 
 closure_js_library(
     name = "nativelocaledigits",
-    srcs = ["nativelocaledigits.js", "nativelocaledigits.clutz.d.ts"],
+    srcs = ["nativelocaledigits.js", "nativelocaledigits.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "numberformat",
-    srcs = ["numberformat.js", "numberformat.clutz.d.ts"],
+    srcs = ["numberformat.js", "numberformat.d.ts"],
     lenient = True,
     deps = [
         ":compactnumberformatsymbols",
@@ -415,36 +415,36 @@ closure_js_library(
 closure_js_library(
     name = "numberformatsymbols",
     srcs = [
-        "numberformatsymbols.js", "numberformatsymbols.clutz.d.ts",
-        "numberformatsymbolstype.js", "numberformatsymbolstype.clutz.d.ts",
+        "numberformatsymbols.js", "numberformatsymbols.d.ts",
+        "numberformatsymbolstype.js", "numberformatsymbolstype.d.ts",
     ],
     lenient = True,
 )
 
 closure_js_library(
     name = "numberformatsymbolsext",
-    srcs = ["numberformatsymbolsext.js", "numberformatsymbolsext.clutz.d.ts"],
+    srcs = ["numberformatsymbolsext.js", "numberformatsymbolsext.d.ts"],
     lenient = True,
     deps = [":numberformatsymbols"],
 )
 
 closure_js_library(
     name = "ordinalrules",
-    srcs = ["ordinalrules.js", "ordinalrules.clutz.d.ts"],
+    srcs = ["ordinalrules.js", "ordinalrules.d.ts"],
     lenient = True,
     deps = [":localefeature"],
 )
 
 closure_js_library(
     name = "pluralrules",
-    srcs = ["pluralrules.js", "pluralrules.clutz.d.ts"],
+    srcs = ["pluralrules.js", "pluralrules.d.ts"],
     lenient = True,
     deps = [":localefeature"],
 )
 
 closure_js_library(
     name = "relativedatetimeformat",
-    srcs = ["relativedatetimeformat.js", "relativedatetimeformat.clutz.d.ts"],
+    srcs = ["relativedatetimeformat.js", "relativedatetimeformat.d.ts"],
     lenient = True,
     deps = [
         ":localefeature",
@@ -456,20 +456,20 @@ closure_js_library(
 
 closure_js_library(
     name = "relativedatetimesymbols",
-    srcs = ["relativedatetimesymbols.js", "relativedatetimesymbols.clutz.d.ts"],
+    srcs = ["relativedatetimesymbols.js", "relativedatetimesymbols.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "relativedatetimesymbolsext",
-    srcs = ["relativedatetimesymbolsext.js", "relativedatetimesymbolsext.clutz.d.ts"],
+    srcs = ["relativedatetimesymbolsext.js", "relativedatetimesymbolsext.d.ts"],
     lenient = True,
     deps = [":relativedatetimesymbols"],
 )
 
 closure_js_library(
     name = "timezone",
-    srcs = ["timezone.js", "timezone.clutz.d.ts"],
+    srcs = ["timezone.js", "timezone.d.ts"],
     lenient = True,
     deps = [
         "//closure/goog/array",
@@ -481,13 +481,13 @@ closure_js_library(
 
 closure_js_library(
     name = "uchar",
-    srcs = ["uchar.js", "uchar.clutz.d.ts"],
+    srcs = ["uchar.js", "uchar.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "ucharnames",
-    srcs = ["ucharnames.js", "ucharnames.clutz.d.ts"],
+    srcs = ["ucharnames.js", "ucharnames.d.ts"],
     lenient = True,
     deps = [":uchar"],
 )

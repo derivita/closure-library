@@ -6,7 +6,7 @@ licenses(["notice"])
 
 closure_js_library(
     name = "const",
-    srcs = ["const.js", "const.clutz.d.ts"],
+    srcs = ["const.js", "const.d.ts"],
     lenient = True,
     deps = [
         ":typedstring",
@@ -16,13 +16,13 @@ closure_js_library(
 
 closure_js_library(
     name = "internal",
-    srcs = ["internal.js", "internal.clutz.d.ts"],
+    srcs = ["internal.js", "internal.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "linkify",
-    srcs = ["linkify.js", "linkify.clutz.d.ts"],
+    srcs = ["linkify.js", "linkify.d.ts"],
     lenient = True,
     deps = [
         ":const",
@@ -35,20 +35,20 @@ closure_js_library(
 
 closure_js_library(
     name = "newlines",
-    srcs = ["newlines.js", "newlines.clutz.d.ts"],
+    srcs = ["newlines.js", "newlines.d.ts"],
     lenient = True,
     deps = ["//closure/goog/array"],
 )
 
 closure_js_library(
     name = "parser",
-    srcs = ["parser.js", "parser.clutz.d.ts"],
+    srcs = ["parser.js", "parser.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "path",
-    srcs = ["path.js", "path.clutz.d.ts"],
+    srcs = ["path.js", "path.d.ts"],
     lenient = True,
     deps = [
         ":string",
@@ -58,7 +58,7 @@ closure_js_library(
 
 closure_js_library(
     name = "string",
-    srcs = ["string.js", "string.clutz.d.ts"],
+    srcs = ["string.js", "string.d.ts"],
     lenient = True,
     deps = [
         ":const",
@@ -70,25 +70,25 @@ closure_js_library(
 
 closure_js_library(
     name = "stringbuffer",
-    srcs = ["stringbuffer.js", "stringbuffer.clutz.d.ts"],
+    srcs = ["stringbuffer.js", "stringbuffer.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "stringformat",
-    srcs = ["stringformat.js", "stringformat.clutz.d.ts"],
+    srcs = ["stringformat.js", "stringformat.d.ts"],
     lenient = True,
     deps = [":string"],
 )
 
 closure_js_library(
     name = "stringifier",
-    srcs = ["stringifier.js", "stringifier.clutz.d.ts"],
+    srcs = ["stringifier.js", "stringifier.d.ts"],
     lenient = True,
 )
 
 closure_js_library(
     name = "typedstring",
-    srcs = ["typedstring.js", "typedstring.clutz.d.ts"],
+    srcs = ["typedstring.js", "typedstring.d.ts"],
     lenient = True,
 )

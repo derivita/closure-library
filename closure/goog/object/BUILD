@@ -6,6 +6,6 @@ licenses(["notice"])
 
 closure_js_library(
     name = "object",
-    srcs = ["object.js", "object.clutz.d.ts"],
+    srcs = ["object.js", "object.d.ts"],
     lenient = True,
 )
