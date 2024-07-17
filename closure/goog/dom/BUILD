@@ -355,7 +355,6 @@ closure_js_library(
         "safe.clutz.d.ts",
         "safe.js",
     ],
-    deprecation = "Please use 'safevalues/dom' instead",
     lenient = True,
     deps = [
         ":asserts",

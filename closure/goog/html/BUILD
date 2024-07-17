@@ -19,7 +19,6 @@ closure_js_library(
         "legacyconversions.clutz.d.ts",
         "legacyconversions.js",
     ],
-    deprecation = "Please use 'safevalues/restricted/legacy' instead",
     lenient = True,
     deps = [
         ":safehtml",
@@ -37,7 +36,6 @@ closure_js_library(
         "safehtml.clutz.d.ts",
         "safehtml.js",
     ],
-    deprecation = "Please use 'safevalues' instead",
     lenient = True,
     deps = [
         ":safescript",
@@ -79,7 +77,6 @@ closure_js_library(
         "safescript.clutz.d.ts",
         "safescript.js",
     ],
-    deprecation = "Please use 'safevalues' instead",
     lenient = True,
     deps = [
         ":trustedtypes",
@@ -95,7 +92,6 @@ closure_js_library(
         "safestyle.clutz.d.ts",
         "safestyle.js",
     ],
-    deprecation = "Please use 'safevalues' instead",
     lenient = True,
     deps = [
         ":safeurl",
@@ -113,7 +109,6 @@ closure_js_library(
         "safestylesheet.clutz.d.ts",
         "safestylesheet.js",
     ],
-    deprecation = "Please use 'safevalues' instead",
     lenient = True,
     deps = [
         ":safestyle",
@@ -131,7 +126,6 @@ closure_js_library(
         "safeurl.clutz.d.ts",
         "safeurl.js",
     ],
-    deprecation = "Please use 'safevalues' instead",
     lenient = True,
     deps = [
         ":trustedresourceurl",
@@ -162,7 +156,6 @@ closure_js_library(
         "testing.clutz.d.ts",
         "testing.js",
     ],
-    deprecation = "Please use 'safevalues/testing/conversions' instead",
     lenient = True,
     deps = [
         ":safehtml",
@@ -195,7 +188,6 @@ closure_js_library(
         "trustedresourceurl.clutz.d.ts",
         "trustedresourceurl.js",
     ],
-    deprecation = "Please use 'safevalues' instead",
     lenient = True,
     deps = [
         ":safescript",
@@ -224,7 +216,6 @@ closure_js_library(
         "uncheckedconversions.clutz.d.ts",
         "uncheckedconversions.js",
     ],
-    deprecation = "Please use 'safevalues/restricted/reviewed' instead",
     lenient = True,
     deps = [
         ":safehtml",
