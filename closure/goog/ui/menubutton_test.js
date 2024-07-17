@@ -4,37 +4,35 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.ui.MenuButtonTest');
 goog.setTestOnly();
 
-const Component = goog.require('goog.ui.Component');
-const Corner = goog.require('goog.positioning.Corner');
-const EventType = goog.require('goog.events.EventType');
-const ExpectedFailures = goog.require('goog.testing.ExpectedFailures');
-const GoogEvent = goog.require('goog.events.Event');
-const KeyCodes = goog.require('goog.events.KeyCodes');
-const KeyHandler = goog.require('goog.events.KeyHandler');
-const Menu = goog.require('goog.ui.Menu');
-const MenuAnchoredPosition = goog.require('goog.positioning.MenuAnchoredPosition');
-const MenuButton = goog.require('goog.ui.MenuButton');
-const MenuItem = goog.require('goog.ui.MenuItem');
-const Overflow = goog.require('goog.positioning.Overflow');
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
-const State = goog.require('goog.a11y.aria.State');
-const SubMenu = goog.require('goog.ui.SubMenu');
-const TagName = goog.require('goog.dom.TagName');
-const Timer = goog.require('goog.Timer');
-const aria = goog.require('goog.a11y.aria');
-const dom = goog.require('goog.dom');
-const events = goog.require('goog.events');
-const isVersion = goog.require('goog.userAgent.product.isVersion');
-const positioning = goog.require('goog.positioning');
-const product = goog.require('goog.userAgent.product');
-const recordFunction = goog.require('goog.testing.recordFunction');
-const style = goog.require('goog.style');
-const testSuite = goog.require('goog.testing.testSuite');
-const testingEvents = goog.require('goog.testing.events');
-const userAgent = goog.require('goog.userAgent');
+import { Component } from './component.js';
+import * as positioning from '../positioning/positioning.js';
+import { Corner, Overflow } from '../positioning/positioning.js';
+import { EventType } from '../events/eventtype.js';
+import { ExpectedFailures } from '../testing/expectedfailures.js';
+import { Event as GoogEvent } from '../events/event.js';
+import { KeyCodes } from '../events/keycodes.js';
+import { KeyHandler } from '../events/keyhandler.js';
+import { Menu } from './menu.js';
+import { MenuAnchoredPosition } from '../positioning/menuanchoredposition.js';
+import { MenuButton } from './menubutton.js';
+import { MenuItem } from './menuitem.js';
+import { PropertyReplacer } from '../testing/propertyreplacer.js';
+import { State } from '../a11y/aria/attributes.js';
+import { SubMenu } from './submenu.js';
+import { TagName } from '../dom/tagname.js';
+import { Timer } from '../timer/timer.js';
+import * as aria from '../a11y/aria/aria.js';
+import * as dom from '../dom/dom.js';
+import * as events from '../events/events.js';
+import { isVersion } from '../useragent/product_isversion.js';
+import * as product from '../useragent/product.js';
+import { recordFunction } from '../testing/recordfunction.js';
+import * as style from '../style/style.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as testingEvents from '../testing/events/events.js';
+import * as userAgent from '../useragent/useragent.js';
 
 let menuButton;
 let clonedMenuButtonDom;
@@ -46,13 +44,13 @@ let expectedFailures;
 // TODO(nicksantos): Move this into a common location if we ever have enough
 // code for a general goog.testing.ui library.
 const originalPositionAtCoordinate = positioning.positionAtCoordinate;
-positioning.positionAtCoordinate = function(
+positioning.$set('positionAtCoordinate', function(
     absolutePos, movableElement, movableElementCorner, margin = undefined,
     viewport = undefined, overflow = undefined, preferredSize = undefined) {
   return originalPositionAtCoordinate.call(
       this, absolutePos, movableElement, movableElementCorner, margin, viewport,
       Overflow.IGNORE, preferredSize);
-};
+});
 
 /**
  * Creates an event for use in multiple tests.
@@ -144,7 +142,7 @@ testSuite({
 
     let menuItemClicked = 0;
     let lastMenuItemClicked = null;
-    events.listen(menuButton.getMenu(), Component.EventType.ACTION, (e) => {
+    events.listen(menuButton.getMenu(), Component.ComponentEventType.ACTION, (e) => {
       menuItemClicked++;
       lastMenuItemClicked = e.target;
     });
@@ -814,7 +812,7 @@ testSuite({
     assertTrue('Menu should be visible.', menuButton.getMenu().isVisible());
 
     const key =
-        events.listen(menuButton, Component.EventType.CLOSE, (event) => {
+        events.listen(menuButton, Component.ComponentEventType.CLOSE, (event) => {
           event.preventDefault();
         });
 

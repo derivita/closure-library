@@ -9,26 +9,25 @@
  * original `TabPane` code.
  */
 
-goog.provide('goog.ui.TabRenderer');
+import { Role } from '../a11y/aria/roles.js';
 
-goog.require('goog.a11y.aria.Role');
-goog.require('goog.ui.Component');
-goog.require('goog.ui.ControlRenderer');
-goog.requireType('goog.ui.Control');
+import { Component } from './component.js';
+import { ControlRenderer } from './controlrenderer.js';
+const { Control } = goog.requireType('goog.ui.control');
+const { Tab } = goog.requireType('goog.ui.tab');
 
 
 
 /**
  * Default renderer for {@link goog.ui.Tab}s, based on the `TabPane` code.
  * @constructor
- * @extends {goog.ui.ControlRenderer}
+ * @extends {ControlRenderer}
  */
-goog.ui.TabRenderer = function() {
-  'use strict';
-  goog.ui.ControlRenderer.call(this);
-};
-goog.inherits(goog.ui.TabRenderer, goog.ui.ControlRenderer);
-goog.addSingletonGetter(goog.ui.TabRenderer);
+export function TabRenderer() {
+  ControlRenderer.call(this);
+}
+goog.inherits(TabRenderer, ControlRenderer);
+goog.addSingletonGetter(TabRenderer);
 
 
 /**
@@ -36,7 +35,7 @@ goog.addSingletonGetter(goog.ui.TabRenderer);
  * by this renderer.
  * @type {string}
  */
-goog.ui.TabRenderer.CSS_CLASS = goog.getCssName('goog-tab');
+TabRenderer.CSS_CLASS = goog.getCssName('goog-tab');
 
 
 /**
@@ -45,21 +44,19 @@ goog.ui.TabRenderer.CSS_CLASS = goog.getCssName('goog-tab');
  * @return {string} Renderer-specific CSS class name.
  * @override
  */
-goog.ui.TabRenderer.prototype.getCssClass = function() {
-  'use strict';
-  return goog.ui.TabRenderer.CSS_CLASS;
+TabRenderer.prototype.getCssClass = function() {
+  return TabRenderer.CSS_CLASS;
 };
 
 
 /**
  * Returns the ARIA role to be applied to the tab element.
  * See http://wiki/Main/ARIA for more info.
- * @return {goog.a11y.aria.Role} ARIA role.
+ * @return {Role} ARIA role.
  * @override
  */
-goog.ui.TabRenderer.prototype.getAriaRole = function() {
-  'use strict';
-  return goog.a11y.aria.Role.TAB;
+TabRenderer.prototype.getAriaRole = function() {
+  return Role.TAB;
 };
 
 
@@ -70,16 +67,15 @@ goog.ui.TabRenderer.prototype.getAriaRole = function() {
  *
  *    <div class="goog-tab" title="Title">Content</div>
  *
- * @param {goog.ui.Control} tab Tab to render.
+ * @param {Control} tab Tab to render.
  * @return {Element} Root element for the tab.
  * @override
  */
-goog.ui.TabRenderer.prototype.createDom = function(tab) {
-  'use strict';
-  var element = goog.ui.TabRenderer.superClass_.createDom.call(this, tab);
+TabRenderer.prototype.createDom = function(tab) {
+  var element = TabRenderer.superClass_.createDom.call(this, tab);
 
   /** @suppress {strictMissingProperties} Added to tighten compiler checks */
-  var tooltip = tab.getTooltip();
+  var tooltip = /** @type {!Tab} */ (tab).getTooltip();
   if (tooltip) {
     // Only update the element if the tab has a tooltip.
     this.setTooltip(element, tooltip);
@@ -93,20 +89,19 @@ goog.ui.TabRenderer.prototype.createDom = function(tab) {
  * Decorates the element with the tab.  Initializes the tab's ID, content,
  * tooltip, and state based on the ID of the element, its title, child nodes,
  * and CSS classes, respectively.  Returns the element.
- * @param {goog.ui.Control} tab Tab to decorate the element.
+ * @param {Control} tab Tab to decorate the element.
  * @param {Element} element Element to decorate.
  * @return {Element} Decorated element.
  * @override
- * @suppress {strictMissingProperties} Added to tighten compiler checks
+ * @suppress {strictMissingProperties,visibility} Added to tighten compiler checks
  */
-goog.ui.TabRenderer.prototype.decorate = function(tab, element) {
-  'use strict';
-  element = goog.ui.TabRenderer.superClass_.decorate.call(this, tab, element);
+TabRenderer.prototype.decorate = function(tab, element) {
+  element = TabRenderer.superClass_.decorate.call(this, tab, element);
 
   var tooltip = this.getTooltip(element);
   if (tooltip) {
     // Only update the tab if the element has a tooltip.
-    tab.setTooltipInternal(tooltip);
+    /** @type {!Tab} */ (tab).setTooltipInternal(tooltip);
   }
 
   // If the tab is selected and hosted in a tab bar, update the tab bar's
@@ -117,7 +112,7 @@ goog.ui.TabRenderer.prototype.decorate = function(tab, element) {
       // We need to temporarily deselect the tab, so the tab bar can re-select
       // it and thereby correctly initialize its state.  We use the protected
       // setState() method to avoid dispatching useless events.
-      tab.setState(goog.ui.Component.State.SELECTED, false);
+      tab.setState(Component.State.SELECTED, false);
       tabBar.setSelectedTab(tab);
     }
   }
@@ -133,8 +128,7 @@ goog.ui.TabRenderer.prototype.decorate = function(tab, element) {
  * @return {string} The tooltip text (empty string if none).
  * @suppress {strictMissingProperties} Added to tighten compiler checks
  */
-goog.ui.TabRenderer.prototype.getTooltip = function(element) {
-  'use strict';
+TabRenderer.prototype.getTooltip = function(element) {
   return element.title || '';
 };
 
@@ -146,8 +140,7 @@ goog.ui.TabRenderer.prototype.getTooltip = function(element) {
  * @param {Element} element The tab's root element.
  * @param {string|null|undefined} tooltip New tooltip text (if any).
  */
-goog.ui.TabRenderer.prototype.setTooltip = function(element, tooltip) {
-  'use strict';
+TabRenderer.prototype.setTooltip = function(element, tooltip) {
   if (element) {
     /** @suppress {strictMissingProperties} Added to tighten compiler checks */
     element.title = tooltip || '';

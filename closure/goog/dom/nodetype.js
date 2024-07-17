@@ -5,10 +5,8 @@
  */
 
 /**
- * @fileoverview Definition of goog.dom.NodeType.
+ * @fileoverview Definition of NodeType.
  */
-
-goog.provide('goog.dom.NodeType');
 
 
 /**
@@ -24,7 +22,7 @@ goog.provide('goog.dom.NodeType');
  * See http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1950641247
  * @enum {number}
  */
-goog.dom.NodeType = {
+export var NodeType = {
   ELEMENT: 1,
   ATTRIBUTE: 2,
   TEXT: 3,

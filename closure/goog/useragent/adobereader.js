@@ -10,14 +10,19 @@
  * @see ../demos/useragent.html
  */
 
-goog.module('goog.userAgent.adobeReader');
-goog.module.declareLegacyNamespace();
+import * as googString from '../string/string.js';
 
-var googString = goog.require('goog.string');
-var userAgent = goog.require('goog.userAgent');
+import * as userAgent from './useragent.js';
 
 
+/**
+ * The version of the installed Adobe Reader plugin. Versions after 7
+ * will all be reported as '7'.
+ * @type {string}
+ */
 var version = '';
+export { version as VERSION };
+
 if (userAgent.IE) {
   var detectOnIe = function(classId) {
     try {
@@ -53,15 +58,7 @@ if (userAgent.IE) {
  * Whether we detect the user has the Adobe Reader browser plugin installed.
  * @type {boolean}
  */
-exports.HAS_READER = !!version;
-
-
-/**
- * The version of the installed Adobe Reader plugin. Versions after 7
- * will all be reported as '7'.
- * @type {string}
- */
-exports.VERSION = version;
+export let HAS_READER = !!version;
 
 
 /**
@@ -74,5 +71,4 @@ exports.VERSION = version;
  *
  * @type {boolean}
  */
-exports.SILENT_PRINT =
-    userAgent.WINDOWS && googString.compareVersions(version, '6') >= 0;
+export let SILENT_PRINT = userAgent.WINDOWS && googString.compareVersions(version, '6') >= 0;

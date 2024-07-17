@@ -5,14 +5,11 @@
  */
 
 
-goog.provide('goog.dom.Attr');
-
-
 /**
  * Enum of all html attribute names specified by the HTML specifications.
  * @enum {string}
  */
-goog.dom.Attr = {
+export var Attr = {
   ACCEPT: 'accept',
   ACCEPT_CHARSET: 'accept-charset',
   ACCESSKEY: 'accesskey',

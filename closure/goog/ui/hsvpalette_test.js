@@ -9,20 +9,20 @@
  * @suppress {missingRequire} Stubbing goog.dom
  */
 
-goog.module('goog.ui.HsvPaletteTest');
 goog.setTestOnly();
 
-const Component = goog.require('goog.ui.Component');
-const Coordinate = goog.require('goog.math.Coordinate');
-const GoogEvent = goog.require('goog.events.Event');
-const HsvPalette = goog.require('goog.ui.HsvPalette');
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
-const TagName = goog.require('goog.dom.TagName');
-const classlist = goog.require('goog.dom.classlist');
-const events = goog.require('goog.events');
-const googColor = goog.require('goog.color');
-const style = goog.require('goog.style');
-const testSuite = goog.require('goog.testing.testSuite');
+import { Component } from './component.js';
+import { Coordinate } from '../math/coordinate.js';
+import { Event as GoogEvent } from '../events/event.js';
+import { HsvPalette } from './hsvpalette.js';
+import { PropertyReplacer } from '../testing/propertyreplacer.js';
+import { TagName } from '../dom/tagname.js';
+import * as classlist from '../dom/classlist.js';
+import * as events from '../events/events.js';
+import * as googColor from '../color/color.js';
+import * as style from '../style/style.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as dom from '../dom/dom.js';
 
 let samplePalette;
 let eventWasFired;
@@ -86,7 +86,7 @@ testSuite({
   testChangeEventWithDisableDispatchEventOmitted() {
     // TODO(user): Add functionality to goog.testing.events to assert
     // an event was fired.
-    events.listen(samplePalette, Component.EventType.ACTION, () => {
+    events.listen(samplePalette, Component.ComponentEventType.ACTION, () => {
       eventWasFired = true;
     });
     samplePalette.setColor('#123456');
@@ -94,7 +94,7 @@ testSuite({
   },
 
   testChangeEventWithDisableDispatchEventTrue() {
-    events.listen(samplePalette, Component.EventType.ACTION, () => {
+    events.listen(samplePalette, Component.ComponentEventType.ACTION, () => {
       eventWasFired = true;
     });
     samplePalette.setColor('#123456', true);
@@ -102,7 +102,7 @@ testSuite({
   },
 
   testChangeEventWithDisableDispatchEventFalse() {
-    events.listen(samplePalette, Component.EventType.ACTION, () => {
+    events.listen(samplePalette, Component.ComponentEventType.ACTION, () => {
       eventWasFired = true;
     });
     samplePalette.setColor('#123456', false);
@@ -178,7 +178,7 @@ testSuite({
   /** @suppress {visibility} suppression added to enable type checking */
   testHandleMouseMoveValue() {
     samplePalette.render(document.getElementById('sandbox'));
-    stubs.set(goog.dom, 'getPageScroll', () => new Coordinate(0, 0));
+    stubs.set(dom, 'getPageScroll', () => new Coordinate(0, 0));
 
     // Raising the value/brightness of a dark red should yield a lighter red.
     samplePalette.setColor('#630c00');
@@ -210,7 +210,7 @@ testSuite({
   /** @suppress {visibility} suppression added to enable type checking */
   testHandleMouseMoveHueSaturation() {
     samplePalette.render(document.getElementById('sandbox'));
-    stubs.set(goog.dom, 'getPageScroll', () => new Coordinate(0, 0));
+    stubs.set(dom, 'getPageScroll', () => new Coordinate(0, 0));
 
     // The following hue/saturation selection should yield a light yellow.
     style.setPageOffset(samplePalette.hsImageEl_, 0, 0);

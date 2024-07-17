@@ -9,9 +9,6 @@
  * https://github.com/WICG/trusted-types for details.
  */
 
-goog.provide('goog.html.trustedtypes');
-
-
 /**
  * @define {string} Name for the Trusted Types policy used in Closure Safe
  * Types. Differs from `goog.TRUSTED_TYPES_POLICY_NAME` in that the latter is
@@ -20,7 +17,7 @@ goog.provide('goog.html.trustedtypes');
  * plus the suffix `#html`, unless `goog.TRUSTED_TYPES_POLICY_NAME` is empty.
  * @package
  */
-goog.html.trustedtypes.POLICY_NAME = goog.define(
+export var POLICY_NAME = goog.define(
     'goog.html.trustedtypes.POLICY_NAME',
     goog.TRUSTED_TYPES_POLICY_NAME ? goog.TRUSTED_TYPES_POLICY_NAME + '#html' :
                                      '');
@@ -31,7 +28,12 @@ goog.html.trustedtypes.POLICY_NAME = goog.define(
  * @type {?TrustedTypePolicy|undefined}
  * @private
  */
-goog.html.trustedtypes.cachedPolicy_;
+var cachedPolicy_;
+
+/** @private */
+export function _reset() {
+  cachedPolicy_ = undefined;
+}
 
 
 /**
@@ -39,17 +41,16 @@ goog.html.trustedtypes.cachedPolicy_;
  * @return {?TrustedTypePolicy}
  * @package
  */
-goog.html.trustedtypes.getPolicyPrivateDoNotAccessOrElse = function() {
-  'use strict';
-  if (!goog.html.trustedtypes.POLICY_NAME) {
-    // Binary not configured for Trusted Types.
-    return null;
-  }
+export function getPolicyPrivateDoNotAccessOrElse() {
+ if (!POLICY_NAME) {
+   // Binary not configured for Trusted Types.
+   return null;
+ }
 
-  if (goog.html.trustedtypes.cachedPolicy_ === undefined) {
-    goog.html.trustedtypes.cachedPolicy_ =
-        goog.createTrustedTypesPolicy(goog.html.trustedtypes.POLICY_NAME);
-  }
+ if (cachedPolicy_ === undefined) {
+   cachedPolicy_ =
+       goog.createTrustedTypesPolicy(POLICY_NAME);
+ }
 
-  return goog.html.trustedtypes.cachedPolicy_;
-};
+ return cachedPolicy_;
+}

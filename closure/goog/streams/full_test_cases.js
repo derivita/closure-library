@@ -4,12 +4,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.streams.fullTestCases');
 goog.setTestOnly();
 
-const recordFunction = goog.require('goog.testing.recordFunction');
-const {ReadableStream, ReadableStreamDefaultController, ReadableStreamStrategy, ReadableStreamUnderlyingSource} = goog.require('goog.streams.fullTypes');
-const {TestCases: LiteTestCases} = goog.require('goog.streams.liteTestCases');
+import { recordFunction } from '../testing/recordfunction.js';
+import {ReadableStream, ReadableStreamDefaultController, ReadableStreamStrategy, ReadableStreamUnderlyingSource} from './full_types.js';
+import {TestCases as LiteTestCases} from './lite_test_cases.js';
 
 /**
  * @return {number}
@@ -723,7 +722,7 @@ class TestCasesWithIterator extends TestCases {
   }
 }
 
-exports = {
+export default {
   TestCases,
   TestCasesWithIterator,
 };

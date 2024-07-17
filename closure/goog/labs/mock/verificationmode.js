@@ -11,9 +11,6 @@
  * In addition to the interface definition, it contains several static
  * factories for creating common implementations of the interface.
  */
-goog.provide('goog.labs.mock.verification');
-goog.provide('goog.labs.mock.verification.BaseVerificationMode');
-goog.provide('goog.labs.mock.verification.VerificationMode');
 
 
 /**
@@ -26,7 +23,6 @@ goog.provide('goog.labs.mock.verification.VerificationMode');
  * description returned from `#describe` will be shown in the
  * test failure message.  Sample usage:
  *
- * ```
  * goog.module('my.package.MyClassTest');
  * goog.setTestOnly('my.package.MyClassTest');
  *
@@ -46,13 +42,12 @@ goog.provide('goog.labs.mock.verification.VerificationMode');
  *     goog.labs.mock.verify(mockObj, times(1));
  *   }
  * });
- * ```
  *
  * For an example implementation, see `TimesVerificationMode_`.
  *
  * @interface
  */
-goog.labs.mock.verification.VerificationMode = function() {};
+export function VerificationMode() {};
 
 
 /**
@@ -65,7 +60,7 @@ goog.labs.mock.verification.VerificationMode = function() {};
  * @param {number} actualNumberOfInvocations
  * @return {boolean}
  */
-goog.labs.mock.verification.VerificationMode.prototype.verify =
+VerificationMode.prototype.verify =
     goog.abstractMethod;
 
 
@@ -74,7 +69,7 @@ goog.labs.mock.verification.VerificationMode.prototype.verify =
  *
  * @return {string}
  */
-goog.labs.mock.verification.VerificationMode.prototype.describe =
+VerificationMode.prototype.describe =
     goog.abstractMethod;
 
 
@@ -83,12 +78,12 @@ goog.labs.mock.verification.VerificationMode.prototype.describe =
  * exactly `expectedNumberOfInvocations` times.
  *
  * @param {number} expectedNumberOfInvocations
- * @return {!goog.labs.mock.verification.VerificationMode}
+ * @return {!VerificationMode}
  */
-goog.labs.mock.verification.times = function(expectedNumberOfInvocations) {
-  return new goog.labs.mock.verification.TimesVerificationMode_(
+export function times(expectedNumberOfInvocations) {
+  return new TimesVerificationMode_(
       expectedNumberOfInvocations);
-};
+}
 
 
 /**
@@ -96,12 +91,12 @@ goog.labs.mock.verification.times = function(expectedNumberOfInvocations) {
  * least `minimumNumberOfInvocations` times.
  *
  * @param {number} minimumNumberOfInvocations
- * @return {!goog.labs.mock.verification.VerificationMode}
+ * @return {!VerificationMode}
  */
-goog.labs.mock.verification.atLeast = function(minimumNumberOfInvocations) {
-  return new goog.labs.mock.verification.AtLeastVerificationMode_(
+export function atLeast(minimumNumberOfInvocations) {
+  return new AtLeastVerificationMode_(
       minimumNumberOfInvocations);
-};
+}
 
 
 /**
@@ -109,23 +104,23 @@ goog.labs.mock.verification.atLeast = function(minimumNumberOfInvocations) {
  * most `maxNumberOfInvocations` times.
  *
  * @param {number} maxNumberOfInvocations
- * @return {!goog.labs.mock.verification.VerificationMode}
+ * @return {!VerificationMode}
  */
-goog.labs.mock.verification.atMost = function(maxNumberOfInvocations) {
-  return new goog.labs.mock.verification.AtMostVerificationMode_(
+export function atMost(maxNumberOfInvocations) {
+  return new AtMostVerificationMode_(
       maxNumberOfInvocations);
-};
+}
 
 
 /**
  * Returns a `VerificationMode` which verifies a method was never
  * called. An alias for `VerificatonMode.times(0)`.
  *
- * @return {!goog.labs.mock.verification.VerificationMode}
+ * @return {!VerificationMode}
  */
-goog.labs.mock.verification.never = function() {
-  return goog.labs.mock.verification.times(0);
-};
+export function never() {
+  return times(0);
+}
 
 /**
  * A base verification mode whose purpose is to allow consumers to do an
@@ -133,93 +128,90 @@ goog.labs.mock.verification.never = function() {
  * functionality to it's subclasses.
  * @package
  */
-goog.labs.mock.verification.BaseVerificationMode = class {};
+export class BaseVerificationMode {}
 
 /**
  * A `VerificationMode` which verifies a method was called
  * exactly `expectedNumberOfInvocations` times.
  *
- * @private @implements {goog.labs.mock.verification.VerificationMode}
+ * @private @implements {VerificationMode}
  */
-goog.labs.mock.verification.TimesVerificationMode_ =
-    class extends goog.labs.mock.verification.BaseVerificationMode {
-  /**
-   * @param {number} expectedNumberOfInvocations
-   */
-  constructor(expectedNumberOfInvocations) {
-    super();
+class TimesVerificationMode_ extends BaseVerificationMode {
+/**
+* @param {number} expectedNumberOfInvocations
+*/
+constructor(expectedNumberOfInvocations) {
+super();
 
-    /** @private @const */
-    this.expectedNumberOfInvocations_ = expectedNumberOfInvocations;
-  }
+/** @private @const */
+this.expectedNumberOfInvocations_ = expectedNumberOfInvocations;
+}
 
-  /** @override */
-  verify(actualNumberOfInvocations) {
-    return actualNumberOfInvocations == this.expectedNumberOfInvocations_;
-  }
+/** @override */
+verify(actualNumberOfInvocations) {
+return actualNumberOfInvocations == this.expectedNumberOfInvocations_;
+}
 
-  /** @override */
-  describe() {
-    return this.expectedNumberOfInvocations_ + ' times';
-  }
-};
+/** @override */
+describe() {
+return this.expectedNumberOfInvocations_ + ' times';
+}
+}
 
 
 /**
  * A `VerificationMode` which verifies a method was called at
  * least `minimumNumberOfInvocations` times.
  *
- * @private @implements {goog.labs.mock.verification.VerificationMode}
+ * @private @implements {VerificationMode}
  */
-goog.labs.mock.verification.AtLeastVerificationMode_ =
-    class extends goog.labs.mock.verification.BaseVerificationMode {
-  /**
-   * @param {number} minimumNumberOfInvocations
-   */
-  constructor(minimumNumberOfInvocations) {
-    super();
+class AtLeastVerificationMode_ extends BaseVerificationMode {
+/**
+* @param {number} minimumNumberOfInvocations
+*/
+constructor(minimumNumberOfInvocations) {
+super();
 
-    /** @private @const */
-    this.minimumNumberOfInvocations_ = minimumNumberOfInvocations;
-  }
+/** @private @const */
+this.minimumNumberOfInvocations_ = minimumNumberOfInvocations;
+}
 
-  /** @override */
-  verify(actualNumberOfInvocations) {
-    return actualNumberOfInvocations >= this.minimumNumberOfInvocations_;
-  }
+/** @override */
+verify(actualNumberOfInvocations) {
+return actualNumberOfInvocations >= this.minimumNumberOfInvocations_;
+}
 
-  /** @override */
-  describe() {
-    return 'at least ' + this.minimumNumberOfInvocations_ + ' times';
-  }
-};
+/** @override */
+describe() {
+return 'at least ' + this.minimumNumberOfInvocations_ + ' times';
+}
+}
 
 
 /**
  * A `VerificationMode` which verifies a method was called at
  * most `maxNumberOfInvocations` times.
  *
- * @private @implements {goog.labs.mock.verification.VerificationMode}
+ * @private @implements {VerificationMode}
  */
-goog.labs.mock.verification.AtMostVerificationMode_ =
-    class extends goog.labs.mock.verification.BaseVerificationMode {
-  /**
-   * @param {number} maxNumberOfInvocations
-   */
-  constructor(maxNumberOfInvocations) {
-    super();
+class AtMostVerificationMode_ extends BaseVerificationMode {
+/**
+* @param {number} maxNumberOfInvocations
+*/
+constructor(maxNumberOfInvocations) {
+super();
 
-    /** @private */
-    this.maxNumberOfInvocations_ = maxNumberOfInvocations;
-  }
+/** @private */
+this.maxNumberOfInvocations_ = maxNumberOfInvocations;
+}
 
-  /** @override */
-  verify(actualNumberOfInvocations) {
-    return actualNumberOfInvocations <= this.maxNumberOfInvocations_;
-  }
+/** @override */
+verify(actualNumberOfInvocations) {
+return actualNumberOfInvocations <= this.maxNumberOfInvocations_;
+}
 
-  /** @override */
-  describe() {
-    return 'at most ' + this.maxNumberOfInvocations_ + ' times';
-  }
-};
+/** @override */
+describe() {
+return 'at most ' + this.maxNumberOfInvocations_ + ' times';
+}
+}

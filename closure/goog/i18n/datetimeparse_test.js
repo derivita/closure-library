@@ -8,36 +8,39 @@
  * @fileoverview
  * @suppress {missingRequire} Swapping using fully qualified name
  */
-goog.module('goog.i18n.DateTimeParseTest');
 goog.setTestOnly();
 
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
+import { PropertyReplacer } from '../testing/propertyreplacer.js';
+import { DateLike, Date as GoogDate } from '../date/date.js';
+import { DateTimeFormat } from './datetimeformat.js';
+import { DateTimeParse } from './datetimeparse.js';
+
+/** @suppress {extraRequire} */
+import { DateTimePatterns_ru } from './datetimepatterns.js';
+
+import {
+  DateTimeSymbols_ca,
+  DateTimeSymbols_en,
+  DateTimeSymbols_fa,
+  DateTimeSymbols_fr,
+  DateTimeSymbols_ko,
+  DateTimeSymbols_pl,
+  DateTimeSymbols_ru,
+  DateTimeSymbols_zh,
+  DateTimeSymbols_zh_TW,
+} from './datetimesymbols.js';
+import * as datetimesymbols from './datetimesymbols.js';
+
+import { testSuite } from '../testing/testsuite.js';
+import { DayPeriods_zh_Hant, setDayPeriods } from './dayperiodsymbols.js';
+import { objectProperty } from '../reflect/reflect.js';
 const replacer = new PropertyReplacer();
 
-const DateLike = goog.require('goog.date.DateLike');
-const DateTimeFormat = goog.require('goog.i18n.DateTimeFormat');
-const DateTimeParse = goog.require('goog.i18n.DateTimeParse');
-/** @suppress {extraRequire} */
-const DateTimePatterns_ru = goog.require('goog.i18n.DateTimePatterns_ru');
-const DateTimeSymbols_ca = goog.require('goog.i18n.DateTimeSymbols_ca');
-const DateTimeSymbols_en = goog.require('goog.i18n.DateTimeSymbols_en');
-const DateTimeSymbols_fa = goog.require('goog.i18n.DateTimeSymbols_fa');
-const DateTimeSymbols_fr = goog.require('goog.i18n.DateTimeSymbols_fr');
-const DateTimeSymbols_ko = goog.require('goog.i18n.DateTimeSymbols_ko');
-const DateTimeSymbols_pl = goog.require('goog.i18n.DateTimeSymbols_pl');
-const DateTimeSymbols_ru = goog.require('goog.i18n.DateTimeSymbols_ru');
-const DateTimeSymbols_zh = goog.require('goog.i18n.DateTimeSymbols_zh');
-const DateTimeSymbols_zh_TW = goog.require('goog.i18n.DateTimeSymbols_zh_TW');
-const GoogDate = goog.require('goog.date.Date');
-const testSuite = goog.require('goog.testing.testSuite');
-
-const {DayPeriods_zh_Hant, setDayPeriods} = goog.require('goog.i18n.DayPeriods');
-
 const DATETIMESYMBOLS =
-    goog.reflect.objectProperty('DateTimeSymbols', goog.i18n);
-const LOCALE = goog.reflect.objectProperty('LOCALE', goog);
+    objectProperty('DateTimeSymbols', datetimesymbols);
+const LOCALE = objectProperty('LOCALE', goog);
 
-replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_en);
+replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_en);
 
 /**
  * @record
@@ -147,11 +150,11 @@ testSuite({
 
   setUp() {
     replacer.replace(goog, LOCALE, 'en');
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_en);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_en);
   },
 
   tearDown() {
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_en);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_en);
   },
 
   testNegativeYear() {
@@ -620,7 +623,7 @@ testSuite({
   },
 
   testChineseDate() {
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_zh);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_zh);
 
     // JavaScript month start from 0, July is 7 - 1
     const date = new Date(2006, 7 - 1, 24, 12, 12, 12, 0);
@@ -663,7 +666,7 @@ testSuite({
 
   testZhTwBFormat() {
     let nativeMode = true;
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_zh_TW);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_zh_TW);
 
     // Make sure we have the day period info.
     setDayPeriods(DayPeriods_zh_Hant);
@@ -686,12 +689,12 @@ testSuite({
     assertEquals(22, normalizedHourPm);
   },
 
-  // For languages with goog.i18n.DateTimeSymbols.ZERODIGIT defined, the int
+  // For languages with datetimesymbols.DateTimeSymbols.ZERODIGIT defined, the int
   // digits are localized by the locale in datetimeformat.js. This test case is
   // for parsing dates with such native digits.
   testDatesWithNativeDigits() {
     // Language Arabic is one example with
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_fa);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_fa);
 
     let formatter = new DateTimeFormat(DateTimeFormat.Format.FULL_DATE);
     let parser = new DateTimeParse(DateTimeFormat.Format.FULL_DATE);
@@ -814,7 +817,7 @@ testSuite({
   },
 
   testFrenchShortQuarter() {
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_fr);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_fr);
     const parser = new DateTimeParse('yyyyQQ');
 
     assertParsedDateEquals(2009, 7 - 1, 1, parser, '2009T3');
@@ -904,7 +907,7 @@ testSuite({
 
   /** @bug 9901750 */
   testStandaloneMonthPattern() {
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_pl);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_pl);
     const date1 = new GoogDate(2006, 7 - 1);
     const date2 = new GoogDate();
     const formatter = new DateTimeFormat('LLLL yyyy');
@@ -919,7 +922,7 @@ testSuite({
     const symbols = [DateTimeSymbols_en, DateTimeSymbols_pl];
 
     for (let i = 0; i < symbols.length; i++) {
-      replacer.replace(goog.i18n, DATETIMESYMBOLS, symbols[i]);
+      replacer.replace(datetimesymbols, DATETIMESYMBOLS, symbols[i]);
       const dateTimeSymbols = symbols[i];
       const tests = {
         'MMMM yyyy': dateTimeSymbols.MONTHS,
@@ -962,7 +965,7 @@ testSuite({
 
   testQuotedPattern() {
     // Regression test for b/29990921.
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_en);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_en);
 
     // Literal apostrophe
     let parser = new DateTimeParse('MMM \'\'yy');
@@ -1015,7 +1018,7 @@ testSuite({
     // b/208532468, 3-Dec-2021
 
     replacer.replace(goog, LOCALE, 'zh-TW');
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_zh_TW);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_zh_TW);
     // Set up for parts of the day in Chinese.
     setDayPeriods(DayPeriods_zh_Hant);
 
@@ -1079,7 +1082,7 @@ testSuite({
     // Test for b/208532468 round trip with zh_TW with flexible time periods
     const date = new Date(0, 0, 0, 17);
     replacer.replace(goog, LOCALE, 'zh-TW');
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_zh_TW);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_zh_TW);
 
     setDayPeriods(DayPeriods_zh_Hant);
 
@@ -1174,7 +1177,7 @@ testSuite({
   testRussianParseWithNnbs() {
     // Check that dates
 
-    replacer.replace(goog.i18n, DATETIMESYMBOLS, DateTimeSymbols_ru);
+    replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_ru);
     // Checking parse of output for non-ASCII whitespace characters.
     const test_cases = [
       '28 июн. 2012 г.',       // ASCII Space

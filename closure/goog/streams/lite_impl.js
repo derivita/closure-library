@@ -8,11 +8,10 @@
  * @fileoverview A lite polyfill of the ReadableStream native API with a subset
  * of methods supported.
  */
-goog.module('goog.streams.liteImpl');
+import { NativeResolver } from '../promise/nativeresolver.js';
 
-const NativeResolver = goog.require('goog.promise.NativeResolver');
-const liteTypes = goog.require('goog.streams.liteTypes');
-const {assert, assertFunction} = goog.require('goog.asserts');
+import * as liteTypes from './lite_types.js';
+import { assert, assertFunction } from '../asserts/asserts.js';
 
 /**
  * The lite implementation of ReadableStream.
@@ -27,7 +26,7 @@ const {assert, assertFunction} = goog.require('goog.asserts');
  * @template T
  * @implements {liteTypes.ReadableStream<T>}
  */
-class ReadableStream {
+export class ReadableStream {
   /** @package */
   constructor() {
     /** @package {!ReadableStream.State} */
@@ -149,7 +148,7 @@ ReadableStream.State = {
  * @suppress {strictMissingProperties}
  * @template T
  */
-function newReadableStream(underlyingSource) {
+export function newReadableStream(underlyingSource) {
   assertFunction(
       underlyingSource.start,
       `'start' property must be a function on an underlying source for a ` +
@@ -188,7 +187,7 @@ function newReadableStream(underlyingSource) {
  * @template T
  * @implements {liteTypes.ReadableStreamDefaultReader<T>}
  */
-class ReadableStreamDefaultReader {
+export class ReadableStreamDefaultReader {
   /**
    * @param {!ReadableStream} stream
    * @package
@@ -304,7 +303,7 @@ class ReadableStreamDefaultReader {
  * @template T
  * @implements {liteTypes.ReadableStreamDefaultController<T>}
  */
-class ReadableStreamDefaultController {
+export class ReadableStreamDefaultController {
   /**
    * @param {!ReadableStream} stream
    * @package
@@ -484,7 +483,7 @@ class ReadableStreamDefaultController {
  * @template T
  * @package
  */
-class Queue {
+export class Queue {
   constructor() {
     /** @private {!Array<T>} */
     this.queue_ = [];
@@ -519,7 +518,7 @@ class Queue {
   }
 }
 
-exports = {
+export default {
   Queue,
   ReadableStream,
   ReadableStreamDefaultController,

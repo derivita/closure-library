@@ -3,13 +3,11 @@
  * Copyright The Closure Library Authors.
  * SPDX-License-Identifier: Apache-2.0
  */
-goog.module('goog.async.run');
-goog.module.declareLegacyNamespace();
+import { WorkQueue } from './workqueue.js';
 
-const WorkQueue = goog.require('goog.async.WorkQueue');
-const asyncStackTag = goog.require('goog.debug.asyncStackTag');
-const nextTick = goog.require('goog.async.nextTick');
-const throwException = goog.require('goog.async.throwException');
+import asyncStackTag from '../debug/asyncstacktag.js';
+import { nextTick } from './nexttick.js';
+import { throwException } from './throwexception.js';
 
 /**
  * @define {boolean} If true, use the global Promise to implement run
@@ -38,7 +36,7 @@ let workQueue = new WorkQueue();
  *     provided function.
  * @template THIS
  */
-let run = (callback, context = undefined) => {
+export function run(callback, context = undefined) {
   if (!schedule) {
     initializeRunner();
   }
@@ -123,5 +121,3 @@ run.processWorkQueue = () => {
   // There are no more work items, allow processing to be scheduled again.
   workQueueScheduled = false;
 };
-
-exports = run;

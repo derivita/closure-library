@@ -11,9 +11,6 @@
  * See http://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm
  */
 
-goog.provide('goog.math.tdma');
-
-
 /**
  * Solves a linear system where the matrix is square tri-diagonal. That is,
  * given a system of equations:
@@ -37,30 +34,29 @@ goog.provide('goog.math.tdma');
  * @param {Array<number>=} opt_result The optional array to store the result.
  * @return {!Array<number>} The vector that is the solution to the system.
  */
-goog.math.tdma.solve = function(
+export function solve(
     subDiag, mainDiag, supDiag, vecRight, opt_result) {
-  'use strict';
-  // Make a local copy of the main diagonal and the right vector.
-  mainDiag = mainDiag.slice();
-  vecRight = vecRight.slice();
+ // Make a local copy of the main diagonal and the right vector.
+ mainDiag = mainDiag.slice();
+ vecRight = vecRight.slice();
 
-  // The dimension of the matrix.
-  const nDim = mainDiag.length;
+ // The dimension of the matrix.
+ const nDim = mainDiag.length;
 
-  // Construct a modified linear system of equations with the same solution
-  // as the input one.
-  let i;
-  for (i = 1; i < nDim; ++i) {
-    const m = subDiag[i - 1] / mainDiag[i - 1];
-    mainDiag[i] = mainDiag[i] - m * supDiag[i - 1];
-    vecRight[i] = vecRight[i] - m * vecRight[i - 1];
-  }
+ // Construct a modified linear system of equations with the same solution
+ // as the input one.
+ let i;
+ for (i = 1; i < nDim; ++i) {
+   const m = subDiag[i - 1] / mainDiag[i - 1];
+   mainDiag[i] = mainDiag[i] - m * supDiag[i - 1];
+   vecRight[i] = vecRight[i] - m * vecRight[i - 1];
+ }
 
-  // Solve the new system of equations by simple back-substitution.
-  const result = opt_result || new Array(vecRight.length);
-  result[nDim - 1] = vecRight[nDim - 1] / mainDiag[nDim - 1];
-  for (i = nDim - 2; i >= 0; --i) {
-    result[i] = (vecRight[i] - supDiag[i] * result[i + 1]) / mainDiag[i];
-  }
-  return result;
+ // Solve the new system of equations by simple back-substitution.
+ const result = opt_result || new Array(vecRight.length);
+ result[nDim - 1] = vecRight[nDim - 1] / mainDiag[nDim - 1];
+ for (i = nDim - 2; i >= 0; --i) {
+   result[i] = (vecRight[i] - supDiag[i] * result[i + 1]) / mainDiag[i];
+ }
+ return result;
 };

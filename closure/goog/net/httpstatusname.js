@@ -8,9 +8,6 @@
  * @fileoverview Names for HTTP status codes
  */
 
-goog.provide('goog.net.HttpStatusName');
-
-
 /**
  * HTTP Status Code Names defined in RFC 2616, RFC 6585, and RFC 4918.
  * @see http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
@@ -18,7 +15,7 @@ goog.provide('goog.net.HttpStatusName');
  * @see https://tools.ietf.org/html/rfc4918
  * @type {!Object<number, string>}
  */
-goog.net.HttpStatusName = {
+export var HttpStatusName = {
   // Informational 1xx
   100: 'Continue',
   101: 'Switching Protocols',

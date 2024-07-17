@@ -4,29 +4,27 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.eventsTest');
 goog.setTestOnly();
 
-const CaptureSimulationMode = goog.require('goog.events.CaptureSimulationMode');
-const EntryPointMonitor = goog.require('goog.debug.EntryPointMonitor');
-const ErrorHandler = goog.require('goog.debug.ErrorHandler');
-const EventType = goog.require('goog.events.EventType');
-const GoogEvent = goog.require('goog.events.Event');
-const GoogEventTarget = goog.require('goog.events.EventTarget');
-const Listener = goog.require('goog.events.Listener');
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
-const TagName = goog.require('goog.dom.TagName');
-const disposeAll = goog.require('goog.disposeAll');
-const dom = goog.require('goog.dom');
-const entryPointRegistry = goog.require('goog.debug.entryPointRegistry');
-const events = goog.require('goog.events');
-const functions = goog.require('goog.functions');
-const recordFunction = goog.require('goog.testing.recordFunction');
-const testSuite = goog.require('goog.testing.testSuite');
-const {AssertionError} = goog.require('goog.asserts');
+import * as events from './events.js';
+import { CaptureSimulationMode } from './events.js';
+import { ErrorHandler } from '../debug/errorhandler.js';
+import { EventType } from './eventtype.js';
+import { Event as GoogEvent } from './event.js';
+import { EventTarget as GoogEventTarget } from './eventtarget.js';
+import { Listener } from './listener.js';
+import { PropertyReplacer } from '../testing/propertyreplacer.js';
+import { TagName } from '../dom/tagname.js';
+import { disposeAll } from '../disposable/disposeall.js';
+import * as dom from '../dom/dom.js';
+import * as entryPointRegistry from '../debug/entrypointregistry.js';
+import * as functions from '../functions/functions.js';
+import { recordFunction } from '../testing/recordfunction.js';
+import { testSuite } from '../testing/testsuite.js';
+import { AssertionError } from '../asserts/asserts.js';
 
 /** @suppress {visibility} suppression added to enable type checking */
-const originalHandleBrowserEvent = events.handleBrowserEvent_;
+const originalHandleBrowserEvent = events.getHandlerForTests_();
 let propertyReplacer;
 let et1;
 let et2;
@@ -149,9 +147,9 @@ testSuite({
 
   tearDown() {
     /** Use computed properties to avoid compiler checks of defines */
-    events['CAPTURE_SIMULATION_MODE'] = CaptureSimulationMode.ON;
+    events.$set('CAPTURE_SIMULATION_MODE', CaptureSimulationMode.ON);
     /** @suppress {visibility} suppression added to enable type checking */
-    events.handleBrowserEvent_ = originalHandleBrowserEvent;
+    events.setHandlerForTests_(originalHandleBrowserEvent);
     disposeAll(et1, et2, et3);
     events.removeAll(document.body);
     propertyReplacer.reset();
@@ -164,15 +162,15 @@ testSuite({
     events.protectBrowserEventEntryPoint(errorHandler);
 
     /** @suppress {visibility} suppression added to enable type checking */
-    const browserEventHandler = recordFunction(events.handleBrowserEvent_);
+    const browserEventHandler = recordFunction(events.getHandlerForTests_());
     /** @suppress {visibility} suppression added to enable type checking */
-    events.handleBrowserEvent_ = function() {
+    events.setHandlerForTests_(function() {
       try {
         browserEventHandler.apply(this, arguments);
       } catch (e) {
         // Ignored.
       }
-    };
+    });
 
     const err = Error('test');
     const body = document.body;
@@ -378,7 +376,7 @@ testSuite({
     events.removeAll(et3);
 
     /** Use computed properties to avoid compiler checks of defines */
-    events['CAPTURE_SIMULATION_MODE'] = CaptureSimulationMode.OFF_AND_FAIL;
+    events.$set('CAPTURE_SIMULATION_MODE', CaptureSimulationMode.OFF_AND_FAIL);
     count = 0;
 
     events.listen(et1, 'test', callbackCapture1, {capture: true});
@@ -487,13 +485,13 @@ testSuite({
   /** @suppress {visibility} suppression added to enable type checking */
   testEntryPointRegistry() {
     /** @suppress {checkTypes} suppression added to enable type checking */
-    const monitor = new EntryPointMonitor();
+    const monitor = new entryPointRegistry.EntryPointMonitor();
     const replacement = () => {};
     monitor.wrap = recordFunction(functions.constant(replacement));
 
     entryPointRegistry.monitorAll(monitor);
     assertTrue(monitor.wrap.getCallCount() >= 1);
-    assertEquals(replacement, events.handleBrowserEvent_);
+    assertEquals(replacement, events.getHandlerForTests_());
   },
 
   // Fixes bug http://b/6434926
@@ -769,7 +767,7 @@ testSuite({
 
   testCaptureSimulationModeOffAndFail() {
     /** Use computed properties to avoid compiler checks of defines */
-    events['CAPTURE_SIMULATION_MODE'] = CaptureSimulationMode.OFF_AND_FAIL;
+    events.$set('CAPTURE_SIMULATION_MODE', CaptureSimulationMode.OFF_AND_FAIL);
     const captureHandler = recordFunction();
 
     events.listen(document.body, 'click', captureHandler, true);
@@ -779,7 +777,7 @@ testSuite({
 
   testCaptureSimulationModeOffAndSilent() {
     /** Use computed properties to avoid compiler checks of defines */
-    events['CAPTURE_SIMULATION_MODE'] = CaptureSimulationMode.OFF_AND_SILENT;
+    events.$set('CAPTURE_SIMULATION_MODE', CaptureSimulationMode.OFF_AND_SILENT);
     const captureHandler = recordFunction();
 
     events.listen(document.body, 'click', captureHandler, true);

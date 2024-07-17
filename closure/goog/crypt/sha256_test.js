@@ -4,13 +4,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.crypt.Sha256Test');
 goog.setTestOnly();
 
-const Sha256 = goog.require('goog.crypt.Sha256');
-const crypt = goog.require('goog.crypt');
-const hashTester = goog.require('goog.crypt.hashTester');
-const testSuite = goog.require('goog.testing.testSuite');
+import { Sha256 } from './sha256.js';
+import { Sha2 } from './sha2.js';
+import * as crypt from './crypt.js';
+import * as hashTester from './hashtester.js';
+import { testSuite } from '../testing/testsuite.js';
 
 testSuite({
   testBasicOperations() {
@@ -54,8 +54,8 @@ testSuite({
         'asdfljhr78yasdfljh45opa78sdf' +
         '120839414104897aavnasdfafasd';
     assertTrue(
-        biggerThanOneBlock.length > crypt.Sha2.BLOCKSIZE_ &&
-        biggerThanOneBlock.length < 2 * crypt.Sha2.BLOCKSIZE_);
+        biggerThanOneBlock.length > Sha2.BLOCKSIZE_ &&
+        biggerThanOneBlock.length < 2 * Sha2.BLOCKSIZE_);
     sha256.update(crypt.stringToByteArray(biggerThanOneBlock));
     assertEquals(
         '390a5035433e46b740600f3117d11ece3c64706dc889106666ac04fe4f458abc',
@@ -68,7 +68,7 @@ testSuite({
         'asdfljhr78yasdfljh45opa78sdf' +
         '120839414104897aavnasdfafasd' +
         'laasdouvhalacbnalalseryalcla';
-    assertTrue(biggerThanTwoBlocks.length > 2 * crypt.Sha2.BLOCKSIZE_);
+    assertTrue(biggerThanTwoBlocks.length > 2 * Sha2.BLOCKSIZE_);
     sha256.update(crypt.stringToByteArray(biggerThanTwoBlocks));
     assertEquals(
         'd655c513fd347e9be372d891f8bb42895ca310fabf6ead6681ebc66a04e84db5',

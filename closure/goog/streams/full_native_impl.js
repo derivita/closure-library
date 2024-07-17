@@ -7,10 +7,9 @@
 /**
  * @fileoverview A native implementation of the ponyfill.
  */
-goog.module('goog.streams.fullNativeImpl');
+import * as fullTypes from './full_types.js';
 
-const fullTypes = goog.require('goog.streams.fullTypes');
-const liteNativeImpl = goog.require('goog.streams.liteNativeImpl');
+import * as liteNativeImpl from './lite_native_impl.js';
 
 /**
  * The implemenation of ReadableStream.
@@ -138,7 +137,7 @@ class NativeReadableStreamDefaultController extends
   }
 }
 
-exports = {
+export default {
   NativeReadableStream,
   NativeReadableStreamAsyncIterator,
   NativeReadableStreamDefaultController,

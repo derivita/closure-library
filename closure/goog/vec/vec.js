@@ -9,23 +9,16 @@
  * @fileoverview Supplies global data types and constants for the vector math
  *     library.
  */
-goog.provide('goog.vec');
-goog.provide('goog.vec.AnyType');
-goog.provide('goog.vec.ArrayType');
-goog.provide('goog.vec.Float32');
-goog.provide('goog.vec.Float64');
-goog.provide('goog.vec.Number');
+goog.declareModuleId('goog.vec.vec');
 
 
 /**
  * On platforms that don't have native Float32Array or Float64Array support we
  * use a javascript implementation so that this math library can be used on all
  * platforms.
- * @suppress {extraRequire}
  */
-goog.require('goog.vec.Float32Array');
-/** @suppress {extraRequire} */
-goog.require('goog.vec.Float64Array');
+import './float32array.js';
+import './float64array.js';
 
 // All vector and matrix operations are based upon arrays of numbers using
 // either Float32Array, Float64Array, or a standard JavaScript Array of
@@ -33,26 +26,26 @@ goog.require('goog.vec.Float64Array');
 
 
 /** @typedef {!Float32Array} */
-goog.vec.Float32;
+export var Float32;
 
 
 /** @typedef {!Float64Array} */
-goog.vec.Float64;
+export var Float64;
 
 
 /** @typedef {!Array<number>} */
-goog.vec.Number;
+export var Number;
 
 
-/** @typedef {!goog.vec.Float32|!goog.vec.Float64|!goog.vec.Number} */
-goog.vec.AnyType;
+/** @typedef {!Float32|!Float64|!Number} */
+export var AnyType;
 
 
 /**
  * @deprecated Use AnyType.
  * @typedef {!Float32Array|!Array<number>}
  */
-goog.vec.ArrayType;
+export var ArrayType;
 
 
 /**
@@ -62,4 +55,4 @@ goog.vec.ArrayType;
  * @type {number}
  * @const
  */
-goog.vec.EPSILON = 1e-6;
+export var EPSILON = 1e-6;

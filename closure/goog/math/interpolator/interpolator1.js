@@ -8,15 +8,11 @@
  * @fileoverview The base interface for one-dimensional data interpolation.
  */
 
-goog.provide('goog.math.interpolator.Interpolator1');
-
-
-
 /**
  * An interface for one dimensional data interpolation.
  * @interface
  */
-goog.math.interpolator.Interpolator1 = function() {};
+export function Interpolator1() {};
 
 
 /**
@@ -29,7 +25,7 @@ goog.math.interpolator.Interpolator1 = function() {};
  * @param {!Array<number>} x The abscissa of the data points.
  * @param {!Array<number>} y The ordinate of the data points.
  */
-goog.math.interpolator.Interpolator1.prototype.setData;
+Interpolator1.prototype.setData;
 
 
 /**
@@ -38,7 +34,7 @@ goog.math.interpolator.Interpolator1.prototype.setData;
  * @param {number} x The abscissa to sample at.
  * @return {number} The interpolated value at abscissa x.
  */
-goog.math.interpolator.Interpolator1.prototype.interpolate;
+Interpolator1.prototype.interpolate;
 
 
 /**
@@ -49,6 +45,6 @@ goog.math.interpolator.Interpolator1.prototype.interpolate;
  * In addition, the returned interpolator is only guaranteed to give the exact
  * inverse at the input data passed in getData.
  * If 'this' has no data, the returned Interpolator will be empty as well.
- * @return {!goog.math.interpolator.Interpolator1} The inverse interpolator.
+ * @return {!Interpolator1} The inverse interpolator.
  */
-goog.math.interpolator.Interpolator1.prototype.getInverse;
+Interpolator1.prototype.getInverse;

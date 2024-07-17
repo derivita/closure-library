@@ -16,13 +16,12 @@
 /**
  * Namespace for current country codes.
  */
-goog.provide('goog.locale.countries');
 
 /**
  * List of codes for countries valid today.
  * @type {!Array<string>}
  */
-goog.locale.countries = [
+export var countries = [
   'AC', // Ascension Island
   'AD', // Andorra
   'AE', // United Arab Emirates

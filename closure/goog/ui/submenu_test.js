@@ -4,29 +4,28 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.ui.SubMenuTest');
 goog.setTestOnly();
 
-const Component = goog.require('goog.ui.Component');
-const GoogEvent = goog.require('goog.events.Event');
-const KeyCodes = goog.require('goog.events.KeyCodes');
-const KeyHandler = goog.require('goog.events.KeyHandler');
-const Menu = goog.require('goog.ui.Menu');
-const MenuItem = goog.require('goog.ui.MenuItem');
-const MockClock = goog.require('goog.testing.MockClock');
-const Overflow = goog.require('goog.positioning.Overflow');
-const State = goog.require('goog.a11y.aria.State');
-const SubMenu = goog.require('goog.ui.SubMenu');
-const SubMenuRenderer = goog.require('goog.ui.SubMenuRenderer');
-const aria = goog.require('goog.a11y.aria');
-const classlist = goog.require('goog.dom.classlist');
-const dom = goog.require('goog.dom');
-const events = goog.require('goog.events');
-const functions = goog.require('goog.functions');
-const positioning = goog.require('goog.positioning');
-const style = goog.require('goog.style');
-const testSuite = goog.require('goog.testing.testSuite');
-const testingEvents = goog.require('goog.testing.events');
+import { Component } from './component.js';
+import { Event as GoogEvent } from '../events/event.js';
+import { KeyCodes } from '../events/keycodes.js';
+import { KeyHandler } from '../events/keyhandler.js';
+import { Menu } from './menu.js';
+import { MenuItem } from './menuitem.js';
+import { MockClock } from '../testing/mockclock.js';
+import * as positioning from '../positioning/positioning.js';
+import { Overflow } from '../positioning/positioning.js';
+import { State } from '../a11y/aria/attributes.js';
+import { SubMenu } from './submenu.js';
+import { SubMenuRenderer } from './submenurenderer.js';
+import * as aria from '../a11y/aria/aria.js';
+import * as classlist from '../dom/classlist.js';
+import * as dom from '../dom/dom.js';
+import * as events from '../events/events.js';
+import * as functions from '../functions/functions.js';
+import * as style from '../style/style.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as testingEvents from '../testing/events/events.js';
 
 let menu;
 let clonedMenuDom;
@@ -38,12 +37,12 @@ let mockClock;
 // dynamic menu positioning if the menu doesn't fit in the window.)
 const oldPositionFn = positioning.positionAtCoordinate;
 /** @suppress {checkTypes} suppression added to enable type checking */
-positioning.positionAtCoordinate =
+positioning.$set('positionAtCoordinate',
     (absolutePos, movableElement, movableElementCorner, margin = undefined,
      overflow = undefined) =>
         oldPositionFn.call(
             null, absolutePos, movableElement, movableElementCorner, margin,
-            Overflow.IGNORE);
+            Overflow.IGNORE));
 
 function assertKeyHandlingIsCorrect(keyToOpenSubMenu, keyToCloseSubMenu) {
   menu.setFocusable(true);
@@ -304,10 +303,10 @@ testSuite({
 
     function handleEvent(e) {
       switch (e.type) {
-        case Component.EventType.OPEN:
+        case Component.ComponentEventType.OPEN:
           openEventDispatched = true;
           break;
-        case Component.EventType.CLOSE:
+        case Component.ComponentEventType.CLOSE:
           closeEventDispatched = true;
           break;
         default:
@@ -320,7 +319,7 @@ testSuite({
     subMenu.setHighlighted(true);
 
     events.listen(
-        subMenu, [Component.EventType.OPEN, Component.EventType.CLOSE],
+        subMenu, [Component.ComponentEventType.OPEN, Component.ComponentEventType.CLOSE],
         handleEvent);
 
     assertFalse(
@@ -350,7 +349,7 @@ testSuite({
     assertTrue('CLOSE event must have been dispatched', closeEventDispatched);
 
     events.unlisten(
-        subMenu, [Component.EventType.OPEN, Component.EventType.CLOSE],
+        subMenu, [Component.ComponentEventType.OPEN, Component.ComponentEventType.CLOSE],
         handleEvent);
   },
 
@@ -360,10 +359,10 @@ testSuite({
 
     function handleEvent(e) {
       switch (e.type) {
-        case Component.EventType.OPEN:
+        case Component.ComponentEventType.OPEN:
           openEventDispatched = true;
           break;
-        case Component.EventType.CLOSE:
+        case Component.ComponentEventType.CLOSE:
           closeEventDispatched = true;
           break;
         default:
@@ -376,7 +375,7 @@ testSuite({
     subMenu.setHighlighted(true);
 
     events.listen(
-        subMenu, [Component.EventType.OPEN, Component.EventType.CLOSE],
+        subMenu, [Component.ComponentEventType.OPEN, Component.ComponentEventType.CLOSE],
         handleEvent);
 
     assertFalse(
@@ -401,7 +400,7 @@ testSuite({
     assertTrue('CLOSE event must have been dispatched', closeEventDispatched);
 
     events.unlisten(
-        subMenu, [Component.EventType.OPEN, Component.EventType.CLOSE],
+        subMenu, [Component.ComponentEventType.OPEN, Component.ComponentEventType.CLOSE],
         handleEvent);
   },
 
@@ -448,7 +447,7 @@ testSuite({
 
     let lazyMenu;
 
-    const key = events.listen(subMenu, Component.EventType.OPEN, (e) => {
+    const key = events.listen(subMenu, Component.ComponentEventType.OPEN, (e) => {
       lazyMenu = new Menu();
       lazyMenu.addItem(new MenuItem('foo'));
       lazyMenu.addItem(new MenuItem('bar'));
@@ -580,7 +579,7 @@ testSuite({
       numClicks++;
     };
 
-    events.listen(submenu, Component.EventType.ACTION, menuClickedFn);
+    events.listen(submenu, Component.ComponentEventType.ACTION, menuClickedFn);
     submenu.performActionInternal(null);
     submenu.performActionInternal(null);
 
@@ -608,7 +607,7 @@ testSuite({
       numClicks++;
     };
 
-    events.listen(submenu, Component.EventType.ACTION, menuClickedFn);
+    events.listen(submenu, Component.ComponentEventType.ACTION, menuClickedFn);
     submenu.performActionInternal(null);
     submenu.performActionInternal(null);
 
@@ -638,7 +637,7 @@ testSuite({
     submenu.setHighlighted(false);
 
     // This should cancel the dismiss timer.
-    submenu.getMenu().dispatchEvent(Component.EventType.ENTER);
+    submenu.getMenu().dispatchEvent(Component.ComponentEventType.ENTER);
 
     // Tick the length of the dismiss timer.
     mockClock.tick(SubMenu.MENU_DELAY_MS);

@@ -21,14 +21,11 @@
 
 // clang-format off
 
-goog.provide('goog.locale.TimeZoneFingerprint');
-
-
 /**
  * Time zone fingerprint mapping to time zone list.
  * @enum {!Array<string>}
  */
-goog.locale.TimeZoneFingerprint = {
+export var TimeZoneFingerprint = {
   919994368: ['CA-America/Halifax', 'CA-America/Glace_Bay', 'GL-America/Thule',
     'BM-Atlantic/Bermuda'],
   6: ['AQ-Antarctica/Rothera'],

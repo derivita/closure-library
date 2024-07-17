@@ -4,13 +4,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.uri.utilsTest');
 goog.setTestOnly();
 
-const functions = goog.require('goog.functions');
-const googString = goog.require('goog.string');
-const testSuite = goog.require('goog.testing.testSuite');
-const utils = goog.require('goog.uri.utils');
+import * as functions from '../functions/functions.js';
+import * as googString from '../string/string.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as utils from './utils.js';
 
 /** Simple class with a constant toString. */
 class HasString {
@@ -35,7 +34,7 @@ const createHasString = (stringValue) => {
 
 testSuite({
   setUpPage() {
-    googString.getRandomString = functions.constant('RANDOM');
+    googString.$set('getRandomString', functions.constant('RANDOM'));
   },
 
   tearDown() {},

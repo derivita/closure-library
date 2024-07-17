@@ -4,12 +4,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.style.cursorTest');
 goog.setTestOnly();
 
-const cursor = goog.require('goog.style.cursor');
-const testSuite = goog.require('goog.testing.testSuite');
-const userAgent = goog.require('goog.userAgent');
+import * as cursor from './cursor.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as userAgent from '../useragent/useragent.js';
 
 const baseCursorUrl = '/images/2/';
 let origWindowsUserAgentValue;
@@ -24,14 +23,14 @@ testSuite({
   },
 
   tearDown() {
-    userAgent.WINDOWS = origWindowsUserAgentValue;
-    userAgent.GECKO = origGeckoUserAgentValue;
-    userAgent.WEBKIT = origWebkitUserAgentValue;
+    userAgent.$set('WINDOWS', origWindowsUserAgentValue);
+    userAgent.$set('GECKO', origGeckoUserAgentValue);
+    userAgent.$set('WEBKIT', origWebkitUserAgentValue);
   },
 
   testGetCursorStylesWebkit() {
-    userAgent.GECKO = false;
-    userAgent.WEBKIT = true;
+    userAgent.$set('GECKO', false);
+    userAgent.$set('WEBKIT', true);
 
     assertEquals(
         'Webkit should get a cursor style with moved hot-spot.',
@@ -53,9 +52,9 @@ testSuite({
   },
 
   testGetCursorStylesFireFoxNonWin() {
-    userAgent.GECKO = true;
-    userAgent.WEBKIT = false;
-    userAgent.WINDOWS = false;
+    userAgent.$set('GECKO', true);
+    userAgent.$set('WEBKIT', false);
+    userAgent.$set('WINDOWS', false);
 
     assertEquals(
         'FireFox on non Windows should get a custom cursor style.', '-moz-grab',
@@ -75,9 +74,9 @@ testSuite({
   },
 
   testGetCursorStylesFireFoxWin() {
-    userAgent.GECKO = true;
-    userAgent.WEBKIT = false;
-    userAgent.WINDOWS = true;
+    userAgent.$set('GECKO', true);
+    userAgent.$set('WEBKIT', false);
+    userAgent.$set('WINDOWS', true);
 
     assertEquals(
         'FireFox should get a cursor style with URL.',
@@ -101,8 +100,8 @@ testSuite({
   },
 
   testGetCursorStylesOther() {
-    userAgent.GECKO = false;
-    userAgent.WEBKIT = false;
+    userAgent.$set('GECKO', false);
+    userAgent.$set('WEBKIT', false);
 
     assertEquals(
         'Other browsers (IE) should get a cursor style with URL.',

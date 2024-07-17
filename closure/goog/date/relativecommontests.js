@@ -4,34 +4,47 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.date.relativeCommonTests');
+/** @fileoverview @suppress {visibility} */
+
 goog.setTestOnly('goog.date.relativeCommonTests');
 
-const DateTime = goog.require('goog.date.DateTime');
-const DateTimeFormat = goog.require('goog.i18n.DateTimeFormat');
-const DateTimePatterns_ar = goog.require('goog.i18n.DateTimePatterns_ar');
-const DateTimePatterns_bn = goog.require('goog.i18n.DateTimePatterns_bn');
-const DateTimePatterns_es = goog.require('goog.i18n.DateTimePatterns_es');
-const DateTimePatterns_fa = goog.require('goog.i18n.DateTimePatterns_fa');
-const DateTimePatterns_fr = goog.require('goog.i18n.DateTimePatterns_fr');
-const DateTimePatterns_no = goog.require('goog.i18n.DateTimePatterns_no');
-const DateTimeSymbols_ar = goog.require('goog.i18n.DateTimeSymbols_ar');
-const DateTimeSymbols_bn = goog.require('goog.i18n.DateTimeSymbols_bn');
-const DateTimeSymbols_es = goog.require('goog.i18n.DateTimeSymbols_es');
-const DateTimeSymbols_fa = goog.require('goog.i18n.DateTimeSymbols_fa');
-const DateTimeSymbols_fr = goog.require('goog.i18n.DateTimeSymbols_fr');
-const DateTimeSymbols_no = goog.require('goog.i18n.DateTimeSymbols_no');
-/** @suppress {extraRequire} */
-const NumberFormatSymbols = goog.require('goog.i18n.NumberFormatSymbols');
-const NumberFormatSymbols_bn = goog.require('goog.i18n.NumberFormatSymbols_bn');
-const NumberFormatSymbols_en = goog.require('goog.i18n.NumberFormatSymbols_en');
-const NumberFormatSymbols_fa = goog.require('goog.i18n.NumberFormatSymbols_fa');
-const NumberFormatSymbols_no = goog.require('goog.i18n.NumberFormatSymbols_no');
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
-const relative = goog.require('goog.date.relative');
-const relativeDateTimeSymbols = goog.require('goog.i18n.relativeDateTimeSymbols');
-const testSuite = goog.require('goog.testing.testSuite');
-const {assertI18nEquals} = goog.require('goog.testing.i18n.asserts');
+import { DateTime } from './date.js';
+import { DateTimeFormat } from '../i18n/datetimeformat.js';
+
+import {
+    DateTimePatterns_ar,
+    DateTimePatterns_bn,
+    DateTimePatterns_es,
+    DateTimePatterns_fa,
+    DateTimePatterns_fr,
+    DateTimePatterns_no,
+} from '../i18n/datetimepatterns.js';
+import * as DateTimePatternsModule from '../i18n/datetimepatterns.js';
+
+import {
+    DateTimeSymbols_ar,
+    DateTimeSymbols_bn,
+    DateTimeSymbols_es,
+    DateTimeSymbols_fa,
+    DateTimeSymbols_fr,
+    DateTimeSymbols_no,
+} from '../i18n/datetimesymbols.js';
+import * as DateTimeSymbolsModule from '../i18n/datetimesymbols.js';
+
+import {
+    NumberFormatSymbols,
+    NumberFormatSymbols_bn,
+    NumberFormatSymbols_en,
+    NumberFormatSymbols_fa,
+    NumberFormatSymbols_no,
+} from '../i18n/numberformatsymbols.js';
+import * as NumberFormatSymbolsModule from '../i18n/numberformatsymbols.js';
+
+import { PropertyReplacer } from '../testing/propertyreplacer.js';
+import * as relative from './relative.js';
+import * as relativeDateTimeSymbols from '../i18n/relativedatetimesymbols.js';
+import { testSuite } from '../testing/testsuite.js';
+import { assertI18nEquals } from '../testing/i18n/asserts.js';
 
 // Testing stubs that autoreset after each test run.
 /** @type {!PropertyReplacer} */
@@ -80,7 +93,7 @@ testSuite({
 
     stubs.replace(goog, 'LOCALE', 'en-US');
     /** @suppress {missingRequire} */
-    stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en);
+    stubs.set(NumberFormatSymbolsModule, 'NumberFormatSymbols', NumberFormatSymbols_en);
   },
 
   tearDown() {
@@ -155,7 +168,7 @@ testSuite({
 
 
   testFormatDayNotShort() {
-    stubs.set(relative, 'monthDateFormatter_', null);
+    relative.resetMonthDateFormatter_()
 
     const fn = relative.formatDay;
     assertI18nEquals('Sep 25', fn(timestamp('25 September 2009 10:31:06')));
@@ -163,7 +176,7 @@ testSuite({
   },
 
   testFormatDay() {
-    stubs.set(relative, 'monthDateFormatter_', null);
+    relative.resetMonthDateFormatter_()
 
     const fn = relative.formatDay;
     const formatter = new DateTimeFormat(DateTimeFormat.Format.SHORT_DATE);
@@ -217,14 +230,14 @@ testSuite({
     // ended that year, at a time after it ended that day)
     const daylightSavingEndMs = 1636358236277;
     goog.now = () => daylightSavingEndMs;
-    assertI18nEquals('today', relative.formatDay(daylightSavingEndMs));
+    assertI18nEquals('Today', relative.formatDay(daylightSavingEndMs));
 
     // March 14, 2021 11:12:34 pm PDT-07:00 (end of the day DST began)
     const daylightSavingStartMs = 1615788754000;
     // March 15, 2021 00:12:34 am PDT-07:00 (the day _after_ DST began)
     const nextDayMs = daylightSavingStartMs + 3600000;
     goog.now = () => daylightSavingStartMs;
-    assertI18nEquals('tomorrow', relative.formatDay(nextDayMs));
+    assertI18nEquals('Tomorrow', relative.formatDay(nextDayMs));
   },
 
   testGetDateString() {
@@ -281,9 +294,9 @@ testSuite({
     stubs.replace(goog, 'LOCALE', 'es');
 
     // Spanish locale 'es'
-    stubs.set(relative, 'monthDateFormatter_', null);
-    stubs.set(goog.i18n, 'DateTimeSymbols', DateTimeSymbols_es);
-    stubs.set(goog.i18n, 'DateTimePatterns', DateTimePatterns_es);
+    relative.resetMonthDateFormatter_()
+    stubs.set(DateTimeSymbolsModule, 'DateTimeSymbols', DateTimeSymbols_es);
+    stubs.set(DateTimePatternsModule, 'DateTimePatterns', DateTimePatterns_es);
 
     relativeDateTimeSymbols.setRelativeDateTimeSymbols(
         relativeDateTimeSymbols.RelativeDateTimeSymbols_es);
@@ -340,9 +353,9 @@ testSuite({
     // Frence locale 'fr'
     stubs.replace(goog, 'LOCALE', 'fr');
 
-    stubs.set(relative, 'monthDateFormatter_', null);
-    stubs.set(goog.i18n, 'DateTimeSymbols', DateTimeSymbols_fr);
-    stubs.set(goog.i18n, 'DateTimePatterns', DateTimePatterns_fr);
+    relative.resetMonthDateFormatter_()
+    stubs.set(DateTimeSymbolsModule, 'DateTimeSymbols', DateTimeSymbols_fr);
+    stubs.set(DateTimePatternsModule, 'DateTimePatterns', DateTimePatterns_fr);
 
     relativeDateTimeSymbols.setRelativeDateTimeSymbols(
         relativeDateTimeSymbols.RelativeDateTimeSymbols_fr);
@@ -397,9 +410,9 @@ testSuite({
     stubs.replace(goog, 'LOCALE', 'ar');
 
     // Arabic locale 'ar'
-    stubs.set(relative, 'monthDateFormatter_', null);
-    stubs.set(goog.i18n, 'DateTimeSymbols', DateTimeSymbols_ar);
-    stubs.set(goog.i18n, 'DateTimePatterns', DateTimePatterns_ar);
+    relative.resetMonthDateFormatter_()
+    stubs.set(DateTimeSymbolsModule, 'DateTimeSymbols', DateTimeSymbols_ar);
+    stubs.set(DateTimePatternsModule, 'DateTimePatterns', DateTimePatterns_ar);
 
     relativeDateTimeSymbols.setRelativeDateTimeSymbols(
         relativeDateTimeSymbols.RelativeDateTimeSymbols_ar);
@@ -419,10 +432,10 @@ testSuite({
   /* Tests for non-ASCII digits in formatter results */
 
   testFormatRelativeForPastDatesPersianDigits() {
-    stubs.set(relative, 'monthDateFormatter_', null);
-    stubs.set(goog.i18n, 'DateTimeSymbols', DateTimeSymbols_fa);
-    stubs.set(goog.i18n, 'DateTimePatterns', DateTimePatterns_fa);
-    stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_fa);
+    relative.resetMonthDateFormatter_()
+    stubs.set(DateTimeSymbolsModule, 'DateTimeSymbols', DateTimeSymbols_fa);
+    stubs.set(DateTimePatternsModule, 'DateTimePatterns', DateTimePatterns_fa);
+    stubs.set(NumberFormatSymbolsModule, 'NumberFormatSymbols', NumberFormatSymbols_fa);
 
     const fn = relative.format;
 
@@ -490,10 +503,10 @@ testSuite({
   },
 
   testFormatRelativeForFutureDatesBengaliDigits() {
-    stubs.set(relative, 'monthDateFormatter_', null);
-    stubs.set(goog.i18n, 'DateTimeSymbols', DateTimeSymbols_bn);
-    stubs.set(goog.i18n, 'DateTimePatterns', DateTimePatterns_bn);
-    stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_bn);
+    relative.resetMonthDateFormatter_()
+    stubs.set(DateTimeSymbolsModule, 'DateTimeSymbols', DateTimeSymbols_bn);
+    stubs.set(DateTimePatternsModule, 'DateTimePatterns', DateTimePatterns_bn);
+    stubs.set(NumberFormatSymbolsModule, 'NumberFormatSymbols', NumberFormatSymbols_bn);
 
     // Get Bengali digits
     stubs.replace(goog, 'LOCALE', 'en-u-nu-beng');
@@ -565,10 +578,10 @@ testSuite({
   },
 
   testFormatRelativeForFutureDatesNorwegian() {
-    stubs.set(relative, 'monthDateFormatter_', null);
-    stubs.set(goog.i18n, 'DateTimeSymbols', DateTimeSymbols_no);
-    stubs.set(goog.i18n, 'DateTimePatterns', DateTimePatterns_no);
-    stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_no);
+    relative.resetMonthDateFormatter_()
+    stubs.set(DateTimeSymbolsModule, 'DateTimeSymbols', DateTimeSymbols_no);
+    stubs.set(DateTimePatternsModule, 'DateTimePatterns', DateTimePatterns_no);
+    stubs.set(NumberFormatSymbolsModule, 'NumberFormatSymbols', NumberFormatSymbols_no);
 
     relativeDateTimeSymbols.setRelativeDateTimeSymbols(
         relativeDateTimeSymbols.RelativeDateTimeSymbols_no);

@@ -9,23 +9,21 @@
  * class name.
  */
 
-goog.provide('goog.ui.decorate');
+import * as registry from './registry.js';
 
-goog.require('goog.ui.registry');
-goog.requireType('goog.ui.Component');
+const { Component } = goog.requireType('goog.ui.component');
 
 
 /**
- * Decorates the element with a suitable {@link goog.ui.Component} instance, if
+ * Decorates the element with a suitable {@link Component} instance, if
  * a matching decorator is found.
  * @param {Element} element Element to decorate.
- * @return {goog.ui.Component?} New component instance, decorating the element.
+ * @return {Component?} New component instance, decorating the element.
  */
-goog.ui.decorate = function(element) {
-  'use strict';
-  var decorator = goog.ui.registry.getDecorator(element);
-  if (decorator) {
-    decorator.decorate(element);
-  }
-  return decorator;
-};
+export function decorate(element) {
+ var decorator = registry.getDecorator(element);
+ if (decorator) {
+   decorator.decorate(element);
+ }
+ return decorator;
+}

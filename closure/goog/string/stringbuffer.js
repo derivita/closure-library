@@ -8,7 +8,6 @@
  * @fileoverview Utility for fast string concatenation.
  */
 
-goog.provide('goog.string.StringBuffer');
 
 
 
@@ -20,11 +19,10 @@ goog.provide('goog.string.StringBuffer');
  *     append, e.g., new goog.string.StringBuffer('foo', 'bar').
  * @constructor
  */
-goog.string.StringBuffer = function(opt_a1, var_args) {
-  'use strict';
-  if (opt_a1 != null) {
-    this.append.apply(this, arguments);
-  }
+export function StringBuffer(opt_a1, var_args) {
+ if (opt_a1 != null) {
+   this.append.apply(this, arguments);
+ }
 };
 
 
@@ -33,7 +31,7 @@ goog.string.StringBuffer = function(opt_a1, var_args) {
  * @type {string}
  * @private
  */
-goog.string.StringBuffer.prototype.buffer_ = '';
+StringBuffer.prototype.buffer_ = '';
 
 
 /**
@@ -42,9 +40,8 @@ goog.string.StringBuffer.prototype.buffer_ = '';
  *
  * @param {*} s String to set.
  */
-goog.string.StringBuffer.prototype.set = function(s) {
-  'use strict';
-  this.buffer_ = '' + s;
+StringBuffer.prototype.set = function(s) {
+ this.buffer_ = '' + s;
 };
 
 
@@ -57,37 +54,34 @@ goog.string.StringBuffer.prototype.set = function(s) {
  * @param {*=} opt_a2 Optional second string.
  * @param {...?} var_args Other items to append,
  *     e.g., sb.append('foo', 'bar', 'baz').
- * @return {!goog.string.StringBuffer} This same StringBuffer object.
+ * @return {!StringBuffer} This same StringBuffer object.
  * @suppress {duplicate}
  */
-goog.string.StringBuffer.prototype.append = function(a1, opt_a2, var_args) {
-  'use strict';
-  // Use a1 directly to avoid arguments instantiation for single-arg case.
-  this.buffer_ += String(a1);
-  if (opt_a2 != null) {  // second argument is undefined (null == undefined)
-    for (let i = 1; i < arguments.length; i++) {
-      this.buffer_ += arguments[i];
-    }
-  }
-  return this;
+StringBuffer.prototype.append = function(a1, opt_a2, var_args) {
+ // Use a1 directly to avoid arguments instantiation for single-arg case.
+ this.buffer_ += String(a1);
+ if (opt_a2 != null) {  // second argument is undefined (null == undefined)
+   for (let i = 1; i < arguments.length; i++) {
+     this.buffer_ += arguments[i];
+   }
+ }
+ return this;
 };
 
 
 /**
  * Clears the internal buffer.
  */
-goog.string.StringBuffer.prototype.clear = function() {
-  'use strict';
-  this.buffer_ = '';
+StringBuffer.prototype.clear = function() {
+ this.buffer_ = '';
 };
 
 
 /**
  * @return {number} the length of the current contents of the buffer.
  */
-goog.string.StringBuffer.prototype.getLength = function() {
-  'use strict';
-  return this.buffer_.length;
+StringBuffer.prototype.getLength = function() {
+ return this.buffer_.length;
 };
 
 
@@ -95,7 +89,6 @@ goog.string.StringBuffer.prototype.getLength = function() {
  * @return {string} The concatenated string.
  * @override
  */
-goog.string.StringBuffer.prototype.toString = function() {
-  'use strict';
-  return this.buffer_;
+StringBuffer.prototype.toString = function() {
+ return this.buffer_;
 };

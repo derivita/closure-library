@@ -14,13 +14,12 @@
 /**
  * Namespace for locale specific country and lanugage names
  */
-goog.provide('goog.locale.defaultLocaleNameConstants');
 
 /**
  * Default list of locale specific country and language names
  * @const
  */
-goog.locale.defaultLocaleNameConstants = {
+export var defaultLocaleNameConstants = {
   'COUNTRY': {
     '001': 'world',
     '002': 'Africa',

@@ -11,33 +11,32 @@
  */
 
 /** @suppress {extraProvide} */
-goog.module('goog.editor.field_test');
 goog.setTestOnly();
 
-const BrowserEvent = goog.require('goog.events.BrowserEvent');
-const BrowserFeature = goog.require('goog.editor.BrowserFeature');
-const EventType = goog.require('goog.events.EventType');
-const Field = goog.require('goog.editor.Field');
-const GoogTestingEvent = goog.require('goog.testing.events.Event');
-const KeyCodes = goog.require('goog.events.KeyCodes');
-const LooseMock = goog.require('goog.testing.LooseMock');
-const MockClock = goog.require('goog.testing.MockClock');
-const Plugin = goog.require('goog.editor.Plugin');
-const Range = goog.require('goog.dom.Range');
-const SafeHtml = goog.require('goog.html.SafeHtml');
-const TagName = goog.require('goog.dom.TagName');
-const TestEvent = goog.require('goog.testing.events.Event');
-const classlist = goog.require('goog.dom.classlist');
-const editorRange = goog.require('goog.editor.range');
-const events = goog.require('goog.events');
-const functions = goog.require('goog.functions');
-const googDom = goog.require('goog.dom');
-const platform = goog.require('goog.labs.userAgent.platform');
-const recordFunction = goog.require('goog.testing.recordFunction');
-const testSuite = goog.require('goog.testing.testSuite');
-const testingDom = goog.require('goog.testing.dom');
-const testingEvents = goog.require('goog.testing.events');
-const userAgent = goog.require('goog.userAgent');
+import { BrowserEvent } from '../events/browserevent.js';
+import { BrowserFeature } from './browserfeature.js';
+import { EventType } from '../events/eventtype.js';
+import { Field } from './field.js';
+import * as testingEvents from '../testing/events/events.js';
+import { Event as TestEvent } from '../testing/events/events.js';
+import { KeyCodes } from '../events/keycodes.js';
+import { LooseMock } from '../testing/loosemock.js';
+import { MockClock } from '../testing/mockclock.js';
+import { Plugin } from './plugin.js';
+import * as Range from '../dom/range.js';
+import { SafeHtml } from '../html/safehtml.js';
+import { TagName } from '../dom/tagname.js';
+import * as classlist from '../dom/classlist.js';
+import * as editorRange from './range.js';
+import * as events from '../events/events.js';
+import * as functions from '../functions/functions.js';
+import * as googDom from '../dom/dom.js';
+import platform from '../labs/useragent/platform.js';
+import { recordFunction } from '../testing/recordfunction.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as testingDom from '../testing/dom.js';
+import * as userAgent from '../useragent/useragent.js';
+import { Event } from '../events/event.js';
 
 /** Hard-coded HTML for the tests. */
 const HTML = '<div id="testField">I am text.</div>';
@@ -75,7 +74,7 @@ class TestPlugin extends Plugin {
 const STRING_KEY = String.fromCharCode(KeyCodes.A).toLowerCase();
 
 /**
- * @return {!events.Event} Returns an event for a keyboard shortcut for the
+ * @return {!Event} Returns an event for a keyboard shortcut for the
  *     letter 'a'.
  */
 function getBrowserEvent() {
@@ -564,7 +563,7 @@ testSuite({
     editableField.makeEditable();
 
     testingEvents.fireBrowserEvent(
-        new GoogTestingEvent('cut', editableField.getElement()));
+        new TestEvent('cut', editableField.getElement()));
     assertEquals(
         'Cut event should be on a timer', 0, delayedChanges.getCallCount());
     clock.tick(1000);
@@ -573,7 +572,7 @@ testSuite({
         delayedChanges.getCallCount());
 
     testingEvents.fireBrowserEvent(
-        new GoogTestingEvent('paste', editableField.getElement()));
+        new TestEvent('paste', editableField.getElement()));
     assertEquals(
         'Paste event should be on a timer', 1, delayedChanges.getCallCount());
     clock.tick(1000);

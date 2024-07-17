@@ -8,15 +8,11 @@
  * @fileoverview adaptor of XhrStreamReader to the NodeReadableStream interface.
  */
 
-goog.module('goog.net.streams.xhrNodeReadableStream');
+import { NodeReadableStream } from './nodereadablestream.js';
 
-goog.module.declareLegacyNamespace();
-
-const NodeReadableStream = goog.require('goog.net.streams.NodeReadableStream');
-const googArray = goog.require('goog.array');
-const googLog = goog.require('goog.log');
-const {XhrStreamReader, XhrStreamReaderStatus} = goog.require('goog.net.streams.xhrStreamReader');
-
+import * as googArray from '../../array/array.js';
+import * as googLog from '../../log/log.js';
+import {XhrStreamReader, XhrStreamReaderStatus} from './xhrstreamreader.js';
 
 /**
  * The XhrNodeReadableStream class.
@@ -255,4 +251,4 @@ class XhrNodeReadableStream {
   }
 }
 
-exports = {XhrNodeReadableStream};
+export default {XhrNodeReadableStream};

@@ -11,10 +11,6 @@
  */
 
 
-goog.provide('goog.graphics.Font');
-
-
-
 /**
  * This class represents a font to be used with a renderer.
  * @param {number} size  The font size.
@@ -25,20 +21,19 @@ goog.provide('goog.graphics.Font');
  *     http://en.wikipedia.org/wiki/Canvas_element for details.
  * @final
  */
-goog.graphics.Font = function(size, family) {
-  'use strict';
-  /**
-   * Font size.
-   * @type {number}
-   */
-  this.size = size;
-  // TODO(arv): Is this in pixels or drawing units based on the coord size?
+export function Font(size, family) {
+ /**
+  * Font size.
+  * @type {number}
+  */
+ this.size = size;
+ // TODO(arv): Is this in pixels or drawing units based on the coord size?
 
-  /**
-   * The name of the font family to use, can be a comma separated string.
-   * @type {string}
-   */
-  this.family = family;
+ /**
+  * The name of the font family to use, can be a comma separated string.
+  * @type {string}
+  */
+ this.family = family;
 };
 
 
@@ -46,11 +41,11 @@ goog.graphics.Font = function(size, family) {
  * Indication if text should be bolded
  * @type {boolean}
  */
-goog.graphics.Font.prototype.bold = false;
+Font.prototype.bold = false;
 
 
 /**
  * Indication if text should be in italics
  * @type {boolean}
  */
-goog.graphics.Font.prototype.italic = false;
+Font.prototype.italic = false;

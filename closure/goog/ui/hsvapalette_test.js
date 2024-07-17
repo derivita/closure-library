@@ -9,18 +9,18 @@
  * @suppress {missingRequire} Stubbing goog.dom
  */
 
-goog.module('goog.ui.HsvaPaletteTest');
 goog.setTestOnly();
 
-const Coordinate = goog.require('goog.math.Coordinate');
-const GoogEvent = goog.require('goog.events.Event');
-const HsvaPalette = goog.require('goog.ui.HsvaPalette');
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
-const TagName = goog.require('goog.dom.TagName');
-const classlist = goog.require('goog.dom.classlist');
-const colorAlpha = goog.require('goog.color.alpha');
-const style = goog.require('goog.style');
-const testSuite = goog.require('goog.testing.testSuite');
+import { Coordinate } from '../math/coordinate.js';
+import { Event as GoogEvent } from '../events/event.js';
+import { HsvaPalette } from './hsvapalette.js';
+import { PropertyReplacer } from '../testing/propertyreplacer.js';
+import { TagName } from '../dom/tagname.js';
+import * as classlist from '../dom/classlist.js';
+import * as colorAlpha from '../color/alpha.js';
+import * as style from '../style/style.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as dom from '../dom/dom.js';
 
 let samplePalette;
 const stubs = new PropertyReplacer();
@@ -95,7 +95,7 @@ testSuite({
   /** @suppress {visibility} suppression added to enable type checking */
   testHandleMouseMoveAlpha() {
     samplePalette.render(document.getElementById('sandbox'));
-    stubs.set(goog.dom, 'getPageScroll', () => new Coordinate(0, 0));
+    stubs.set(dom, 'getPageScroll', () => new Coordinate(0, 0));
 
     // Lowering the opacity of a dark, opaque red should yield a
     // more transparent red.

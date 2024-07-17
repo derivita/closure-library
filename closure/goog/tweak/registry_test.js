@@ -4,25 +4,26 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.tweak.RegistryTest');
 goog.setTestOnly();
 
-const testSuite = goog.require('goog.testing.testSuite');
+import { testSuite } from '../testing/testsuite.js';
+
 /** @suppress {extraRequire} needed for createRegistryEntries. */
-const testhelpers = goog.require('goog.tweak.testhelpers');
-const tweak = goog.require('goog.tweak');
+import * as testhelpers from './testhelpers.js';
+
+import * as tweak from './tweak.js';
 
 let registry;
 
 testSuite({
   setUp() {
-    createRegistryEntries('');
+    testhelpers.createRegistryEntries('');
     registry = tweak.getRegistry();
   },
 
   tearDown() {
     /** @suppress {visibility} suppression added to enable type checking */
-    tweak.registry_ = null;
+    tweak.setRegistry_(null);
   },
 
   testGetBaseEntry() {
@@ -47,7 +48,7 @@ testSuite({
      */
     function assertQuery(
         queryStr, boolValue, enumValue, strValue, subBoolValue, subBoolValue2) {
-      createRegistryEntries(queryStr);
+      testhelpers.createRegistryEntries(queryStr);
       assertEquals(
           `Wrong bool value for query: ${queryStr}`, boolValue,
           boolEntry.getValue());

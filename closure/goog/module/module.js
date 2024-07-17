@@ -12,8 +12,6 @@
  *   <http://go/js_modules_design>
  */
 
-goog.provide('goog.module');
-
 // TODO(johnlenz): Here we explicitly initialize the namespace to avoid
 // problems with the goog.module method in base.js. We should rename this
 // entire package to goog.loader and then we can delete this file.
@@ -23,4 +21,4 @@ goog.provide('goog.module');
  * @suppress {duplicate}
  * @type {function(string):void}
  */
-goog.module = goog.module || {};
+goog.module = goog.module || {}

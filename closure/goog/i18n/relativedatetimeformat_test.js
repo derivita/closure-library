@@ -9,27 +9,32 @@
  * @suppress {missingRequire} Swapping using fully qualified name
  */
 
-goog.module('goog.i18n.RelativeDateTimeFormatTest');
 goog.setTestOnly('goog.i18n.RelativeDateTimeFormatTest');
 
-const LocaleFeature = goog.require('goog.i18n.LocaleFeature');
-const NumberFormatSymbols_ar_EG = goog.require('goog.i18n.NumberFormatSymbols_ar_EG');
-const NumberFormatSymbols_en = goog.require('goog.i18n.NumberFormatSymbols_en');
-const NumberFormatSymbols_es = goog.require('goog.i18n.NumberFormatSymbols_es');
-const NumberFormatSymbols_fa = goog.require('goog.i18n.NumberFormatSymbols_fa');
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
-const RelativeDateTimeFormat = goog.require('goog.i18n.RelativeDateTimeFormat');
-const assertI18n = goog.require('goog.testing.i18n.asserts');
-const relativeDateTimeSymbols = goog.require('goog.i18n.relativeDateTimeSymbols');
-const relativeDateTimeSymbolsExt = goog.require('goog.i18n.relativeDateTimeSymbolsExt');
-const testSuite = goog.require('goog.testing.testSuite');
+import * as LocaleFeature from './localefeature.js';
+
+import {
+  NumberFormatSymbols_ar_EG,
+  NumberFormatSymbols_en,
+  NumberFormatSymbols_es,
+  NumberFormatSymbols_fa,
+} from './numberformatsymbols.js';
+import * as numberformatsymbols from './numberformatsymbols.js';
+
+import { PropertyReplacer } from '../testing/propertyreplacer.js';
+import { RelativeDateTimeFormat } from './relativedatetimeformat.js';
+import * as assertI18n from '../testing/i18n/asserts.js';
+import * as relativeDateTimeSymbols from './relativedatetimesymbols.js';
+import * as relativeDateTimeSymbolsExt from './relativedatetimesymbolsext.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as pluralRules from './pluralrules.js';
 
 /** @suppress {visibility} suppression added to enable type checking */
-const Plurals_en = goog.i18n.pluralRules.enSelect_;
+const Plurals_en = pluralRules.enSelect_;
 /** @suppress {visibility} suppression added to enable type checking */
-const Plurals_he = goog.i18n.pluralRules.heSelect_;
+const Plurals_he = pluralRules.heSelect_;
 /** @suppress {visibility} suppression added to enable type checking */
-const Plurals_ar = goog.i18n.pluralRules.arSelect_;
+const Plurals_ar = pluralRules.arSelect_;
 
 // For changing values in test
 let propertyReplacer;
@@ -344,8 +349,8 @@ testSuite({
     /**
      * @suppress {constantProperty} suppression added to enable type checking
      */
-    goog.i18n.NumberFormatSymbols = NumberFormatSymbols_en;
-    goog.i18n.pluralRules.select = Plurals_en;
+    numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_en);
+    pluralRules.$set('select', Plurals_en);
     propertyReplacer.replace(LocaleFeature, 'USE_ECMASCRIPT_I18N_RDTF', false);
   },
 
@@ -353,7 +358,7 @@ testSuite({
     /**
      * @suppress {constantProperty} suppression added to enable type checking
      */
-    goog.i18n.NumberFormatSymbols = NumberFormatSymbols_en;
+    numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_en);
     // Use computed properties to avoid compiler checks of defines.
     goog['LOCALE'] = 'en';
   },
@@ -393,7 +398,7 @@ testSuite({
       /**
        * @suppress {constantProperty} suppression added to enable type checking
        */
-      goog.i18n.NumberFormatSymbols = NumberFormatSymbols_en;
+      numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_en);
       for (let i = 0; i < formatNumericTestData.length; i++) {
         const data = formatNumericTestData[i];
         const symbols = localeSymbols[data.locale];
@@ -431,7 +436,7 @@ testSuite({
       /**
        * @suppress {constantProperty} suppression added to enable type checking
        */
-      goog.i18n.NumberFormatSymbols = NumberFormatSymbols_es;
+      numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_es);
       // Use computed properties to avoid compiler checks of defines.
       goog['LOCALE'] = 'es';
       /** @suppress {checkTypes} suppression added to enable type checking */
@@ -481,7 +486,7 @@ testSuite({
       /**
        * @suppress {constantProperty} suppression added to enable type checking
        */
-      goog.i18n.NumberFormatSymbols = NumberFormatSymbols_es;
+      numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_es);
       // Use computed properties to avoid compiler checks of defines.
       goog['LOCALE'] = 'es';
       for (let i = 0; i < formatNumericSpanishData.length; i++) {
@@ -519,7 +524,7 @@ testSuite({
          * @suppress {constantProperty} suppression added to enable type
          * checking
          */
-        goog.i18n.NumberFormatSymbols = NumberFormatSymbols_fa;
+        numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_fa);
 
         // Use computed properties to avoid compiler checks of defines.
         goog['LOCALE'] = data.locale;
@@ -550,11 +555,11 @@ testSuite({
          * @suppress {constantProperty} suppression added to enable type
          * checking
          */
-        goog.i18n.NumberFormatSymbols = NumberFormatSymbols_ar_EG;
+        numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_ar_EG);
 
         // Use computed properties to avoid compiler checks of defines.
         goog['LOCALE'] = data.locale;
-        goog.i18n.pluralRules.select = data.pluralrules;
+        pluralRules.$set('select', data.pluralrules);
         /**
          * @suppress {strictMissingProperties} suppression added to enable type
          * checking
@@ -588,9 +593,9 @@ testSuite({
             symbols.RelativeDateTimeFormatSymbols);
 
         if (data.pluralrules) {
-          goog.i18n.pluralRules.select = data.pluralrules;
+          pluralRules.$set('select', data.pluralrules);
         } else {
-          goog.i18n.pluralRules.select = Plurals_en;
+          pluralRules.$set('select', Plurals_en);
         }
 
         /* Only test ECMAScript mode if locale data is expected */
@@ -610,7 +615,7 @@ testSuite({
       /**
        * @suppress {constantProperty} suppression added to enable type checking
        */
-      goog.i18n.NumberFormatSymbols = NumberFormatSymbols_en;
+      numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_en);
       for (let i = 0; i < forcedNumericTestData.length; i++) {
         const data = forcedNumericTestData[i];
         const symbols = localeSymbols[data.locale];
@@ -638,7 +643,7 @@ testSuite({
       /**
        * @suppress {constantProperty} suppression added to enable type checking
        */
-      goog.i18n.NumberFormatSymbols = NumberFormatSymbols_en;
+      numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_en);
       for (let i = 0; i < formatNumericRtlData.length; i++) {
         const data = formatNumericRtlData[i];
         const symbols = localeSymbols[data.locale];
@@ -646,7 +651,7 @@ testSuite({
         goog['LOCALE'] = data.locale;
 
         // Explicitly set plural rules to get correct option.
-        goog.i18n.pluralRules.select = data.pluralrules;
+        pluralRules.$set('select', data.pluralrules);
 
         /**
          * @suppress {strictMissingProperties} suppression added to enable type
@@ -672,7 +677,7 @@ testSuite({
         const symbols = localeSymbols[data.locale];
         // Use computed properties to avoid compiler checks of defines.
         goog['LOCALE'] = data.locale;
-        goog.i18n.pluralRules.select = data.pluralrules;
+        pluralRules.$set('select', data.pluralrules);
         /**
          * @suppress {strictMissingProperties} suppression added to enable type
          * checking

@@ -10,12 +10,12 @@
  */
 
 
-goog.provide('goog.graphics.RectElement');
+goog.declareModuleId('goog.graphics.rectelement');
 
-goog.require('goog.graphics.StrokeAndFillElement');
-goog.requireType('goog.graphics.AbstractGraphics');
-goog.requireType('goog.graphics.Fill');
-goog.requireType('goog.graphics.Stroke');
+import { StrokeAndFillElement } from './strokeandfillelement.js';
+const { AbstractGraphics } = goog.requireType('goog.graphics.abstractgraphics');
+const { Fill } = goog.requireType('goog.graphics.fill');
+const { Stroke } = goog.requireType('goog.graphics.stroke');
 
 
 
@@ -24,22 +24,21 @@ goog.requireType('goog.graphics.Stroke');
  * You should not construct objects from this constructor. The graphics
  * will return an implementation of this interface for you.
  * @param {Element} element The DOM element to wrap.
- * @param {goog.graphics.AbstractGraphics} graphics The graphics creating
+ * @param {AbstractGraphics} graphics The graphics creating
  *     this element.
- * @param {goog.graphics.Stroke?} stroke The stroke to use for this element.
- * @param {goog.graphics.Fill?} fill The fill to use for this element.
+ * @param {Stroke?} stroke The stroke to use for this element.
+ * @param {Fill?} fill The fill to use for this element.
  * @constructor
- * @extends {goog.graphics.StrokeAndFillElement}
+ * @extends {StrokeAndFillElement}
  * @deprecated goog.graphics is deprecated. It existed to abstract over browser
  *     differences before the canvas tag was widely supported.  See
  *     http://en.wikipedia.org/wiki/Canvas_element for details.
  */
-goog.graphics.RectElement = function(element, graphics, stroke, fill) {
-  'use strict';
-  goog.graphics.StrokeAndFillElement.call(
-      this, element, graphics, stroke, fill);
-};
-goog.inherits(goog.graphics.RectElement, goog.graphics.StrokeAndFillElement);
+export function RectElement(element, graphics, stroke, fill) {
+ StrokeAndFillElement.call(
+     this, element, graphics, stroke, fill);
+}
+goog.inherits(RectElement, StrokeAndFillElement);
 
 
 /**
@@ -47,7 +46,7 @@ goog.inherits(goog.graphics.RectElement, goog.graphics.StrokeAndFillElement);
  * @param {number} x X coordinate (left).
  * @param {number} y Y coordinate (top).
  */
-goog.graphics.RectElement.prototype.setPosition = goog.abstractMethod;
+RectElement.prototype.setPosition = goog.abstractMethod;
 
 
 /**
@@ -55,4 +54,4 @@ goog.graphics.RectElement.prototype.setPosition = goog.abstractMethod;
  * @param {number} width Width of rectangle.
  * @param {number} height Height of rectangle.
  */
-goog.graphics.RectElement.prototype.setSize = goog.abstractMethod;
+RectElement.prototype.setSize = goog.abstractMethod;

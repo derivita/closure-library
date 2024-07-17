@@ -4,20 +4,19 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.labs.mockTest');
 goog.setTestOnly('goog.labs.mockTest');
 
-const TimeoutError = goog.require('goog.labs.mock.TimeoutError');
-const VerificationError = goog.require('goog.labs.mock.VerificationError');
-const array = goog.require('goog.array');
-const mock = goog.require('goog.labs.mock');
-const mockTimeout = goog.require('goog.labs.mock.timeout');
-const string = goog.require('goog.string');
-const testSuite = goog.require('goog.testing.testSuite');
+import * as mock from './mock.js';
+import { TimeoutError, VerificationError } from './mock.js';
+import * as array from '../../array/array.js';
+import * as mockTimeout from './timeoutmode.js';
+import * as googString from '../../string/string.js';
+import { testSuite } from '../../testing/testsuite.js';
+import * as verification from './verificationmode.js';
+
 /** @suppress {extraRequire} Declares globals */
-goog.require('goog.labs.testing.AnythingMatcher');
 /** @suppress {extraRequire} Declares globals */
-goog.require('goog.labs.testing.GreaterThanMatcher');
+import { AnythingMatcher, GreaterThanMatcher } from '../testing/matchers.js';
 
 const ParentClass = function() {};
 ParentClass.prototype.method1 = function() {};
@@ -281,9 +280,9 @@ testSuite({
     const mockObj = mock.mock(obj);
     mock.when(mockObj).property.get().thenReturn('test');
 
-    mock.verify(mockObj, mock.verification.times(0)).property.get();
+    mock.verify(mockObj, verification.times(0)).property.get();
     assertEquals('test', mockObj.property);
-    mock.verify(mockObj, mock.verification.times(1)).property.get();
+    mock.verify(mockObj, verification.times(1)).property.get();
     // Set is not defined.
     assertThrows(() => {
       mockObj.property = 42;
@@ -292,7 +291,7 @@ testSuite({
       mock.when(mockObj).property.set().thenReturn('test');
     });
     assertThrows(() => {
-      mock.verify(mockObj, mock.verification.times(0)).property.set();
+      mock.verify(mockObj, verification.times(0)).property.set();
     });
   },
 
@@ -309,17 +308,17 @@ testSuite({
 
     const mockObj = mock.mock(obj);
 
-    mock.verify(mockObj, mock.verification.times(0)).property.set(42);
+    mock.verify(mockObj, verification.times(0)).property.set(42);
     mockObj.property = 42;
-    mock.verify(mockObj, mock.verification.times(1)).property.set(42);
-    mock.verify(mockObj, mock.verification.times(0)).property.set(1);
+    mock.verify(mockObj, verification.times(1)).property.set(42);
+    mock.verify(mockObj, verification.times(0)).property.set(1);
     // Get is not defined.
     assertUndefined(mockObj.property);
     assertThrows(() => {
       mock.when(mockObj).property.get().thenReturn('test');
     });
     assertThrows(() => {
-      mock.verify(mockObj, mock.verification.times(0)).property.get();
+      mock.verify(mockObj, verification.times(0)).property.get();
     });
   },
 
@@ -344,8 +343,8 @@ testSuite({
     mockObj.property = 42;
     assertEquals(42, mockObj.property);
 
-    mock.verify(mockObj, mock.verification.times(2)).property.get();
-    mock.verify(mockObj, mock.verification.times(1)).property.set(42);
+    mock.verify(mockObj, verification.times(2)).property.get();
+    mock.verify(mockObj, verification.times(1)).property.set(42);
   },
 
   testMockFunctions() {
@@ -681,7 +680,7 @@ testSuite({
     // The mode description should be between the expected method
     // invocation and a newline.
     assertTrue(
-        string.contains(e.message, 'methodName() ' + modeDescription + '\n'));
+        googString.contains(e.message, 'methodName() ' + modeDescription + '\n'));
   },
 
 
@@ -797,7 +796,7 @@ testSuite({
   async testWaitOnMultipleMethodCalls() {
     const mockParent = mock.mock(ParentClass);
     const timeoutMode = mockTimeout.timeout(150);
-    const verificationMode = mock.verification.times(2);
+    const verificationMode = verification.times(2);
 
     setTimeout(/**
                   @suppress {strictMissingProperties} suppression added to
@@ -823,7 +822,7 @@ testSuite({
   async testMockFunctionWaitOnMultipleMethodCalls() {
     const mockFunc = mock.mockFunction();
     const timeoutMode = mockTimeout.timeout(150);
-    const verificationMode = mock.verification.times(2);
+    const verificationMode = verification.times(2);
 
     setTimeout(() => {
       mockFunc();
@@ -959,7 +958,7 @@ testSuite({
    */
   async testWaitWithVerificationMode() {
     const mockParent = mock.mock(ParentClass);
-    const verificationMode = mock.verification.times(2);
+    const verificationMode = verification.times(2);
 
     mockParent.method1();
 
@@ -981,7 +980,7 @@ testSuite({
     const func = function() {};
     const funcId = mock.getUid(func);
     const mockFunc = mock.mockFunction(func);
-    const verificationMode = mock.verification.times(2);
+    const verificationMode = verification.times(2);
 
     mockFunc();
 
@@ -1024,7 +1023,7 @@ testSuite({
   async testWaitWithTimeoutAndVerificationMode() {
     const mockParent = mock.mock(ParentClass);
     const timeoutMode = mockTimeout.timeout(150);
-    const verificationMode = mock.verification.times(2);
+    const verificationMode = verification.times(2);
 
     setTimeout(/**
                   @suppress {strictMissingProperties} suppression added to
@@ -1065,7 +1064,7 @@ testSuite({
     const funcId = mock.getUid(func);
     const mockFunc = mock.mockFunction(func);
     const timeoutMode = mockTimeout.timeout(150);
-    const verificationMode = mock.verification.times(2);
+    const verificationMode = verification.times(2);
 
     setTimeout(() => {
       mockFunc();
@@ -1093,7 +1092,7 @@ testSuite({
   async testPassingVerificationModeBeforeTimeoutMode() {
     const mockParent = mock.mock(ParentClass);
     const timeoutMode = mockTimeout.timeout(150);
-    const verificationMode = mock.verification.times(2);
+    const verificationMode = verification.times(2);
 
     setTimeout(/**
                   @suppress {strictMissingProperties} suppression added to
@@ -1134,7 +1133,7 @@ testSuite({
     const funcId = mock.getUid(func);
     const mockFunc = mock.mockFunction(func);
     const timeoutMode = mockTimeout.timeout(150);
-    const verificationMode = mock.verification.times(2);
+    const verificationMode = verification.times(2);
 
     setTimeout(() => {
       mockFunc();
@@ -1280,8 +1279,8 @@ testSuite({
     const f2 = function() {};
     const named = function myName() {};
 
-    assert(string.startsWith(mock.getFunctionName_(f1), '#anonymous'));
-    assert(string.startsWith(mock.getFunctionName_(f2), '#anonymous'));
+    assert(googString.startsWith(mock.getFunctionName_(f1), '#anonymous'));
+    assert(googString.startsWith(mock.getFunctionName_(f2), '#anonymous'));
     assertNotEquals(mock.getFunctionName_(f1), mock.getFunctionName_(f2));
     assertEquals('myName', mock.getFunctionName_(named));
   },

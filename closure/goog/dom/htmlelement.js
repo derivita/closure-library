@@ -4,10 +4,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.provide('goog.dom.HtmlElement');
-
-
-
 /**
  * This subclass of HTMLElement is used when only a HTMLElement is possible and
  * not any of its subclasses. Normally, a type can refer to an instance of
@@ -18,4 +14,4 @@ goog.provide('goog.dom.HtmlElement');
  * @constructor
  * @extends {HTMLElement}
  */
-goog.dom.HtmlElement = function() {};
+export function HtmlElement() {};

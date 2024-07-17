@@ -15,23 +15,22 @@
  * @supported IE 10+, Chrome 26+, Firefox 22+, Safari 7.1+, Opera 15+
  */
 
-goog.module('goog.html.sanitizer.SafeDomTreeProcessor');
-goog.module.declareLegacyNamespace();
+import { Const } from '../../string/const.js';
 
-const Const = goog.require('goog.string.Const');
-const ElementWeakMap = goog.require('goog.html.sanitizer.ElementWeakMap');
-const Logger = goog.require('goog.log.Logger');
-const NodeType = goog.require('goog.dom.NodeType');
-const googDom = goog.require('goog.dom');
-const googLog = goog.require('goog.log');
-const noclobber = goog.require('goog.html.sanitizer.noclobber');
-const safe = goog.require('goog.dom.safe');
-const uncheckedconversions = goog.require('goog.html.uncheckedconversions');
-const userAgent = goog.require('goog.userAgent');
-const {createInertDocument} = goog.require('goog.html.sanitizer.inertDocument');
+import { ElementWeakMap } from './elementweakmap.js';
+import * as log from '../../log/log.js';
+const Logger = log.Logger;
+import { NodeType } from '../../dom/nodetype.js';
+import * as googDom from '../../dom/dom.js';
+import * as noclobber from './noclobber.js';
+import * as safe from '../../dom/safe.js';
+import * as uncheckedconversions from '../uncheckedconversions.js';
+import * as userAgent from '../../useragent/useragent.js';
+import * as inertDocument from './inertdocument.js';
+const {createInertDocument} = inertDocument;
 
 /** @const {?Logger} */
-var logger = googLog.getLogger('goog.html.sanitizer.SafeDomTreeProcessor');
+var logger = log.getLogger('goog.html.sanitizer.SafeDomTreeProcessor');
 
 /**
  * Whether the HTML sanitizer is supported. For now mainly exclude
@@ -245,7 +244,7 @@ SafeDomTreeProcessor.prototype.createNode_ = function(originalNode) {
     case NodeType.ELEMENT:
       return this.createElement_(noclobber.assertNodeIsElement(originalNode));
     default:
-      googLog.warning(logger, 'Dropping unknown node type: ' + nodeType);
+      log.warning(logger, 'Dropping unknown node type: ' + nodeType);
       return null;
   }
 };
@@ -331,4 +330,4 @@ SafeDomTreeProcessor.prototype.processElementAttribute = function(
 
 /** @const {boolean} */
 SafeDomTreeProcessor.SAFE_PARSING_SUPPORTED = SAFE_PARSING_SUPPORTED;
-exports = SafeDomTreeProcessor;
+export { SafeDomTreeProcessor };

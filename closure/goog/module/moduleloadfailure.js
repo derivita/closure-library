@@ -9,8 +9,7 @@
  * fired. Moved to a separate file to allow it to be used across packages.
  */
 
-goog.module('goog.module.ModuleLoadFailure');
-goog.module.declareLegacyNamespace();
+goog.declareModuleId('goog.module.ModuleLoadFailure');
 
 class ModuleLoadFailure {
   /**
@@ -62,7 +61,7 @@ class ModuleLoadFailure {
  * The possible reasons for a module load failure callback being fired.
  * @enum {number}
  */
-const Type = {
+ModuleLoadFailure.Type = {
   /** 401 Status. */
   UNAUTHORIZED: 0,
 
@@ -79,5 +78,4 @@ const Type = {
   INIT_ERROR: 4
 };
 
-exports = ModuleLoadFailure;
-exports.Type = Type;
+export { ModuleLoadFailure };

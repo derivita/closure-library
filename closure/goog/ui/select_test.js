@@ -4,22 +4,21 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.ui.SelectTest');
 goog.setTestOnly();
 
-const Component = goog.require('goog.ui.Component');
-const CustomButtonRenderer = goog.require('goog.ui.CustomButtonRenderer');
-const Menu = goog.require('goog.ui.Menu');
-const MenuItem = goog.require('goog.ui.MenuItem');
-const Role = goog.require('goog.a11y.aria.Role');
-const Select = goog.require('goog.ui.Select');
-const Separator = goog.require('goog.ui.Separator');
-const State = goog.require('goog.a11y.aria.State');
-const aria = goog.require('goog.a11y.aria');
-const dom = goog.require('goog.dom');
-const events = goog.require('goog.events');
-const recordFunction = goog.require('goog.testing.recordFunction');
-const testSuite = goog.require('goog.testing.testSuite');
+import { Component } from './component.js';
+import { CustomButtonRenderer } from './custombuttonrenderer.js';
+import { Menu } from './menu.js';
+import { MenuItem } from './menuitem.js';
+import { Role } from '../a11y/aria/roles.js';
+import { Select } from './select.js';
+import { Separator } from './separator.js';
+import { State } from '../a11y/aria/attributes.js';
+import * as aria from '../a11y/aria/aria.js';
+import * as dom from '../dom/dom.js';
+import * as events from '../events/events.js';
+import { recordFunction } from '../testing/recordfunction.js';
+import { testSuite } from '../testing/testsuite.js';
 
 const defaultCaption = 'initial caption';
 let sandboxEl;
@@ -107,11 +106,11 @@ testSuite({
     select.addItem(item1);
     select.addItem(item2);
 
-    item1.dispatchEvent(Component.EventType.ACTION);
+    item1.dispatchEvent(Component.ComponentEventType.ACTION);
     assertEquals(item1, select.getSelectedItem());
     assertEquals(item1.getCaption(), select.getCaption());
 
-    item2.dispatchEvent(Component.EventType.ACTION);
+    item2.dispatchEvent(Component.ComponentEventType.ACTION);
     assertEquals(item2, select.getSelectedItem());
     assertEquals(item2.getCaption(), select.getCaption());
   },
@@ -166,15 +165,15 @@ testSuite({
     select.addItem(item3);
 
     component.addChild(select, true);
-    item2.dispatchEvent(Component.EventType.ACTION);
+    item2.dispatchEvent(Component.ComponentEventType.ACTION);
     assertEquals(item2.getCaption(), select.getCaption());
 
     component.removeChild(select, true);
-    item1.dispatchEvent(Component.EventType.ACTION);
+    item1.dispatchEvent(Component.ComponentEventType.ACTION);
     assertEquals(item2.getCaption(), select.getCaption());
 
     component.addChild(select, true);
-    item3.dispatchEvent(Component.EventType.ACTION);
+    item3.dispatchEvent(Component.ComponentEventType.ACTION);
     assertEquals(item3.getCaption(), select.getCaption());
   },
 
@@ -187,7 +186,7 @@ testSuite({
 
     /** @suppress {checkTypes} suppression added to enable type checking */
     const recordingHandler = new recordFunction();
-    events.listen(select, Component.EventType.CHANGE, recordingHandler);
+    events.listen(select, Component.ComponentEventType.CHANGE, recordingHandler);
 
     select.setSelectedItem(item2);
     assertEquals(
@@ -219,11 +218,11 @@ testSuite({
 
     /** @suppress {checkTypes} suppression added to enable type checking */
     const recordingHandler = new recordFunction();
-    events.listen(select, Component.EventType.CHANGE, recordingHandler);
+    events.listen(select, Component.ComponentEventType.CHANGE, recordingHandler);
 
     select.setOpen(true);
 
-    item2.dispatchEvent(Component.EventType.ACTION);
+    item2.dispatchEvent(Component.ComponentEventType.ACTION);
     assertEquals(
         'Selecting new item should fire CHANGE event.', 1,
         recordingHandler.getCallCount());
@@ -231,7 +230,7 @@ testSuite({
 
     select.setOpen(true);
 
-    item2.dispatchEvent(Component.EventType.ACTION);
+    item2.dispatchEvent(Component.ComponentEventType.ACTION);
     assertEquals(
         'Selecting the same item should not fire CHANGE event.', 1,
         recordingHandler.getCallCount());

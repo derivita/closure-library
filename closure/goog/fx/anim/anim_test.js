@@ -4,21 +4,20 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.fx.animTest');
 goog.setTestOnly();
 
-const Animation = goog.require('goog.fx.Animation');
-const AnimationDelay = goog.require('goog.async.AnimationDelay');
-const Delay = goog.require('goog.async.Delay');
-const MockClock = goog.require('goog.testing.MockClock');
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
-const events = goog.require('goog.events');
-const functions = goog.require('goog.functions');
-const fxAnim = goog.require('goog.fx.anim');
-const googObject = goog.require('goog.object');
-const recordFunction = goog.require('goog.testing.recordFunction');
-const testSuite = goog.require('goog.testing.testSuite');
-const userAgent = goog.require('goog.userAgent');
+import { Animation } from '../animation.js';
+import { AnimationDelay } from '../../async/animationdelay.js';
+import { Delay } from '../../async/delay.js';
+import { MockClock } from '../../testing/mockclock.js';
+import { PropertyReplacer } from '../../testing/propertyreplacer.js';
+import * as events from '../../events/events.js';
+import * as functions from '../../functions/functions.js';
+import * as fxAnim from './anim.js';
+import googObject from '../../object/object.js';
+import { recordFunction } from '../../testing/recordfunction.js';
+import { testSuite } from '../../testing/testsuite.js';
+import * as userAgent from '../../useragent/useragent.js';
 
 let clock;
 let replacer;
@@ -177,7 +176,7 @@ testSuite({
 
     assertTrue(
         'There should be an active timer',
-        fxAnim.animationDelay_ && fxAnim.animationDelay_.isActive());
+        fxAnim.getAnimationDelay_() && fxAnim.getAnimationDelay_().isActive());
     assertEquals(
         'There should be an active animations', 1,
         googObject.getCount(fxAnim.activeAnimations_));
@@ -189,7 +188,7 @@ testSuite({
         googObject.isEmpty(fxAnim.activeAnimations_));
     assertFalse(
         'There should be no active timer',
-        fxAnim.animationDelay_ && fxAnim.animationDelay_.isActive());
+        fxAnim.getAnimationDelay_() && fxAnim.getAnimationDelay_().isActive());
 
     anim.dispose();
   },

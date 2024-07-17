@@ -4,20 +4,20 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.events.ImeHandlerTest');
 goog.setTestOnly();
 
-const GoogTestingEvent = goog.require('goog.testing.events.Event');
-const ImeHandler = goog.require('goog.events.ImeHandler');
-const KeyCodes = goog.require('goog.events.KeyCodes');
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
-const dom = goog.require('goog.dom');
-const events = goog.require('goog.events');
-const googObject = goog.require('goog.object');
-const googString = goog.require('goog.string');
-const googUserAgent = goog.require('goog.userAgent');
-const testSuite = goog.require('goog.testing.testSuite');
-const testingEvents = goog.require('goog.testing.events');
+import * as testingEvents from '../testing/events/events.js';
+import { Event as GoogTestingEvent } from '../testing/events/events.js';
+import { ImeHandler } from './imehandler.js';
+import { KeyCodes } from './keycodes.js';
+import { PropertyReplacer } from '../testing/propertyreplacer.js';
+import * as dom from '../dom/dom.js';
+import * as events from './events.js';
+import googObject from '../object/object.js';
+import * as googString from '../string/string.js';
+import * as googUserAgent from '../useragent/useragent.js';
+import { testSuite } from '../testing/testsuite.js';
+import { compareVersions } from '../string/internal.js';
 
 let sandbox;
 let imeHandler;
@@ -103,12 +103,8 @@ function setUserAgent(userAgent) {
 }
 
 function setVersion(version) {
-  googUserAgent.VERSION = version;
-  /**
-   * @suppress {visibility,checkTypes,constantProperty} suppression added to
-   * enable type checking
-   */
-  googUserAgent.isVersionOrHigherCache_ = {};
+  googUserAgent.$set('VERSION', version);
+  googUserAgent.$set('isVersionOrHigher',  (q)=>compareVersions(version, q) >= 0);
 }
 
 function assertImeMode() {

@@ -4,15 +4,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.messaging.LoggerClientTest');
 goog.setTestOnly();
 
-const LoggerClient = goog.require('goog.messaging.LoggerClient');
-const MockControl = goog.require('goog.testing.MockControl');
-const MockMessageChannel = goog.require('goog.testing.messaging.MockMessageChannel');
-const debug = goog.require('goog.debug');
-const testSuite = goog.require('goog.testing.testSuite');
-const {Level, getLogger, warning} = goog.require('goog.log');
+import { LoggerClient } from './loggerclient.js';
+import { MockControl } from '../testing/mockcontrol.js';
+import { MockMessageChannel } from '../testing/messaging/mockmessagechannel.js';
+import * as debug from '../debug/debug.js';
+import { testSuite } from '../testing/testsuite.js';
+import { Level, getLogger, warning } from '../log/log.js';
 
 let mockControl;
 let channel;
@@ -22,7 +21,7 @@ let logger;
 testSuite({
   setUp() {
     /** Used computed properties to avoid compiler checks of the define */
-    debug['FORCE_SLOPPY_STACKS'] = false;
+    debug.$set('FORCE_SLOPPY_STACKS', false);
     mockControl = new MockControl();
     channel = new MockMessageChannel(mockControl);
     client = new LoggerClient(channel, 'log');

@@ -9,13 +9,10 @@
  */
 
 
-goog.provide('goog.history.EventType');
-
-
 /**
  * Event types for goog.history.
  * @enum {string}
  */
-goog.history.EventType = {
+export const EventType = {
   NAVIGATE: 'navigate'
 };

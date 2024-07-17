@@ -12,30 +12,29 @@
 // constructor at all. You can run the conversion tool yourself to see what it
 // does on this file: blaze run //javascript/refactoring/es6_classes:convert.
 
-goog.module('goog.ui.SliderBaseTest');
 goog.setTestOnly();
 
-const Animation = goog.require('goog.fx.Animation');
-const Component = goog.require('goog.ui.Component');
-const Coordinate = goog.require('goog.math.Coordinate');
-const EventType = goog.require('goog.events.EventType');
-const KeyCodes = goog.require('goog.events.KeyCodes');
-const MockClock = goog.require('goog.testing.MockClock');
-const MockControl = goog.require('goog.testing.MockControl');
-const SliderBase = goog.require('goog.ui.SliderBase');
-const State = goog.require('goog.a11y.aria.State');
-const TagName = goog.require('goog.dom.TagName');
-const aria = goog.require('goog.a11y.aria');
-const bidi = goog.require('goog.style.bidi');
-const classlist = goog.require('goog.dom.classlist');
-const dom = goog.require('goog.dom');
-const events = goog.require('goog.events');
-const mockmatchers = goog.require('goog.testing.mockmatchers');
-const recordFunction = goog.require('goog.testing.recordFunction');
-const style = goog.require('goog.style');
-const testSuite = goog.require('goog.testing.testSuite');
-const testingEvents = goog.require('goog.testing.events');
-const userAgent = goog.require('goog.userAgent');
+import { Animation } from '../fx/animation.js';
+import { Component } from './component.js';
+import { Coordinate } from '../math/coordinate.js';
+import { EventType } from '../events/eventtype.js';
+import { KeyCodes } from '../events/keycodes.js';
+import { MockClock } from '../testing/mockclock.js';
+import { MockControl } from '../testing/mockcontrol.js';
+import { SliderBase } from './sliderbase.js';
+import { State } from '../a11y/aria/attributes.js';
+import { TagName } from '../dom/tagname.js';
+import * as aria from '../a11y/aria/aria.js';
+import * as bidi from '../style/bidi.js';
+import * as classlist from '../dom/classlist.js';
+import * as dom from '../dom/dom.js';
+import * as events from '../events/events.js';
+import * as mockmatchers from '../testing/mockmatchers.js';
+import { recordFunction } from '../testing/recordfunction.js';
+import * as style from '../style/style.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as testingEvents from '../testing/events/events.js';
+import * as userAgent from '../useragent/useragent.js';
 
 let oneThumbSlider;
 let oneThumbSliderRtl;
@@ -166,7 +165,7 @@ testSuite({
     oneThumbSlider = new OneThumbSlider();
     oneThumbSlider.decorate(oneThumbElem);
     oneChangeEventCount = 0;
-    events.listen(oneThumbSlider, Component.EventType.CHANGE, () => {
+    events.listen(oneThumbSlider, Component.ComponentEventType.CHANGE, () => {
       oneChangeEventCount++;
     });
 
@@ -179,7 +178,7 @@ testSuite({
     twoThumbSlider = new TwoThumbSlider();
     twoThumbSlider.decorate(twoThumbElem);
     twoChangeEventCount = 0;
-    events.listen(twoThumbSlider, Component.EventType.CHANGE, () => {
+    events.listen(twoThumbSlider, Component.ComponentEventType.CHANGE, () => {
       twoChangeEventCount++;
     });
 
@@ -194,7 +193,7 @@ testSuite({
     oneThumbSliderRtl = new OneThumbSlider(true /* testOnlyIsRightToLeft */);
     oneThumbSliderRtl.enableFlipForRtl(true);
     oneThumbSliderRtl.decorate(oneThumbElemRtl);
-    events.listen(oneThumbSliderRtl, Component.EventType.CHANGE, () => {
+    events.listen(oneThumbSliderRtl, Component.ComponentEventType.CHANGE, () => {
       oneChangeEventCount++;
     });
 
@@ -208,7 +207,7 @@ testSuite({
     twoThumbSliderRtl.enableFlipForRtl(true);
     twoThumbSliderRtl.decorate(twoThumbElemRtl);
     twoChangeEventCount = 0;
-    events.listen(twoThumbSliderRtl, Component.EventType.CHANGE, () => {
+    events.listen(twoThumbSliderRtl, Component.ComponentEventType.CHANGE, () => {
       twoChangeEventCount++;
     });
   },
@@ -402,7 +401,7 @@ testSuite({
     slider.rangeModel.setValue(0);
 
     const f = recordFunction();
-    events.listen(slider, Component.EventType.CHANGE, f);
+    events.listen(slider, Component.ComponentEventType.CHANGE, f);
 
     slider.rangeModel.setValue(50);
     assertEquals(1, f.getCallCount());
@@ -936,7 +935,7 @@ testSuite({
           SliderBase.EventType.DRAG_VALUE_END,
           SliderBase.EventType.DRAG_EXTENT_START,
           SliderBase.EventType.DRAG_EXTENT_END,
-          Component.EventType.CHANGE,
+          Component.ComponentEventType.CHANGE,
         ],
         handler);
 
@@ -966,7 +965,7 @@ testSuite({
     assertEquals(SliderBase.EventType.DRAG_START, event_types[2]);
     assertTrue(isValueOrExtentDragStart(event_types[3]));
 
-    assertEquals(Component.EventType.CHANGE, event_types[4]);
+    assertEquals(Component.ComponentEventType.CHANGE, event_types[4]);
 
     assertEquals(SliderBase.EventType.DRAG_END, event_types[5]);
     assertTrue(isValueOrExtentDragEnd(event_types[6]));

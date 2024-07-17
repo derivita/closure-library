@@ -4,13 +4,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.graphics.ext.ElementTest');
 goog.setTestOnly();
 
-const StrictMock = goog.require('goog.testing.StrictMock');
-const ext = goog.require('goog.graphics.ext');
-const googGraphics = goog.require('goog.graphics');
-const testSuite = goog.require('goog.testing.testSuite');
+import { StrictMock } from '../../testing/strictmock.js';
+import * as ext from './element.js';
+import * as googGraphics from '../graphics.js';
+import { testSuite } from '../../testing/testsuite.js';
+import { Graphics } from './graphics.js';
+import { Element } from '../element.js';
 
 let el;
 let graphics;
@@ -32,11 +33,11 @@ function assertPosition(fn, left, top, width = undefined, height = undefined) {
 testSuite({
   setUp() {
     const div = document.getElementById('root');
-    graphics = new ext.Graphics(100, 100, 200, 200);
+    graphics = new Graphics(100, 100, 200, 200);
     div.textContent = '';
     graphics.render(div);
 
-    mockWrapper = new StrictMock(googGraphics.Element);
+    mockWrapper = new StrictMock(Element);
   },
 
   tearDown() {

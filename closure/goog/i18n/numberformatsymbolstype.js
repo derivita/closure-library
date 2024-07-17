@@ -9,7 +9,7 @@
  * objects.
  */
 
-goog.module('goog.i18n.NumberFormatSymbolsType');
+goog.declareModuleId('NumberFormatSymbolsType');
 
 /**
  * Number formatting symbols for locale.
@@ -35,4 +35,4 @@ const Type = class {
   }
 };
 
-exports.Type = Type;
+export { Type };

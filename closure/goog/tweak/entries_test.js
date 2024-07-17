@@ -4,14 +4,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.tweak.BaseEntryTest');
 goog.setTestOnly();
 
-const MockControl = goog.require('goog.testing.MockControl');
-const testSuite = goog.require('goog.testing.testSuite');
+import { MockControl } from '../testing/mockcontrol.js';
+import { testSuite } from '../testing/testsuite.js';
+
 /** @suppress {extraRequire} needed for createRegistryEntries. */
-const testhelpers = goog.require('goog.tweak.testhelpers');
-const tweak = goog.require('goog.tweak');
+import * as testhelpers from './testhelpers.js';
+
+import * as tweak from './tweak.js';
 
 let mockControl;
 
@@ -22,7 +23,7 @@ testSuite({
 
   tearDown() {
     /** @suppress {visibility} suppression added to enable type checking */
-    tweak.registry_ = null;
+    tweak.setRegistry_(null);
     mockControl.$verifyAll();
   },
 
@@ -31,7 +32,7 @@ testSuite({
      checking
    */
   testGetValue_defaultValues() {
-    createRegistryEntries('');
+    testhelpers.createRegistryEntries('');
     assertFalse('wrong initial value for bool', boolEntry.getValue());
     assertEquals('wrong initial value for enum', 'A', strEnumEntry.getValue());
     assertEquals('wrong initial value for str', '', strEntry.getValue());
@@ -49,7 +50,7 @@ testSuite({
      checking
    */
   testGetValue_nonDefaultValues() {
-    createRegistryEntries('?bool=1&enum=C');
+    testhelpers.createRegistryEntries('?bool=1&enum=C');
     // These have the restartRequired option set.
     boolEntry.setValue(false);
     strEntry.setValue('foo');
@@ -73,7 +74,7 @@ testSuite({
      checking
    */
   testCallbacks() {
-    createRegistryEntries('');
+    testhelpers.createRegistryEntries('');
     const mockCallback = mockControl.createFunctionMock();
     boolEntry.addCallback(mockCallback);
     boolOneEntry.addCallback(mockCallback);

@@ -13,10 +13,9 @@
  * or HTML5 WebSocket offers.
  */
 
-goog.provide('goog.net.WebChannelTransport');
+goog.declareModuleId('goog.labs.net.webchanneltransport');
 
-goog.requireType('goog.net.WebChannel');
-goog.requireType('goog.net.WebChannel.Options');
+const { WebChannel } = goog.requireType('goog.labs.net.webchannel');
 
 
 
@@ -38,7 +37,7 @@ goog.requireType('goog.net.WebChannel.Options');
  *
  * @interface
  */
-goog.net.WebChannelTransport = function() {};
+export function WebChannelTransport() {}
 
 
 /**
@@ -51,20 +50,20 @@ goog.net.WebChannelTransport = function() {};
  * @const
  * @type {number}
  */
-goog.net.WebChannelTransport.CLIENT_VERSION = 22;
+WebChannelTransport.CLIENT_VERSION = 22;
 
 
 /**
  * Create a new WebChannel instance.
  *
  * The new WebChannel is to be opened against the server-side resource
- * as specified by the given URL. See {@link goog.net.WebChannel} for detailed
+ * as specified by the given URL. See {@link WebChannel} for detailed
  * semantics.
  *
  * @param {string} url The URL path for the new WebChannel instance.
- * @param {!goog.net.WebChannel.Options=} opt_options Configuration for the
+ * @param {!WebChannel.Options=} opt_options Configuration for the
  *     new WebChannel instance. The configuration object is reusable after
  *     the new channel instance is created.
- * @return {!goog.net.WebChannel} the newly created WebChannel instance.
+ * @return {!WebChannel} the newly created WebChannel instance.
  */
-goog.net.WebChannelTransport.prototype.createWebChannel = goog.abstractMethod;
+WebChannelTransport.prototype.createWebChannel = goog.abstractMethod;

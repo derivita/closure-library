@@ -10,24 +10,19 @@
  * a simple event model with BEGIN and END event.
  */
 
-goog.provide('goog.fx.Transition');
-goog.provide('goog.fx.Transition.EventType');
-
-
-
 /**
  * An interface for programmatic transition. Must extend
  * `goog.events.EventTarget`.
  * @interface
  */
-goog.fx.Transition = function() {};
+export function Transition() {};
 
 
 /**
  * Transition event types.
  * @enum {string}
  */
-goog.fx.Transition.EventType = {
+Transition.EventType = {
   /** Dispatched when played for the first time OR when it is resumed. */
   PLAY: 'play',
 
@@ -58,11 +53,11 @@ goog.fx.Transition.EventType = {
  * @type {function()}
  * Plays the transition.
  */
-goog.fx.Transition.prototype.play;
+Transition.prototype.play;
 
 
 /**
  * @type {function()}
  * Stops the transition.
  */
-goog.fx.Transition.prototype.stop;
+Transition.prototype.stop;

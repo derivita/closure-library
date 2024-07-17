@@ -9,8 +9,6 @@
  * IMPLEMANTATIONS OF THE INTERFACES PROVIDED HERE. These exist to provide
  * a super type for the native-wrapped impl and the ponyfill impl.
  */
-goog.module('goog.streams.liteTypes');
-
 /**
  * The lite ReadableStream.
  *
@@ -24,7 +22,7 @@ goog.module('goog.streams.liteTypes');
  * @template T
  * @interface
  */
-class ReadableStream {
+export let ReadableStream = class ReadableStream {
   /**
    * Returns true if the ReadableStream has been locked to a reader.
    * https://streams.spec.whatwg.org/#rs-locked
@@ -39,7 +37,7 @@ class ReadableStream {
    * @return {!ReadableStreamDefaultReader<T>}
    */
   getReader() {}
-}
+};
 
 /**
  * A reader for a lite ReadableStream.
@@ -49,7 +47,7 @@ class ReadableStream {
  * @template T
  * @interface
  */
-class ReadableStreamDefaultReader {
+export let ReadableStreamDefaultReader = class ReadableStreamDefaultReader {
   /**
    * Returns a Promise that resolves when the Stream closes or is errored, or if
    * the reader releases its lock.
@@ -74,7 +72,7 @@ class ReadableStreamDefaultReader {
    * @return {void}
    */
   releaseLock() {}
-}
+};
 
 /**
  * A controller for a lite ReadableStream.
@@ -83,7 +81,7 @@ class ReadableStreamDefaultReader {
  * @template T
  * @interface
  */
-class ReadableStreamDefaultController {
+export let ReadableStreamDefaultController = class ReadableStreamDefaultController {
   /**
    * Signals that the ReadableStream should close. The ReadableStream will
    * actually close once all of its chunks have been read.
@@ -106,14 +104,14 @@ class ReadableStreamDefaultController {
    * @param {*} e
    */
   error(e) {}
-}
+};
 
 /**
  * The underlying source for a lite ReadableStream.
  * @template T
  * @record
  */
-class ReadableStreamUnderlyingSource {
+export let ReadableStreamUnderlyingSource = class ReadableStreamUnderlyingSource {
   constructor() {
     /**
      * A start method that is called when the ReadableStream is constructed.
@@ -127,11 +125,5 @@ class ReadableStreamUnderlyingSource {
      */
     this.start;
   }
-}
-
-exports = {
-  ReadableStream,
-  ReadableStreamDefaultController,
-  ReadableStreamDefaultReader,
-  ReadableStreamUnderlyingSource,
 };
+

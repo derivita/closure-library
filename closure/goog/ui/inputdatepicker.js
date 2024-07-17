@@ -6,85 +6,79 @@
 
 /**
  * @fileoverview Input Date Picker implementation.  Pairs a
- * goog.ui.PopupDatePicker with an input element and handles the input from
+ * PopupDatePicker with an input element and handles the input from
  * either.
  *
  * @see ../demos/inputdatepicker.html
  */
 
-goog.provide('goog.ui.InputDatePicker');
+import { DateTime, Date, DateLike } from '../date/date.js';
 
-goog.require('goog.date.DateTime');
-goog.require('goog.dom');
-goog.require('goog.dom.InputType');
-goog.require('goog.dom.TagName');
-goog.require('goog.i18n.DateTimeParse');
-goog.require('goog.string');
-goog.require('goog.ui.Component');
-goog.require('goog.ui.DatePicker');
-/** @suppress {extraRequire} */
-goog.require('goog.ui.LabelInput');
-goog.require('goog.ui.PopupBase');
-goog.require('goog.ui.PopupDatePicker');
-goog.requireType('goog.date.Date');
-goog.requireType('goog.date.DateLike');
-goog.requireType('goog.events.Event');
-goog.requireType('goog.ui.DatePickerEvent');
+import * as dom from '../dom/dom.js';
+import { InputType } from '../dom/inputtype.js';
+import { TagName } from '../dom/tagname.js';
+import { DateTimeParse } from '../i18n/datetimeparse.js';
+import * as googString from '../string/string.js';
+import { Component } from './component.js';
+import { DatePicker } from './datepicker.js';
+import { LabelInput } from './labelinput.js';
+import { PopupBase } from './popupbase.js';
+import { PopupDatePicker } from './popupdatepicker.js';
+const { Event } = goog.requireType('goog.events.event');
+const { DatePickerEvent } = goog.requireType('goog.ui.datepicker');
 
 
 
 /**
  * Input date picker widget.
  *
- * @param {!goog.ui.InputDatePicker.DateFormatter} dateTimeFormatter A formatter
+ * @param {!InputDatePicker.DateFormatter} dateTimeFormatter A formatter
  *     instance used to format the date picker's date for display in the input
  *     element.
- * @param {!goog.ui.InputDatePicker.DateParser} dateTimeParser A parser instance
+ * @param {!InputDatePicker.DateParser} dateTimeParser A parser instance
  *     used to parse the input element's string as a date to set the picker.
- * @param {goog.ui.DatePicker=} opt_datePicker Optional DatePicker.  This
+ * @param {DatePicker=} opt_datePicker Optional DatePicker.  This
  *     enables the use of a custom date-picker instance.
- * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper.
- * @extends {goog.ui.Component}
+ * @param {dom.DomHelper=} opt_domHelper Optional DOM helper.
+ * @extends {Component}
  * @constructor
  */
-goog.ui.InputDatePicker = function(
-    dateTimeFormatter, dateTimeParser, opt_datePicker, opt_domHelper) {
-  'use strict';
-  goog.ui.Component.call(this, opt_domHelper);
+export function InputDatePicker(dateTimeFormatter, dateTimeParser, opt_datePicker, opt_domHelper) {
+  Component.call(this, opt_domHelper);
 
   this.dateTimeFormatter_ = dateTimeFormatter;
   this.dateTimeParser_ = dateTimeParser;
 
   this.popupDatePicker_ =
-      new goog.ui.PopupDatePicker(opt_datePicker, opt_domHelper);
+      new PopupDatePicker(opt_datePicker, opt_domHelper);
   this.addChild(this.popupDatePicker_);
   this.popupDatePicker_.setAllowAutoFocus(false);
-};
-goog.inherits(goog.ui.InputDatePicker, goog.ui.Component);
+}
+goog.inherits(InputDatePicker, Component);
 
 
 /**
  * Used to format the date picker's date for display in the input element.
- * @type {?goog.ui.InputDatePicker.DateFormatter}
+ * @type {?InputDatePicker.DateFormatter}
  * @private
  */
-goog.ui.InputDatePicker.prototype.dateTimeFormatter_ = null;
+InputDatePicker.prototype.dateTimeFormatter_ = null;
 
 
 /**
  * Used to parse the input element's string as a date to set the picker.
- * @type {?goog.ui.InputDatePicker.DateParser}
+ * @type {?InputDatePicker.DateParser}
  * @private
  */
-goog.ui.InputDatePicker.prototype.dateTimeParser_ = null;
+InputDatePicker.prototype.dateTimeParser_ = null;
 
 
 /**
- * The instance of goog.ui.PopupDatePicker used to pop up and select the date.
- * @type {?goog.ui.PopupDatePicker}
+ * The instance of PopupDatePicker used to pop up and select the date.
+ * @type {?PopupDatePicker}
  * @private
  */
-goog.ui.InputDatePicker.prototype.popupDatePicker_ = null;
+InputDatePicker.prototype.popupDatePicker_ = null;
 
 
 /**
@@ -93,17 +87,16 @@ goog.ui.InputDatePicker.prototype.popupDatePicker_ = null;
  * @type {?Element}
  * @private
  */
-goog.ui.InputDatePicker.prototype.popupParentElement_ = null;
+InputDatePicker.prototype.popupParentElement_ = null;
 
 
 /**
  * Returns the PopupDatePicker's internal DatePicker instance.  This can be
  * used to customize the date picker's styling.
  *
- * @return {goog.ui.DatePicker} The internal DatePicker instance.
+ * @return {DatePicker} The internal DatePicker instance.
  */
-goog.ui.InputDatePicker.prototype.getDatePicker = function() {
-  'use strict';
+InputDatePicker.prototype.getDatePicker = function() {
   return this.popupDatePicker_.getDatePicker();
 };
 
@@ -111,10 +104,9 @@ goog.ui.InputDatePicker.prototype.getDatePicker = function() {
 /**
  * Returns the PopupDatePicker instance.
  *
- * @return {goog.ui.PopupDatePicker} Popup instance.
+ * @return {PopupDatePicker} Popup instance.
  */
-goog.ui.InputDatePicker.prototype.getPopupDatePicker = function() {
-  'use strict';
+InputDatePicker.prototype.getPopupDatePicker = function() {
   return this.popupDatePicker_;
 };
 
@@ -122,10 +114,9 @@ goog.ui.InputDatePicker.prototype.getPopupDatePicker = function() {
 /**
  * Returns the selected date, if any.  Compares the dates from the date picker
  * and the input field, causing them to be synced if different.
- * @return {goog.date.DateTime} The selected date, if any.
+ * @return {DateTime} The selected date, if any.
  */
-goog.ui.InputDatePicker.prototype.getDate = function() {
-  'use strict';
+InputDatePicker.prototype.getDate = function() {
   // The user expectation is that the date be whatever the input shows.
   // This method biases towards the input value to conform to that expectation.
 
@@ -145,11 +136,10 @@ goog.ui.InputDatePicker.prototype.getDate = function() {
 
 
 /**
- * Sets the selected date.  See goog.ui.PopupDatePicker.setDate().
- * @param {goog.date.Date} date The date to set.
+ * Sets the selected date.  See PopupDatePicker.setDate().
+ * @param {Date} date The date to set.
  */
-goog.ui.InputDatePicker.prototype.setDate = function(date) {
-  'use strict';
+InputDatePicker.prototype.setDate = function(date) {
   this.popupDatePicker_.setDate(date);
 };
 
@@ -160,11 +150,10 @@ goog.ui.InputDatePicker.prototype.setDate = function(date) {
  * @param {string} value The value to set.
  * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
-goog.ui.InputDatePicker.prototype.setInputValue = function(value) {
-  'use strict';
+InputDatePicker.prototype.setInputValue = function(value) {
   var el = this.getElement();
   if (el.labelInput_) {
-    var labelInput = /** @type {goog.ui.LabelInput} */ (el.labelInput_);
+    var labelInput = /** @type {LabelInput} */ (el.labelInput_);
     labelInput.setValue(value);
   } else {
     el.value = value;
@@ -178,11 +167,10 @@ goog.ui.InputDatePicker.prototype.setInputValue = function(value) {
  * @return {string} The input value.
  * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
-goog.ui.InputDatePicker.prototype.getInputValue = function() {
-  'use strict';
+InputDatePicker.prototype.getInputValue = function() {
   var el = this.getElement();
   if (el.labelInput_) {
-    var labelInput = /** @type {goog.ui.LabelInput} */ (el.labelInput_);
+    var labelInput = /** @type {LabelInput} */ (el.labelInput_);
     return labelInput.getValue();
   } else {
     return el.value;
@@ -193,11 +181,10 @@ goog.ui.InputDatePicker.prototype.getInputValue = function() {
 /**
  * Sets the value of the input element from date object.
  *
- * @param {?goog.date.Date} date The value to set.
+ * @param {?Date} date The value to set.
  * @private
  */
-goog.ui.InputDatePicker.prototype.setInputValueAsDate_ = function(date) {
-  'use strict';
+InputDatePicker.prototype.setInputValueAsDate_ = function(date) {
   this.setInputValue(date ? this.dateTimeFormatter_.format(date) : '');
 };
 
@@ -205,15 +192,14 @@ goog.ui.InputDatePicker.prototype.setInputValueAsDate_ = function(date) {
 /**
  * Gets the input element value and attempts to parse it as a date.
  *
- * @return {goog.date.DateTime} The date object is returned if the parse
+ * @return {DateTime} The date object is returned if the parse
  *      is successful, null is returned on failure.
  * @private
  */
-goog.ui.InputDatePicker.prototype.getInputValueAsDate_ = function() {
-  'use strict';
-  var value = goog.string.trim(this.getInputValue());
+InputDatePicker.prototype.getInputValueAsDate_ = function() {
+  var value = googString.trim(this.getInputValue());
   if (value) {
-    var date = new goog.date.DateTime();
+    var date = new DateTime();
     // DateTime needed as parse assumes it can call getHours(), getMinutes(),
     // etc, on the date if hours and minutes aren't defined.
     if (this.dateTimeParser_.parse(value, date, {validate: true}) > 0) {
@@ -222,7 +208,7 @@ goog.ui.InputDatePicker.prototype.getInputValueAsDate_ = function() {
       // Same is true for any other pattern when number entered by user is
       // different from number of digits in the pattern. (YY and 1 will be 1AD).
       // See i18n/datetimeparse.js
-      // Conversion happens in goog.date.Date/DateTime constructor
+      // Conversion happens in Date/DateTime constructor
       // when it calls new Date(year...). See ui/datepicker.js.
       return date;
     }
@@ -236,10 +222,9 @@ goog.ui.InputDatePicker.prototype.getInputValueAsDate_ = function() {
  * Creates an input element for use with the popup date picker.
  * @override
  */
-goog.ui.InputDatePicker.prototype.createDom = function() {
-  'use strict';
+InputDatePicker.prototype.createDom = function() {
   this.setElementInternal(this.getDomHelper().createDom(
-      goog.dom.TagName.INPUT, {'type': goog.dom.InputType.TEXT}));
+      TagName.INPUT, {'type': InputType.TEXT}));
   this.popupDatePicker_.createDom();
 };
 
@@ -250,15 +235,13 @@ goog.ui.InputDatePicker.prototype.createDom = function() {
  * @param {Element} el The element that the PopupDatePicker should be parented
  *     to.
  */
-goog.ui.InputDatePicker.prototype.setPopupParentElement = function(el) {
-  'use strict';
+InputDatePicker.prototype.setPopupParentElement = function(el) {
   this.popupParentElement_ = el;
 };
 
 
 /** @override */
-goog.ui.InputDatePicker.prototype.enterDocument = function() {
-  'use strict';
+InputDatePicker.prototype.enterDocument = function() {
   // this.popupDatePicker_ has been added as a child even though it isn't really
   // a child (since its root element is not within InputDatePicker's DOM tree).
   // The PopupDatePicker will have its enterDocument method called as a result
@@ -278,7 +261,7 @@ goog.ui.InputDatePicker.prototype.enterDocument = function() {
   (this.popupParentElement_ || this.getDomHelper().getDocument().body)
       .appendChild(/** @type {!Node} */ (this.popupDatePicker_.getElement()));
 
-  goog.ui.InputDatePicker.superClass_.enterDocument.call(this);
+  InputDatePicker.superClass_.enterDocument.call(this);
   var el = this.getElement();
 
   this.popupDatePicker_.attach(el);
@@ -288,38 +271,35 @@ goog.ui.InputDatePicker.prototype.enterDocument = function() {
 
   var handler = this.getHandler();
   handler.listen(
-      this.popupDatePicker_, goog.ui.DatePicker.Events.CHANGE,
+      this.popupDatePicker_, DatePicker.Events.CHANGE,
       this.onDateChanged_);
   handler.listen(
-      this.popupDatePicker_, goog.ui.PopupBase.EventType.SHOW, this.onPopup_);
+      this.popupDatePicker_, PopupBase.EventType.SHOW, this.onPopup_);
 };
 
 
 /** @override */
-goog.ui.InputDatePicker.prototype.exitDocument = function() {
-  'use strict';
-  goog.ui.InputDatePicker.superClass_.exitDocument.call(this);
+InputDatePicker.prototype.exitDocument = function() {
+  InputDatePicker.superClass_.exitDocument.call(this);
   var el = this.getElement();
 
   this.popupDatePicker_.detach(el);
   this.popupDatePicker_.exitDocument();
-  goog.dom.removeNode(this.popupDatePicker_.getElement());
+  dom.removeNode(this.popupDatePicker_.getElement());
 };
 
 
 /** @override */
-goog.ui.InputDatePicker.prototype.decorateInternal = function(element) {
-  'use strict';
-  goog.ui.InputDatePicker.superClass_.decorateInternal.call(this, element);
+InputDatePicker.prototype.decorateInternal = function(element) {
+  InputDatePicker.superClass_.decorateInternal.call(this, element);
 
   this.popupDatePicker_.createDom();
 };
 
 
 /** @override */
-goog.ui.InputDatePicker.prototype.disposeInternal = function() {
-  'use strict';
-  goog.ui.InputDatePicker.superClass_.disposeInternal.call(this);
+InputDatePicker.prototype.disposeInternal = function() {
+  InputDatePicker.superClass_.disposeInternal.call(this);
   this.popupDatePicker_.dispose();
   this.popupDatePicker_ = null;
   this.popupParentElement_ = null;
@@ -327,21 +307,19 @@ goog.ui.InputDatePicker.prototype.disposeInternal = function() {
 
 
 /**
- * See goog.ui.PopupDatePicker.showPopup().
+ * See PopupDatePicker.showPopup().
  * @param {Element} element Reference element for displaying the popup -- popup
  *     will appear at the bottom-left corner of this element.
  */
-goog.ui.InputDatePicker.prototype.showForElement = function(element) {
-  'use strict';
+InputDatePicker.prototype.showForElement = function(element) {
   this.popupDatePicker_.showPopup(element);
 };
 
 
 /**
- * See goog.ui.PopupDatePicker.hidePopup().
+ * See PopupDatePicker.hidePopup().
  */
-goog.ui.InputDatePicker.prototype.hidePopup = function() {
-  'use strict';
+InputDatePicker.prototype.hidePopup = function() {
   this.popupDatePicker_.hidePopup();
 };
 
@@ -349,11 +327,10 @@ goog.ui.InputDatePicker.prototype.hidePopup = function() {
 /**
  * Event handler for popup date picker popup events.
  *
- * @param {goog.events.Event} e popup event.
+ * @param {Event} e popup event.
  * @private
  */
-goog.ui.InputDatePicker.prototype.onPopup_ = function(e) {
-  'use strict';
+InputDatePicker.prototype.onPopup_ = function(e) {
   var inputValueAsDate = this.getInputValueAsDate_();
   this.setDate(inputValueAsDate);
   // don't overwrite the input value with empty date if input is not valid
@@ -366,11 +343,10 @@ goog.ui.InputDatePicker.prototype.onPopup_ = function(e) {
 /**
  * Event handler for date change events.  Called when the date changes.
  *
- * @param {goog.ui.DatePickerEvent} e Date change event.
+ * @param {DatePickerEvent} e Date change event.
  * @private
  */
-goog.ui.InputDatePicker.prototype.onDateChanged_ = function(e) {
-  'use strict';
+InputDatePicker.prototype.onDateChanged_ = function(e) {
   this.setInputValueAsDate_(e.date);
 };
 
@@ -381,28 +357,28 @@ goog.ui.InputDatePicker.prototype.onDateChanged_ = function(e) {
  * signatures directly match those found on that class.
  * @record
  */
-goog.ui.InputDatePicker.DateFormatter = function() {};
+InputDatePicker.DateFormatter = function() {};
 
 /**
- * @param {!goog.date.DateLike} date The Date object that is being formatted.
+ * @param {!DateLike} date The Date object that is being formatted.
  * @return {string} The formatted date value.
  */
-goog.ui.InputDatePicker.DateFormatter.prototype.format = function(date) {};
+InputDatePicker.DateFormatter.prototype.format = function(date) {};
 
 /**
  * A DateParser implements functionality to parse text into a Date. This
- * interface is expected to accept an instance of goog.i18n.DateTimeParse
+ * interface is expected to accept an instance of DateTimeParse
  * directly, and as such the method signatures directly match those found on
  * that class.
  * @record
  */
-goog.ui.InputDatePicker.DateParser = function() {};
+InputDatePicker.DateParser = function() {};
 
 /**
  * @param {string} text The string being parsed.
- * @param {!goog.date.DateLike} date The Date object to hold the parsed date.
- * @param {!goog.i18n.DateTimeParse.ParseOptions=} options The options object.
+ * @param {!DateLike} date The Date object to hold the parsed date.
+ * @param {!DateTimeParse.ParseOptions=} options The options object.
  * @return {number} How many characters parser advanced.
  */
-goog.ui.InputDatePicker.DateParser.prototype.parse = function(
+InputDatePicker.DateParser.prototype.parse = function(
     text, date, options) {};

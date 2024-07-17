@@ -9,18 +9,22 @@
  * @suppress {missingRequire} swapping goog.i18n.DateTimeSymbols
  */
 
-goog.module('goog.date.durationTest');
 goog.setTestOnly();
 
-const DateTimeFormat = goog.require('goog.i18n.DateTimeFormat');
+import { DateTimeFormat } from '../i18n/datetimeformat.js';
+
 /** @suppress {extraRequire} */
-const DateTimeSymbols = goog.require('goog.i18n.DateTimeSymbols');
-const DateTimeSymbols_bn = goog.require('goog.i18n.DateTimeSymbols_bn');
-const DateTimeSymbols_en = goog.require('goog.i18n.DateTimeSymbols_en');
-const DateTimeSymbols_fa = goog.require('goog.i18n.DateTimeSymbols_fa');
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
-const dateDuration = goog.require('goog.date.duration');
-const testSuite = goog.require('goog.testing.testSuite');
+import {
+  $set,
+  DateTimeSymbols,
+  DateTimeSymbols_bn,
+  DateTimeSymbols_en,
+  DateTimeSymbols_fa,
+} from '../i18n/datetimesymbols.js';
+
+import { PropertyReplacer } from '../testing/propertyreplacer.js';
+import * as dateDuration from './duration.js';
+import { testSuite } from '../testing/testsuite.js';
 
 const MINUTE_MS = 60000;
 const HOUR_MS = 60 * MINUTE_MS;
@@ -107,7 +111,7 @@ testSuite({
   },
 
   testFormatDurationPersianDigits() {
-    goog.i18n.DateTimeSymbols = DateTimeSymbols_fa;
+    $set('DateTimeSymbols', DateTimeSymbols_fa);
 
     // ۱ minute
     assertEquals(localizeNumber(1) + ' minute', duration(MINUTE_MS));
@@ -119,11 +123,11 @@ testSuite({
     assertEquals(localizeNumber(23) + ' days', duration(23 * DAY_MS));
 
     // Restore to English, to make sure we don't mess up other tests
-    goog.i18n.DateTimeSymbols = DateTimeSymbols_en;
+    $set('DateTimeSymbols', DateTimeSymbols_en);
   },
 
   testFormatDurationBengaliDigits() {
-    goog.i18n.DateTimeSymbols = DateTimeSymbols_bn;
+    $set('DateTimeSymbols', DateTimeSymbols_bn);
 
     // ১ minute
     assertEquals(localizeNumber(1) + ' minute', duration(MINUTE_MS));
@@ -135,6 +139,6 @@ testSuite({
     assertEquals(localizeNumber(23) + ' days', duration(23 * DAY_MS));
 
     // Restore to English, to make sure we don't mess up other tests
-    goog.i18n.DateTimeSymbols = DateTimeSymbols_en;
+    $set('DateTimeSymbols', DateTimeSymbols_en);
   },
 });

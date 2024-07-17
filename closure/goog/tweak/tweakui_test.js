@@ -4,17 +4,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.tweak.TweakUiTest');
 goog.setTestOnly();
 
-const TagName = goog.require('goog.dom.TagName');
-const TweakUi = goog.require('goog.tweak.TweakUi');
-const dom = goog.require('goog.dom');
-const googString = goog.require('goog.string');
-const testSuite = goog.require('goog.testing.testSuite');
+import { TagName } from '../dom/tagname.js';
+import { TweakUi } from './tweakui.js';
+import * as dom from '../dom/dom.js';
+import * as googString from '../string/string.js';
+import { testSuite } from '../testing/testsuite.js';
+
 /** @suppress {extraRequire} needed for createRegistryEntries. */
-const testhelpers = goog.require('goog.tweak.testhelpers');
-const tweak = goog.require('goog.tweak');
+import * as testhelpers from './testhelpers.js';
+
+import * as tweak from './tweak.js';
 
 let root;
 let registry;
@@ -69,13 +70,13 @@ testSuite({
     root = document.getElementById('root');
     // Make both test cases use the same entries in order to be able to test
     // that having two UIs on the same page does not cause trouble.
-    createRegistryEntries('');
+    testhelpers.createRegistryEntries('');
     registry = tweak.getRegistry();
   },
 
   tearDown() {
     /** @suppress {visibility} suppression added to enable type checking */
-    tweak.activeBooleanGroup_ = null;
+    tweak.resetActiveBooleanGroup_();
     // When debugging a single test, don't clear out the DOM.
     if (window.location.search.indexOf('runTests') == -1) {
       dom.removeChildren(root);
@@ -88,7 +89,7 @@ testSuite({
       return;
     }
     // Create both registries for interactive testing.
-    createRegistryEntries('');
+    testhelpers.createRegistryEntries('');
     registry = tweak.getRegistry();
     // Add an extra tweak for testing the creation of tweaks after the UI has
     // already been rendered.

@@ -8,7 +8,6 @@
  * @fileoverview
  * @suppress {missingRequire} Swapping using fully qualified name
  */
-goog.module('goog.i18n.NumberFormatTest');
 goog.setTestOnly();
 
 // This tests in both polyfill and native ECMAScript mode for
@@ -39,45 +38,52 @@ if (Intl.NumberFormat) {
   }
 }
 
-const CompactNumberFormatSymbols_de = goog.require('goog.i18n.CompactNumberFormatSymbols_de');
-const CompactNumberFormatSymbols_en = goog.require('goog.i18n.CompactNumberFormatSymbols_en');
-const CompactNumberFormatSymbols_fr = goog.require('goog.i18n.CompactNumberFormatSymbols_fr');
-const CompactNumberFormatSymbols_sw = goog.require('goog.i18n.CompactNumberFormatSymbols_sw');
-const CompactNumberFormatSymbols_sw_KE = goog.require('goog.i18n.CompactNumberFormatSymbols_sw_KE');
-const ExpectedFailures = goog.require('goog.testing.ExpectedFailures');
-const NumberFormat = goog.require('goog.i18n.NumberFormat');
-/** @suppress {extraRequire} */
-const NumberFormatSymbols = goog.require('goog.i18n.NumberFormatSymbols');
-const NumberFormatSymbols_ar = goog.require('goog.i18n.NumberFormatSymbols_ar');
-const NumberFormatSymbols_ar_EG = goog.require('goog.i18n.NumberFormatSymbols_ar_EG');
-const NumberFormatSymbols_ar_EG_u_nu_latn = goog.require('goog.i18n.NumberFormatSymbols_ar_EG_u_nu_latn');
-const NumberFormatSymbols_bn = goog.require('goog.i18n.NumberFormatSymbols_bn');
-const NumberFormatSymbols_de = goog.require('goog.i18n.NumberFormatSymbols_de');
-const NumberFormatSymbols_en = goog.require('goog.i18n.NumberFormatSymbols_en');
-const NumberFormatSymbols_en_AU = goog.require('goog.i18n.NumberFormatSymbols_en_AU');
-const NumberFormatSymbols_en_CA = goog.require('goog.i18n.NumberFormatSymbols_en_CA');
-const NumberFormatSymbols_en_US = goog.require('goog.i18n.NumberFormatSymbols_en_US');
-const NumberFormatSymbols_fa = goog.require('goog.i18n.NumberFormatSymbols_fa');
-const NumberFormatSymbols_ff_Adlm = goog.require('goog.i18n.NumberFormatSymbols_ff_Adlm');
-const NumberFormatSymbols_fi = goog.require('goog.i18n.NumberFormatSymbols_fi');
-const NumberFormatSymbols_fr = goog.require('goog.i18n.NumberFormatSymbols_fr');
-const NumberFormatSymbols_ml = goog.require('goog.i18n.NumberFormatSymbols_ml');
-const NumberFormatSymbols_mr = goog.require('goog.i18n.NumberFormatSymbols_mr');
-const NumberFormatSymbols_my = goog.require('goog.i18n.NumberFormatSymbols_my');
-const NumberFormatSymbols_ne = goog.require('goog.i18n.NumberFormatSymbols_ne');
-const NumberFormatSymbols_pl = goog.require('goog.i18n.NumberFormatSymbols_pl');
-const NumberFormatSymbols_ro = goog.require('goog.i18n.NumberFormatSymbols_ro');
-const NumberFormatSymbols_sw = goog.require('goog.i18n.NumberFormatSymbols_sw');
-const NumberFormatSymbols_sw_KE = goog.require('goog.i18n.NumberFormatSymbols_sw_KE');
+import {
+  CompactNumberFormatSymbols_de,
+  CompactNumberFormatSymbols_en,
+  CompactNumberFormatSymbols_fr,
+  CompactNumberFormatSymbols_sw,
+} from './compactnumberformatsymbols.js';
+import * as compactnumberformatsymbols from './compactnumberformatsymbols.js';
+
+import { CompactNumberFormatSymbols_sw_KE } from './compactnumberformatsymbolsext.js';
+import { ExpectedFailures } from '../testing/expectedfailures.js';
+import { NumberFormat } from './numberformat.js';
 
 /** @suppress {extraRequire} */
-const NumberFormatSymbols_u_nu_latn = goog.require('goog.i18n.NumberFormatSymbols_u_nu_latn');
-const PropertyReplacer = goog.require('goog.testing.PropertyReplacer');
-const googString = goog.require('goog.string');
-const isVersion = goog.require('goog.userAgent.product.isVersion');
-const product = goog.require('goog.userAgent.product');
-const testSuite = goog.require('goog.testing.testSuite');
-const userAgent = goog.require('goog.userAgent');
+/** @suppress {extraRequire} */
+import {
+  NumberFormatSymbols,
+  NumberFormatSymbols_ar,
+  NumberFormatSymbols_ar_EG,
+  NumberFormatSymbols_ar_EG_u_nu_latn,
+  NumberFormatSymbols_bn,
+  NumberFormatSymbols_de,
+  NumberFormatSymbols_en,
+  NumberFormatSymbols_en_AU,
+  NumberFormatSymbols_en_CA,
+  NumberFormatSymbols_en_US,
+  NumberFormatSymbols_fa,
+  NumberFormatSymbols_fi,
+  NumberFormatSymbols_fr,
+  NumberFormatSymbols_ml,
+  NumberFormatSymbols_mr,
+  NumberFormatSymbols_my,
+  NumberFormatSymbols_ne,
+  NumberFormatSymbols_pl,
+  NumberFormatSymbols_ro,
+  NumberFormatSymbols_sw,
+  NumberFormatSymbols_u_nu_latn,
+} from './numberformatsymbols.js';
+import * as numberformatsymbols from './numberformatsymbols.js';
+
+import { NumberFormatSymbols_ff_Adlm, NumberFormatSymbols_sw_KE } from './numberformatsymbolsext.js';
+import { PropertyReplacer } from '../testing/propertyreplacer.js';
+import * as googString from '../string/string.js';
+import { isVersion } from '../useragent/product_isversion.js';
+import * as product from '../useragent/product.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as userAgent from '../useragent/useragent.js';
 
 let expectedFailures;
 
@@ -134,11 +140,11 @@ testSuite({
   /** @suppress {const} See go/const-js-library-faq */
   setUp() {
     // Always switch back to English on startup.
-    stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en);
+    stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en);
     stubs.set(
-        goog.i18n, 'NumberFormatSymbols_u_nu_latn', NumberFormatSymbols_en);
+        numberformatsymbols, 'NumberFormatSymbols_u_nu_latn', NumberFormatSymbols_en);
     stubs.set(
-        goog.i18n, 'CompactNumberFormatSymbols', CompactNumberFormatSymbols_en);
+        compactnumberformatsymbols, 'CompactNumberFormatSymbols', CompactNumberFormatSymbols_en);
 
     NumberFormat.setEnforceAsciiDigits(false);
   },
@@ -677,7 +683,7 @@ testSuite({
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
 
       stubs.replace(goog, 'LOCALE', 'en-CA');  // Canadian English
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en_CA);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en_CA);
       let str;
       let matched;
 
@@ -764,7 +770,7 @@ testSuite({
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
 
       stubs.replace(goog, 'LOCALE', 'en-CA');  // Canadian English
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en_CA);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en_CA);
       let fmt = new NumberFormat('\u00a4#,##0.00;-\u00a4#,##0.00');
       let str = fmt.format(1234.56);
       assertEquals('$1,234.56', str);
@@ -794,7 +800,7 @@ testSuite({
 
       // US Locale
       stubs.replace(goog, 'LOCALE', 'en-US');  // American English
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en_US);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en_US);
 
       fmt = new NumberFormat('\u00a4#,##0.00;-\u00a4#,##0.00');
       str = fmt.format(1234.56);
@@ -830,7 +836,7 @@ testSuite({
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
 
       stubs.replace(goog, 'LOCALE', 'en-CA');  // Canadian English
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en_CA);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en_CA);
       let fmt = new NumberFormat('\u00a4#,##0.00;-\u00a4#,##0.00');
       let str = fmt.format(1234.56);
       assertEquals('$1,234.56', str);
@@ -861,7 +867,7 @@ testSuite({
 
       // US Locale
       stubs.replace(goog, 'LOCALE', 'en-US');  // American English
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en_US);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en_US);
 
       fmt = new NumberFormat('\u00a4#,##0.00;-\u00a4#,##0.00');
       str = fmt.format(1234.56);
@@ -898,7 +904,7 @@ testSuite({
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
 
       stubs.replace(goog, 'LOCALE', 'en-CA');  // Canadian English
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en_CA);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en_CA);
 
       let fmt = new NumberFormat(
           '\u00a4#,##0.00;-\u00a4#,##0.00', 'CAD',
@@ -926,7 +932,7 @@ testSuite({
 
       // US Locale
       stubs.replace(goog, 'LOCALE', 'en-US');  // American English
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en_US);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en_US);
 
       fmt = new NumberFormat(
           '\u00a4#,##0.00;-\u00a4#,##0.00', 'USD',
@@ -1262,11 +1268,11 @@ testSuite({
 
       stubs.replace(goog, 'LOCALE', 'fr');
 
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_fr);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_fr);
       stubs.set(
-          goog.i18n, 'NumberFormatSymbols_u_nu_latn', NumberFormatSymbols_fr);
+          numberformatsymbols, 'NumberFormatSymbols_u_nu_latn', NumberFormatSymbols_fr);
       stubs.set(
-          goog.i18n, 'CompactNumberFormatSymbols',
+          compactnumberformatsymbols, 'CompactNumberFormatSymbols',
           CompactNumberFormatSymbols_fr);
 
       // When this test is performed in test cluster, 2 out of 60 machines have
@@ -1304,11 +1310,11 @@ testSuite({
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
       stubs.replace(goog, 'LOCALE', 'fr');
 
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_fr);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_fr);
       stubs.set(
-          goog.i18n, 'NumberFormatSymbols_u_nu_latn', NumberFormatSymbols_fr);
+          numberformatsymbols, 'NumberFormatSymbols_u_nu_latn', NumberFormatSymbols_fr);
       stubs.set(
-          goog.i18n, 'CompactNumberFormatSymbols',
+          compactnumberformatsymbols, 'CompactNumberFormatSymbols',
           CompactNumberFormatSymbols_fr);
 
       // When this test is performed in test cluster, 2 out of 60 machines have
@@ -1364,10 +1370,10 @@ testSuite({
     for (let nativeMode of testECMAScriptOptions) {
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
 
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_ar_EG);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_ar_EG);
 
       stubs.set(
-          goog.i18n, 'NumberFormatSymbols_u_nu_latn',
+          numberformatsymbols, 'NumberFormatSymbols_u_nu_latn',
           NumberFormatSymbols_ar_EG_u_nu_latn);
 
       NumberFormat.setEnforceAsciiDigits(false);
@@ -1559,7 +1565,7 @@ testSuite({
       stubs.replace(goog, 'LOCALE', 'fi');
 
       // Finnish uses a full-width dash for negative.
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_fi);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_fi);
 
       const fmt = new NumberFormat(NumberFormat.Format.DECIMAL);
 
@@ -1574,11 +1580,11 @@ testSuite({
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
       stubs.replace(goog, 'LOCALE', 'fr');
 
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_fr);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_fr);
       stubs.set(
-          goog.i18n, 'NumberFormatSymbols_u_nu_latn', NumberFormatSymbols_fr);
+          numberformatsymbols, 'NumberFormatSymbols_u_nu_latn', NumberFormatSymbols_fr);
       stubs.set(
-          goog.i18n, 'CompactNumberFormatSymbols',
+          compactnumberformatsymbols, 'CompactNumberFormatSymbols',
           CompactNumberFormatSymbols_fr);
 
       const fmt = new NumberFormat(NumberFormat.Format.COMPACT_SHORT);
@@ -1594,11 +1600,11 @@ testSuite({
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
 
       // Switch to German.
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_de);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_de);
       stubs.set(
-          goog.i18n, 'NumberFormatSymbols_u_nu_latn', NumberFormatSymbols_de);
+          numberformatsymbols, 'NumberFormatSymbols_u_nu_latn', NumberFormatSymbols_de);
       stubs.set(
-          goog.i18n, 'CompactNumberFormatSymbols',
+          compactnumberformatsymbols, 'CompactNumberFormatSymbols',
           CompactNumberFormatSymbols_de);
 
       const fmt = new NumberFormat(NumberFormat.Format.COMPACT_SHORT);
@@ -1715,7 +1721,7 @@ testSuite({
         COMPACT_DECIMAL_SHORT_PATTERN: {'1000': {'other': '0K'}}
       };
 
-      stubs.set(goog.i18n, 'CompactNumberFormatSymbols', cdfSymbols);
+      stubs.set(compactnumberformatsymbols, 'CompactNumberFormatSymbols', cdfSymbols);
       const fmt = new NumberFormat(NumberFormat.Format.COMPACT_LONG);
       const str = fmt.format(220000000000000);
       // b/209630094. COMPACT formats are not used in ECMASCript mode.
@@ -1768,20 +1774,20 @@ testSuite({
   testCurrencyCodeOrder() {
     for (let nativeMode of testECMAScriptOptions) {
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_fr);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_fr);
       stubs.set(
-          goog.i18n, 'CompactNumberFormatSymbols',
+          compactnumberformatsymbols, 'CompactNumberFormatSymbols',
           CompactNumberFormatSymbols_fr);
       stubs.replace(goog, 'LOCALE', 'fr');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_fr);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_fr);
 
       let fmt = new NumberFormat(NumberFormat.Format.CURRENCY);
       assertFalse(fmt.isCurrencyCodeBeforeValue());
 
       stubs.replace(goog, 'LOCALE', 'en');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en);
       stubs.set(
-          goog.i18n, 'CompactNumberFormatSymbols',
+          compactnumberformatsymbols, 'CompactNumberFormatSymbols',
           CompactNumberFormatSymbols_en);
       const fmt1 = new NumberFormat(NumberFormat.Format.CURRENCY);
       assertTrue(fmt1.isCurrencyCodeBeforeValue());
@@ -1852,9 +1858,9 @@ testSuite({
   },
 
   testCompactWithBaseFormattingNumber() {
-    stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en);
+    stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en);
     stubs.set(
-        goog.i18n, 'CompactNumberFormatSymbols', CompactNumberFormatSymbols_en);
+        compactnumberformatsymbols, 'CompactNumberFormatSymbols', CompactNumberFormatSymbols_en);
     for (let nativeMode of testECMAScriptOptions) {
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
       const fmt = new NumberFormat(NumberFormat.Format.COMPACT_SHORT);
@@ -1886,9 +1892,9 @@ testSuite({
   testCompactWithBaseFormattingFrench() {
     // Switch to French.
     stubs.replace(goog, 'LOCALE', 'fr');
-    stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_fr);
+    stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_fr);
     stubs.set(
-        goog.i18n, 'CompactNumberFormatSymbols', CompactNumberFormatSymbols_fr);
+        compactnumberformatsymbols, 'CompactNumberFormatSymbols', CompactNumberFormatSymbols_fr);
     for (let nativeMode of testECMAScriptOptions) {
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
       const fmt = new NumberFormat(NumberFormat.Format.COMPACT_SHORT);
@@ -1921,7 +1927,7 @@ testSuite({
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
 
       stubs.replace(goog, 'LOCALE', 'pl');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_pl);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_pl);
 
       // Native mode formats LOCAL currencies differently from JavaScript.
       const fmPl = new NumberFormat(NumberFormat.Format.CURRENCY);
@@ -1931,7 +1937,7 @@ testSuite({
           str);  // 100.00 zł
 
       stubs.replace(goog, 'LOCALE', 'ro');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_ro);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_ro);
       const fmRo = new NumberFormat(NumberFormat.Format.CURRENCY);
       str = fmRo.format(100);
       assertEquals('100,00\u00A0RON', str);  // Same in native and polyfill
@@ -2045,7 +2051,7 @@ testSuite({
       assertEquals('25%', str);
 
       stubs.replace(goog, 'LOCALE', 'ar_EG');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_ar_EG);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_ar_EG);
       str = f.format(-0.25);
       assertEquals('-25Percent', str);
       str = f.format(0.25);
@@ -2090,7 +2096,7 @@ testSuite({
       assertEquals('1E3', str);
 
       stubs.replace(goog, 'LOCALE', 'en_AU');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en_AU);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en_AU);
       defaultLocale = new NumberFormat(NumberFormat.Format.SCIENTIFIC);
       str = f.format(1000);
       assertEquals('1e3', str);
@@ -2098,7 +2104,7 @@ testSuite({
       assertEquals('1e3', str);
 
       stubs.replace(goog, 'LOCALE', 'en_US');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_en_US);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_en_US);
       defaultLocale = new NumberFormat(NumberFormat.Format.SCIENTIFIC);
       str = f.format(1000);
       assertEquals('1e3', str);
@@ -2208,9 +2214,9 @@ testSuite({
     stubs.replace(goog, 'LOCALE', 'sw');
     for (let nativeMode of testECMAScriptOptions) {
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_sw_KE);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_sw_KE);
       stubs.set(
-          goog.i18n, 'CompactNumberFormatSymbols',
+          compactnumberformatsymbols, 'CompactNumberFormatSymbols',
           CompactNumberFormatSymbols_sw_KE);
 
       let fmt = new NumberFormat(NumberFormat.Format.COMPACT_LONG);
@@ -2230,9 +2236,9 @@ testSuite({
     stubs.replace(goog, 'LOCALE', 'sw');
     for (let nativeMode of testECMAScriptOptions) {
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_sw);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_sw);
       stubs.set(
-          goog.i18n, 'CompactNumberFormatSymbols',
+          compactnumberformatsymbols, 'CompactNumberFormatSymbols',
           CompactNumberFormatSymbols_sw);
 
       const fmt = new NumberFormat(NumberFormat.Format.COMPACT_SHORT);
@@ -2266,7 +2272,7 @@ testSuite({
     stubs.replace(goog, 'LOCALE', '');
     for (let nativeMode of testECMAScriptOptions) {
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_sw);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_sw);
       const fmt = new NumberFormat(NumberFormat.Format.DECIMAL);
       assertTrue(fmt != null);
     }
@@ -2274,7 +2280,7 @@ testSuite({
 
   testAdlamDigits() {
     stubs.replace(goog, 'LOCALE', 'ff-Adlm');
-    stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_ff_Adlm);
+    stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_ff_Adlm);
     for (let nativeMode of testECMAScriptOptions) {
       stubs.replace(NumberFormat, 'USE_ECMASCRIPT_I18N_NUMFORMAT', nativeMode);
       const fmt = new NumberFormat(
@@ -2298,7 +2304,7 @@ testSuite({
 
       // Arabic with ASCII
       stubs.replace(goog, 'LOCALE', 'ar');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_ar);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_ar);
       let ar = new NumberFormat(NumberFormat.Format.DECIMAL);
       let expected = '123';
       let result = ar.format(123);
@@ -2306,7 +2312,7 @@ testSuite({
 
       // Egyptian Arabic
       stubs.replace(goog, 'LOCALE', 'ar-EG');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_ar_EG);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_ar_EG);
       let ar_EG = new NumberFormat(NumberFormat.Format.DECIMAL);
       expected = '١٢٣';
       result = ar_EG.format(123);
@@ -2314,7 +2320,7 @@ testSuite({
 
       // Bengali
       stubs.replace(goog, 'LOCALE', 'bn');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_bn);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_bn);
       let bn = new NumberFormat(NumberFormat.Format.DECIMAL);
       expected = '১২৩';
       result = bn.format(123);
@@ -2322,7 +2328,7 @@ testSuite({
 
       // Persian / Farsi
       stubs.replace(goog, 'LOCALE', 'fa');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_fa);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_fa);
       let fa = new NumberFormat(NumberFormat.Format.DECIMAL);
       expected = '۱۲۳';  // Different from Arabic digits
       result = fa.format(123);
@@ -2330,7 +2336,7 @@ testSuite({
 
       // Malayalam
       stubs.replace(goog, 'LOCALE', 'ml');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_ml);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_ml);
       let ml = new NumberFormat(NumberFormat.Format.DECIMAL);
       expected = '123';
       result = ml.format(123);
@@ -2338,7 +2344,7 @@ testSuite({
 
       // Marathi
       stubs.replace(goog, 'LOCALE', 'mr');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_mr);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_mr);
       let mr = new NumberFormat(NumberFormat.Format.DECIMAL);
       expected = '१२३';
       result = mr.format(123);
@@ -2346,7 +2352,7 @@ testSuite({
 
       // Myanmar
       stubs.replace(goog, 'LOCALE', 'my');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_my);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_my);
       let my = new NumberFormat(NumberFormat.Format.DECIMAL);
       result = my.format(123);
       expected = '၁၂၃';
@@ -2354,7 +2360,7 @@ testSuite({
 
       // Nepali
       stubs.replace(goog, 'LOCALE', 'ne');
-      stubs.set(goog.i18n, 'NumberFormatSymbols', NumberFormatSymbols_ne);
+      stubs.set(numberformatsymbols, 'NumberFormatSymbols', NumberFormatSymbols_ne);
       let ne = new NumberFormat(NumberFormat.Format.DECIMAL);
       result = ne.format(123);
       expected = '१२३';

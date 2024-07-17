@@ -4,39 +4,38 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.ui.ControlTest');
 goog.setTestOnly();
 
-const BrowserEvent = goog.require('goog.events.BrowserEvent');
-const Component = goog.require('goog.ui.Component');
-const Control = goog.require('goog.ui.Control');
-const ControlRenderer = goog.require('goog.ui.ControlRenderer');
-const ExpectedFailures = goog.require('goog.testing.ExpectedFailures');
-const GoogTestingEvent = goog.require('goog.testing.events.Event');
-const KeyCodes = goog.require('goog.events.KeyCodes');
-const PointerFallbackEventType = goog.require('goog.events.PointerFallbackEventType');
-const State = goog.require('goog.a11y.aria.State');
-const TagName = goog.require('goog.dom.TagName');
-const aria = goog.require('goog.a11y.aria');
-const classlist = goog.require('goog.dom.classlist');
-const dom = goog.require('goog.dom');
-const googArray = goog.require('goog.array');
-const googEvents = goog.require('goog.events');
-const googObject = goog.require('goog.object');
-const googString = goog.require('goog.string');
-const registry = goog.require('goog.ui.registry');
-const style = goog.require('goog.style');
-const testSuite = goog.require('goog.testing.testSuite');
-const testing = goog.require('goog.html.testing');
-const testingEvents = goog.require('goog.testing.events');
-const userAgent = goog.require('goog.userAgent');
+import { BrowserEvent } from '../events/browserevent.js';
+import { Component } from './component.js';
+import { Control } from './control.js';
+import { ControlRenderer } from './controlrenderer.js';
+import { ExpectedFailures } from '../testing/expectedfailures.js';
+import * as testingEvents from '../testing/events/events.js';
+import { Event as GoogTestingEvent } from '../testing/events/events.js';
+import { KeyCodes } from '../events/keycodes.js';
+import { PointerFallbackEventType } from '../events/pointerfallbackeventtype.js';
+import { State } from '../a11y/aria/attributes.js';
+import { TagName } from '../dom/tagname.js';
+import * as aria from '../a11y/aria/aria.js';
+import * as classlist from '../dom/classlist.js';
+import * as dom from '../dom/dom.js';
+import * as googArray from '../array/array.js';
+import * as googEvents from '../events/events.js';
+import googObject from '../object/object.js';
+import * as googString from '../string/string.js';
+import * as registry from './registry.js';
+import * as style from '../style/style.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as testing from '../html/testing.js';
+import * as userAgent from '../useragent/useragent.js';
 
 // Disabled due to problems on farm.
 const testFocus = false;
 
 let control;
 
-const ALL_EVENTS = googObject.getValues(Component.EventType);
+const ALL_EVENTS = googObject.getValues(Component.ComponentEventType);
 const events = {};
 let expectedFailures;
 let sandbox;
@@ -123,24 +122,24 @@ function fireMouseDownAndFocus(element, button = undefined) {
 }
 
 function assertClickSequenceFires(msg) {
-  const actionCount = getEventCount(control, Component.EventType.ACTION);
+  const actionCount = getEventCount(control, Component.ComponentEventType.ACTION);
   testingEvents.fireClickSequence(control.getKeyEventTarget());
   assertEquals(
-      msg, actionCount + 1, getEventCount(control, Component.EventType.ACTION));
+      msg, actionCount + 1, getEventCount(control, Component.ComponentEventType.ACTION));
 }
 
 function assertIsolatedClickFires(msg) {
-  const actionCount = getEventCount(control, Component.EventType.ACTION);
+  const actionCount = getEventCount(control, Component.ComponentEventType.ACTION);
   testingEvents.fireClickEvent(control.getKeyEventTarget());
   assertEquals(
-      msg, actionCount + 1, getEventCount(control, Component.EventType.ACTION));
+      msg, actionCount + 1, getEventCount(control, Component.ComponentEventType.ACTION));
 }
 
 function assertIsolatedClickDoesNotFire(msg) {
-  const actionCount = getEventCount(control, Component.EventType.ACTION);
+  const actionCount = getEventCount(control, Component.ComponentEventType.ACTION);
   testingEvents.fireClickEvent(control.getKeyEventTarget());
   assertEquals(
-      msg, actionCount, getEventCount(control, Component.EventType.ACTION));
+      msg, actionCount, getEventCount(control, Component.ComponentEventType.ACTION));
 }
 
 testSuite({
@@ -905,7 +904,7 @@ testSuite({
         control.setVisible(false));
     assertEquals(
         'One HIDE event must have been dispatched', 1,
-        getEventCount(control, Component.EventType.HIDE));
+        getEventCount(control, Component.ComponentEventType.HIDE));
     assertFalse('Control must no longer be visible', control.isVisible());
 
     assertTrue(
@@ -913,7 +912,7 @@ testSuite({
         control.setVisible(true));
     assertEquals(
         'One SHOW event must have been dispatched', 1,
-        getEventCount(control, Component.EventType.SHOW));
+        getEventCount(control, Component.ComponentEventType.SHOW));
     assertTrue('Control must be visible', control.isVisible());
   },
 
@@ -937,7 +936,7 @@ testSuite({
         control.setVisible(false));
     assertEquals(
         'One HIDE event must have been dispatched', 1,
-        getEventCount(control, Component.EventType.HIDE));
+        getEventCount(control, Component.ComponentEventType.HIDE));
     assertFalse('Control must no longer be visible', control.isVisible());
     assertTrue(
         'Control\'s element must be hidden',
@@ -948,7 +947,7 @@ testSuite({
         control.setVisible(true));
     assertEquals(
         'One SHOW event must have been dispatched', 1,
-        getEventCount(control, Component.EventType.SHOW));
+        getEventCount(control, Component.ComponentEventType.SHOW));
     assertTrue('Control must be visible', control.isVisible());
     assertTrue(
         'Control\'s element must be visible',
@@ -973,7 +972,7 @@ testSuite({
     control.getKeyEventTarget().focus();
     assertEquals(
         'Control must not have dispatched FOCUS', 0,
-        getEventCount(control, Component.EventType.FOCUS));
+        getEventCount(control, Component.ComponentEventType.FOCUS));
     assertFalse('Control must not have keyboard focus', control.isFocused());
     control.setVisible(false);
     assertFalse('Control must be hidden', control.isVisible());
@@ -982,10 +981,10 @@ testSuite({
         dom.isFocusableTabIndex(control.getKeyEventTarget()));
     assertEquals(
         'Control must have dispatched HIDE', 1,
-        getEventCount(control, Component.EventType.HIDE));
+        getEventCount(control, Component.ComponentEventType.HIDE));
     assertEquals(
         'Control must not have dispatched BLUR', 0,
-        getEventCount(control, Component.EventType.BLUR));
+        getEventCount(control, Component.ComponentEventType.BLUR));
   },
 
   /** Tests {@link Control#setVisible} for disabled focusable controls. */
@@ -1003,7 +1002,7 @@ testSuite({
     control.getKeyEventTarget().focus();
     assertEquals(
         'Control must not have dispatched FOCUS', 0,
-        getEventCount(control, Component.EventType.FOCUS));
+        getEventCount(control, Component.ComponentEventType.FOCUS));
     assertFalse('Control must not have keyboard focus', control.isFocused());
     control.setVisible(false);
     assertFalse('Control must be hidden', control.isVisible());
@@ -1012,10 +1011,10 @@ testSuite({
         dom.isFocusableTabIndex(control.getKeyEventTarget()));
     assertEquals(
         'Control must have dispatched HIDE', 1,
-        getEventCount(control, Component.EventType.HIDE));
+        getEventCount(control, Component.ComponentEventType.HIDE));
     assertEquals(
         'Control must not have dispatched BLUR', 0,
-        getEventCount(control, Component.EventType.BLUR));
+        getEventCount(control, Component.ComponentEventType.BLUR));
   },
 
   /**
@@ -1037,7 +1036,7 @@ testSuite({
       control.getKeyEventTarget().focus();
       assertEquals(
           'Control must not have dispatched FOCUS', 0,
-          getEventCount(control, Component.EventType.FOCUS));
+          getEventCount(control, Component.ComponentEventType.FOCUS));
       assertFalse('Control must not have keyboard focus', control.isFocused());
       control.setVisible(false);
       assertFalse('Control must be hidden', control.isVisible());
@@ -1046,10 +1045,10 @@ testSuite({
           dom.isFocusableTabIndex(control.getKeyEventTarget()));
       assertEquals(
           'Control must have dispatched HIDE', 1,
-          getEventCount(control, Component.EventType.HIDE));
+          getEventCount(control, Component.ComponentEventType.HIDE));
       assertEquals(
           'Control must not have dispatched BLUR', 0,
-          getEventCount(control, Component.EventType.BLUR));
+          getEventCount(control, Component.ComponentEventType.BLUR));
     }
   },
 
@@ -1077,7 +1076,7 @@ testSuite({
         // IE dispatches focus and blur events asynchronously!
         assertEquals(
             'Control must have dispatched FOCUS', 1,
-            getEventCount(control, Component.EventType.FOCUS));
+            getEventCount(control, Component.ComponentEventType.FOCUS));
         assertTrue('Control must have keyboard focus', control.isFocused());
       } catch (e) {
         expectedFailures.handleException(e);
@@ -1090,7 +1089,7 @@ testSuite({
           dom.isFocusableTabIndex(control.getKeyEventTarget()));
       assertEquals(
           'Control must have dispatched HIDE', 1,
-          getEventCount(control, Component.EventType.HIDE));
+          getEventCount(control, Component.ComponentEventType.HIDE));
 
       // Expected to fail on IE.
       expectedFailures.expectFailureFor(userAgent.IE);
@@ -1098,7 +1097,7 @@ testSuite({
         // IE dispatches focus and blur events asynchronously!
         assertEquals(
             'Control must have dispatched BLUR', 1,
-            getEventCount(control, Component.EventType.BLUR));
+            getEventCount(control, Component.ComponentEventType.BLUR));
         assertFalse(
             'Control must no longer have keyboard focus', control.isFocused());
       } catch (e) {
@@ -1146,7 +1145,7 @@ testSuite({
     control.setEnabled(false);
     assertEquals(
         'One DISABLE event must have been dispatched', 1,
-        getEventCount(control, Component.EventType.DISABLE));
+        getEventCount(control, Component.ComponentEventType.DISABLE));
     assertFalse('Control must be disabled', control.isEnabled());
     assertFalse('Control must not be highlighted', control.isHighlighted());
     assertFalse('Control must not be active', control.isActive());
@@ -1223,7 +1222,7 @@ testSuite({
     control.setState(Component.State.DISABLED, true);
     assertEquals(
         'One DISABLE event must have been dispatched', 1,
-        getEventCount(control, Component.EventType.DISABLE));
+        getEventCount(control, Component.ComponentEventType.DISABLE));
     assertFalse('Control must be disabled', control.isEnabled());
     assertFalse('Control must not be highlighted', control.isHighlighted());
     assertFalse('Control must not be active', control.isActive());
@@ -1281,7 +1280,7 @@ testSuite({
     control.setEnabled(true);
     assertEquals(
         'One ENABLE event must have been dispatched by the parent', 1,
-        getEventCount(control, Component.EventType.ENABLE));
+        getEventCount(control, Component.ComponentEventType.ENABLE));
     assertTrue('Parent must be enabled', control.isEnabled());
     assertTrue('Child must still be enabled', child.isEnabled());
 
@@ -1290,7 +1289,7 @@ testSuite({
     child.setEnabled(false);
     assertEquals(
         'One DISABLE event must have been dispatched by the child', 1,
-        getEventCount(child, Component.EventType.DISABLE));
+        getEventCount(child, Component.ComponentEventType.DISABLE));
     assertTrue('Parent must still be enabled', control.isEnabled());
     assertFalse('Child must now be disabled', child.isEnabled());
 
@@ -1299,7 +1298,7 @@ testSuite({
     control.setEnabled(false);
     assertEquals(
         'One DISABLE event must have been dispatched by the parent', 1,
-        getEventCount(control, Component.EventType.DISABLE));
+        getEventCount(control, Component.ComponentEventType.DISABLE));
     assertFalse('Parent must now be disabled', control.isEnabled());
     assertFalse('Child must still be disabled', child.isEnabled());
 
@@ -1330,19 +1329,19 @@ testSuite({
     assertTrue('Control must be highlighted', control.isHighlighted());
     assertEquals(
         'Control must have dispatched a HIGHLIGHT event', 1,
-        getEventCount(control, Component.EventType.HIGHLIGHT));
+        getEventCount(control, Component.ComponentEventType.HIGHLIGHT));
 
     control.setHighlighted(true);
     assertTrue('Control must still be highlighted', control.isHighlighted());
     assertEquals(
         'Control must not dispatch more HIGHLIGHT events', 1,
-        getEventCount(control, Component.EventType.HIGHLIGHT));
+        getEventCount(control, Component.ComponentEventType.HIGHLIGHT));
 
     control.setHighlighted(false);
     assertFalse('Control must not be highlighted', control.isHighlighted());
     assertEquals(
         'Control must have dispatched an UNHIGHLIGHT event', 1,
-        getEventCount(control, Component.EventType.UNHIGHLIGHT));
+        getEventCount(control, Component.ComponentEventType.UNHIGHLIGHT));
     control.setEnabled(false);
     assertFalse('Control must be disabled', control.isEnabled());
 
@@ -1352,7 +1351,7 @@ testSuite({
         control.isHighlighted());
     assertEquals(
         'Control must have dispatched another HIGHLIGHT event', 2,
-        getEventCount(control, Component.EventType.HIGHLIGHT));
+        getEventCount(control, Component.ComponentEventType.HIGHLIGHT));
   },
 
   /** Tests {@link Control#isActive}. */
@@ -1377,20 +1376,20 @@ testSuite({
     assertTrue('Control must be active', control.isActive());
     assertEquals(
         'Control must have dispatched an ACTIVATE event', 1,
-        getEventCount(control, Component.EventType.ACTIVATE));
+        getEventCount(control, Component.ComponentEventType.ACTIVATE));
 
     control.setActive(true);
     assertTrue('Control must still be active', control.isActive());
     assertEquals(
         'Control must not dispatch more ACTIVATE events', 1,
-        getEventCount(control, Component.EventType.ACTIVATE));
+        getEventCount(control, Component.ComponentEventType.ACTIVATE));
 
     control.setEnabled(false);
     assertFalse('Control must be disabled', control.isEnabled());
     assertFalse('Control must not be active', control.isActive());
     assertEquals(
         'Control must have dispatched a DEACTIVATE event', 1,
-        getEventCount(control, Component.EventType.DEACTIVATE));
+        getEventCount(control, Component.ComponentEventType.DEACTIVATE));
   },
 
   /**
@@ -1398,7 +1397,7 @@ testSuite({
      @suppress {visibility} suppression added to enable type checking
    */
   testDisposeOnAction() {
-    googEvents.listen(control, Component.EventType.ACTION, (e) => {
+    googEvents.listen(control, Component.ComponentEventType.ACTION, (e) => {
       control.dispose();
     });
 
@@ -1432,19 +1431,19 @@ testSuite({
     assertTrue('Control must be selected', control.isSelected());
     assertEquals(
         'Control must have dispatched a SELECT event', 1,
-        getEventCount(control, Component.EventType.SELECT));
+        getEventCount(control, Component.ComponentEventType.SELECT));
 
     control.setSelected(true);
     assertTrue('Control must still be selected', control.isSelected());
     assertEquals(
         'Control must not dispatch more SELECT events', 1,
-        getEventCount(control, Component.EventType.SELECT));
+        getEventCount(control, Component.ComponentEventType.SELECT));
 
     control.setSelected(false);
     assertFalse('Control must not be selected', control.isSelected());
     assertEquals(
         'Control must have dispatched an UNSELECT event', 1,
-        getEventCount(control, Component.EventType.UNSELECT));
+        getEventCount(control, Component.ComponentEventType.UNSELECT));
     control.setEnabled(false);
     assertFalse('Control must be disabled', control.isEnabled());
 
@@ -1453,7 +1452,7 @@ testSuite({
         'Control must be selected, even when disabled', control.isSelected());
     assertEquals(
         'Control must have dispatched another SELECT event', 2,
-        getEventCount(control, Component.EventType.SELECT));
+        getEventCount(control, Component.ComponentEventType.SELECT));
   },
 
   /** Tests {@link Control#isChecked}. */
@@ -1478,19 +1477,19 @@ testSuite({
     assertTrue('Control must be checked', control.isChecked());
     assertEquals(
         'Control must have dispatched a CHECK event', 1,
-        getEventCount(control, Component.EventType.CHECK));
+        getEventCount(control, Component.ComponentEventType.CHECK));
 
     control.setChecked(true);
     assertTrue('Control must still be checked', control.isChecked());
     assertEquals(
         'Control must not dispatch more CHECK events', 1,
-        getEventCount(control, Component.EventType.CHECK));
+        getEventCount(control, Component.ComponentEventType.CHECK));
 
     control.setChecked(false);
     assertFalse('Control must not be checked', control.isChecked());
     assertEquals(
         'Control must have dispatched an UNCHECK event', 1,
-        getEventCount(control, Component.EventType.UNCHECK));
+        getEventCount(control, Component.ComponentEventType.UNCHECK));
     control.setEnabled(false);
     assertFalse('Control must be disabled', control.isEnabled());
 
@@ -1499,7 +1498,7 @@ testSuite({
         'Control must be checked, even when disabled', control.isChecked());
     assertEquals(
         'Control must have dispatched another CHECK event', 2,
-        getEventCount(control, Component.EventType.CHECK));
+        getEventCount(control, Component.ComponentEventType.CHECK));
   },
 
   /** Tests {@link Control#isFocused}. */
@@ -1524,19 +1523,19 @@ testSuite({
     assertTrue('Control must be focused', control.isFocused());
     assertEquals(
         'Control must have dispatched a FOCUS event', 1,
-        getEventCount(control, Component.EventType.FOCUS));
+        getEventCount(control, Component.ComponentEventType.FOCUS));
 
     control.setFocused(true);
     assertTrue('Control must still be focused', control.isFocused());
     assertEquals(
         'Control must not dispatch more FOCUS events', 1,
-        getEventCount(control, Component.EventType.FOCUS));
+        getEventCount(control, Component.ComponentEventType.FOCUS));
 
     control.setFocused(false);
     assertFalse('Control must not be focused', control.isFocused());
     assertEquals(
         'Control must have dispatched an BLUR event', 1,
-        getEventCount(control, Component.EventType.BLUR));
+        getEventCount(control, Component.ComponentEventType.BLUR));
     control.setEnabled(false);
     assertFalse('Control must be disabled', control.isEnabled());
 
@@ -1545,7 +1544,7 @@ testSuite({
         'Control must be focused, even when disabled', control.isFocused());
     assertEquals(
         'Control must have dispatched another FOCUS event', 2,
-        getEventCount(control, Component.EventType.FOCUS));
+        getEventCount(control, Component.ComponentEventType.FOCUS));
   },
 
   /** Tests {@link Control#isOpen}. */
@@ -1570,19 +1569,19 @@ testSuite({
     assertTrue('Control must be opened', control.isOpen());
     assertEquals(
         'Control must have dispatched a OPEN event', 1,
-        getEventCount(control, Component.EventType.OPEN));
+        getEventCount(control, Component.ComponentEventType.OPEN));
 
     control.setOpen(true);
     assertTrue('Control must still be opened', control.isOpen());
     assertEquals(
         'Control must not dispatch more OPEN events', 1,
-        getEventCount(control, Component.EventType.OPEN));
+        getEventCount(control, Component.ComponentEventType.OPEN));
 
     control.setOpen(false);
     assertFalse('Control must not be opened', control.isOpen());
     assertEquals(
         'Control must have dispatched an CLOSE event', 1,
-        getEventCount(control, Component.EventType.CLOSE));
+        getEventCount(control, Component.ComponentEventType.CLOSE));
     control.setEnabled(false);
     assertFalse('Control must be disabled', control.isEnabled());
 
@@ -1590,7 +1589,7 @@ testSuite({
     assertTrue('Control must be opened, even when disabled', control.isOpen());
     assertEquals(
         'Control must have dispatched another OPEN event', 2,
-        getEventCount(control, Component.EventType.OPEN));
+        getEventCount(control, Component.ComponentEventType.OPEN));
   },
 
   /** Tests {@link Control#getState}. */
@@ -1846,7 +1845,7 @@ testSuite({
         control.isTransitionAllowed(Component.State.HOVER, true));
     assertEquals(
         'Control must have dispatched one HIGHLIGHT event', 1,
-        getEventCount(control, Component.EventType.HIGHLIGHT));
+        getEventCount(control, Component.ComponentEventType.HIGHLIGHT));
     assertFalse(
         'Control must not be highlighted',
         control.hasState(Component.State.HOVER));
@@ -1859,7 +1858,7 @@ testSuite({
         control.isTransitionAllowed(Component.State.HOVER, false));
     assertEquals(
         'Control must not have dispatched any UNHIGHLIGHT events', 0,
-        getEventCount(control, Component.EventType.UNHIGHLIGHT));
+        getEventCount(control, Component.ComponentEventType.UNHIGHLIGHT));
     assertTrue(
         'Control must still be highlighted',
         control.hasState(Component.State.HOVER));
@@ -1879,7 +1878,7 @@ testSuite({
         control.isTransitionAllowed(Component.State.FOCUSED, true));
     assertEquals(
         'Control must not have dispatched any FOCUS events', 0,
-        getEventCount(control, Component.EventType.FOCUS));
+        getEventCount(control, Component.ComponentEventType.FOCUS));
 
     control.setEnabled(false);
     resetEventCount();
@@ -1895,7 +1894,7 @@ testSuite({
         control.isTransitionAllowed(Component.State.DISABLED, true));
     assertEquals(
         'Control must not have dispatched any ENABLE events', 0,
-        getEventCount(control, Component.EventType.ENABLE));
+        getEventCount(control, Component.ComponentEventType.ENABLE));
   },
 
   /** Tests {@link Control#handleKeyEvent}. */
@@ -1907,12 +1906,12 @@ testSuite({
 
     assertEquals(
         'Control must not have dispatched an ACTION event', 0,
-        getEventCount(control, Component.EventType.ACTION));
+        getEventCount(control, Component.ComponentEventType.ACTION));
 
     testingEvents.fireKeySequence(control.getKeyEventTarget(), KeyCodes.ENTER);
     assertEquals(
         'Control must have dispatched an ACTION event', 1,
-        getEventCount(control, Component.EventType.ACTION));
+        getEventCount(control, Component.ComponentEventType.ACTION));
   },
 
   /**
@@ -1931,7 +1930,7 @@ testSuite({
     assertFalse('Control must not be open', control.isOpen());
     assertEquals(
         'Control must have dispatched an ACTION event', 1,
-        getEventCount(control, Component.EventType.ACTION));
+        getEventCount(control, Component.ComponentEventType.ACTION));
 
     control.setSupportedState(Component.State.CHECKED, true);
     control.setSupportedState(Component.State.SELECTED, true);
@@ -1944,16 +1943,16 @@ testSuite({
     assertTrue('Control must be open', control.isOpen());
     assertEquals(
         'Control must have dispatched a CHECK event', 1,
-        getEventCount(control, Component.EventType.CHECK));
+        getEventCount(control, Component.ComponentEventType.CHECK));
     assertEquals(
         'Control must have dispatched a SELECT event', 1,
-        getEventCount(control, Component.EventType.SELECT));
+        getEventCount(control, Component.ComponentEventType.SELECT));
     assertEquals(
         'Control must have dispatched a OPEN event', 1,
-        getEventCount(control, Component.EventType.OPEN));
+        getEventCount(control, Component.ComponentEventType.OPEN));
     assertEquals(
         'Control must have dispatched another ACTION event', 2,
-        getEventCount(control, Component.EventType.ACTION));
+        getEventCount(control, Component.ComponentEventType.ACTION));
 
     control.performActionInternal();
 
@@ -1962,16 +1961,16 @@ testSuite({
     assertFalse('Control must not be open', control.isOpen());
     assertEquals(
         'Control must have dispatched an UNCHECK event', 1,
-        getEventCount(control, Component.EventType.UNCHECK));
+        getEventCount(control, Component.ComponentEventType.UNCHECK));
     assertEquals(
         'Control must not have dispatched an UNSELECT event', 0,
-        getEventCount(control, Component.EventType.UNSELECT));
+        getEventCount(control, Component.ComponentEventType.UNSELECT));
     assertEquals(
         'Control must have dispatched a CLOSE event', 1,
-        getEventCount(control, Component.EventType.CLOSE));
+        getEventCount(control, Component.ComponentEventType.CLOSE));
     assertEquals(
         'Control must have dispatched another ACTION event', 3,
-        getEventCount(control, Component.EventType.ACTION));
+        getEventCount(control, Component.ComponentEventType.ACTION));
   },
 
   /** Tests {@link Control#handleMouseOver}. */
@@ -2004,13 +2003,13 @@ testSuite({
     resetEventCount();
 
     // Scenario 2:  preventDefault() is called on the ENTER event.
-    const key = googEvents.listen(control, Component.EventType.ENTER, (e) => {
+    const key = googEvents.listen(control, Component.ComponentEventType.ENTER, (e) => {
       e.preventDefault();
     });
     testingEvents.fireMouseOverEvent(element, sandbox);
     assertEquals(
         'Control must have dispatched 1 ENTER event', 1,
-        getEventCount(control, Component.EventType.ENTER));
+        getEventCount(control, Component.ComponentEventType.ENTER));
     assertFalse(
         'Control must not be highlighted if ENTER is canceled',
         control.isHighlighted());
@@ -2023,7 +2022,7 @@ testSuite({
     assertEquals(
         'Control must dispatch ENTER event on mouseover even if ' +
             'disabled',
-        1, getEventCount(control, Component.EventType.ENTER));
+        1, getEventCount(control, Component.ComponentEventType.ENTER));
     assertFalse(
         'Control must not be highlighted if it is disabled',
         control.isHighlighted());
@@ -2036,7 +2035,7 @@ testSuite({
     assertEquals(
         'Control must dispatch ENTER event on mouseover even if ' +
             'HOVER is not an auto-state',
-        1, getEventCount(control, Component.EventType.ENTER));
+        1, getEventCount(control, Component.ComponentEventType.ENTER));
     assertFalse(
         'Control must not be highlighted if HOVER isn\'t an auto-' +
             'state',
@@ -2048,10 +2047,10 @@ testSuite({
     testingEvents.fireMouseOverEvent(element, sandbox);
     assertEquals(
         'Control must dispatch ENTER event on mouseover', 1,
-        getEventCount(control, Component.EventType.ENTER));
+        getEventCount(control, Component.ComponentEventType.ENTER));
     assertEquals(
         'Control must dispatch HIGHLIGHT event on mouseover', 1,
-        getEventCount(control, Component.EventType.HIGHLIGHT));
+        getEventCount(control, Component.ComponentEventType.HIGHLIGHT));
     assertTrue('Control must be highlighted', control.isHighlighted());
     resetEventCount();
 
@@ -2060,10 +2059,10 @@ testSuite({
     testingEvents.fireMouseOverEvent(element, null);
     assertEquals(
         'Control must dispatch ENTER event on mouseover', 1,
-        getEventCount(control, Component.EventType.ENTER));
+        getEventCount(control, Component.ComponentEventType.ENTER));
     assertEquals(
         'Control must dispatch HIGHLIGHT event on mouseover', 1,
-        getEventCount(control, Component.EventType.HIGHLIGHT));
+        getEventCount(control, Component.ComponentEventType.HIGHLIGHT));
     assertTrue('Control must be highlighted', control.isHighlighted());
     resetEventCount();
   },
@@ -2109,13 +2108,13 @@ testSuite({
     resetEventCount();
 
     // Scenario 2:  preventDefault() is called on the LEAVE event.
-    const key = googEvents.listen(control, Component.EventType.LEAVE, (e) => {
+    const key = googEvents.listen(control, Component.ComponentEventType.LEAVE, (e) => {
       e.preventDefault();
     });
     testingEvents.fireMouseOutEvent(element, sandbox);
     assertEquals(
         'Control must have dispatched 1 LEAVE event', 1,
-        getEventCount(control, Component.EventType.LEAVE));
+        getEventCount(control, Component.ComponentEventType.LEAVE));
     assertTrue(
         'Control must not be un-highlighted if LEAVE is canceled',
         control.isHighlighted());
@@ -2131,7 +2130,7 @@ testSuite({
     assertEquals(
         'Control must dispatch LEAVE event on mouseout even if ' +
             'ACTIVE is not an auto-state',
-        1, getEventCount(control, Component.EventType.LEAVE));
+        1, getEventCount(control, Component.ComponentEventType.LEAVE));
     assertTrue(
         'Control must not be deactivated if ACTIVE isn\'t an auto-' +
             'state',
@@ -2150,7 +2149,7 @@ testSuite({
     assertEquals(
         'Control must dispatch LEAVE event on mouseout even if ' +
             'HOVER is not an auto-state',
-        1, getEventCount(control, Component.EventType.LEAVE));
+        1, getEventCount(control, Component.ComponentEventType.LEAVE));
     assertFalse(
         'Control must be deactivated even if HOVER isn\'t an auto-' +
             'state',
@@ -2167,13 +2166,13 @@ testSuite({
     testingEvents.fireMouseOutEvent(element, sandbox);
     assertEquals(
         'Control must dispatch LEAVE event on mouseout', 1,
-        getEventCount(control, Component.EventType.LEAVE));
+        getEventCount(control, Component.ComponentEventType.LEAVE));
     assertEquals(
         'Control must dispatch DEACTIVATE event on mouseout', 1,
-        getEventCount(control, Component.EventType.DEACTIVATE));
+        getEventCount(control, Component.ComponentEventType.DEACTIVATE));
     assertEquals(
         'Control must dispatch UNHIGHLIGHT event on mouseout', 1,
-        getEventCount(control, Component.EventType.UNHIGHLIGHT));
+        getEventCount(control, Component.ComponentEventType.UNHIGHLIGHT));
     assertFalse('Control must be deactivated', control.isActive());
     assertFalse('Control must be unhighlighted', control.isHighlighted());
     resetEventCount();
@@ -2184,13 +2183,13 @@ testSuite({
     testingEvents.fireMouseOutEvent(element, null);
     assertEquals(
         'Control must dispatch LEAVE event on mouseout', 1,
-        getEventCount(control, Component.EventType.LEAVE));
+        getEventCount(control, Component.ComponentEventType.LEAVE));
     assertEquals(
         'Control must dispatch DEACTIVATE event on mouseout', 1,
-        getEventCount(control, Component.EventType.DEACTIVATE));
+        getEventCount(control, Component.ComponentEventType.DEACTIVATE));
     assertEquals(
         'Control must dispatch UNHIGHLIGHT event on mouseout', 1,
-        getEventCount(control, Component.EventType.UNHIGHLIGHT));
+        getEventCount(control, Component.ComponentEventType.UNHIGHLIGHT));
     assertFalse('Control must be deactivated', control.isActive());
     assertFalse('Control must be unhighlighted', control.isHighlighted());
     resetEventCount();
@@ -2538,7 +2537,7 @@ testSuite({
 
     control.render(sandbox);
 
-    const actionCount = getEventCount(control, Component.EventType.ACTION);
+    const actionCount = getEventCount(control, Component.ComponentEventType.ACTION);
     const e = document.createEvent('MouseEvents');
     e.initMouseEvent(
         'click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false,
@@ -2547,11 +2546,11 @@ testSuite({
     if (userAgent.IE) {
       assertEquals(
           'ACTION event expected after an isolated click', actionCount + 1,
-          getEventCount(control, Component.EventType.ACTION));
+          getEventCount(control, Component.ComponentEventType.ACTION));
     } else {
       assertEquals(
           'No ACTION event expected after an isolated click', actionCount,
-          getEventCount(control, Component.EventType.ACTION));
+          getEventCount(control, Component.ComponentEventType.ACTION));
     }
   },
 

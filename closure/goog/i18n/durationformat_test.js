@@ -9,27 +9,27 @@
  * @suppress {missingRequire} Swapping using fully qualified name
  */
 
-goog.module('goog.i18n.DurationFormatTest');
 goog.setTestOnly('goog.i18n.DurationFormatTest');
 
-const DurationSymbols = goog.require('goog.i18n.DurationSymbols');
-const DurationSymbolsExt = goog.require('goog.i18n.DurationSymbolsExt');
-const NumberFormatSymbols_ar_EG = goog.require('goog.i18n.NumberFormatSymbols_ar_EG');
-const NumberFormatSymbols_en = goog.require('goog.i18n.NumberFormatSymbols_en');
-const testSuite = goog.require('goog.testing.testSuite');
-const {DurationFormat, DurationFormatStyle, DurationFormatUnit} = goog.require('goog.i18n.DurationFormat');
-const {assertI18nEquals} = goog.require('goog.testing.i18n.asserts');
+import * as DurationSymbols from './durationsymbols.js';
+import * as DurationSymbolsExt from './durationsymbolsext.js';
+import { NumberFormatSymbols_ar_EG, NumberFormatSymbols_en } from './numberformatsymbols.js';
+import * as numberformatsymbols from './numberformatsymbols.js';
+import { testSuite } from '../testing/testsuite.js';
+import { DurationFormat, DurationFormatStyle, DurationFormatUnit } from './durationformat.js';
+import { assertI18nEquals } from '../testing/i18n/asserts.js';
+import * as pluralRules from './pluralrules.js';
 
 /** @suppress {visibility} suppression added to enable type checking */
-const Plurals_en = goog.i18n.pluralRules.enSelect_;
+const Plurals_en = pluralRules.enSelect_;
 /** @suppress {visibility} suppression added to enable type checking */
-const Plurals_af = goog.i18n.pluralRules.afSelect_;
+const Plurals_af = pluralRules.afSelect_;
 /** @suppress {visibility} suppression added to enable type checking */
-const Plurals_ar = goog.i18n.pluralRules.arSelect_;
+const Plurals_ar = pluralRules.arSelect_;
 /** @suppress {visibility} suppression added to enable type checking */
-const Plurals_zh = goog.i18n.pluralRules.defaultSelect_;
+const Plurals_zh = pluralRules.defaultSelect_;
 /** @suppress {visibility} suppression added to enable type checking */
-const Plurals = goog.i18n.pluralRules.defaultSelect_;
+const Plurals = pluralRules.defaultSelect_;
 
 /** @unrestricted */
 const DurationData = class {
@@ -292,15 +292,15 @@ testSuite({
     /**
      * @suppress {constantProperty} suppression added to enable type checking
      */
-    goog.i18n.NumberFormatSymbols = NumberFormatSymbols_en;
-    goog.i18n.pluralRules.select = Plurals_en;
+    numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_en);
+    pluralRules.$set('select', Plurals_en);
   },
 
   tearDown: function() {
     /**
      * @suppress {constantProperty} suppression added to enable type checking
      */
-    goog.i18n.NumberFormatSymbols = NumberFormatSymbols_en;
+    numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_en);
     // Use computed properties to avoid compiler checks of defines.
     goog['LOCALE'] = 'en';
   },
@@ -457,10 +457,10 @@ testSuite({
        * @suppress {constantProperty} suppression added to enable type
        * checking
        */
-      goog.i18n.NumberFormatSymbols = NumberFormatSymbols_ar_EG;
+      numberformatsymbols.$set('NumberFormatSymbols', NumberFormatSymbols_ar_EG);
       // Use computed properties to avoid compiler checks of defines.
       goog['LOCALE'] = data.locale;
-      goog.i18n.pluralRules.select = Plurals_ar;
+      pluralRules.$set('select', Plurals_ar);
       /**
        * @suppress {strictMissingProperties} suppression added to enable type
        * checking

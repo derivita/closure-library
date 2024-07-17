@@ -9,11 +9,10 @@
  *     resize options for the popup.
  */
 
-goog.provide('goog.positioning.MenuAnchoredPosition');
+import { AnchoredViewportPosition } from './anchoredviewportposition.js';
 
-goog.require('goog.positioning.AnchoredViewportPosition');
-goog.require('goog.positioning.Overflow');
-goog.requireType('goog.positioning.Corner');
+import { Overflow } from './positioning.js';
+const {Corner} = goog.requireType('goog.positioning.positioning');
 
 
 
@@ -27,7 +26,7 @@ goog.requireType('goog.positioning.Corner');
  *
  * @param {Element} anchorElement Element the movable element should be
  *     anchored against.
- * @param {goog.positioning.Corner} corner Corner of anchored element the
+ * @param {Corner} corner Corner of anchored element the
  *     movable element should be positioned at.
  * @param {boolean=} opt_adjust Whether the positioning should be adjusted until
  *     the element fits inside the viewport even if that means that the anchored
@@ -36,22 +35,20 @@ goog.requireType('goog.positioning.Corner');
  *     the element fits inside the viewport on the X axis and its height is
  *     resized so if fits in the viewport. This take precedence over opt_adjust.
  * @constructor
- * @extends {goog.positioning.AnchoredViewportPosition}
+ * @extends {AnchoredViewportPosition}
  */
-goog.positioning.MenuAnchoredPosition = function(
-    anchorElement, corner, opt_adjust, opt_resize) {
-  'use strict';
-  goog.positioning.AnchoredViewportPosition.call(
-      this, anchorElement, corner, opt_adjust || opt_resize);
+export function MenuAnchoredPosition(anchorElement, corner, opt_adjust, opt_resize) {
+ AnchoredViewportPosition.call(
+     this, anchorElement, corner, opt_adjust || opt_resize);
 
-  if (opt_adjust || opt_resize) {
-    var overflowX = goog.positioning.Overflow.ADJUST_X_EXCEPT_OFFSCREEN;
-    var overflowY = opt_resize ?
-        goog.positioning.Overflow.RESIZE_HEIGHT :
-        goog.positioning.Overflow.ADJUST_Y_EXCEPT_OFFSCREEN;
-    this.setLastResortOverflow(overflowX | overflowY);
-  }
-};
+ if (opt_adjust || opt_resize) {
+   var overflowX = Overflow.ADJUST_X_EXCEPT_OFFSCREEN;
+   var overflowY = opt_resize ?
+       Overflow.RESIZE_HEIGHT :
+       Overflow.ADJUST_Y_EXCEPT_OFFSCREEN;
+   this.setLastResortOverflow(overflowX | overflowY);
+ }
+}
 goog.inherits(
-    goog.positioning.MenuAnchoredPosition,
-    goog.positioning.AnchoredViewportPosition);
+    MenuAnchoredPosition,
+    AnchoredViewportPosition);

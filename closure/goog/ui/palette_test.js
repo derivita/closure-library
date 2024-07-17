@@ -4,22 +4,22 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.ui.PaletteTest');
 goog.setTestOnly();
 
-const Component = goog.require('goog.ui.Component');
-const Container = goog.require('goog.ui.Container');
-const EventType = goog.require('goog.events.EventType');
-const GoogTestingEvent = goog.require('goog.testing.events.Event');
-const KeyCodes = goog.require('goog.events.KeyCodes');
-const KeyEvent = goog.require('goog.events.KeyEvent');
-const Palette = goog.require('goog.ui.Palette');
-const aria = goog.require('goog.a11y.aria');
-const dom = goog.require('goog.dom');
-const googEvents = goog.require('goog.events');
-const recordFunction = goog.require('goog.testing.recordFunction');
-const style = goog.require('goog.style');
-const testSuite = goog.require('goog.testing.testSuite');
+import { Component } from './component.js';
+import { Container } from './container.js';
+import { EventType } from '../events/eventtype.js';
+import { Event as GoogTestingEvent } from '../testing/events/events.js';
+import { KeyCodes } from '../events/keycodes.js';
+import { KeyEvent } from '../events/keyevent.js';
+import { Palette } from './palette.js';
+import * as aria from '../a11y/aria/aria.js';
+import * as dom from '../dom/dom.js';
+import * as googEvents from '../events/events.js';
+import { recordFunction } from '../testing/recordfunction.js';
+import * as style from '../style/style.js';
+import { testSuite } from '../testing/testsuite.js';
+import { BrowserEvent } from '../events/browserevent.js';
 
 let palette;
 let nodes;
@@ -93,9 +93,9 @@ testSuite({
         palette,
         [
           this,
-          Component.EventType.HIGHLIGHT,
+          Component.ComponentEventType.HIGHLIGHT,
           this,
-          Component.EventType.UNHIGHLIGHT,
+          Component.ComponentEventType.UNHIGHLIGHT,
         ],
         handleEvent);
 
@@ -103,7 +103,7 @@ testSuite({
     palette.setHighlightedItem(nodes[0]);
     assertEquals('Should have fired 1 event', 1, events.length);
     assertEquals(
-        'HIGHLIGHT event should be fired', Component.EventType.HIGHLIGHT,
+        'HIGHLIGHT event should be fired', Component.ComponentEventType.HIGHLIGHT,
         events[0].type);
     assertEquals(
         'Event should be fired for node[0] cell',
@@ -122,14 +122,14 @@ testSuite({
     const unhighlightEvent = events.shift();
     const highlightEvent = events.shift();
     assertEquals(
-        'UNHIGHLIGHT should be fired first', Component.EventType.UNHIGHLIGHT,
+        'UNHIGHLIGHT should be fired first', Component.ComponentEventType.UNHIGHLIGHT,
         unhighlightEvent.type);
     assertEquals(
         'UNHIGHLIGHT should be fired for node[0] cell',
         renderer.getCellForItem(nodes[0]), targetElements[0]);
     assertEquals(
         'HIGHLIGHT should be fired after UNHIGHLIGHT',
-        Component.EventType.HIGHLIGHT, highlightEvent.type);
+        Component.ComponentEventType.HIGHLIGHT, highlightEvent.type);
     assertEquals(
         'HIGHLIGHT should be fired for node[1] cell',
         renderer.getCellForItem(nodes[1]), targetElements[1]);
@@ -142,7 +142,7 @@ testSuite({
 
     assertEquals('Should have fired 1 event', 1, events.length);
     assertEquals(
-        'UNHIGHLIGHT event should be fired', Component.EventType.UNHIGHLIGHT,
+        'UNHIGHLIGHT event should be fired', Component.ComponentEventType.UNHIGHLIGHT,
         events[0].type);
     assertEquals(
         'Event should be fired for node[1] cell',
@@ -235,7 +235,7 @@ testSuite({
 
     // Click somewhere in the palette, but not inside a cell.
     /** @suppress {checkTypes} suppression added to enable type checking */
-    const mouseUp = new googEvents.BrowserEvent(
+    const mouseUp = new BrowserEvent(
         {type: 'mouseup', button: 1, target: palette});
     palette.handleMouseUp(mouseUp);
 

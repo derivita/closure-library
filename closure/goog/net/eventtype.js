@@ -9,14 +9,11 @@
  */
 
 
-goog.provide('goog.net.EventType');
-
-
 /**
  * Event names for network events
  * @enum {string}
  */
-goog.net.EventType = {
+export var EventType = {
   COMPLETE: 'complete',
   SUCCESS: 'success',
   ERROR: 'error',

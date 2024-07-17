@@ -4,14 +4,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.events.EventTargetGoogEventsTest');
 goog.setTestOnly();
 
-const GoogEventTarget = goog.require('goog.events.EventTarget');
-const eventTargetTester = goog.require('goog.events.eventTargetTester');
-const events = goog.require('goog.events');
-const testSuite = goog.require('goog.testing.testSuite');
-const testing = goog.require('goog.testing');
+import { EventTarget as GoogEventTarget } from './eventtarget.js';
+import eventTargetTester from './eventtargettester.js';
+import * as events from './events.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as testing from '../testing/functionmock.js';
+import { recordFunction } from '../testing/recordfunction.js';
 
 const KeyType = eventTargetTester.KeyType;
 const EventType = eventTargetTester.EventType;
@@ -65,7 +65,7 @@ testSuite(Object.assign(
 
       testListenWithObject() {
         const obj = {};
-        obj.handleEvent = testing.recordFunction();
+        obj.handleEvent = recordFunction();
         events.listen(eventTargetTester.getTargets()[0], EventType.A, obj);
         eventTargetTester.getTargets()[0].dispatchEvent(EventType.A);
         assertEquals(1, obj.handleEvent.getCallCount());

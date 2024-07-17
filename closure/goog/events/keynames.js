@@ -8,9 +8,6 @@
  * @fileoverview Constant declarations for common key codes.
  */
 
-goog.provide('goog.events.KeyNames');
-
-
 /**
  * Key names for common characters. These should be used with keyup/keydown
  * events, since the .keyCode property on those is meant to indicate the
@@ -27,7 +24,7 @@ goog.provide('goog.events.KeyNames');
  * @see goog.events.KeyCodes
  * @enum {string}
  */
-goog.events.KeyNames = {
+export const KeyNames = {
   8: 'backspace',
   9: 'tab',
   13: 'enter',

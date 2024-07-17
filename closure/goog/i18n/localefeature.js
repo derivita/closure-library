@@ -3,9 +3,6 @@
  * Copyright The Closure Library Authors.
  * SPDX-License-Identifier: Apache-2.0
  */
-goog.module('goog.i18n.LocaleFeature');
-goog.module.declareLegacyNamespace();
-
 /**
  * @fileoverview Provides flag for using ECMAScript 402 features vs.
  * native JavaScript Closure implementations for I18N purposes.
@@ -22,8 +19,7 @@ goog.module.declareLegacyNamespace();
  * Default value is false. Applications can set this to true so
  * compilation will opt out of the native mode.
  */
-exports.ECMASCRIPT_INTL_OPT_OUT =
-    goog.define('goog.i18n.ECMASCRIPT_INTL_OPT_OUT', false);
+export var ECMASCRIPT_INTL_OPT_OUT = goog.define('goog.i18n.ECMASCRIPT_INTL_OPT_OUT', false);
 
 /**
  * @define {boolean} ECMASCRIPT_COMMON_LOCALES
@@ -31,8 +27,8 @@ exports.ECMASCRIPT_INTL_OPT_OUT =
  * Common across all of the modern browsers and Android implementations
  * available in 2019 and later.
  */
-exports.ECMASCRIPT_COMMON_LOCALES_2019 =
-    (goog.LOCALE == 'am' || goog.LOCALE == 'ar' || goog.LOCALE == 'bg' ||
+export var ECMASCRIPT_COMMON_LOCALES_2019 = goog.define('goog.i18n.ECMASCRIPT_COMMON_LOCALES_2019',
+     (goog.LOCALE == 'am' || goog.LOCALE == 'ar' || goog.LOCALE == 'bg' ||
      goog.LOCALE == 'bn' || goog.LOCALE == 'ca' || goog.LOCALE == 'cs' ||
      goog.LOCALE == 'da' || goog.LOCALE == 'de' || goog.LOCALE == 'el' ||
      goog.LOCALE == 'en' || goog.LOCALE == 'es' || goog.LOCALE == 'et' ||
@@ -52,34 +48,31 @@ exports.ECMASCRIPT_COMMON_LOCALES_2019 =
      goog.LOCALE == 'pt_BR' || goog.LOCALE == 'pt-BR' ||
      goog.LOCALE == 'pt_PT' || goog.LOCALE == 'pt-PT' ||
      goog.LOCALE == 'zh_CN' || goog.LOCALE == 'zh-CN' ||
-     goog.LOCALE == 'zh_TW' || goog.LOCALE == 'zh-TW');
+     goog.LOCALE == 'zh_TW' || goog.LOCALE == 'zh-TW'));
 
 /**
  * @define {boolean} USE_ECMASCRIPT_I18N_2020 Evaluated to select
  * ECMAScript Intl object (when true) or JavaScript implementation (false) for
  * I18N purposes. It depends on browser implementation in January 2020.
  */
-exports.USE_ECMASCRIPT_I18N_2020 =
-    (goog.FEATURESET_YEAR >= 2020 && exports.ECMASCRIPT_COMMON_LOCALES_2019 &&
-     !exports.ECMASCRIPT_INTL_OPT_OUT);
+export var USE_ECMASCRIPT_I18N_2020 = goog.define('goog.i18n.USE_ECMASCRIPT_I18N_2020',
+    (goog.FEATURESET_YEAR >= 2020 && ECMASCRIPT_COMMON_LOCALES_2019 && !ECMASCRIPT_INTL_OPT_OUT));    
 
 /**
  * @define {boolean} USE_ECMASCRIPT_I18N_2021 Evaluated to select
  * ECMAScript Intl object (when true) or JavaScript implementation (false) for
  * I18N purposes. It depends on browser implementation in January 2021.
  */
-exports.USE_ECMASCRIPT_I18N_2021 =
-    (goog.FEATURESET_YEAR >= 2021 && exports.ECMASCRIPT_COMMON_LOCALES_2019 &&
-     !exports.ECMASCRIPT_INTL_OPT_OUT);
+export var USE_ECMASCRIPT_I18N_2021 = goog.define('goog.i18n.USE_ECMASCRIPT_I18N_2021',
+    (goog.FEATURESET_YEAR >= 2021 && ECMASCRIPT_COMMON_LOCALES_2019 && !ECMASCRIPT_INTL_OPT_OUT));    
 
 /**
  * @define {boolean} USE_ECMASCRIPT_I18N_2022 Evaluated to select
  * ECMAScript Intl object (when true) or JavaScript implementation (false) for
  * I18N purposes. It depends on browser implementation in January 2022.
  */
-exports.USE_ECMASCRIPT_I18N_2022 =
-    (goog.FEATURESET_YEAR >= 2022 && exports.ECMASCRIPT_COMMON_LOCALES_2019 &&
-     !exports.ECMASCRIPT_INTL_OPT_OUT);
+export var USE_ECMASCRIPT_I18N_2022 = goog.define('goog.i18n.USE_ECMASCRIPT_I18N_2022',
+    (goog.FEATURESET_YEAR >= 2022 && ECMASCRIPT_COMMON_LOCALES_2019 && !ECMASCRIPT_INTL_OPT_OUT));    
 
 /**
  * @define {boolean} USE_ECMASCRIPT_I18N_RDTF is evaluated to enable
@@ -91,7 +84,8 @@ exports.USE_ECMASCRIPT_I18N_2022 =
  *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat
  */
-exports.USE_ECMASCRIPT_I18N_RDTF = exports.USE_ECMASCRIPT_I18N_2021;
+export var USE_ECMASCRIPT_I18N_RDTF = goog.define('goog.i18n.USE_ECMASCRIPT_I18N_RDTF',
+    USE_ECMASCRIPT_I18N_2021);    
 
 /**
  * @define {boolean} USE_ECMASCRIPT_I18N_NUMFORMAT is evaluted to enable
@@ -101,7 +95,8 @@ exports.USE_ECMASCRIPT_I18N_RDTF = exports.USE_ECMASCRIPT_I18N_2021;
  *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
  */
-exports.USE_ECMASCRIPT_I18N_NUMFORMAT = exports.USE_ECMASCRIPT_I18N_2021;
+export var USE_ECMASCRIPT_I18N_NUMFORMAT = goog.define('goog.i18n.USE_ECMASCRIPT_I18N_NUMFORMAT',
+    USE_ECMASCRIPT_I18N_2021);    
 
 /**
  * @define {boolean} USE_ECMASCRIPT_I18N_PLURALRULES is evaluated to enable
@@ -112,7 +107,8 @@ exports.USE_ECMASCRIPT_I18N_NUMFORMAT = exports.USE_ECMASCRIPT_I18N_2021;
  *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/
  */
-exports.USE_ECMASCRIPT_I18N_PLURALRULES = exports.USE_ECMASCRIPT_I18N_2020;
+export var USE_ECMASCRIPT_I18N_PLURALRULES = goog.define('goog.i18n.USE_ECMASCRIPT_I18N_PLURALRULES',
+    USE_ECMASCRIPT_I18N_2020);    
 
 /**
  * @define {boolean} USE_ECMASCRIPT_I18N_DATETIMEF is evaluated to enable
@@ -120,14 +116,15 @@ exports.USE_ECMASCRIPT_I18N_PLURALRULES = exports.USE_ECMASCRIPT_I18N_2020;
  * browsers based on the locale. Browsers that are considered include:
  * Chrome, Firefox 85 and above, Edge, and Safari.
  */
-exports.USE_ECMASCRIPT_I18N_DATETIMEF = exports.USE_ECMASCRIPT_I18N_2021;
+export var USE_ECMASCRIPT_I18N_DATETIMEF = goog.define('goog.i18n.USE_ECMASCRIPT_I18N_DATETIMEF',
+    USE_ECMASCRIPT_I18N_2021);    
 
 /**
  * The locales natively supported in ListFormat by all modern browsers.
  * @const
  * @type {!Array<string>} ECMASCRIPT_LISTFORMAT_LOCALES
  */
-exports.ECMASCRIPT_LISTFORMAT_LOCALES = [
+export var ECMASCRIPT_LISTFORMAT_LOCALES = [
   'am',         'ar',         'ar-001',     'ar-AE',      'ar-BH',
   'ar-DJ',      'ar-DZ',      'ar-EG',      'ar-EH',      'ar-ER',
   'ar-IL',      'ar-IQ',      'ar-JO',      'ar-KM',      'ar-KW',
@@ -203,14 +200,14 @@ exports.ECMASCRIPT_LISTFORMAT_LOCALES = [
   'vi',         'vi-VN',      'zh',         'zh-Hans',    'zh-Hans-CN',
   'zh-Hans-HK', 'zh-Hans-MO', 'zh-Hans-SG', 'zh-Hant',    'zh-Hant-HK',
   'zh-Hant-MO', 'zh-Hant-TW'
-];
+];    
 
 /**
  * @define {boolean} ECMASCRIPT_LISTFORMAT_COMMON_LOCALES_2022 is true if
  * goog.LOCALE is one of the locales below that are supported by
  * modern browsers (Chrome, Firefox, Edge, Safari) as of January 2022.
  */
-exports.ECMASCRIPT_LISTFORMAT_COMMON_LOCALES_2022 =
+export var ECMASCRIPT_LISTFORMAT_COMMON_LOCALES_2022 = goog.define('goog.i18n.ECMASCRIPT_LISTFORMAT_COMMON_LOCALES_2022',
     (goog.LOCALE === 'am' || goog.LOCALE === 'ar' || goog.LOCALE === 'ar-001' ||
      goog.LOCALE === 'ar-AE' || goog.LOCALE === 'ar-BH' ||
      goog.LOCALE === 'ar-DJ' || goog.LOCALE === 'ar-DZ' ||
@@ -390,8 +387,7 @@ exports.ECMASCRIPT_LISTFORMAT_COMMON_LOCALES_2022 =
      goog.LOCALE === 'zh-Hans' || goog.LOCALE === 'zh-Hans-CN' ||
      goog.LOCALE === 'zh-Hans-HK' || goog.LOCALE === 'zh-Hans-MO' ||
      goog.LOCALE === 'zh-Hans-SG' || goog.LOCALE === 'zh-Hant' ||
-     goog.LOCALE === 'zh-Hant-HK' || goog.LOCALE === 'zh-Hant-MO' ||
-     goog.LOCALE === 'zh-Hant-TW');
+     goog.LOCALE === 'zh-Hant-HK' || goog.LOCALE === 'zh-Hant-MO' || goog.LOCALE === 'zh-Hant-TW'));    
 
 /**
  * @define {boolean} USE_ECMASCRIPT_I18N_LISTFORMAT is evaluated to enable
@@ -401,10 +397,9 @@ exports.ECMASCRIPT_LISTFORMAT_COMMON_LOCALES_2022 =
  *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat
  */
-exports.USE_ECMASCRIPT_I18N_LISTFORMAT =
+export var USE_ECMASCRIPT_I18N_LISTFORMAT = goog.define('goog.i18n.USE_ECMASCRIPT_I18N_LISTFORMAT',
     (goog.FEATURESET_YEAR >= 2022 &&
-     exports.ECMASCRIPT_LISTFORMAT_COMMON_LOCALES_2022 &&
-     !exports.ECMASCRIPT_INTL_OPT_OUT);
+     ECMASCRIPT_LISTFORMAT_COMMON_LOCALES_2022 && !ECMASCRIPT_INTL_OPT_OUT));    
 
 /**
  * @define {boolean} USE_ECMASCRIPT_I18N_DATEINTERVALFORMAT is evaluated to
@@ -415,7 +410,6 @@ exports.USE_ECMASCRIPT_I18N_LISTFORMAT =
  *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat
  */
-exports.USE_ECMASCRIPT_I18N_DATEINTERVALFORMAT =
+export var USE_ECMASCRIPT_I18N_DATEINTERVALFORMAT = goog.define('goog.i18n.USE_ECMASCRIPT_I18N_DATEINTERVALFORMAT',
     (goog.FEATURESET_YEAR >= 2022 &&
-     exports.ECMASCRIPT_LISTFORMAT_COMMON_LOCALES_2022 &&
-     !exports.ECMASCRIPT_INTL_OPT_OUT);
+     ECMASCRIPT_LISTFORMAT_COMMON_LOCALES_2022 && !ECMASCRIPT_INTL_OPT_OUT));    

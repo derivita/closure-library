@@ -3,11 +3,8 @@
  * Copyright The Closure Library Authors.
  * SPDX-License-Identifier: Apache-2.0
  */
-goog.module('goog.promise.Resolver');
-goog.module.declareLegacyNamespace();
-
-const GoogPromise = goog.requireType('goog.Promise');
-const Thenable = goog.requireType('goog.Thenable');
+const {Promise: GoogPromise} = goog.requireType('goog.promise.promise');
+const {Thenable} = goog.requireType('goog.Thenable');
 
 /**
  * Resolver interface for promises. The resolver is a convenience interface that
@@ -36,4 +33,4 @@ class Resolver {
   }
 }
 
-exports = Resolver;
+export { Resolver };

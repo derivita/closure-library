@@ -4,24 +4,23 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-goog.module('goog.ui.CheckboxTest');
 goog.setTestOnly();
 
-const Checkbox = goog.require('goog.ui.Checkbox');
-const CheckboxRenderer = goog.require('goog.ui.CheckboxRenderer');
-const Component = goog.require('goog.ui.Component');
-const ControlRenderer = goog.require('goog.ui.ControlRenderer');
-const KeyCodes = goog.require('goog.events.KeyCodes');
-const Role = goog.require('goog.a11y.aria.Role');
-const State = goog.require('goog.a11y.aria.State');
-const TagName = goog.require('goog.dom.TagName');
-const aria = goog.require('goog.a11y.aria');
-const classlist = goog.require('goog.dom.classlist');
-const decorate = goog.require('goog.ui.decorate');
-const dom = goog.require('goog.dom');
-const googEvents = goog.require('goog.events');
-const testSuite = goog.require('goog.testing.testSuite');
-const testingEvents = goog.require('goog.testing.events');
+import { Checkbox } from './checkbox.js';
+import { CheckboxRenderer } from './checkboxrenderer.js';
+import { Component } from './component.js';
+import { ControlRenderer } from './controlrenderer.js';
+import { KeyCodes } from '../events/keycodes.js';
+import { Role } from '../a11y/aria/roles.js';
+import { State } from '../a11y/aria/attributes.js';
+import { TagName } from '../dom/tagname.js';
+import * as aria from '../a11y/aria/aria.js';
+import * as classlist from '../dom/classlist.js';
+import { decorate } from './decorate.js';
+import * as dom from '../dom/dom.js';
+import * as googEvents from '../events/events.js';
+import { testSuite } from '../testing/testsuite.js';
+import * as testingEvents from '../testing/events/events.js';
 
 let checkbox;
 
@@ -173,10 +172,10 @@ testSuite({
     googEvents.listen(
         checkbox,
         [
-          Component.EventType.ACTION,
-          Component.EventType.CHECK,
-          Component.EventType.UNCHECK,
-          Component.EventType.CHANGE,
+          Component.ComponentEventType.ACTION,
+          Component.ComponentEventType.CHECK,
+          Component.ComponentEventType.UNCHECK,
+          Component.ComponentEventType.CHANGE,
         ],
         (e) => {
           events.push(e.type);
@@ -193,9 +192,9 @@ testSuite({
     assertArrayEquals(
         'ACTION+CHECK+CHANGE fired',
         [
-          Component.EventType.ACTION,
-          Component.EventType.CHECK,
-          Component.EventType.CHANGE,
+          Component.ComponentEventType.ACTION,
+          Component.ComponentEventType.CHECK,
+          Component.ComponentEventType.CHANGE,
         ],
         events);
     assertTrue('checkbox became checked', checkbox.getChecked());
@@ -205,21 +204,21 @@ testSuite({
     assertArrayEquals(
         'ACTION+UNCHECK+CHANGE fired',
         [
-          Component.EventType.ACTION,
-          Component.EventType.UNCHECK,
-          Component.EventType.CHANGE,
+          Component.ComponentEventType.ACTION,
+          Component.ComponentEventType.UNCHECK,
+          Component.ComponentEventType.CHANGE,
         ],
         events);
     assertFalse('checkbox became unchecked', checkbox.getChecked());
     events = [];
 
-    googEvents.listen(checkbox, Component.EventType.CHECK, (e) => {
+    googEvents.listen(checkbox, Component.ComponentEventType.CHECK, (e) => {
       e.preventDefault();
     });
     testingEvents.fireClickSequence(checkbox.getElement());
     assertArrayEquals(
         'ACTION+CHECK fired',
-        [Component.EventType.ACTION, Component.EventType.CHECK], events);
+        [Component.ComponentEventType.ACTION, Component.ComponentEventType.CHECK], events);
     assertFalse('toggling has been prevented', checkbox.getChecked());
   },
 
@@ -452,10 +451,10 @@ testSuite({
     googEvents.listen(
         checkbox,
         [
-          Component.EventType.ACTION,
-          Component.EventType.CHECK,
-          Component.EventType.UNCHECK,
-          Component.EventType.CHANGE,
+          Component.ComponentEventType.ACTION,
+          Component.ComponentEventType.CHECK,
+          Component.ComponentEventType.UNCHECK,
+          Component.ComponentEventType.CHANGE,
         ],
         (e) => {
           events.push(e.type);
@@ -468,9 +467,9 @@ testSuite({
     assertArrayEquals(
         'Unexpected events fired when checking with spacebar.',
         [
-          Component.EventType.ACTION,
-          Component.EventType.CHECK,
-          Component.EventType.CHANGE,
+          Component.ComponentEventType.ACTION,
+          Component.ComponentEventType.CHECK,
+          Component.ComponentEventType.CHANGE,
         ],
         events);
     assertEquals(
@@ -482,9 +481,9 @@ testSuite({
     assertArrayEquals(
         'Unexpected events fired when unchecking with spacebar.',
         [
-          Component.EventType.ACTION,
-          Component.EventType.UNCHECK,
-          Component.EventType.CHANGE,
+          Component.ComponentEventType.ACTION,
+          Component.ComponentEventType.UNCHECK,
+          Component.ComponentEventType.CHANGE,
         ],
         events);
     assertEquals(
@@ -492,14 +491,14 @@ testSuite({
         checkbox.getChecked());
 
     events = [];
-    googEvents.listenOnce(checkbox, Component.EventType.CHECK, (e) => {
+    googEvents.listenOnce(checkbox, Component.ComponentEventType.CHECK, (e) => {
       e.preventDefault();
     });
     testingEvents.fireKeySequence(normalSpan, KeyCodes.SPACE);
     assertArrayEquals(
         'Unexpected events fired when checking with spacebar and ' +
             'the check event is cancelled.',
-        [Component.EventType.ACTION, Component.EventType.CHECK], events);
+        [Component.ComponentEventType.ACTION, Component.ComponentEventType.CHECK], events);
     assertEquals(
         'Unexpected state after check event is cancelled.',
         Checkbox.State.UNCHECKED, checkbox.getChecked());

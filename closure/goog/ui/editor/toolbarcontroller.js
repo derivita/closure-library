@@ -9,22 +9,21 @@
  * @see ../../demos/editor/editor.html
  */
 
-goog.provide('goog.ui.editor.ToolbarController');
+import { Field } from '../../editor/field.js';
 
-goog.require('goog.editor.Field');
-goog.require('goog.events.EventHandler');
-goog.require('goog.events.EventTarget');
-goog.require('goog.ui.Component');
-goog.requireType('goog.events.Event');
-goog.requireType('goog.ui.Toolbar');
+import { EventHandler } from '../../events/eventhandler.js';
+import { EventTarget } from '../../events/eventtarget.js';
+import { Component } from '../component.js';
+const { Event } = goog.requireType('goog.events.event');
+const { Toolbar } = goog.requireType('goog.ui.toolbar');
 
 
 
 /**
  * A class for managing the editor toolbar.  Acts as a bridge between
- * a {@link goog.editor.Field} and a {@link goog.ui.Toolbar}.
+ * a {@link Field} and a {@link Toolbar}.
  *
- * The `toolbar` argument must be an instance of {@link goog.ui.Toolbar}
+ * The `toolbar` argument must be an instance of {@link Toolbar}
  * or a subclass.  This class doesn't care how the toolbar was created.  As
  * long as one or more controls hosted  in the toolbar have IDs that match
  * built-in {@link goog.editor.Command}s, they will function as expected.  It is
@@ -32,34 +31,33 @@ goog.requireType('goog.ui.Toolbar');
  * or that it decorates an existing element.
  *
  *
- * @param {!goog.editor.Field} field Editable field to be controlled by the
+ * @param {!Field} field Editable field to be controlled by the
  *     toolbar.
- * @param {!goog.ui.Toolbar} toolbar Toolbar to control the editable field.
+ * @param {!Toolbar} toolbar Toolbar to control the editable field.
  * @constructor
- * @extends {goog.events.EventTarget}
+ * @extends {EventTarget}
  * @suppress {strictMissingProperties} Added to tighten compiler checks
  */
-goog.ui.editor.ToolbarController = function(field, toolbar) {
-  'use strict';
-  goog.events.EventTarget.call(this);
+export function ToolbarController(field, toolbar) {
+  EventTarget.call(this);
 
   /**
-   * Event handler to listen for field events and user actions.
-   * @type {!goog.events.EventHandler<!goog.ui.editor.ToolbarController>}
-   * @private
-   */
-  this.handler_ = new goog.events.EventHandler(this);
+       * Event handler to listen for field events and user actions.
+       * @type {!EventHandler<!ToolbarController>}
+       * @private
+       */
+  this.handler_ = new EventHandler(this);
 
   /**
-   * The field instance controlled by the toolbar.
-   * @type {!goog.editor.Field}
-   * @private
-   */
+     * The field instance controlled by the toolbar.
+     * @type {!Field}
+     * @private
+     */
   this.field_ = field;
 
   /**
    * The toolbar that controls the field.
-   * @type {!goog.ui.Toolbar}
+   * @type {!Toolbar}
    * @private
    */
   this.toolbar_ = toolbar;
@@ -75,7 +73,6 @@ goog.ui.editor.ToolbarController = function(field, toolbar) {
   // queryable commands. Add them to the list of commands to query on
   // each COMMAND_VALUE_CHANGE event.
   this.toolbar_.forEachChild(function(button) {
-    'use strict';
     if (button.queryable) {
       this.queryCommands_.push(this.getComponentId(button.getId()));
     }
@@ -88,12 +85,12 @@ goog.ui.editor.ToolbarController = function(field, toolbar) {
   // and to execute editor commands in response to toolbar events.
   this.handler_
       .listen(
-          this.field_, goog.editor.Field.EventType.COMMAND_VALUE_CHANGE,
+          this.field_, Field.EventType.COMMAND_VALUE_CHANGE,
           this.updateToolbar)
       .listen(
-          this.toolbar_, goog.ui.Component.EventType.ACTION, this.handleAction);
-};
-goog.inherits(goog.ui.editor.ToolbarController, goog.events.EventTarget);
+          this.toolbar_, Component.ComponentEventType.ACTION, this.handleAction);
+}
+goog.inherits(ToolbarController, EventTarget);
 
 
 /**
@@ -106,8 +103,7 @@ goog.inherits(goog.ui.editor.ToolbarController, goog.events.EventTarget);
  *     control, if any.
  * @protected
  */
-goog.ui.editor.ToolbarController.prototype.getComponentId = function(command) {
-  'use strict';
+ToolbarController.prototype.getComponentId = function(command) {
   // The default implementation assumes that the component ID is the same as
   // the command constant.
   return command;
@@ -124,8 +120,7 @@ goog.ui.editor.ToolbarController.prototype.getComponentId = function(command) {
  *     toolbar control, if any.
  * @protected
  */
-goog.ui.editor.ToolbarController.prototype.getCommand = function(id) {
-  'use strict';
+ToolbarController.prototype.getCommand = function(id) {
   // The default implementation assumes that the component ID is the same as
   // the command constant.
   return id;
@@ -134,37 +129,34 @@ goog.ui.editor.ToolbarController.prototype.getCommand = function(id) {
 
 /**
  * Returns the event handler object for the editor toolbar.  Useful for classes
- * that extend `goog.ui.editor.ToolbarController`.
- * @return {!goog.events.EventHandler<T>} The event handler object.
+ * that extend `ToolbarController`.
+ * @return {!EventHandler<T>} The event handler object.
  * @protected
  * @this {T}
  * @template T
  */
-goog.ui.editor.ToolbarController.prototype.getHandler = function() {
-  'use strict';
+ToolbarController.prototype.getHandler = function() {
   return this.handler_;
 };
 
 
 /**
  * Returns the field instance managed by the toolbar.  Useful for
- * classes that extend `goog.ui.editor.ToolbarController`.
- * @return {!goog.editor.Field} The field managed by the toolbar.
+ * classes that extend `ToolbarController`.
+ * @return {!Field} The field managed by the toolbar.
  * @protected
  */
-goog.ui.editor.ToolbarController.prototype.getField = function() {
-  'use strict';
+ToolbarController.prototype.getField = function() {
   return this.field_;
 };
 
 
 /**
  * Returns the toolbar UI component that manages the editor.  Useful for
- * classes that extend `goog.ui.editor.ToolbarController`.
- * @return {!goog.ui.Toolbar} The toolbar UI component.
+ * classes that extend `ToolbarController`.
+ * @return {!Toolbar} The toolbar UI component.
  */
-goog.ui.editor.ToolbarController.prototype.getToolbar = function() {
-  'use strict';
+ToolbarController.prototype.getToolbar = function() {
   return this.toolbar_;
 };
 
@@ -172,8 +164,7 @@ goog.ui.editor.ToolbarController.prototype.getToolbar = function() {
 /**
  * @return {boolean} Whether the toolbar is visible.
  */
-goog.ui.editor.ToolbarController.prototype.isVisible = function() {
-  'use strict';
+ToolbarController.prototype.isVisible = function() {
   return this.toolbar_.isVisible();
 };
 
@@ -182,8 +173,7 @@ goog.ui.editor.ToolbarController.prototype.isVisible = function() {
  * Shows or hides the toolbar.
  * @param {boolean} visible Whether to show or hide the toolbar.
  */
-goog.ui.editor.ToolbarController.prototype.setVisible = function(visible) {
-  'use strict';
+ToolbarController.prototype.setVisible = function(visible) {
   this.toolbar_.setVisible(visible);
 };
 
@@ -191,8 +181,7 @@ goog.ui.editor.ToolbarController.prototype.setVisible = function(visible) {
 /**
  * @return {boolean} Whether the toolbar is enabled.
  */
-goog.ui.editor.ToolbarController.prototype.isEnabled = function() {
-  'use strict';
+ToolbarController.prototype.isEnabled = function() {
   return this.toolbar_.isEnabled();
 };
 
@@ -201,8 +190,7 @@ goog.ui.editor.ToolbarController.prototype.isEnabled = function() {
  * Enables or disables the toolbar.
  * @param {boolean} enabled Whether to enable or disable the toolbar.
  */
-goog.ui.editor.ToolbarController.prototype.setEnabled = function(enabled) {
-  'use strict';
+ToolbarController.prototype.setEnabled = function(enabled) {
   this.toolbar_.setEnabled(enabled);
 };
 
@@ -211,8 +199,7 @@ goog.ui.editor.ToolbarController.prototype.setEnabled = function(enabled) {
  * Programmatically blurs the editor toolbar, un-highlighting the currently
  * highlighted item, and closing the currently open menu (if any).
  */
-goog.ui.editor.ToolbarController.prototype.blur = function() {
-  'use strict';
+ToolbarController.prototype.blur = function() {
   // We can't just call this.toolbar_.getElement().blur(), because the toolbar
   // element itself isn't focusable, so goog.ui.Container#handleBlur isn't
   // registered to handle blur events.
@@ -221,9 +208,8 @@ goog.ui.editor.ToolbarController.prototype.blur = function() {
 
 
 /** @override */
-goog.ui.editor.ToolbarController.prototype.disposeInternal = function() {
-  'use strict';
-  goog.ui.editor.ToolbarController.superClass_.disposeInternal.call(this);
+ToolbarController.prototype.disposeInternal = function() {
+  ToolbarController.superClass_.disposeInternal.call(this);
   if (this.handler_) {
     this.handler_.dispose();
     delete this.handler_;
@@ -241,14 +227,13 @@ goog.ui.editor.ToolbarController.prototype.disposeInternal = function() {
  * Updates the toolbar in response to editor events.  Specifically, updates
  * button states based on `COMMAND_VALUE_CHANGE` events, reflecting the
  * effective formatting of the selection.
- * @param {goog.events.Event} e Editor event to handle.
+ * @param {Event} e Editor event to handle.
  * @protected
  * @suppress {strictMissingProperties} Added to tighten compiler checks
  */
-goog.ui.editor.ToolbarController.prototype.updateToolbar = function(e) {
-  'use strict';
+ToolbarController.prototype.updateToolbar = function(e) {
   if (!this.toolbar_.isEnabled() || !this.field_.isSelectionEditable() ||
-      !this.dispatchEvent(goog.ui.Component.EventType.CHANGE)) {
+      !this.dispatchEvent(Component.ComponentEventType.CHANGE)) {
     return;
   }
 
@@ -278,9 +263,8 @@ goog.ui.editor.ToolbarController.prototype.updateToolbar = function(e) {
  * @param {Object} state Object mapping editor commands to values.
  * @suppress {strictMissingProperties} Added to unblock check_level=STRICT
  */
-goog.ui.editor.ToolbarController.prototype.updateToolbarFromState = function(
+ToolbarController.prototype.updateToolbarFromState = function(
     state) {
-  'use strict';
   for (let command in state) {
     const button = this.toolbar_.getChild(this.getComponentId(command));
     if (button) {
@@ -298,12 +282,11 @@ goog.ui.editor.ToolbarController.prototype.updateToolbarFromState = function(
 /**
  * Handles `ACTION` events dispatched by toolbar buttons in response to
  * user actions by executing the corresponding field command.
- * @param {goog.events.Event} e Action event to handle.
+ * @param {Event} e Action event to handle.
  * @protected
  * @suppress {missingProperties} Added to unblock check_level=STRICT
  */
-goog.ui.editor.ToolbarController.prototype.handleAction = function(e) {
-  'use strict';
+ToolbarController.prototype.handleAction = function(e) {
   /** @suppress {strictMissingProperties} Added to tighten compiler checks */
   const command = this.getCommand(e.target.getId());
   this.field_.execCommand(command, e.target.getValue());

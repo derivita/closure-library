@@ -9,9 +9,6 @@
  * @fileoverview Contains the tag blacklist for use in the Html sanitizer.
  */
 
-goog.provide('goog.html.sanitizer.TagBlacklist');
-
-
 /**
  * A list of tags which should be removed entirely from the DOM, rather than
  * merely being made inert. In that sense, this is not a "true" blacklist
@@ -22,7 +19,7 @@ goog.provide('goog.html.sanitizer.TagBlacklist');
  * denote nodes which should not be added to the sanitized HTML.
  * @const @dict {boolean}
  */
-goog.html.sanitizer.TagBlacklist = {
+export const TagBlacklist = {
   'APPLET': true,
   'AUDIO': true,
   'BASE': true,

@@ -21,15 +21,13 @@
  * {@link goog.messaging.PortCaller}s which connect to the operator.
  */
 
-goog.provide('goog.messaging.PortNetwork');
-
-goog.requireType('goog.messaging.MessageChannel');
+const { MessageChannel } = goog.requireType('goog.messaging.messagechannel');
 
 
 /**
  * @interface
  */
-goog.messaging.PortNetwork = function() {};
+export function PortNetwork() {}
 
 
 /**
@@ -42,12 +40,12 @@ goog.messaging.PortNetwork = function() {};
  * ports returned will be connected to one another.
  *
  * @param {string} name The name of the context to get.
- * @return {goog.messaging.MessageChannel} The channel communicating with the
+ * @return {MessageChannel} The channel communicating with the
  *     given context. This is either a {@link goog.messaging.PortChannel} or a
  *     decorator around a PortChannel, so it's safe to send {@link MessagePorts}
  *     across it. This will be disposed along with the PortNetwork.
  */
-goog.messaging.PortNetwork.prototype.dial = function(name) {};
+PortNetwork.prototype.dial = function(name) {};
 
 
 /**
@@ -57,7 +55,7 @@ goog.messaging.PortNetwork.prototype.dial = function(name) {};
  * @type {string}
  * @const
  */
-goog.messaging.PortNetwork.REQUEST_CONNECTION_SERVICE = 'requestConnection';
+PortNetwork.REQUEST_CONNECTION_SERVICE = 'requestConnection';
 
 
 /**
@@ -67,4 +65,4 @@ goog.messaging.PortNetwork.REQUEST_CONNECTION_SERVICE = 'requestConnection';
  * @type {string}
  * @const
  */
-goog.messaging.PortNetwork.GRANT_CONNECTION_SERVICE = 'grantConnection';
+PortNetwork.GRANT_CONNECTION_SERVICE = 'grantConnection';
