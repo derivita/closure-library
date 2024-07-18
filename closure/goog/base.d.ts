@@ -369,7 +369,7 @@ declare namespace goog {
    * @param publicName Unobfuscated name to export.
    * @param symbol Object the name should point to.
    */
-  function exportProperty (object : ಠ_ಠ.clutz.GlobalObject | null , publicName : string , symbol : any ) : void ;
+  function exportProperty (object : object | null , publicName : string , symbol : any ) : void ;
   /**
    * Exposes an unobfuscated global namespace path for the given object.
    * Note that fields of the exported object *will* be obfuscated, unless they are
@@ -389,7 +389,7 @@ declare namespace goog {
    * @param object Object the name should point to.
    * @param objectToExportTo The object to add the path to; default is goog.global.
    */
-  function exportSymbol (publicPath : string , object : any , objectToExportTo ? : ಠ_ಠ.clutz.GlobalObject | null ) : void ;
+  function exportSymbol (publicPath : string , object : any , objectToExportTo ? : object | null ) : void ;
   /**
    * Forward declares a symbol. This is an indication to the compiler that the
    * symbol may be used in the source yet is not required and may not be provided
@@ -479,7 +479,7 @@ declare namespace goog {
    * @param name The fully qualified name.
    * @param opt_obj The object within which to look; default is |goog.global|.
    */
-  function getObjectByName (name : string , opt_obj ? : ಠ_ಠ.clutz.GlobalObject | null ) : any ;
+  function getObjectByName (name : string , opt_obj ? : object | null ) : any ;
   /**
    * Gets a unique ID for an object. This mutates the object so that further calls
    * with the same object as a parameter returns the same value. The unique ID is
@@ -489,7 +489,7 @@ declare namespace goog {
    * prototypes.
    * @param obj The object to get the unique ID for.
    */
-  function getUid (obj : ಠ_ಠ.clutz.GlobalObject | null ) : number ;
+  function getUid (obj : object | null ) : number ;
   /**
    * Reference to the global object.
    * https://www.ecma-international.org/ecma-262/9.0/index.html#sec-global-object
@@ -511,7 +511,7 @@ declare namespace goog {
    * This does not modify the object.
    * @param obj The object to check.
    */
-  function hasUid (obj : ಠ_ಠ.clutz.GlobalObject ) : boolean ;
+  function hasUid (obj : object ) : boolean ;
   /**
    * Inherit the prototype methods from one constructor into another.
    *
@@ -590,6 +590,9 @@ declare namespace goog {
    * @param name Namespace provided by this file in the form "goog.package.part", is expected but not required.
    */
   function module (name : string ) : void ;
+  namespace module {
+    function get(name:string):any;
+  }
   function now ( ) : number ;
   /**
    * Like goog.bind(), except that a 'this object' is not required. Useful when
@@ -627,8 +630,8 @@ declare namespace goog {
    * undone.
    * @param obj The object to remove the unique ID field from.
    */
-  function removeUid (obj : ಠ_ಠ.clutz.GlobalObject | null ) : void ;
-  function require (name : string ) : ಠ_ಠ.clutz.ClosureSymbolNotGoogProvided;
+  function removeUid (obj : object | null ) : void ;
+  function require (name : string ) : unknown;
   /**
    * Requires a symbol for its type information. This is an indication to the
    * compiler that the symbol may appear in type annotations, yet it is not
@@ -668,7 +671,7 @@ declare namespace goog {
    * @param mapping A map of strings to strings where keys are possible arguments to goog.getCssName() and values are the corresponding values that should be returned.
    * @param opt_style The style of css name mapping. There are two valid options: 'BY_PART', and 'BY_WHOLE'.
    */
-  function setCssNameMapping (mapping : ಠ_ಠ.clutz.GlobalObject , opt_style ? : string ) : void ;
+  function setCssNameMapping (mapping : object , opt_style ? : string ) : void ;
   /**
    * Sets the dependency factory, which can be used to create custom
    * goog.Dependency implementations to control how dependencies are loaded.
@@ -699,7 +702,7 @@ declare namespace goog {
 }
 // Generated from base.js
 declare namespace ಠ_ಠ.clutz.goog.defineClass {
-  type ClassDescriptor = { constructor ? : Function , statics ? : ಠ_ಠ.clutz.GlobalObject | null } ;
+  type ClassDescriptor = { constructor ? : Function , statics ? : object | null } ;
 }
 // Generated from unknown file
 declare namespace ಠ_ಠ.clutz.goog.global {
@@ -732,4 +735,77 @@ declare namespace ಠ_ಠ.clutz.goog.global {
   //!! Intended to visit type alias 'goog.global.self but type not found in Closure type registry.
   //!! Intended to visit type alias 'goog.global.undefined but type not found in Closure type registry.
   //!! Intended to visit type alias 'goog.global.window but type not found in Closure type registry.
+}
+// Type definitions for trusted-types 2.0
+// Project: https://github.com/WICG/trusted-types
+// Definitions by: Jakub Vrana <https://github.com/vrana>
+//                 Damien Engels <https://github.com/engelsdamien>
+//                 Emanuel Tesar <https://github.com/siegrift>
+//                 Bjarki <https://github.com/bjarkler>
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+// TypeScript Version: 3.1
+
+declare namespace __TrustedTypesLib__ {
+  export type FnNames = keyof TrustedTypePolicyOptions;
+  export type Args<Options extends TrustedTypePolicyOptions, K extends FnNames> = Parameters<NonNullable<Options[K]>>;
+}
+
+// The Window object is augmented with the following properties in browsers that
+// support Trusted Types. 
+
+declare interface Window {
+  // `trustedTypes` is left intentionally optional to make sure that
+  // people handle the case when their code is running in a browser not
+  // supporting trustedTypes.
+  trustedTypes?: TrustedTypePolicyFactory | undefined;
+  TrustedHTML: typeof TrustedHTML;
+  TrustedScript: typeof TrustedScript;
+  TrustedScriptURL: typeof TrustedScriptURL;
+  TrustedTypePolicyFactory: typeof TrustedTypePolicyFactory;
+  TrustedTypePolicy: typeof TrustedTypePolicy;
+}
+
+import lib = __TrustedTypesLib__;
+
+declare class TrustedHTML {
+  private constructor(); // To prevent instantiting with 'new'.
+  private brand: true; // To prevent structural typing.
+}
+
+declare class TrustedScript {
+  private constructor(); // To prevent instantiting with 'new'.
+  private brand: true; // To prevent structural typing.
+}
+
+declare class TrustedScriptURL {
+  private constructor(); // To prevent instantiting with 'new'.
+  private brand: true; // To prevent structural typing.
+}
+
+declare abstract class TrustedTypePolicyFactory {
+  createPolicy<Options extends TrustedTypePolicyOptions>(
+      policyName: string,
+      policyOptions?: Options,
+  ): Pick<TrustedTypePolicy<Options>, 'name' | Extract<keyof Options, __TrustedTypesLib__.FnNames>>;
+  isHTML(value: unknown): value is TrustedHTML;
+  isScript(value: unknown): value is TrustedScript;
+  isScriptURL(value: unknown): value is TrustedScriptURL;
+  readonly emptyHTML: TrustedHTML;
+  readonly emptyScript: TrustedScript;
+  getAttributeType(tagName: string, attribute: string, elementNs?: string, attrNs?: string): string | null;
+  getPropertyType(tagName: string, property: string, elementNs?: string): string | null;
+  readonly defaultPolicy: TrustedTypePolicy | null;
+}
+
+declare abstract class TrustedTypePolicy<Options extends TrustedTypePolicyOptions = TrustedTypePolicyOptions> {
+  readonly name: string;
+  createHTML(...args: __TrustedTypesLib__.Args<Options, 'createHTML'>): TrustedHTML;
+  createScript(...args: __TrustedTypesLib__.Args<Options, 'createScript'>): TrustedScript;
+  createScriptURL(...args: __TrustedTypesLib__.Args<Options, 'createScriptURL'>): TrustedScriptURL;
+}
+
+declare interface TrustedTypePolicyOptions {
+  createHTML?: ((input: string, ...arguments: any[]) => string) | undefined;
+  createScript?: ((input: string, ...arguments: any[]) => string) | undefined;
+  createScriptURL?: ((input: string, ...arguments: any[]) => string) | undefined;
 }
