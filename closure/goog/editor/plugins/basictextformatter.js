@@ -478,7 +478,7 @@ goog.editor.plugins.BasicTextFormatter.prototype.queryCommandValue = function (
         this.getDocument_(),
         command,
         (goog.editor.BrowserFeature.HAS_STYLE_WITH_CSS &&
-          goog.userAgent.GECKO) ||
+          goog.userAgent.GECKO) ??
           undefined
       );
 
@@ -503,7 +503,7 @@ goog.editor.plugins.BasicTextFormatter.prototype.queryCommandValue = function (
       return this.queryCommandStateInternal_(
         this.getDocument_(),
         command,
-        styleWithCss || undefined
+        styleWithCss ?? undefined
       );
   }
 };
