@@ -22,7 +22,7 @@ goog.setTestOnly('goog.testing.ObjectPropertyString');
  * @param {Object|string} propertyString Property name as a string literal.
  * @constructor
  * @final
- * @deprecated Use goog.reflect.objectProperty instead.
+ * @deprecated Use JSCompiler_renameProperty instead.
  */
 export function ObjectPropertyString(object, propertyString) {
  this.object_ = object;

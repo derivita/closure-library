@@ -10,22 +10,22 @@
  */
 
 import * as array from '../../array/array.js';
-
 import * as dom from '../../dom/dom.js';
 import * as safe from '../../dom/safe.js';
+import object from '../../object/object.js';
+import {Const} from '../../string/const.js';
+import * as googString from '../../string/string.js';
+import * as product from '../../useragent/product.js';
+import * as userAgent from '../../useragent/useragent.js';
 import * as CssSpecificity from '../cssspecificity.js';
-import { SafeStyle } from '../safestyle.js';
-import { SafeStyleSheet } from '../safestylesheet.js';
-import { SafeUrl } from '../safeurl.js';
+import {SafeStyle} from '../safestyle.js';
+import {SafeStyleSheet} from '../safestylesheet.js';
+import {SafeUrl} from '../safeurl.js';
+import * as uncheckedconversions from '../uncheckedconversions.js';
+
 import * as CssPropertySanitizer from './csspropertysanitizer.js';
 import * as inertDocument from './inertdocument.js';
 import * as noclobber from './noclobber.js';
-import * as uncheckedconversions from '../uncheckedconversions.js';
-import object from '../../object/object.js';
-import * as googString from '../../string/string.js';
-import { Const } from '../../string/const.js';
-import * as userAgent from '../../useragent/useragent.js';
-import * as product from '../../useragent/product.js';
 
 
 
@@ -35,37 +35,40 @@ import * as product from '../../useragent/product.js';
  * that can contain commas and escaped quotes.
  * @private {?RegExp}
  */
-var SELECTOR_REGEX_ = // Don't even evaluate it on older browsers (IE8 and IE9), it throws a
-// syntax error and we don't use it anyway.
-!(userAgent.IE && document.documentMode < 10) ?
-new RegExp(
-    '\\s*' +              // Discard initial space
-        '([^\\s\'",]+' +  // Beginning of the match. Anything but a comma,
-                          // spaces or a string delimiter. This is the only
-                          // non-optional component of the regex.
-        '[^\'",]*' +      // Spaces are fine afterwards (e.g. "a > b").
-        ('(' +  // A series of optional strings with matching delimiters
-                // that can contain anything, and optional non-quoted text
-                // without commas.
-         '(\'([^\'\\r\\n\\f\\\\]|\\\\[^])*\')|' +  // Optional single-quoted
-                                                   // string.
-         '("([^"\\r\\n\\f\\\\]|\\\\[^])*")|' +     // Optional double-quoted
-                                                   // string.
-         '[^\'",]' +  // Optional non-string content.
-         ')*') +      // String and non-string
-                      // content can come in any
-                      // order.
-        ')',          // End of the match.
-    'g') :
-null;
+var SELECTOR_REGEX_ =  // Don't even evaluate it on older browsers (IE8 and
+                       // IE9), it throws a
+    // syntax error and we don't use it anyway.
+    !(userAgent.IE && document.documentMode < 10) ?
+    new RegExp(
+        '\\s*' +              // Discard initial space
+            '([^\\s\'",]+' +  // Beginning of the match. Anything but a comma,
+                              // spaces or a string delimiter. This is the only
+                              // non-optional component of the regex.
+            '[^\'",]*' +      // Spaces are fine afterwards (e.g. "a > b").
+            ('(' +  // A series of optional strings with matching delimiters
+                    // that can contain anything, and optional non-quoted text
+                    // without commas.
+             '(\'([^\'\\r\\n\\f\\\\]|\\\\[^])*\')|' +  // Optional single-quoted
+                                                       // string.
+             '("([^"\\r\\n\\f\\\\]|\\\\[^])*")|' +     // Optional double-quoted
+                                                       // string.
+             '[^\'",]' +  // Optional non-string content.
+             ')*') +      // String and non-string
+                          // content can come in any
+                          // order.
+            ')',          // End of the match.
+        'g') :
+    null;
 
 
 /**
  * A whitelist of properties that can retain the prefix in Chrome.
  * @private @const {!Object<string,boolean>}
  */
-var CHROME_INCLUDE_VENDOR_PREFIX_WHITELIST_ = object.createSet(
-    '-webkit-border-horizontal-spacing', '-webkit-border-vertical-spacing');
+var CHROME_INCLUDE_VENDOR_PREFIX_WHITELIST_ = {
+  '-webkit-border-horizontal-spacing': true,
+  '-webkit-border-vertical-spacing': true
+};
 
 
 /**
@@ -75,24 +78,23 @@ var CHROME_INCLUDE_VENDOR_PREFIX_WHITELIST_ = object.createSet(
  * @private
  */
 function withoutVendorPrefix_(propName) {
-    // A few property names are only valid with the prefix on specific browsers.
-    // The recommendation is of course to avoid them, but in specific cases a
-    // non-prefixed property gets transformed into one or more prefixed
-    // properties by the browser. In this case, the best option to avoid having
-    // the non-prefixed property be dropped silently is to allow the prefixed
-    // property in the output.
-    if (userAgent.WEBKIT &&
-        propName in CHROME_INCLUDE_VENDOR_PREFIX_WHITELIST_) {
-      return propName;
-    }
-    // http://stackoverflow.com/a/5411098/20394 has a fairly extensive list
-    // of vendor prefixes. Blink has not declared a vendor prefix distinct from
-    // -webkit- and http://css-tricks.com/tldr-on-vendor-prefix-drama/ discusses
-    // how Mozilla recognizes some -webkit- prefixes.
-    // http://wiki.csswg.org/spec/vendor-prefixes talks more about
-    // cross-implementation, and lists other prefixes.
-    return propName.replace(
-        /^-(?:apple|css|epub|khtml|moz|mso?|o|rim|wap|webkit|xv)-(?=[a-z])/i, '');
+  // A few property names are only valid with the prefix on specific browsers.
+  // The recommendation is of course to avoid them, but in specific cases a
+  // non-prefixed property gets transformed into one or more prefixed
+  // properties by the browser. In this case, the best option to avoid having
+  // the non-prefixed property be dropped silently is to allow the prefixed
+  // property in the output.
+  if (userAgent.WEBKIT && propName in CHROME_INCLUDE_VENDOR_PREFIX_WHITELIST_) {
+    return propName;
+  }
+  // http://stackoverflow.com/a/5411098/20394 has a fairly extensive list
+  // of vendor prefixes. Blink has not declared a vendor prefix distinct from
+  // -webkit- and http://css-tricks.com/tldr-on-vendor-prefix-drama/ discusses
+  // how Mozilla recognizes some -webkit- prefixes.
+  // http://wiki.csswg.org/spec/vendor-prefixes talks more about
+  // cross-implementation, and lists other prefixes.
+  return propName.replace(
+      /^-(?:apple|css|epub|khtml|moz|mso?|o|rim|wap|webkit|xv)-(?=[a-z])/i, '');
 }
 
 
@@ -107,34 +109,30 @@ function withoutVendorPrefix_(propName) {
  * @private
  */
 function sanitizeStyleSheet_(cssStyleSheet, containerId, uriRewriter) {
-    var sanitizedRules = [];
-    var cssRules = getOnlyStyleRules_(
-        array.toArray(cssStyleSheet.cssRules));
-    cssRules.forEach(function(cssRule) {
-        if (containerId && !/[a-zA-Z][\w-:\.]*/.test(containerId)) {
-          // Sanity check on the element ID that will confine the new CSS rules.
-          throw new Error('Invalid container id');
-        }
-        if (containerId && product.IE &&
-            document.documentMode == 10 && /\\['"]/.test(cssRule.selectorText)) {
-          // If a container ID was specified, drop selectors with escaped quotes in
-          // strings on IE 10 due to a regex bug.
-          return;
-        }
-        // If a container ID was specified, restrict all selectors in this rule to
-        // be descendants of the node with such an ID. Use a regex to exclude commas
-        // within selector strings.
-        var scopedSelector = containerId ?
-            cssRule.selectorText.replace(
-                SELECTOR_REGEX_,
-                '#' + containerId + ' $1') :
-            cssRule.selectorText;
-        sanitizedRules.push(SafeStyleSheet.createRule(
-            scopedSelector,
-            sanitizeInlineStyle(
-                cssRule.style, uriRewriter)));
-    });
-    return SafeStyleSheet.concat(sanitizedRules);
+  var sanitizedRules = [];
+  var cssRules = getOnlyStyleRules_(array.toArray(cssStyleSheet.cssRules));
+  cssRules.forEach(function(cssRule) {
+    if (containerId && !/[a-zA-Z][\w-:\.]*/.test(containerId)) {
+      // Sanity check on the element ID that will confine the new CSS rules.
+      throw new Error('Invalid container id');
+    }
+    if (containerId && product.IE && document.documentMode == 10 &&
+        /\\['"]/.test(cssRule.selectorText)) {
+      // If a container ID was specified, drop selectors with escaped quotes in
+      // strings on IE 10 due to a regex bug.
+      return;
+    }
+    // If a container ID was specified, restrict all selectors in this rule to
+    // be descendants of the node with such an ID. Use a regex to exclude commas
+    // within selector strings.
+    var scopedSelector = containerId ?
+        cssRule.selectorText.replace(
+            SELECTOR_REGEX_, '#' + containerId + ' $1') :
+        cssRule.selectorText;
+    sanitizedRules.push(SafeStyleSheet.createRule(
+        scopedSelector, sanitizeInlineStyle(cssRule.style, uriRewriter)));
+  });
+  return SafeStyleSheet.concat(sanitizedRules);
 }
 
 
@@ -148,10 +146,11 @@ function sanitizeStyleSheet_(cssStyleSheet, containerId, uriRewriter) {
 // TODO(pelizzi): some of these at-rules are safe, consider adding partial
 // support for them.
 function getOnlyStyleRules_(cssRules) {
-    return /** @type {!Array<!CSSStyleRule>} */ (cssRules.filter(function(cssRule) {
-            return cssRule instanceof CSSStyleRule ||
-                cssRule.type == CSSRule.STYLE_RULE;
-        }));
+  return /** @type {!Array<!CSSStyleRule>} */ (
+      cssRules.filter(function(cssRule) {
+        return cssRule instanceof CSSStyleRule ||
+            cssRule.type == CSSRule.STYLE_RULE;
+      }));
 }
 
 
@@ -169,17 +168,17 @@ function getOnlyStyleRules_(cssRules) {
  *     is unreliable, and some (but not all!) rules containing these are
  *     silently dropped.
  */
-export function sanitizeStyleSheetString(textContent, opt_containerId, opt_uriRewriter) {
-    var styleTag = /** @type {?HTMLStyleElement} */
-        (safeParseHtmlAndGetInertElement(
-            '<style>' + textContent + '</style>'));
-    if (styleTag == null || styleTag.sheet == null) {
-      return SafeStyleSheet.EMPTY;
-    }
-    var containerId = opt_containerId != undefined ? opt_containerId : null;
-    return sanitizeStyleSheet_(
-        /** @type {!CSSStyleSheet} */ (styleTag.sheet), containerId,
-        opt_uriRewriter);
+export function sanitizeStyleSheetString(
+    textContent, opt_containerId, opt_uriRewriter) {
+  var styleTag = /** @type {?HTMLStyleElement} */
+      (safeParseHtmlAndGetInertElement('<style>' + textContent + '</style>'));
+  if (styleTag == null || styleTag.sheet == null) {
+    return SafeStyleSheet.EMPTY;
+  }
+  var containerId = opt_containerId != undefined ? opt_containerId : null;
+  return sanitizeStyleSheet_(
+      /** @type {!CSSStyleSheet} */ (styleTag.sheet), containerId,
+      opt_uriRewriter);
 }
 
 
@@ -194,12 +193,11 @@ export function sanitizeStyleSheetString(textContent, opt_containerId, opt_uriRe
  * @return {?Element}
  */
 export function safeParseHtmlAndGetInertElement(html) {
-    var safeHtml = uncheckedconversions
-                       .safeHtmlFromStringKnownToSatisfyTypeContract(
-                           Const.from('Never attached to DOM.'),
-                           '<html><head></head><body>' + html + '</body></html>');
-    return safe.parseFromStringHtml(new DOMParser(), safeHtml)
-        .body.children[0];
+  var safeHtml =
+      uncheckedconversions.safeHtmlFromStringKnownToSatisfyTypeContract(
+          Const.from('Never attached to DOM.'),
+          '<html><head></head><body>' + html + '</body></html>');
+  return safe.parseFromStringHtml(new DOMParser(), safeHtml).body.children[0];
 }
 
 
@@ -213,34 +211,28 @@ export function safeParseHtmlAndGetInertElement(html) {
  * @return {!SafeStyle} A sanitized inline cssText.
  */
 export function sanitizeInlineStyle(cssStyle, opt_uriRewriter) {
-    if (!cssStyle) {
-      return SafeStyle.EMPTY;
+  if (!cssStyle) {
+    return SafeStyle.EMPTY;
+  }
+
+  var cleanCssStyle = document.createElement('div').style;
+  var cssPropNames = getCssPropNames_(cssStyle);
+
+  cssPropNames.forEach(function(propName) {
+    var propNameWithoutPrefix = withoutVendorPrefix_(propName);
+    if (!isDisallowedPropertyName_(propNameWithoutPrefix)) {
+      var propValue = noclobber.getCssPropertyValue(
+          /** @type {!CSSStyleDeclaration} */ (cssStyle), propName);
+      var sanitizedValue = CssPropertySanitizer.sanitizeProperty(
+          propNameWithoutPrefix, propValue, opt_uriRewriter);
+      if (sanitizedValue != null) {
+        noclobber.setCssProperty(
+            cleanCssStyle, propNameWithoutPrefix, sanitizedValue);
+      }
     }
-
-    var cleanCssStyle = document.createElement('div').style;
-    var cssPropNames =
-        getCssPropNames_(cssStyle);
-
-    cssPropNames.forEach(function(propName) {
-        var propNameWithoutPrefix =
-            withoutVendorPrefix_(propName);
-        if (!isDisallowedPropertyName_(
-                propNameWithoutPrefix)) {
-          var propValue = noclobber.getCssPropertyValue(
-              /** @type {!CSSStyleDeclaration} */ (cssStyle), propName);
-          var sanitizedValue =
-              CssPropertySanitizer.sanitizeProperty(
-                  propNameWithoutPrefix, propValue, opt_uriRewriter);
-          if (sanitizedValue != null) {
-            noclobber.setCssProperty(
-                cleanCssStyle, propNameWithoutPrefix, sanitizedValue);
-          }
-        }
-    });
-    return uncheckedconversions
-        .safeStyleFromStringKnownToSatisfyTypeContract(
-            Const.from('Output of CSS sanitizer'),
-            cleanCssStyle.cssText || '');
+  });
+  return uncheckedconversions.safeStyleFromStringKnownToSatisfyTypeContract(
+      Const.from('Output of CSS sanitizer'), cleanCssStyle.cssText || '');
 }
 
 
@@ -254,17 +246,14 @@ export function sanitizeInlineStyle(cssStyle, opt_uriRewriter) {
  * @return {!SafeStyle} A sanitized inline cssText.
  */
 export function sanitizeInlineStyleString(cssText, opt_uriRewriter) {
-    // same check as in goog.html.sanitizer.HTML_SANITIZER_SUPPORTED_
-    if (userAgent.IE && document.documentMode < 10) {
-      return SafeStyle.EMPTY;
-    }
+  // same check as in goog.html.sanitizer.HTML_SANITIZER_SUPPORTED_
+  if (userAgent.IE && document.documentMode < 10) {
+    return SafeStyle.EMPTY;
+  }
 
-    const div =
-        inertDocument.createInertDocument().createElement(
-            'DIV');
-    div.style.cssText = cssText;
-    return sanitizeInlineStyle(
-        div.style, opt_uriRewriter);
+  const div = inertDocument.createInertDocument().createElement('DIV');
+  div.style.cssText = cssText;
+  return sanitizeInlineStyle(div.style, opt_uriRewriter);
 }
 
 
@@ -275,67 +264,61 @@ export function sanitizeInlineStyleString(cssText, opt_uriRewriter) {
  * @package
  */
 export function inlineStyleRules(element) {
-    // Note that Webkit used to offer the perfect function for the job:
-    // getMatchedCSSRules. Unfortunately, it was never supported cross-browser and
-    // is deprecated now. On the other hand, getComputedStyle cannot be used to
-    // differentiate property values that are set by a style sheet from those set
-    // by a style attribute or default values. This algorithm with
-    // O(nr_of_elements * nr_of_rules) complexity that has to manually sort
-    // selectors by specificity is the best we can do.
+  // Note that Webkit used to offer the perfect function for the job:
+  // getMatchedCSSRules. Unfortunately, it was never supported cross-browser and
+  // is deprecated now. On the other hand, getComputedStyle cannot be used to
+  // differentiate property values that are set by a style sheet from those set
+  // by a style attribute or default values. This algorithm with
+  // O(nr_of_elements * nr_of_rules) complexity that has to manually sort
+  // selectors by specificity is the best we can do.
 
-    // Extract all rules from STYLE tags found in the subtree.
-    /** @type {!Array<!HTMLStyleElement>} */
-    var styleTags =
-        noclobber.getElementsByTagName(element, 'STYLE');
-    var cssRules = array.concatMap(styleTags, function(styleTag) {
-        return array.toArray(
-            noclobber.getElementStyleSheet(styleTag).cssRules);
-    });
-    cssRules = getOnlyStyleRules_(cssRules);
+  // Extract all rules from STYLE tags found in the subtree.
+  /** @type {!Array<!HTMLStyleElement>} */
+  var styleTags = noclobber.getElementsByTagName(element, 'STYLE');
+  var cssRules = array.concatMap(styleTags, function(styleTag) {
+    return array.toArray(noclobber.getElementStyleSheet(styleTag).cssRules);
+  });
+  cssRules = getOnlyStyleRules_(cssRules);
 
-    let sortedMap = [];
-    for (var i = 0; i < cssRules.length; i++) {
-      sortedMap[i] = {index: i, rule: /** @type {!CSSStyleRule} */ (cssRules[i])};
-    }
-    // Sorts the array in ascending order of specificity. Preserves the initial
-    // order of appearance if two rules have the same specificity.
-    sortedMap.sort(function(a, b) {
-        var aSpecificity =
-            CssSpecificity.getSpecificity(a.rule.selectorText);
-        var bSpecificity =
-            CssSpecificity.getSpecificity(b.rule.selectorText);
-        return array.compare3(aSpecificity, bSpecificity) || a.index - b.index;
+  let sortedMap = [];
+  for (var i = 0; i < cssRules.length; i++) {
+    sortedMap[i] = {index: i, rule: /** @type {!CSSStyleRule} */ (cssRules[i])};
+  }
+  // Sorts the array in ascending order of specificity. Preserves the initial
+  // order of appearance if two rules have the same specificity.
+  sortedMap.sort(function(a, b) {
+    var aSpecificity = CssSpecificity.getSpecificity(a.rule.selectorText);
+    var bSpecificity = CssSpecificity.getSpecificity(b.rule.selectorText);
+    return array.compare3(aSpecificity, bSpecificity) || a.index - b.index;
+  });
+  for (var i = 0; i < sortedMap.length; i++) {
+    cssRules[i] = sortedMap[i].rule;
+  }
+  // Reverse the array so we can match elements to the most specific rules
+  // first.
+  cssRules.reverse();
+  // For each element, apply the matching rules to the element style attribute.
+  // If a property is already explicitly defined, do not update it. This
+  // guarantees that the rule with selectors with the highest priority (or the
+  // properties defined in the style attribute itself) have precedence over
+  // lower priority ones.
+  var subTreeWalker = document.createTreeWalker(
+      element, NodeFilter.SHOW_ELEMENT, null /* filter */,
+      false /* entityReferenceExpansion */);
+  var currentElement;
+  while (currentElement = /** @type {!Element} */ (subTreeWalker.nextNode())) {
+    cssRules.forEach(function(rule) {
+      if (!noclobber.elementMatches(currentElement, rule.selectorText)) {
+        return;
+      }
+      if (!rule.style) {
+        return;
+      }
+      mergeStyleDeclarations_(currentElement, rule.style);
     });
-    for (var i = 0; i < sortedMap.length; i++) {
-      cssRules[i] = sortedMap[i].rule;
-    }
-    // Reverse the array so we can match elements to the most specific rules
-    // first.
-    cssRules.reverse();
-    // For each element, apply the matching rules to the element style attribute.
-    // If a property is already explicitly defined, do not update it. This
-    // guarantees that the rule with selectors with the highest priority (or the
-    // properties defined in the style attribute itself) have precedence over
-    // lower priority ones.
-    var subTreeWalker = document.createTreeWalker(
-        element, NodeFilter.SHOW_ELEMENT, null /* filter */,
-        false /* entityReferenceExpansion */);
-    var currentElement;
-    while (currentElement = /** @type {!Element} */ (subTreeWalker.nextNode())) {
-      cssRules.forEach(function(rule) {
-          if (!noclobber.elementMatches(
-                  currentElement, rule.selectorText)) {
-            return;
-          }
-          if (!rule.style) {
-            return;
-          }
-          mergeStyleDeclarations_(
-              currentElement, rule.style);
-      });
-    }
-    // Delete the STYLE tags.
-    styleTags.forEach(dom.removeNode);
+  }
+  // Delete the STYLE tags.
+  styleTags.forEach(dom.removeNode);
 }
 
 
@@ -347,22 +330,18 @@ export function inlineStyleRules(element) {
  * @private
  */
 function mergeStyleDeclarations_(element, styleDeclaration) {
-    var existingPropNames =
-        getCssPropNames_(element.style);
-    var newPropNames =
-        getCssPropNames_(styleDeclaration);
+  var existingPropNames = getCssPropNames_(element.style);
+  var newPropNames = getCssPropNames_(styleDeclaration);
 
-    newPropNames.forEach(function(propName) {
-        if (existingPropNames.indexOf(propName) >= 0) {
-          // This was either a property set by the style attribute or a stylesheet
-          // rule with a higher priority. Leave the existing value.
-          return;
-        }
-        var propValue = noclobber.getCssPropertyValue(
-            styleDeclaration, propName);
-        noclobber.setCssProperty(
-            element.style, propName, propValue);
-    });
+  newPropNames.forEach(function(propName) {
+    if (existingPropNames.indexOf(propName) >= 0) {
+      // This was either a property set by the style attribute or a stylesheet
+      // rule with a higher priority. Leave the existing value.
+      return;
+    }
+    var propValue = noclobber.getCssPropertyValue(styleDeclaration, propName);
+    noclobber.setCssProperty(element.style, propName, propValue);
+  });
 }
 
 /**
@@ -372,19 +351,19 @@ function mergeStyleDeclarations_(element, styleDeclaration) {
  * @private
  */
 function getCssPropNames_(cssStyle) {
-    var propNames = [];
-    if (goog.isArrayLike(cssStyle)) {
-      // Gets property names via item().
-      // https://drafts.csswg.org/cssom/#dom-cssstyledeclaration-item
-      propNames = array.toArray(cssStyle);
-    } else {
-      // In IE8 and other older browsers we have to iterate over all the property
-      // names. We skip cssText because it contains the unsanitized CSS, which
-      // defeats the purpose.
-      propNames = object.getKeys(cssStyle);
-      array.remove(propNames, 'cssText');
-    }
-    return propNames;
+  var propNames = [];
+  if (goog.isArrayLike(cssStyle)) {
+    // Gets property names via item().
+    // https://drafts.csswg.org/cssom/#dom-cssstyledeclaration-item
+    propNames = array.toArray(cssStyle);
+  } else {
+    // In IE8 and other older browsers we have to iterate over all the property
+    // names. We skip cssText because it contains the unsanitized CSS, which
+    // defeats the purpose.
+    propNames = object.getKeys(cssStyle);
+    array.remove(propNames, 'cssText');
+  }
+  return propNames;
 }
 
 
@@ -395,9 +374,9 @@ function getCssPropNames_(cssStyle) {
  * @private
  */
 function isDisallowedPropertyName_(propName) {
-    // getPropertyValue doesn't deal with custom variables properly and will NOT
-    // decode CSS escapes (but the browser will do so silently). Simply disallow
-    // custom variables (http://www.w3.org/TR/css-variables/#defining-variables).
-    return googString.startsWith(propName, '--') ||
-        googString.startsWith(propName, 'var');
+  // getPropertyValue doesn't deal with custom variables properly and will NOT
+  // decode CSS escapes (but the browser will do so silently). Simply disallow
+  // custom variables (http://www.w3.org/TR/css-variables/#defining-variables).
+  return googString.startsWith(propName, '--') ||
+      googString.startsWith(propName, 'var');
 }

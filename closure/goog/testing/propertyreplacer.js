@@ -50,7 +50,7 @@ import * as asserts from '../asserts/asserts.js';
  * </ul>
  *
  * Code compiled with property renaming may need to use
- * `goog.reflect.objectProperty` instead of simply naming the property to
+ * `JSCompiler_renameProperty` instead of simply naming the property to
  * replace.
  *
  * @constructor

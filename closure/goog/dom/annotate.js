@@ -17,7 +17,6 @@ import { NodeType } from './nodetype.js';
 import { TagName } from './tagname.js';
 import * as safe from './safe.js';
 import { SafeHtml } from '../html/safehtml.js';
-import object from '../object/object.js';
 
 
 /**
@@ -75,8 +74,9 @@ var MAX_RECURSION_ = 200;
  * The node types whose descendants should not be affected by annotation.
  * @private {!Object<string, boolean>}
  */
-var NODES_TO_SKIP_ = object.createSet(
-    TagName.SCRIPT, TagName.STYLE, TagName.TEXTAREA);
+var NODES_TO_SKIP_ = {
+    [TagName.SCRIPT]: true, [TagName.STYLE]: true, [TagName.TEXTAREA]: true
+};
 
 
 /**

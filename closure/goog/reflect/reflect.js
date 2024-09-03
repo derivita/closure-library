@@ -11,43 +11,6 @@
 goog.declareModuleId('goog.reflect');
 
 goog.reflect = goog.reflect || {};
-/**
- * Syntax for object literal casts.
- * @see http://go/jscompiler-renaming
- * @see https://goo.gl/CRs09P
- *
- * Use this if you have an object literal whose keys need to have the same names
- * as the properties of some class even after they are renamed by the compiler.
- *
- * @param {!Function} type Type to cast to.
- * @param {Object} object Object literal to cast.
- * @return {Object} The object literal.
- * @closurePrimitive {reflect.object}
- */
-export function object(type, object) {
- return object;
-};
-
-/**
- * Syntax for renaming property strings.
- * @see http://go/jscompiler-renaming
- * @see https://goo.gl/CRs09P
- *
- * Use this if you have an need to access a property as a string, but want
- * to also have the property renamed by the compiler. In contrast to
- * object, this method takes an instance of an object.
- *
- * Properties must be simple names (not qualified names).
- *
- * @param {string} prop Name of the property
- * @param {!Object} object Instance of the object whose type will be used
- *     for renaming
- * @return {string} The renamed property.
- * @closurePrimitive {reflect.objectProperty}
- */
-export function objectProperty(prop, object) {
-  return prop;
-}
 
 /**
  * To assert to the compiler that an operation is needed when it would
@@ -117,7 +80,6 @@ export function canAccessProperty(obj, prop) {
  * @return {V} The cached or calculated value.
  * @template K
  * @template V
- * @closurePrimitive {reflect.cache}
  */
 export function cache(cacheObj, key, valueFn, opt_keyFn) {
  const storedKey = opt_keyFn ? opt_keyFn(key) : key;
@@ -125,6 +87,6 @@ export function cache(cacheObj, key, valueFn, opt_keyFn) {
  if (Object.prototype.hasOwnProperty.call(cacheObj, storedKey)) {
    return cacheObj[storedKey];
  }
-
- return (cacheObj[storedKey] = valueFn(key));
+ const value = valueFn(key);
+ return /** @pureOrBreakMyCode */(cacheObj[storedKey] = value);
 }

@@ -13,18 +13,17 @@
 
 goog.declareModuleId('goog.html.SafeHtml');
 
-import { Const } from '../string/const.js';
-import { SafeScript } from './safescript.js';
-import { SafeStyle } from './safestyle.js';
-import { SafeStyleSheet } from './safestylesheet.js';
-import { SafeUrl } from './safeurl.js';
-import { TagName } from '../dom/tagname.js';
-import { TrustedResourceUrl } from './trustedresourceurl.js';
-import { TypedString } from '../string/typedstring.js';
+import {Const} from '../string/const.js';
+import {SafeScript} from './safescript.js';
+import {SafeStyle} from './safestyle.js';
+import {SafeStyleSheet} from './safestylesheet.js';
+import {SafeUrl} from './safeurl.js';
+import {TagName} from '../dom/tagname.js';
+import {TrustedResourceUrl} from './trustedresourceurl.js';
+import {TypedString} from '../string/typedstring.js';
 import * as asserts from '../asserts/asserts.js';
 import * as browser from '../labs/useragent/browser.js';
 import * as googArray from '../array/array.js';
-import googObject from '../object/object.js';
 import * as internal from '../string/internal.js';
 import * as tags from '../dom/tags.js';
 import * as trustedtypes from './trustedtypes.js';
@@ -862,9 +861,16 @@ const VALID_NAMES_IN_TAG = /^[a-zA-Z0-9-]+$/;
  * http://www.w3.org/TR/html5/index.html#attributes-1.
  * @const {!Object<string,boolean>}
  */
-const URL_ATTRIBUTES = googObject.createSet(
-    'action', 'cite', 'data', 'formaction', 'href', 'manifest', 'poster',
-    'src');
+const URL_ATTRIBUTES = {
+  'action': true,
+  'cite': true,
+  'data': true,
+  'formaction': true,
+  'href': true,
+  'manifest': true,
+  'poster': true,
+  'src': true
+};
 
 
 /**
@@ -874,10 +880,20 @@ const URL_ATTRIBUTES = googObject.createSet(
  * their content.
  * @const {!Object<string,boolean>}
  */
-const NOT_ALLOWED_TAG_NAMES = googObject.createSet(
-    TagName.APPLET, TagName.BASE, TagName.EMBED, TagName.IFRAME, TagName.LINK,
-    TagName.MATH, TagName.META, TagName.OBJECT, TagName.SCRIPT, TagName.STYLE,
-    TagName.SVG, TagName.TEMPLATE);
+const NOT_ALLOWED_TAG_NAMES = {
+  [TagName.APPLET]: true,
+  [TagName.BASE]: true,
+  [TagName.EMBED]: true,
+  [TagName.IFRAME]: true,
+  [TagName.LINK]: true,
+  [TagName.MATH]: true,
+  [TagName.META]: true,
+  [TagName.OBJECT]: true,
+  [TagName.SCRIPT]: true,
+  [TagName.STYLE]: true,
+  [TagName.SVG]: true,
+  [TagName.TEMPLATE]: true
+};
 
 
 /**
@@ -1012,4 +1028,4 @@ SafeHtml.BR = /** @type {!SafeHtml} */ ({
 }.valueOf());
 
 
-export { SafeHtml };
+export {SafeHtml};

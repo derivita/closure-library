@@ -14,24 +14,48 @@
  * @package
  */
 
-import { SafeUrl } from '../safeurl.js';
-
 import * as googAsserts from '../../asserts/asserts.js';
-import googObject from '../../object/object.js';
 import * as googString from '../../string/string.js';
+import {SafeUrl} from '../safeurl.js';
 
 
 /**
  * Allowed CSS functions
  * @const {!Object<string,boolean>}
  */
-var ALLOWED_FUNCTIONS = googObject.createSet(
-    'rgb', 'rgba', 'alpha', 'rect', 'image', 'linear-gradient',
-    'radial-gradient', 'repeating-linear-gradient', 'repeating-radial-gradient',
-    'cubic-bezier', 'matrix', 'perspective', 'rotate', 'rotate3d', 'rotatex',
-    'rotatey', 'steps', 'rotatez', 'scale', 'scale3d', 'scalex', 'scaley',
-    'scalez', 'skew', 'skewx', 'skewy', 'translate', 'translate3d',
-    'translatex', 'translatey', 'translatez');
+var ALLOWED_FUNCTIONS = {
+  'rgb': true,
+  'rgba': true,
+  'alpha': true,
+  'rect': true,
+  'image': true,
+  'linear-gradient': true,
+  'radial-gradient': true,
+  'repeating-linear-gradient': true,
+  'repeating-radial-gradient': true,
+  'cubic-bezier': true,
+  'matrix': true,
+  'perspective': true,
+  'rotate': true,
+  'rotate3d': true,
+  'rotatex': true,
+  'rotatey': true,
+  'steps': true,
+  'rotatez': true,
+  'scale': true,
+  'scale3d': true,
+  'scalex': true,
+  'scaley': true,
+  'scalez': true,
+  'skew': true,
+  'skewx': true,
+  'skewy': true,
+  'translate': true,
+  'translate3d': true,
+  'translatex': true,
+  'translatey': true,
+  'translatez': true
+};
 
 /**
  * The set of characters that need to be normalized inside url("...").

@@ -12,16 +12,16 @@
  * performed when adding ARIA to components.
  */
 
-import { Role } from './roles.js';
-
-import { State } from './attributes.js';
-import * as datatables from './datatables.js';
 import * as array from '../../array/array.js';
 import * as asserts from '../../asserts/asserts.js';
 import * as dom from '../../dom/dom.js';
-import { TagName } from '../../dom/tagname.js';
+import {TagName} from '../../dom/tagname.js';
 import object from '../../object/object.js';
 import * as googString from '../../string/string.js';
+
+import {State} from './attributes.js';
+import * as datatables from './datatables.js';
+import {Role} from './roles.js';
 
 
 /**
@@ -44,14 +44,25 @@ var ROLE_ATTRIBUTE_ = 'role';
  * they don't contain content to be made accessible.
  * @private
  */
-var TAGS_WITH_ASSUMED_ROLES_ = object.createSet([
-  TagName.A, TagName.AREA, TagName.BUTTON,
-  TagName.HEAD, TagName.INPUT, TagName.LINK,
-  TagName.MENU, TagName.META, TagName.OPTGROUP,
-  TagName.OPTION, TagName.PROGRESS, TagName.STYLE,
-  TagName.SELECT, TagName.SOURCE, TagName.TEXTAREA,
-  TagName.TITLE, TagName.TRACK
-]);
+var TAGS_WITH_ASSUMED_ROLES_ = {
+  [TagName.A]: true,
+  [TagName.AREA]: true,
+  [TagName.BUTTON]: true,
+  [TagName.HEAD]: true,
+  [TagName.INPUT]: true,
+  [TagName.LINK]: true,
+  [TagName.MENU]: true,
+  [TagName.META]: true,
+  [TagName.OPTGROUP]: true,
+  [TagName.OPTION]: true,
+  [TagName.PROGRESS]: true,
+  [TagName.STYLE]: true,
+  [TagName.SELECT]: true,
+  [TagName.SOURCE]: true,
+  [TagName.TEXTAREA]: true,
+  [TagName.TITLE]: true,
+  [TagName.TRACK]: true,
+};
 
 
 /**
@@ -63,13 +74,9 @@ var TAGS_WITH_ASSUMED_ROLES_ = object.createSet([
  * @private @const {!Array<Role>}
  */
 var CONTAINER_ROLES_ = [
-  Role.COMBOBOX, Role.GRID,
-  Role.GROUP, Role.LISTBOX,
-  Role.MENU, Role.MENUBAR,
-  Role.RADIOGROUP, Role.ROW,
-  Role.ROWGROUP, Role.TAB_LIST,
-  Role.TEXTBOX, Role.TOOLBAR,
-  Role.TREE, Role.TREEGRID
+  Role.COMBOBOX, Role.GRID, Role.GROUP, Role.LISTBOX, Role.MENU, Role.MENUBAR,
+  Role.RADIOGROUP, Role.ROW, Role.ROWGROUP, Role.TAB_LIST, Role.TEXTBOX,
+  Role.TOOLBAR, Role.TREE, Role.TREEGRID
 ];
 
 
@@ -202,8 +209,7 @@ export function getState(element, stateName) {
 
   var attr =
       /** @type {string|number|boolean} */ (
-          element.getAttribute(
-              getAriaAttributeName_(stateName)));
+          element.getAttribute(getAriaAttributeName_(stateName)));
   var isNullOrUndefined = attr == null || attr == undefined;
   return isNullOrUndefined ? '' : String(attr);
 }
@@ -217,8 +223,7 @@ export function getState(element, stateName) {
  * @return {?Element} DOM node of the activedescendant, if found.
  */
 export function getActiveDescendant(element) {
-  var id =
-      getState(element, State.ACTIVEDESCENDANT);
+  var id = getState(element, State.ACTIVEDESCENDANT);
   return dom.getOwnerDocument(element).getElementById(id);
 }
 
@@ -273,8 +278,7 @@ export function assertRoleIsSetInternalUtil(element, allowedRoles) {
     return;
   }
   var elementRole = /** @type {string}*/ (getRole(element));
-  asserts.assert(
-      elementRole != null, 'The element ARIA role cannot be null.');
+  asserts.assert(elementRole != null, 'The element ARIA role cannot be null.');
 
   asserts.assert(
       array.contains(allowedRoles, elementRole),
@@ -294,8 +298,8 @@ export function assertRoleIsSetInternalUtil(element, allowedRoles) {
  */
 export function getStateBoolean(element, stateName) {
   var attr =
-      /** @type {string|boolean|null} */ (element.getAttribute(
-          getAriaAttributeName_(stateName)));
+      /** @type {string|boolean|null} */ (
+          element.getAttribute(getAriaAttributeName_(stateName)));
   asserts.assert(
       typeof attr === 'boolean' || attr == null || attr == 'true' ||
       attr == 'false');
@@ -315,8 +319,8 @@ export function getStateBoolean(element, stateName) {
  */
 export function getStateNumber(element, stateName) {
   var attr =
-      /** @type {string|number} */ (element.getAttribute(
-          getAriaAttributeName_(stateName)));
+      /** @type {string|number} */ (
+          element.getAttribute(getAriaAttributeName_(stateName)));
   asserts.assert(
       (attr == null || !isNaN(Number(attr))) && typeof attr !== 'boolean');
   return attr == null ? null : Number(attr);
@@ -331,8 +335,7 @@ export function getStateNumber(element, stateName) {
  *     the state value is empty string or not set.
  */
 export function getStateString(element, stateName) {
-  var attr =
-      element.getAttribute(getAriaAttributeName_(stateName));
+  var attr = element.getAttribute(getAriaAttributeName_(stateName));
   asserts.assert(
       (attr == null || typeof attr === 'string') &&
       (attr == '' || isNaN(Number(attr))) && attr != 'true' && attr != 'false');
@@ -350,8 +353,7 @@ export function getStateString(element, stateName) {
  *     value of the state attribute.
  */
 export function getStringArrayStateInternalUtil(element, stateName) {
-  var attrValue =
-      element.getAttribute(getAriaAttributeName_(stateName));
+  var attrValue = element.getAttribute(getAriaAttributeName_(stateName));
   return splitStringOnWhitespace_(attrValue);
 }
 

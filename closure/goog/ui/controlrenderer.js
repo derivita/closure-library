@@ -12,18 +12,18 @@
 goog.declareModuleId('goog.ui.controlrenderer');
 
 import * as aria from '../a11y/aria/aria.js';
-import { Role } from '../a11y/aria/roles.js';
-import { State } from '../a11y/aria/attributes.js';
+import {Role} from '../a11y/aria/roles.js';
+import {State} from '../a11y/aria/attributes.js';
 import * as array from '../array/array.js';
 import * as asserts from '../asserts/asserts.js';
 import * as dom from '../dom/dom.js';
-import { TagName } from '../dom/tagname.js';
+import {TagName} from '../dom/tagname.js';
 import * as classlist from '../dom/classlist.js';
 import object from '../object/object.js';
 import * as googString from '../string/string.js';
 import * as style from '../style/style.js';
-import { Component } from './component.js';
-import { ControlContent } from './controlcontent.js';
+import {Component} from './component.js';
+import {ControlContent} from './controlcontent.js';
 import * as userAgent from '../useragent/useragent.js';  // circular
 const {Control} = goog.requireType('goog.ui.control');
 
@@ -157,15 +157,16 @@ ControlRenderer.ariaAttributeMap_;
  * @private {!Object<Role, State>}
  * @const
  */
-ControlRenderer.TOGGLE_ARIA_STATE_MAP_ = object.create(
-    Role.BUTTON, State.PRESSED,
-    Role.CHECKBOX, State.CHECKED,
-    Role.MENU_ITEM, State.SELECTED,
-    Role.MENU_ITEM_CHECKBOX, State.CHECKED,
-    Role.MENU_ITEM_RADIO, State.CHECKED,
-    Role.RADIO, State.CHECKED,
-    Role.TAB, State.SELECTED,
-    Role.TREEITEM, State.SELECTED);
+ControlRenderer.TOGGLE_ARIA_STATE_MAP_ = {
+  [Role.BUTTON]: State.PRESSED,
+  [Role.CHECKBOX]: State.CHECKED,
+  [Role.MENU_ITEM]: State.SELECTED,
+  [Role.MENU_ITEM_CHECKBOX]: State.CHECKED,
+  [Role.MENU_ITEM_RADIO]: State.CHECKED,
+  [Role.RADIO]: State.CHECKED,
+  [Role.TAB]: State.SELECTED,
+  [Role.TREEITEM]: State.SELECTED
+};
 
 
 /**
@@ -188,8 +189,7 @@ ControlRenderer.prototype.getAriaRole = function() {
 ControlRenderer.prototype.createDom = function(control) {
   // Create and return DIV wrapping contents.
   var element = control.getDomHelper().createDom(
-      TagName.DIV, this.getClassNames(control).join(' '),
-      control.getContent());
+      TagName.DIV, this.getClassNames(control).join(' '), control.getContent());
 
   return element;
 };
@@ -370,8 +370,7 @@ ControlRenderer.prototype.initializeDom = function(control) {
  * @param {Element} element Element to update.
  * @param {?Role=} opt_preferredRole The preferred ARIA role.
  */
-ControlRenderer.prototype.setAriaRole = function(
-    element, opt_preferredRole) {
+ControlRenderer.prototype.setAriaRole = function(element, opt_preferredRole) {
   var ariaRole = opt_preferredRole || this.getAriaRole();
   if (ariaRole) {
     asserts.assert(
@@ -403,8 +402,7 @@ ControlRenderer.prototype.setAriaStates = function(control, element) {
   }
 
   if (!control.isVisible()) {
-    aria.setState(
-        element, State.HIDDEN, !control.isVisible());
+    aria.setState(element, State.HIDDEN, !control.isVisible());
   }
   if (!control.isEnabled()) {
     this.updateAriaState(
@@ -415,12 +413,10 @@ ControlRenderer.prototype.setAriaStates = function(control, element) {
         element, Component.State.SELECTED, control.isSelected());
   }
   if (control.isSupportedState(Component.State.CHECKED)) {
-    this.updateAriaState(
-        element, Component.State.CHECKED, control.isChecked());
+    this.updateAriaState(element, Component.State.CHECKED, control.isChecked());
   }
   if (control.isSupportedState(Component.State.OPENED)) {
-    this.updateAriaState(
-        element, Component.State.OPENED, control.isOpen());
+    this.updateAriaState(element, Component.State.OPENED, control.isOpen());
   }
 };
 
@@ -441,8 +437,7 @@ ControlRenderer.prototype.setAriaLabel = function(element, ariaLabel) {
  * @param {Element} element The control's root element.
  * @param {boolean} allow Whether the element should allow text selection.
  */
-ControlRenderer.prototype.setAllowTextSelection = function(
-    element, allow) {
+ControlRenderer.prototype.setAllowTextSelection = function(element, allow) {
   // On all browsers other than IE and Opera, it isn't necessary to recursively
   // apply unselectable styling to the element's children.
   style.setUnselectable(element, !allow, !userAgent.IE);
@@ -456,8 +451,7 @@ ControlRenderer.prototype.setAllowTextSelection = function(
  * @param {boolean} rightToLeft Whether the component is rendered
  *     right-to-left.
  */
-ControlRenderer.prototype.setRightToLeft = function(
-    element, rightToLeft) {
+ControlRenderer.prototype.setRightToLeft = function(element, rightToLeft) {
   this.enableClassName(
       element, goog.getCssName(this.getStructuralCssClass(), 'rtl'),
       rightToLeft);
@@ -562,15 +556,15 @@ ControlRenderer.prototype.setState = function(control, state, enable) {
  * @param {boolean} enable Whether the state is being enabled or disabled.
  * @protected
  */
-ControlRenderer.prototype.updateAriaState = function(
-    element, state, enable) {
+ControlRenderer.prototype.updateAriaState = function(element, state, enable) {
   // Ensure the ARIA attribute map exists.
   if (!ControlRenderer.ariaAttributeMap_) {
-    ControlRenderer.ariaAttributeMap_ = object.create(
-        Component.State.DISABLED, State.DISABLED,
-        Component.State.SELECTED, State.SELECTED,
-        Component.State.CHECKED, State.CHECKED,
-        Component.State.OPENED, State.EXPANDED);
+    ControlRenderer.ariaAttributeMap_ = {
+      [Component.State.DISABLED]: State.DISABLED,
+      [Component.State.SELECTED]: State.SELECTED,
+      [Component.State.CHECKED]: State.CHECKED,
+      [Component.State.OPENED]: State.EXPANDED
+    };
   }
   asserts.assert(
       element, 'The element passed as a first parameter cannot be null.');
@@ -611,8 +605,7 @@ ControlRenderer.getAriaStateForAriaRole_ = function(element, attr) {
  * @private
  */
 ControlRenderer.isAriaState_ = function(attr) {
-  return attr == State.CHECKED ||
-      attr == State.SELECTED;
+  return attr == State.CHECKED || attr == State.SELECTED;
 };
 
 
@@ -819,9 +812,8 @@ ControlRenderer.prototype.getClassNamesForState = function(state) {
     // For each enabled state, push the corresponding CSS class name onto
     // the classNames array.
     var mask = state & -state;  // Least significant bit
-    classNames.push(
-        this.getClassForState(
-            /** @type {Component.State} */ (mask)));
+    classNames.push(this.getClassForState(
+        /** @type {Component.State} */ (mask)));
     state &= ~mask;
   }
   return classNames;
@@ -885,14 +877,15 @@ ControlRenderer.prototype.createClassByStateMap_ = function() {
    * @type {Object}
    * @private
    */
-  this.classByState_ = object.create(
-      Component.State.DISABLED, goog.getCssName(baseClass, 'disabled'),
-      Component.State.HOVER, goog.getCssName(baseClass, 'hover'),
-      Component.State.ACTIVE, goog.getCssName(baseClass, 'active'),
-      Component.State.SELECTED, goog.getCssName(baseClass, 'selected'),
-      Component.State.CHECKED, goog.getCssName(baseClass, 'checked'),
-      Component.State.FOCUSED, goog.getCssName(baseClass, 'focused'),
-      Component.State.OPENED, goog.getCssName(baseClass, 'open'));
+  this.classByState_ = {
+    [Component.State.DISABLED]: goog.getCssName(baseClass, 'disabled'),
+    [Component.State.HOVER]: goog.getCssName(baseClass, 'hover'),
+    [Component.State.ACTIVE]: goog.getCssName(baseClass, 'active'),
+    [Component.State.SELECTED]: goog.getCssName(baseClass, 'selected'),
+    [Component.State.CHECKED]: goog.getCssName(baseClass, 'checked'),
+    [Component.State.FOCUSED]: goog.getCssName(baseClass, 'focused'),
+    [Component.State.OPENED]: goog.getCssName(baseClass, 'open')
+  };
 };
 
 

@@ -7,7 +7,6 @@
 /**
  * @fileoverview Utilities for HTML element tag names.
  */
-import object from '../object/object.js';
 
 
 /**
@@ -15,9 +14,24 @@ import object from '../object/object.js';
  * http://www.w3.org/TR/html-markup/syntax.html#void-elements.
  * @const @private {!Object<string, boolean>}
  */
-var VOID_TAGS_ = object.createSet(
-    'area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input',
-    'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr');
+var VOID_TAGS_ = {
+  'area': true,
+  'base': true,
+  'br': true,
+  'col': true,
+  'command': true,
+  'embed': true,
+  'hr': true,
+  'img': true,
+  'input': true,
+  'keygen': true,
+  'link': true,
+  'meta': true,
+  'param': true,
+  'source': true,
+  'track': true,
+  'wbr': true
+};
 
 
 /**
@@ -27,5 +41,5 @@ var VOID_TAGS_ = object.createSet(
  * @return {boolean}
  */
 export function isVoidTag(tagName) {
- return VOID_TAGS_[tagName] === true;
+  return VOID_TAGS_[tagName] === true;
 }
