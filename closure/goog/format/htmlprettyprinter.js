@@ -8,10 +8,9 @@
  * @fileoverview Provides functions to parse and pretty-print HTML strings.
  */
 
-import { TagName } from '../dom/tagname.js';
+import {TagName} from '../dom/tagname.js';
 
-import object from '../object/object.js';
-import { StringBuffer } from '../string/stringbuffer.js';
+import {StringBuffer} from '../string/stringbuffer.js';
 
 
 
@@ -49,8 +48,7 @@ HtmlPrettyPrinter.instance_ = null;
  */
 HtmlPrettyPrinter.getInstance_ = function() {
   if (!HtmlPrettyPrinter.instance_) {
-    HtmlPrettyPrinter.instance_ =
-        new HtmlPrettyPrinter();
+    HtmlPrettyPrinter.instance_ = new HtmlPrettyPrinter();
   }
   return HtmlPrettyPrinter.instance_;
 };
@@ -82,9 +80,12 @@ HtmlPrettyPrinter.TOKEN_REGEX_ =
  * @private {!Object}
  * @const
  */
-HtmlPrettyPrinter.NON_PRETTY_PRINTED_TAGS_ = object.createSet(
-    TagName.SCRIPT, TagName.STYLE, TagName.PRE,
-    'XMP');
+HtmlPrettyPrinter.NON_PRETTY_PRINTED_TAGS_ = {
+  [TagName.SCRIPT]: true,
+  [TagName.STYLE]: true,
+  [TagName.PRE]: true,
+  'XMP': true
+};
 
 
 /**
@@ -95,24 +96,57 @@ HtmlPrettyPrinter.NON_PRETTY_PRINTED_TAGS_ = object.createSet(
  * @private {!Object}
  * @const
  */
-HtmlPrettyPrinter.BLOCK_TAGS_ = object.createSet(
-    TagName.ADDRESS, TagName.APPLET, TagName.AREA,
-    TagName.BASE, TagName.BASEFONT,
-    TagName.BLOCKQUOTE, TagName.BODY,
-    TagName.CAPTION, TagName.CENTER, TagName.COL,
-    TagName.COLGROUP, TagName.DIR, TagName.DIV,
-    TagName.DL, TagName.FIELDSET, TagName.FORM,
-    TagName.FRAME, TagName.FRAMESET, TagName.H1,
-    TagName.H2, TagName.H3, TagName.H4,
-    TagName.H5, TagName.H6, TagName.HEAD,
-    TagName.HR, TagName.HTML, TagName.IFRAME,
-    TagName.ISINDEX, TagName.LEGEND, TagName.LINK,
-    TagName.MENU, TagName.META, TagName.NOFRAMES,
-    TagName.NOSCRIPT, TagName.OL, TagName.OPTGROUP,
-    TagName.OPTION, TagName.P, TagName.PARAM,
-    TagName.TABLE, TagName.TBODY, TagName.TD,
-    TagName.TFOOT, TagName.TH, TagName.THEAD,
-    TagName.TITLE, TagName.TR, TagName.UL);
+HtmlPrettyPrinter.BLOCK_TAGS_ = {
+  [TagName.ADDRESS]: true,
+  [TagName.APPLET]: true,
+  [TagName.AREA]: true,
+  [TagName.BASE]: true,
+  [TagName.BASEFONT]: true,
+  [TagName.BLOCKQUOTE]: true,
+  [TagName.BODY]: true,
+  [TagName.CAPTION]: true,
+  [TagName.CENTER]: true,
+  [TagName.COL]: true,
+  [TagName.COLGROUP]: true,
+  [TagName.DIR]: true,
+  [TagName.DIV]: true,
+  [TagName.DL]: true,
+  [TagName.FIELDSET]: true,
+  [TagName.FORM]: true,
+  [TagName.FRAME]: true,
+  [TagName.FRAMESET]: true,
+  [TagName.H1]: true,
+  [TagName.H2]: true,
+  [TagName.H3]: true,
+  [TagName.H4]: true,
+  [TagName.H5]: true,
+  [TagName.H6]: true,
+  [TagName.HEAD]: true,
+  [TagName.HR]: true,
+  [TagName.HTML]: true,
+  [TagName.IFRAME]: true,
+  [TagName.ISINDEX]: true,
+  [TagName.LEGEND]: true,
+  [TagName.LINK]: true,
+  [TagName.MENU]: true,
+  [TagName.META]: true,
+  [TagName.NOFRAMES]: true,
+  [TagName.NOSCRIPT]: true,
+  [TagName.OL]: true,
+  [TagName.OPTGROUP]: true,
+  [TagName.OPTION]: true,
+  [TagName.P]: true,
+  [TagName.PARAM]: true,
+  [TagName.TABLE]: true,
+  [TagName.TBODY]: true,
+  [TagName.TD]: true,
+  [TagName.TFOOT]: true,
+  [TagName.TH]: true,
+  [TagName.THEAD]: true,
+  [TagName.TITLE]: true,
+  [TagName.TR]: true,
+  [TagName.UL]: true
+};
 
 
 /**
@@ -121,9 +155,13 @@ HtmlPrettyPrinter.BLOCK_TAGS_ = object.createSet(
  * @private {!Object}
  * @const
  */
-HtmlPrettyPrinter.BREAKS_FLOW_TAGS_ = object.createSet(
-    TagName.BR, TagName.DD, TagName.DT,
-    TagName.LI, TagName.NOFRAMES);
+HtmlPrettyPrinter.BREAKS_FLOW_TAGS_ = {
+  [TagName.BR]: true,
+  [TagName.DD]: true,
+  [TagName.DT]: true,
+  [TagName.LI]: true,
+  [TagName.NOFRAMES]: true
+};
 
 
 /**
@@ -131,8 +169,11 @@ HtmlPrettyPrinter.BREAKS_FLOW_TAGS_ = object.createSet(
  * @private {!Object}
  * @const
  */
-HtmlPrettyPrinter.EMPTY_TAGS_ = object.createSet(
-    TagName.BR, TagName.HR, TagName.ISINDEX);
+HtmlPrettyPrinter.EMPTY_TAGS_ = {
+  [TagName.BR]: true,
+  [TagName.HR]: true,
+  [TagName.ISINDEX]: true
+};
 
 
 /**
@@ -270,10 +311,10 @@ HtmlPrettyPrinter.prototype.format = function(html) {
  */
 HtmlPrettyPrinter.Buffer = function() {
   /**
-     * Tokens to be output in #toString.
-     * @type {StringBuffer}
-     * @private
-     */
+   * Tokens to be output in #toString.
+   * @type {StringBuffer}
+   * @private
+   */
   this.out_ = new StringBuffer();
 };
 

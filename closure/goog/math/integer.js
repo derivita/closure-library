@@ -88,10 +88,10 @@ Integer.IntCache_ = {};
  */
 Integer.fromInt = function(value) {
   if (-128 <= value && value < 128) {
-    return reflect.cache(
+    return /** @pureOrBreakMyCode */(reflect.cache(
         Integer.IntCache_, value, function(val) {
       return new Integer([val | 0], val < 0 ? -1 : 0);
-    });
+    }));
   }
   return new Integer([value | 0], value < 0 ? -1 : 0);
 };

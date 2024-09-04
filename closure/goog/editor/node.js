@@ -10,17 +10,15 @@
  */
 
 import dom from '../asserts/dom.js';
-
 import * as googDom from '../dom/dom.js';
-import { NodeType } from '../dom/nodetype.js';
-import { TagName } from '../dom/tagname.js';
-import { ChildIterator, SiblingIterator } from '../dom/iter.js';
+import {ChildIterator, SiblingIterator} from '../dom/iter.js';
+import {NodeType} from '../dom/nodetype.js';
 import * as safe from '../dom/safe.js';
+import {TagName} from '../dom/tagname.js';
 import * as legacyconversions from '../html/legacyconversions.js';
 import * as iter from '../iter/iter.js';
-import object from '../object/object.js';
 import * as googString from '../string/string.js';
-import { Unicode } from '../string/string.js';
+import {Unicode} from '../string/string.js';
 import * as userAgent from '../useragent/useragent.js';
 
 
@@ -29,24 +27,58 @@ import * as userAgent from '../useragent/useragent.js';
  * @type {Object}
  * @private
  */
-var BLOCK_TAG_NAMES_ = object.createSet(
-    TagName.ADDRESS, TagName.ARTICLE, TagName.ASIDE,
-    TagName.BLOCKQUOTE, TagName.BODY,
-    TagName.CAPTION, TagName.CENTER, TagName.COL,
-    TagName.COLGROUP, TagName.DETAILS, TagName.DIR,
-    TagName.DIV, TagName.DL, TagName.DD,
-    TagName.DT, TagName.FIELDSET, TagName.FIGCAPTION,
-    TagName.FIGURE, TagName.FOOTER, TagName.FORM,
-    TagName.H1, TagName.H2, TagName.H3,
-    TagName.H4, TagName.H5, TagName.H6,
-    TagName.HEADER, TagName.HGROUP, TagName.HR,
-    TagName.ISINDEX, TagName.OL, TagName.LI,
-    TagName.MAIN, TagName.MAP, TagName.MENU,
-    TagName.NAV, TagName.OPTGROUP, TagName.OPTION,
-    TagName.P, TagName.PRE, TagName.SECTION,
-    TagName.SUMMARY, TagName.TABLE, TagName.TBODY,
-    TagName.TD, TagName.TFOOT, TagName.TH,
-    TagName.THEAD, TagName.TR, TagName.UL);
+var BLOCK_TAG_NAMES_ = {
+  [TagName.ADDRESS]: true,
+  [TagName.ARTICLE]: true,
+  [TagName.ASIDE]: true,
+  [TagName.BLOCKQUOTE]: true,
+  [TagName.BODY]: true,
+  [TagName.CAPTION]: true,
+  [TagName.CENTER]: true,
+  [TagName.COL]: true,
+  [TagName.COLGROUP]: true,
+  [TagName.DETAILS]: true,
+  [TagName.DIR]: true,
+  [TagName.DIV]: true,
+  [TagName.DL]: true,
+  [TagName.DD]: true,
+  [TagName.DT]: true,
+  [TagName.FIELDSET]: true,
+  [TagName.FIGCAPTION]: true,
+  [TagName.FIGURE]: true,
+  [TagName.FOOTER]: true,
+  [TagName.FORM]: true,
+  [TagName.H1]: true,
+  [TagName.H2]: true,
+  [TagName.H3]: true,
+  [TagName.H4]: true,
+  [TagName.H5]: true,
+  [TagName.H6]: true,
+  [TagName.HEADER]: true,
+  [TagName.HGROUP]: true,
+  [TagName.HR]: true,
+  [TagName.ISINDEX]: true,
+  [TagName.OL]: true,
+  [TagName.LI]: true,
+  [TagName.MAIN]: true,
+  [TagName.MAP]: true,
+  [TagName.MENU]: true,
+  [TagName.NAV]: true,
+  [TagName.OPTGROUP]: true,
+  [TagName.OPTION]: true,
+  [TagName.P]: true,
+  [TagName.PRE]: true,
+  [TagName.SECTION]: true,
+  [TagName.SUMMARY]: true,
+  [TagName.TABLE]: true,
+  [TagName.TBODY]: true,
+  [TagName.TD]: true,
+  [TagName.TFOOT]: true,
+  [TagName.TH]: true,
+  [TagName.THEAD]: true,
+  [TagName.TR]: true,
+  [TagName.UL]: true
+};
 
 
 /**
@@ -56,8 +88,8 @@ var BLOCK_TAG_NAMES_ = object.createSet(
  * @type {Object}
  * @private
  */
-var NON_EMPTY_TAGS_ = object.createSet(
-    TagName.IMG, TagName.IFRAME, TagName.EMBED);
+var NON_EMPTY_TAGS_ =
+    {[TagName.IMG]: true, [TagName.IFRAME]: true, [TagName.EMBED]: true};
 
 
 /**
@@ -135,9 +167,8 @@ export function getLastChild(parent) {
  *     node exists.
  */
 export function getPreviousSibling(sibling) {
-  return /** @type {Node} */ (getFirstValue_(iter.filter(
-          new SiblingIterator(sibling, false, true),
-          isImportant)));
+  return /** @type {Node} */ (getFirstValue_(
+      iter.filter(new SiblingIterator(sibling, false, true), isImportant)));
 }
 
 
@@ -150,9 +181,8 @@ export function getPreviousSibling(sibling) {
  *     such node exists.
  */
 export function getNextSibling(sibling) {
-  return /** @type {Node} */ (getFirstValue_(iter.filter(
-          new SiblingIterator(sibling),
-          isImportant)));
+  return /** @type {Node} */ (
+      getFirstValue_(iter.filter(new SiblingIterator(sibling), isImportant)));
 }
 
 
@@ -167,9 +197,8 @@ export function getNextSibling(sibling) {
  * @private
  */
 function getChildHelper_(parent, isReversed) {
-  return (!parent || parent.nodeType != NodeType.ELEMENT) ?
-      null :
-      /** @type {Node} */
+  return (!parent || parent.nodeType != NodeType.ELEMENT) ? null :
+                                                            /** @type {Node} */
       (getFirstValue_(iter.filter(
           new ChildIterator(/** @type {!Element} */ (parent), isReversed),
           isImportant)));
@@ -199,8 +228,7 @@ function getFirstValue_(iterator) {
 export function isImportant(node) {
   // Return true if the node is not either a TextNode or an ElementNode.
   return node.nodeType == NodeType.ELEMENT ||
-      node.nodeType == NodeType.TEXT &&
-      !isAllNonNbspWhiteSpace(node);
+      node.nodeType == NodeType.TEXT && !isAllNonNbspWhiteSpace(node);
 }
 
 
@@ -294,7 +322,7 @@ export function findHighestMatchingAncestor(node, hasProperty) {
 
 
 /**
-* Checks if node is a block-level html element. The <tt>display</tt> css
+ * Checks if node is a block-level html element. The <tt>display</tt> css
  * property is ignored.
  * @param {Node} node The node to test.
  * @return {boolean} Whether the node is a block-level node.
@@ -374,8 +402,7 @@ export function findTopMostEditableAncestor(node, criteria) {
 export function splitDomTreeAt(currentNode, opt_secondHalf, opt_root) {
   var parent;
   while (currentNode != opt_root && (parent = currentNode.parentNode)) {
-    opt_secondHalf = getSecondHalfOfNode_(
-        parent, currentNode, opt_secondHalf);
+    opt_secondHalf = getSecondHalfOfNode_(parent, currentNode, opt_secondHalf);
     currentNode = parent;
   }
   return /** @type {!Node} */ (opt_secondHalf);
@@ -440,6 +467,5 @@ export function replaceInnerHtml(node, html) {
     googDom.removeChildren(node);
   }
   safe.setInnerHtml(
-      dom.assertIsElement(node),
-      legacyconversions.safeHtmlFromString(html));
+      dom.assertIsElement(node), legacyconversions.safeHtmlFromString(html));
 }

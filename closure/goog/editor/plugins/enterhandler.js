@@ -9,25 +9,25 @@
  */
 
 import * as dom from '../../dom/dom.js';
-
-import { NodeOffset } from '../../dom/nodeoffset.js';
-import { NodeType } from '../../dom/nodetype.js';
+import {NodeOffset} from '../../dom/nodeoffset.js';
+import {NodeType} from '../../dom/nodetype.js';
 import * as Range from '../../dom/range.js';
-import { TagName } from '../../dom/tagname.js';
-import { BrowserFeature } from '../browserfeature.js';
-import { Plugin } from '../plugin.js';
-import * as editorNode from '../node.js';
-import { Blockquote } from './blockquote.js';
-import * as editorRange from '../range.js';
-import * as style from '../style.js';
-import { KeyCodes } from '../../events/keycodes.js';
+import {TagName} from '../../dom/tagname.js';
+import {KeyCodes} from '../../events/keycodes.js';
 import * as functions from '../../functions/functions.js';
-import object from '../../object/object.js';
 import * as googString from '../../string/string.js';
 import * as userAgent from '../../useragent/useragent.js';
-const { AbstractRange } = goog.requireType('goog.dom.abstractrange');
-const { BrowserEvent } = goog.requireType('goog.events.browserevent');
-const { Event } = goog.requireType('goog.events.event');
+import {BrowserFeature} from '../browserfeature.js';
+import * as editorNode from '../node.js';
+import {Plugin} from '../plugin.js';
+import * as editorRange from '../range.js';
+import * as style from '../style.js';
+
+import {Blockquote} from './blockquote.js';
+
+const {AbstractRange} = goog.requireType('goog.dom.abstractrange');
+const {BrowserEvent} = goog.requireType('goog.events.browserevent');
+const {Event} = goog.requireType('goog.events.event');
 
 
 
@@ -79,8 +79,7 @@ EnterHandler.prototype.enable = function(fieldObject) {
  *    html is empty.
  * @override
  */
-EnterHandler.prototype.prepareContentsHtml = function(
-    html) {
+EnterHandler.prototype.prepareContentsHtml = function(html) {
   if (!html || googString.isBreakingWhitespace(html)) {
     return BrowserFeature.COLLAPSES_EMPTY_NODES ?
         this.getNonCollapsingBlankHtml() :
@@ -96,8 +95,7 @@ EnterHandler.prototype.prepareContentsHtml = function(
  * @return {string} Blank html.
  * @protected
  */
-EnterHandler.prototype.getNonCollapsingBlankHtml =
-    functions.constant('<br>');
+EnterHandler.prototype.getNonCollapsingBlankHtml = functions.constant('<br>');
 
 
 /**
@@ -106,8 +104,7 @@ EnterHandler.prototype.getNonCollapsingBlankHtml =
  * @param {AbstractRange} range The closure range object.
  * @protected
  */
-EnterHandler.prototype.handleBackspaceInternal = function(
-    e, range) {
+EnterHandler.prototype.handleBackspaceInternal = function(e, range) {
   var field = this.getFieldObject().getElement();
   var container = range && range.getStartNode();
 
@@ -126,40 +123,38 @@ EnterHandler.prototype.handleBackspaceInternal = function(
  *     manually inserting elements.
  * @protected
  */
-EnterHandler.prototype.processParagraphTagsInternal =
-    function(e, split) {
-      // Force IE to turn the node we are leaving into a DIV.  If we do turn
-      // it into a DIV, the node IE creates in response to ENTER will also be
-      // a DIV.  If we don't, it will be a P.  We handle that case
-      // in handleKeyUpIE_
-      if (userAgent.IE) {
-        this.ensureBlockIeOpera(TagName.DIV);
-      } else if (!split && userAgent.WEBKIT) {
-        // WebKit duplicates a blockquote when the user hits enter. Let's cancel
-        // this and insert a BR instead, to make it more consistent with the other
-        // browsers.
-        var range = this.getFieldObject().getRange();
-        if (!range ||
-            !EnterHandler.isDirectlyInBlockquote(
-                range.getContainerElement())) {
-          return;
-        }
+EnterHandler.prototype.processParagraphTagsInternal = function(e, split) {
+  // Force IE to turn the node we are leaving into a DIV.  If we do turn
+  // it into a DIV, the node IE creates in response to ENTER will also be
+  // a DIV.  If we don't, it will be a P.  We handle that case
+  // in handleKeyUpIE_
+  if (userAgent.IE) {
+    this.ensureBlockIeOpera(TagName.DIV);
+  } else if (!split && userAgent.WEBKIT) {
+    // WebKit duplicates a blockquote when the user hits enter. Let's cancel
+    // this and insert a BR instead, to make it more consistent with the other
+    // browsers.
+    var range = this.getFieldObject().getRange();
+    if (!range ||
+        !EnterHandler.isDirectlyInBlockquote(range.getContainerElement())) {
+      return;
+    }
 
-        var dh = this.getFieldDomHelper();
-        var br = dh.createElement(TagName.BR);
-        range.insertNode(br, true);
+    var dh = this.getFieldDomHelper();
+    var br = dh.createElement(TagName.BR);
+    range.insertNode(br, true);
 
-        // If the BR is at the end of a block element, Safari still thinks there is
-        // only one line instead of two, so we need to add another BR in that case.
-        if (editorNode.isBlockTag(br.parentNode) &&
-            !editorNode.skipEmptyTextNodes(br.nextSibling)) {
-          dom.insertSiblingBefore(dh.createElement(TagName.BR), br);
-        }
+    // If the BR is at the end of a block element, Safari still thinks there is
+    // only one line instead of two, so we need to add another BR in that case.
+    if (editorNode.isBlockTag(br.parentNode) &&
+        !editorNode.skipEmptyTextNodes(br.nextSibling)) {
+      dom.insertSiblingBefore(dh.createElement(TagName.BR), br);
+    }
 
-        editorRange.placeCursorNextTo(br, false);
-        e.preventDefault();
-      }
-    };
+    editorRange.placeCursorNextTo(br, false);
+    e.preventDefault();
+  }
+};
 
 
 /**
@@ -240,8 +235,7 @@ EnterHandler.prototype.deleteBrGecko = function(e) {
                 editorNode.isBlockTag(previousSibling))) {
             Range
                 .createCaret(
-                    previousSibling,
-                    editorNode.getLength(previousSibling))
+                    previousSibling, editorNode.getLength(previousSibling))
                 .select();
           } else {
             var leftMostLeaf = editorNode.getLeftMostLeaf(nextSibling);
@@ -375,8 +369,7 @@ EnterHandler.prototype.handleEnterGecko_ = function(e) {
  * @param {BrowserEvent} e The key press event.
  * @protected
  */
-EnterHandler.prototype.handleEnterWebkitInternal = function(
-    e) {};
+EnterHandler.prototype.handleEnterWebkitInternal = function(e) {};
 
 
 /**
@@ -390,8 +383,8 @@ EnterHandler.prototype.handleEnterWebkitInternal = function(
  * @param {AbstractRange} range Object representing the selection.
  * @protected
  */
-EnterHandler.prototype.handleEnterAtCursorGeckoInternal =
-    function(e, wasCollapsed, range) {};
+EnterHandler.prototype.handleEnterAtCursorGeckoInternal = function(
+    e, wasCollapsed, range) {};
 
 
 /**
@@ -400,11 +393,16 @@ EnterHandler.prototype.handleEnterAtCursorGeckoInternal =
  * @type {Object}
  * @private
  */
-EnterHandler.DO_NOT_ENSURE_BLOCK_NODES_ =
-    object.createSet(
-        TagName.LI, TagName.DIV, TagName.H1,
-        TagName.H2, TagName.H3, TagName.H4,
-        TagName.H5, TagName.H6);
+EnterHandler.DO_NOT_ENSURE_BLOCK_NODES_ = {
+  [TagName.LI]: true,
+  [TagName.DIV]: true,
+  [TagName.H1]: true,
+  [TagName.H2]: true,
+  [TagName.H3]: true,
+  [TagName.H4]: true,
+  [TagName.H5]: true,
+  [TagName.H6]: true
+};
 
 
 /**
@@ -416,9 +414,7 @@ EnterHandler.DO_NOT_ENSURE_BLOCK_NODES_ =
  */
 EnterHandler.isBrElem = function(node) {
   return editorNode.isEmpty(node) &&
-      dom
-          .getElementsByTagName(
-              TagName.BR, /** @type {!Element} */ (node))
+      dom.getElementsByTagName(TagName.BR, /** @type {!Element} */ (node))
           .length == 1;
 };
 
@@ -443,8 +439,7 @@ EnterHandler.isBrElem = function(node) {
  * @protected
  * @suppress {strictMissingProperties} Added to tighten compiler checks
  */
-EnterHandler.prototype.ensureBlockIeOpera = function(
-    tag, opt_keyUp) {
+EnterHandler.prototype.ensureBlockIeOpera = function(tag, opt_keyUp) {
   var range = this.getFieldObject().getRange();
   var container = range.getContainer();
   var field = this.getFieldObject().getElement();
@@ -458,11 +453,8 @@ EnterHandler.prototype.ensureBlockIeOpera = function(
     // instead of done before and saved in a variable, so that it can be
     // short-circuited and avoid a weird IE edge case.
     if (nodeName == tag ||
-        (EnterHandler
-             .DO_NOT_ENSURE_BLOCK_NODES_[nodeName] &&
-         !(opt_keyUp &&
-           EnterHandler.isBrElem(container)))) {
-
+        (EnterHandler.DO_NOT_ENSURE_BLOCK_NODES_[nodeName] &&
+         !(opt_keyUp && EnterHandler.isBrElem(container)))) {
       return;
     }
 
@@ -491,8 +483,7 @@ EnterHandler.prototype.deleteCursorSelection_ = function() {
  * @param {Node|Object} position The object returned by deleteCursorSelection_.
  * @private
  */
-EnterHandler.prototype.releasePositionObject_ = function(
-    position) {};
+EnterHandler.prototype.releasePositionObject_ = function(position) {};
 
 
 /**
@@ -502,28 +493,27 @@ EnterHandler.prototype.releasePositionObject_ = function(
  *    unlike simulateEnterIE_, this should not be removed from the DOM.
  * @private
  */
-EnterHandler.prototype.deleteCursorSelectionW3C_ =
-    function() {
-      var range = this.getFieldObject().getRange();
+EnterHandler.prototype.deleteCursorSelectionW3C_ = function() {
+  var range = this.getFieldObject().getRange();
 
-      // Delete the current selection if it's is non-collapsed.
-      // Although this is redundant in FF, it's necessary for Safari
-      if (range && !range.isCollapsed()) {
-        var shouldDelete = true;
-        // Opera selects the <br> in an empty block if there is no text node
-        // preceding it. To preserve inline formatting when pressing [enter] inside
-        // an empty block, don't delete the selection if it only selects a <br> at
-        // the end of the block.
-        // TODO(user): Move this into goog.dom.Range. It should detect this state
-        // when creating a range from the window selection and fix it in the created
-        // range.
-        if (shouldDelete) {
-          EnterHandler.deleteW3cRange_(range);
-        }
-      }
+  // Delete the current selection if it's is non-collapsed.
+  // Although this is redundant in FF, it's necessary for Safari
+  if (range && !range.isCollapsed()) {
+    var shouldDelete = true;
+    // Opera selects the <br> in an empty block if there is no text node
+    // preceding it. To preserve inline formatting when pressing [enter] inside
+    // an empty block, don't delete the selection if it only selects a <br> at
+    // the end of the block.
+    // TODO(user): Move this into goog.dom.Range. It should detect this state
+    // when creating a range from the window selection and fix it in the created
+    // range.
+    if (shouldDelete) {
+      EnterHandler.deleteW3cRange_(range);
+    }
+  }
 
-      return editorRange.getDeepEndPoint(range, true);
-    };
+  return editorRange.getDeepEndPoint(range, true);
+};
 
 /**
  * Checks Whether the selection range start from leftmost.
@@ -532,8 +522,7 @@ EnterHandler.prototype.deleteCursorSelectionW3C_ =
  * @return {boolean} Whether the selection range start from leftmost.
  * @private
  */
-EnterHandler.isNodeLeftMostChild_ = function(
-    node, baseNode) {
+EnterHandler.isNodeLeftMostChild_ = function(node, baseNode) {
   let childNode = node;
   while (childNode && childNode.nodeName != TagName.BODY &&
          childNode != baseNode) {
@@ -559,18 +548,16 @@ EnterHandler.deleteW3cRange_ = function(range) {
     var rangeOffset = range.getStartOffset();
 
     // Whether the selection crosses no container boundaries.
-    var isInOneContainer =
-        EnterHandler.isInOneContainerW3c_(range);
+    var isInOneContainer = EnterHandler.isInOneContainerW3c_(range);
 
     // Whether the selection starts in a container.
     var isPartialStart = !isInOneContainer && range.getStartOffset() != 0;
     // Whether the selection ends in a container it doesn't fully select.
-    var isPartialEnd = !isInOneContainer &&
-        EnterHandler.isPartialEndW3c_(range);
+    var isPartialEnd =
+        !isInOneContainer && EnterHandler.isPartialEndW3c_(range);
 
     var isNodeLeftMostChild =
-        EnterHandler.isNodeLeftMostChild_(
-            range.getStartNode(), baseNode);
+        EnterHandler.isNodeLeftMostChild_(range.getStartNode(), baseNode);
 
     // Remove The range contents, and ensure the correct content stays selected.
     range.removeContents();
@@ -625,8 +612,8 @@ EnterHandler.deleteW3cRange_ = function(range) {
     if (reselect) {
       // The contents of the original range are gone, so restore the cursor
       // position at the start of where the range once was.
-      range = Range.createCaret(
-          nodeOffset.findTargetNode(baseNode), rangeOffset);
+      range =
+          Range.createCaret(nodeOffset.findTargetNode(baseNode), rangeOffset);
       range.select();
     }
   }
@@ -696,8 +683,7 @@ EnterHandler.isPartialEndW3c_ = function(range) {
     // container is selected.  Otherwise, we also know the entire container
     // is selected if the selection ends at a new container.
     if (!child ||
-        child.nodeType == NodeType.ELEMENT &&
-            style.isContainer(child)) {
+        child.nodeType == NodeType.ELEMENT && style.isContainer(child)) {
       return false;
     }
   }

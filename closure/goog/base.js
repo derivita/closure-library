@@ -3515,3 +3515,21 @@ if (!COMPILED) {
           goog.createTrustedTypesPolicy('goog#base#devonly#eval') ||
       {createScript: goog.identity_};
 }
+
+/**
+ * Syntax for renaming property strings.
+ * @see https://goo.gl/CRs09P
+ *
+ * Use this if you have an need to access a property as a string, but want
+ * to also have the property renamed by the compiler. 
+ *
+ * Properties must be simple names (not qualified names).
+ *
+ * @param {string} prop Name of the property
+ * @param {Object=} object Instance of the object whose type will be used
+ *     for renaming
+ * @return {string} The renamed property.
+ */
+function JSCompiler_renameProperty(prop, object) {
+  return prop;
+}

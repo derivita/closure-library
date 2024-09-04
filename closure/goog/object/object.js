@@ -543,7 +543,6 @@ function extend(target, var_args) {
  * @return {!Object} The new object.
  * @throws {!Error} If there are uneven number of arguments or there is only one
  *     non array argument.
- * @closurePrimitive {object.create}
  */
 function create(var_args) {
   const argLength = arguments.length;
@@ -569,7 +568,6 @@ function create(var_args) {
  *     then this is used as the arguments, otherwise the arguments are used as
  *     the property names.
  * @return {!Object} The new object.
- * @closurePrimitive {object.createSet}
  */
 function createSet(var_args) {
   const argLength = arguments.length;

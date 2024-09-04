@@ -504,12 +504,12 @@ export var isVersionOrHigherCache_ = {};
  *     the given version.
  */
 export function isVersionOrHigher(version) {
- return ASSUME_ANY_VERSION ||
+ return ASSUME_ANY_VERSION || /** @pureOrBreakMyCode */(
      reflect.cache(
          isVersionOrHigherCache_, version, function() {
       return internal.compareVersions(
                  VERSION, version) >= 0;
-     });
+     }));
 }
 
 

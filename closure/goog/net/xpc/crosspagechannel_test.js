@@ -402,7 +402,7 @@ testSuite({
 
   testSameDomainCheck_noMessageOrigin() {
     const channel = new CrossPageChannel(
-        object.create(CfgFields.PEER_HOSTNAME, 'http://foo.com'));
+      {[CfgFields.PEER_HOSTNAME]: 'http://foo.com'});
     assertTrue(channel.isMessageOriginAcceptable(undefined));
   },
 
@@ -421,14 +421,14 @@ testSuite({
 
   testSameDomainCheck_originsMatch() {
     const channel = new CrossPageChannel(
-        object.create(CfgFields.PEER_HOSTNAME, 'http://foo.com'));
+      {[CfgFields.PEER_HOSTNAME]: 'http://foo.com'});
     assertTrue(channel.isMessageOriginAcceptable('http://foo.com'));
   },
 
 
   testSameDomainCheck_originsMismatch() {
     const channel = new CrossPageChannel(
-        object.create(CfgFields.PEER_HOSTNAME, 'http://foo.com'));
+        {[CfgFields.PEER_HOSTNAME]: 'http://foo.com'});
     assertFalse(channel.isMessageOriginAcceptable('http://nasty.com'));
   },
 

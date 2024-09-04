@@ -10,10 +10,10 @@
  * @supported IE 10+, Chrome 26+, Firefox 22+, Safari 7.1+, Opera 15+
  */
 
-import { TagName } from '../dom/tagname.js';
+import {TagName} from '../dom/tagname.js';
 
-import { HtmlSanitizer } from './sanitizer/htmlsanitizer.js';
-import object from '../object/object.js';
+import {HtmlSanitizer} from './sanitizer/htmlsanitizer.js';
+
 
 
 /**
@@ -42,8 +42,7 @@ export function extractTextContent(html) {
   // textContent and innerText do not handle spacing between block elements
   // properly. We need to reimplement a similar algorithm ourselves and account
   // for spacing between block elements.
-  return extractTextContentFromNode_(sanitizedNodes)
-      .trim();
+  return extractTextContentFromNode_(sanitizedNodes).trim();
 }
 
 
@@ -60,11 +59,9 @@ function extractTextContentFromNode_(node) {
       if (element.tagName == TagName.BR) {
         return '\n';
       }
-      var result = Array.prototype.map
-                       .call(
-                           node.childNodes,
-                           extractTextContentFromNode_)
-                       .join('');
+      var result =
+          Array.prototype.map.call(node.childNodes, extractTextContentFromNode_)
+              .join('');
       if (isBlockElement_(element)) {
         result = '\n' + result + '\n';
       }
@@ -81,14 +78,27 @@ function extractTextContentFromNode_(node) {
  * A set of block elements.
  * @private @const {!Object<!TagName, boolean>}
  */
-var BLOCK_ELEMENTS_ = object.createSet(
-    TagName.ADDRESS, TagName.BLOCKQUOTE,
-    TagName.CENTER, TagName.DIV, TagName.DL,
-    TagName.FIELDSET, TagName.FORM, TagName.H1,
-    TagName.H2, TagName.H3, TagName.H4,
-    TagName.H5, TagName.H6, TagName.HR,
-    TagName.OL, TagName.P, TagName.PRE,
-    TagName.TABLE, TagName.UL);
+var BLOCK_ELEMENTS_ = {
+  [TagName.ADDRESS]: true,
+  [TagName.BLOCKQUOTE]: true,
+  [TagName.CENTER]: true,
+  [TagName.DIV]: true,
+  [TagName.DL]: true,
+  [TagName.FIELDSET]: true,
+  [TagName.FORM]: true,
+  [TagName.H1]: true,
+  [TagName.H2]: true,
+  [TagName.H3]: true,
+  [TagName.H4]: true,
+  [TagName.H5]: true,
+  [TagName.H6]: true,
+  [TagName.HR]: true,
+  [TagName.OL]: true,
+  [TagName.P]: true,
+  [TagName.PRE]: true,
+  [TagName.TABLE]: true,
+  [TagName.UL]: true
+};
 
 
 /**

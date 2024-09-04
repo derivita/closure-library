@@ -54,7 +54,7 @@ function memoize(f, serializer = simpleSerializer) {
         cache = {};
         MODULE_LOCAL_CACHE.set(cacheKey, cache);
       }
-      return reflect.cache(cache, [this, ...args], valueFn, keyFn);
+      return /** @pureOrBreakMyCode */(reflect.cache(cache, [this, ...args], valueFn, keyFn));
     } else {
       return f.apply(this, args);
     }

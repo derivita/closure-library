@@ -33,12 +33,11 @@ import * as datetimesymbols from './datetimesymbols.js';
 
 import { testSuite } from '../testing/testsuite.js';
 import { DayPeriods_zh_Hant, setDayPeriods } from './dayperiodsymbols.js';
-import { objectProperty } from '../reflect/reflect.js';
 const replacer = new PropertyReplacer();
 
 const DATETIMESYMBOLS =
-    objectProperty('DateTimeSymbols', datetimesymbols);
-const LOCALE = objectProperty('LOCALE', goog);
+    JSCompiler_renameProperty('DateTimeSymbols', datetimesymbols);
+const LOCALE = JSCompiler_renameProperty('LOCALE', goog);
 
 replacer.replace(datetimesymbols, DATETIMESYMBOLS, DateTimeSymbols_en);
 

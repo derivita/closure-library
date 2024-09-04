@@ -10,18 +10,16 @@
  * @see ../demos/editor/editor.html
  */
 
-import { EventTarget } from '../events/eventtarget.js';
+import {EventTarget} from '../events/eventtarget.js';
 
 import * as functions from '../functions/functions.js';
 import * as log from '../log/log.js';
-import object from '../object/object.js';
-import * as reflect from '../reflect/reflect.js';
 import * as userAgent from '../useragent/useragent.js';
-const { DomHelper } = goog.requireType('goog.dom.dom');
-const { Field } = goog.requireType('goog.editor.field');
+const {DomHelper} = goog.requireType('goog.dom.dom');
+const {Field} = goog.requireType('goog.editor.field');
 // TODO(user): Remove the dependency on goog.editor.Command asap. Currently only
 // needed for execCommand issues with links.
-const { BrowserEvent } = goog.requireType('goog.events.browserevent');
+const {BrowserEvent} = goog.requireType('goog.events.browserevent');
 
 /**
  * Abstract API for trogedit plugins.
@@ -30,39 +28,39 @@ const { BrowserEvent } = goog.requireType('goog.events.browserevent');
  * @package
  */
 export function PluginImpl() {
- EventTarget.call(this);
+  EventTarget.call(this);
 
- /**
-  * Whether this plugin is enabled for the registered field object.
-  * @type {boolean}
-  * @private
-  */
- this.enabled_ = this.activeOnUneditableFields();
+  /**
+   * Whether this plugin is enabled for the registered field object.
+   * @type {boolean}
+   * @private
+   */
+  this.enabled_ = this.activeOnUneditableFields();
 
- /**
-    * The field object this plugin is attached to.
-    * @type {?Field}
-    * @protected
-    * @deprecated Use PluginImpl.getFieldObject and
-    *     PluginImpl.setFieldObject.
-    */
- this.fieldObject = null;
+  /**
+   * The field object this plugin is attached to.
+   * @type {?Field}
+   * @protected
+   * @deprecated Use PluginImpl.getFieldObject and
+   *     PluginImpl.setFieldObject.
+   */
+  this.fieldObject = null;
 
- /**
-  * Indicates if this plugin should be automatically disposed when the
-  * registered field is disposed. This should be changed to false for
-  * plugins used as multi-field plugins.
-  * @type {boolean}
-  * @private
-  */
- this.autoDispose_ = true;
+  /**
+   * Indicates if this plugin should be automatically disposed when the
+   * registered field is disposed. This should be changed to false for
+   * plugins used as multi-field plugins.
+   * @type {boolean}
+   * @private
+   */
+  this.autoDispose_ = true;
 
- /**
+  /**
    * The logger for this plugin.
    * @type {?log.Logger}
    * @protected
    */
- this.logger = log.getLogger('goog.editor.Plugin');
+  this.logger = log.getLogger('goog.editor.Plugin');
 }
 goog.inherits(PluginImpl, EventTarget);
 
@@ -72,7 +70,7 @@ goog.inherits(PluginImpl, EventTarget);
  *     currently active field.
  */
 PluginImpl.prototype.getFieldDomHelper = function() {
- return this.getFieldObject() && this.getFieldObject().getEditableDomHelper();
+  return this.getFieldObject() && this.getFieldObject().getEditableDomHelper();
 };
 
 
@@ -83,7 +81,7 @@ PluginImpl.prototype.getFieldDomHelper = function() {
  * @suppress {deprecated} Until fieldObject can be made private.
  */
 PluginImpl.prototype.getFieldObject = function() {
- return this.fieldObject;
+  return this.fieldObject;
 };
 
 
@@ -94,7 +92,7 @@ PluginImpl.prototype.getFieldObject = function() {
  * @suppress {deprecated} Until fieldObject can be made private.
  */
 PluginImpl.prototype.setFieldObject = function(fieldObject) {
- this.fieldObject = fieldObject;
+  this.fieldObject = fieldObject;
 };
 
 
@@ -103,7 +101,7 @@ PluginImpl.prototype.setFieldObject = function(fieldObject) {
  * @param {Field} fieldObject The editable field object.
  */
 PluginImpl.prototype.registerFieldObject = function(fieldObject) {
- this.setFieldObject(fieldObject);
+  this.setFieldObject(fieldObject);
 };
 
 
@@ -113,10 +111,10 @@ PluginImpl.prototype.registerFieldObject = function(fieldObject) {
  *     plugins, this parameter is ignored.
  */
 PluginImpl.prototype.unregisterFieldObject = function(fieldObj) {
- if (this.getFieldObject()) {
-   this.disable(this.getFieldObject());
-   this.setFieldObject(null);
- }
+  if (this.getFieldObject()) {
+    this.disable(this.getFieldObject());
+    this.setFieldObject(null);
+  }
 };
 
 
@@ -126,14 +124,14 @@ PluginImpl.prototype.unregisterFieldObject = function(fieldObj) {
  * @param {Field} fieldObject The field object.
  */
 PluginImpl.prototype.enable = function(fieldObject) {
- if (this.getFieldObject() == fieldObject) {
-   this.enabled_ = true;
- } else {
-   log.error(
-       this.logger,
-       'Trying to enable an unregistered field with ' +
-           'this plugin.');
- }
+  if (this.getFieldObject() == fieldObject) {
+    this.enabled_ = true;
+  } else {
+    log.error(
+        this.logger,
+        'Trying to enable an unregistered field with ' +
+            'this plugin.');
+  }
 };
 
 
@@ -142,14 +140,14 @@ PluginImpl.prototype.enable = function(fieldObject) {
  * @param {Field} fieldObject The field object.
  */
 PluginImpl.prototype.disable = function(fieldObject) {
- if (this.getFieldObject() == fieldObject) {
-   this.enabled_ = false;
- } else {
-   log.error(
-       this.logger,
-       'Trying to disable an unregistered field ' +
-           'with this plugin.');
- }
+  if (this.getFieldObject() == fieldObject) {
+    this.enabled_ = false;
+  } else {
+    log.error(
+        this.logger,
+        'Trying to disable an unregistered field ' +
+            'with this plugin.');
+  }
 };
 
 
@@ -160,7 +158,7 @@ PluginImpl.prototype.disable = function(fieldObject) {
  * @return {boolean} Whether this plugin is enabled for the field object.
  */
 PluginImpl.prototype.isEnabled = function(fieldObject) {
- return this.getFieldObject() == fieldObject ? this.enabled_ : false;
+  return this.getFieldObject() == fieldObject ? this.enabled_ : false;
 };
 
 
@@ -170,7 +168,7 @@ PluginImpl.prototype.isEnabled = function(fieldObject) {
  * @param {boolean} autoDispose Whether to autoDispose.
  */
 PluginImpl.prototype.setAutoDispose = function(autoDispose) {
- this.autoDispose_ = autoDispose;
+  this.autoDispose_ = autoDispose;
 };
 
 
@@ -179,7 +177,7 @@ PluginImpl.prototype.setAutoDispose = function(autoDispose) {
  *     when it's registered field is disposed.
  */
 PluginImpl.prototype.isAutoDispose = function() {
- return this.autoDispose_;
+  return this.autoDispose_;
 };
 
 
@@ -187,8 +185,7 @@ PluginImpl.prototype.isAutoDispose = function() {
  * @return {boolean} If true, field will not disable the command
  *     when the field becomes uneditable.
  */
-PluginImpl.prototype.activeOnUneditableFields =
-    functions.FALSE;
+PluginImpl.prototype.activeOnUneditableFields = functions.FALSE;
 
 
 /**
@@ -202,11 +199,11 @@ PluginImpl.prototype.isSilentCommand = functions.FALSE;
 
 /** @override */
 PluginImpl.prototype.disposeInternal = function() {
- if (this.getFieldObject()) {
-   this.unregisterFieldObject(this.getFieldObject());
- }
+  if (this.getFieldObject()) {
+    this.unregisterFieldObject(this.getFieldObject());
+  }
 
- PluginImpl.superClass_.disposeInternal.call(this);
+  PluginImpl.superClass_.disposeInternal.call(this);
 };
 
 
@@ -239,28 +236,28 @@ PluginImpl.Op = {
  * A map from plugin operations to the names of the methods that
  * invoke those operations.
  */
-PluginImpl.OPCODE =
-    object.transpose(reflect.object(PluginImpl, {
-      handleKeyDown: PluginImpl.Op.KEYDOWN,
-      handleKeyPress: PluginImpl.Op.KEYPRESS,
-      handleKeyUp: PluginImpl.Op.KEYUP,
-      handleSelectionChange: PluginImpl.Op.SELECTION,
-      handleKeyboardShortcut: PluginImpl.Op.SHORTCUT,
-      execCommand: PluginImpl.Op.EXEC_COMMAND,
-      queryCommandValue: PluginImpl.Op.QUERY_COMMAND,
-      prepareContentsHtml: PluginImpl.Op.PREPARE_CONTENTS_HTML,
-      cleanContentsHtml: PluginImpl.Op.CLEAN_CONTENTS_HTML,
-      cleanContentsDom: PluginImpl.Op.CLEAN_CONTENTS_DOM
-    }));
+PluginImpl.OPCODE = {
+  [PluginImpl.Op.KEYDOWN]: JSCompiler_renameProperty('handleKeyDown', PluginImpl),
+  [PluginImpl.Op.KEYPRESS]: JSCompiler_renameProperty('handleKeyPress', PluginImpl),
+  [PluginImpl.Op.KEYUP]: JSCompiler_renameProperty('handleKeyUp', PluginImpl),
+  [PluginImpl.Op.SELECTION]: JSCompiler_renameProperty('handleSelectionChange', PluginImpl),
+  [PluginImpl.Op.SHORTCUT]: JSCompiler_renameProperty('handleKeyboardShortcut', PluginImpl),
+  [PluginImpl.Op.EXEC_COMMAND]: JSCompiler_renameProperty('execCommand', PluginImpl),
+  [PluginImpl.Op.QUERY_COMMAND]: JSCompiler_renameProperty('queryCommandValue', PluginImpl),
+  [PluginImpl.Op.PREPARE_CONTENTS_HTML]: JSCompiler_renameProperty('prepareContentsHtml', PluginImpl),
+  [PluginImpl.Op.CLEAN_CONTENTS_HTML]: JSCompiler_renameProperty('cleanContentsHtml', PluginImpl),
+  [PluginImpl.Op.CLEAN_CONTENTS_DOM]: JSCompiler_renameProperty('cleanContentsDom', PluginImpl)
+}
 
 
 /**
  * A set of op codes that run even on disabled plugins.
  */
-PluginImpl.IRREPRESSIBLE_OPS = object.createSet(
-    PluginImpl.Op.PREPARE_CONTENTS_HTML,
-    PluginImpl.Op.CLEAN_CONTENTS_HTML,
-    PluginImpl.Op.CLEAN_CONTENTS_DOM);
+PluginImpl.IRREPRESSIBLE_OPS = {
+  [PluginImpl.Op.PREPARE_CONTENTS_HTML]: true,
+  [PluginImpl.Op.CLEAN_CONTENTS_HTML]: true,
+  [PluginImpl.Op.CLEAN_CONTENTS_DOM]: true
+};
 
 
 /**
@@ -342,46 +339,46 @@ PluginImpl.prototype.handleKeyboardShortcut;
  * @return {*} The result of the execCommand, if any.
  */
 PluginImpl.prototype.execCommand = function(command, var_args) {
- // TODO(user): Replace all uses of isSilentCommand with plugins that just
- // override this base execCommand method.
- var silent = this.isSilentCommand(command);
- if (silent) {
-   this.getFieldObject().stopChangeEvents(
-       /* opt_stopChange= */ true, /* opt_stopDelayedChange= */ true);
- } else {
-   // Stop listening to mutation events in Firefox while text formatting
-   // is happening.  This prevents us from trying to size the field in the
-   // middle of an execCommand, catching the field in a strange intermediary
-   // state where both replacement nodes and original nodes are appended to
-   // the dom.  Note that change events get turned back on by
-   // fieldObj.dispatchChange.
-   if (userAgent.GECKO) {
-     this.getFieldObject().stopChangeEvents(true, true);
-   }
+  // TODO(user): Replace all uses of isSilentCommand with plugins that just
+  // override this base execCommand method.
+  var silent = this.isSilentCommand(command);
+  if (silent) {
+    this.getFieldObject().stopChangeEvents(
+        /* opt_stopChange= */ true, /* opt_stopDelayedChange= */ true);
+  } else {
+    // Stop listening to mutation events in Firefox while text formatting
+    // is happening.  This prevents us from trying to size the field in the
+    // middle of an execCommand, catching the field in a strange intermediary
+    // state where both replacement nodes and original nodes are appended to
+    // the dom.  Note that change events get turned back on by
+    // fieldObj.dispatchChange.
+    if (userAgent.GECKO) {
+      this.getFieldObject().stopChangeEvents(true, true);
+    }
 
-   this.getFieldObject().dispatchBeforeChange();
- }
+    this.getFieldObject().dispatchBeforeChange();
+  }
 
- try {
-   var result = this.execCommandInternal.apply(this, arguments);
- } finally {
-   // If the above execCommandInternal call throws an exception, we still need
-   // to turn change events back on (see http://b/issue?id=1471355).
-   // NOTE: If if you add to or change the methods called in this finally
-   // block, please add them as expected calls to the unit test function
-   // testExecCommandException().
-   if (silent) {
-     this.getFieldObject().startChangeEvents(
-         /* opt_fireChange= */ false, /* opt_fireDelayedChange= */ false);
-   } else {
-     // dispatchChange includes a call to startChangeEvents, which unwinds the
-     // call to stopChangeEvents made before the try block.
-     this.getFieldObject().dispatchChange();
-     this.getFieldObject().dispatchSelectionChangeEvent();
-   }
- }
+  try {
+    var result = this.execCommandInternal.apply(this, arguments);
+  } finally {
+    // If the above execCommandInternal call throws an exception, we still need
+    // to turn change events back on (see http://b/issue?id=1471355).
+    // NOTE: If if you add to or change the methods called in this finally
+    // block, please add them as expected calls to the unit test function
+    // testExecCommandException().
+    if (silent) {
+      this.getFieldObject().startChangeEvents(
+          /* opt_fireChange= */ false, /* opt_fireDelayedChange= */ false);
+    } else {
+      // dispatchChange includes a call to startChangeEvents, which unwinds the
+      // call to stopChangeEvents made before the try block.
+      this.getFieldObject().dispatchChange();
+      this.getFieldObject().dispatchSelectionChangeEvent();
+    }
+  }
 
- return result;
+  return result;
 };
 
 
@@ -460,7 +457,7 @@ PluginImpl.prototype.cleanContentsHtml;
  * @return {boolean} Whether the plugin handles this type of command.
  */
 PluginImpl.prototype.isSupportedCommand = function(command) {
- return false;
+  return false;
 };
 
 
@@ -472,9 +469,9 @@ PluginImpl.prototype.isSupportedCommand = function(command) {
  * @protected
  */
 PluginImpl.prototype.saveScrollPosition = function() {
- if (this.getFieldObject() && userAgent.EDGE) {
-   var win = this.getFieldObject().getEditableDomHelper().getWindow();
-   return win.scrollTo.bind(win, win.scrollX, win.scrollY);
- }
- return function() {};
+  if (this.getFieldObject() && userAgent.EDGE) {
+    var win = this.getFieldObject().getEditableDomHelper().getWindow();
+    return win.scrollTo.bind(win, win.scrollX, win.scrollY);
+  }
+  return function() {};
 };

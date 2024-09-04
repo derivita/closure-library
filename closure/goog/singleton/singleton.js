@@ -8,8 +8,6 @@
  * @fileoverview Provides an implementation for getInstance() methods.
  */
 
-import * as reflect from '../reflect/reflect.js';
-
 import { assert } from '../asserts/asserts.js';
 
 /** @type {!Array<function(new: ?): ?>} */
@@ -47,7 +45,7 @@ export let getInstance = (ctor) => {
       !Object.isSealed(ctor),
       'Cannot use getInstance() with a sealed constructor.');
   const ctorWithInstance = /** @type {!Singleton} */ (ctor);
-  const prop = reflect.objectProperty('instance_', ctorWithInstance);
+  const prop = JSCompiler_renameProperty('instance_', ctorWithInstance);
   if (ctorWithInstance.instance_ && ctorWithInstance.hasOwnProperty(prop)) {
     return ctorWithInstance.instance_;
   }

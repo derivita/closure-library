@@ -13,19 +13,18 @@ goog.setTestOnly('goog.testing.dom');
 import * as googArray from '../array/array.js';
 import * as asserts from '../asserts/asserts.js';
 import * as dom from '../dom/dom.js';
-import { AbstractRange } from '../dom/abstractrange.js';
-import { InputType } from '../dom/inputtype.js';
-import { NodeIterator } from '../dom/nodeiterator.js';
-import { NodeType } from '../dom/nodetype.js';
-import { TagIterator } from '../dom/tagiterator.js';
-import { TagName } from '../dom/tagname.js';
+import {AbstractRange} from '../dom/abstractrange.js';
+import {InputType} from '../dom/inputtype.js';
+import {NodeIterator} from '../dom/nodeiterator.js';
+import {NodeType} from '../dom/nodetype.js';
+import {TagIterator} from '../dom/tagiterator.js';
+import {TagName} from '../dom/tagname.js';
 import * as classlist from '../dom/classlist.js';
 import * as safe from '../dom/safe.js';
 import * as uncheckedconversions from '../html/uncheckedconversions.js';
 import * as iter from '../iter/iter.js';
-import object from '../object/object.js';
 import * as googString from '../string/string.js';
-import { Const } from '../string/const.js';
+import {Const} from '../string/const.js';
 import * as style from '../style/style.js';
 import * as testingAsserts from './asserts.js';
 import * as userAgent from '../useragent/useragent.js';
@@ -68,9 +67,7 @@ export function assertNodesMatch(it, array) {
   let i = 0;
   function checkNode(node) {
     if (array.length <= i) {
-      fail(
-          'Got more nodes than expected: ' +
-          describeNode_(node));
+      fail('Got more nodes than expected: ' + describeNode_(node));
     }
     const expected = array[i];
 
@@ -81,15 +78,13 @@ export function assertNodesMatch(it, array) {
           'Node types should match at position ' + i, expected, node.nodeType);
     } else if (expected.charAt(0) == '#') {
       assertEquals(
-          'Expected element at position ' + i, NodeType.ELEMENT,
-          node.nodeType);
+          'Expected element at position ' + i, NodeType.ELEMENT, node.nodeType);
       const expectedId = expected.slice(1);
       assertEquals('IDs should match at position ' + i, expectedId, node.id);
 
     } else {
       assertEquals(
-          'Expected text node at position ' + i, NodeType.TEXT,
-          node.nodeType);
+          'Expected text node at position ' + i, NodeType.TEXT, node.nodeType);
       assertEquals(
           'Node contents should match at position ' + i, expected,
           node.nodeValue);
@@ -138,10 +133,8 @@ export function exposeRange(range) {
   if (!range) {
     return 'null';
   }
-  return exposeNode(range.getStartNode()) + ':' +
-      range.getStartOffset() + ' to ' +
-      exposeNode(range.getEndNode()) + ':' +
-      range.getEndOffset();
+  return exposeNode(range.getStartNode()) + ':' + range.getStartOffset() +
+      ' to ' + exposeNode(range.getEndNode()) + ':' + range.getEndOffset();
 }
 
 
@@ -211,8 +204,7 @@ function nodeFilter_(node) {
     if (googString.isBreakingWhitespace(node.nodeValue) &&
         (!node.previousSibling ||
          node.previousSibling.nodeType != NodeType.TEXT) &&
-        (!node.nextSibling ||
-         node.nextSibling.nodeType != NodeType.TEXT)) {
+        (!node.nextSibling || node.nextSibling.nodeType != NodeType.TEXT)) {
       return false;
     }
     // Allow optional text to be specified as [[BROWSER1 BROWSER2]]Text
@@ -282,26 +274,22 @@ function describeNode_(node) {
  *     present in htmlPattern.  If true, htmlPattern and actual must have the
  *     same set of attributes.  Default is false.
  */
-export function assertHtmlContentsMatch(htmlPattern, actual, opt_strictAttributes) {
+export function assertHtmlContentsMatch(
+    htmlPattern, actual, opt_strictAttributes) {
   var div = dom.createDom(TagName.DIV);
 
   safe.setInnerHtml(
       div,
-      uncheckedconversions
-          .safeHtmlFromStringKnownToSatisfyTypeContract(
-              Const.from('HTML is never attached to DOM'),
-              htmlPattern));
+      uncheckedconversions.safeHtmlFromStringKnownToSatisfyTypeContract(
+          Const.from('HTML is never attached to DOM'), htmlPattern));
 
   var errorSuffix =
       '\nExpected\n' + div.innerHTML + '\nActual\n' + actual.innerHTML;
 
-  var actualIt = iter.filter(
-      iter.map(
-          new TagIterator(actual), endTagMap_),
-      nodeFilter_);
+  var actualIt =
+      iter.filter(iter.map(new TagIterator(actual), endTagMap_), nodeFilter_);
 
-  var expectedIt = iter.filter(
-      new NodeIterator(div), nodeFilter_);
+  var expectedIt = iter.filter(new NodeIterator(div), nodeFilter_);
 
   var actualNode;
   var preIterated = false;
@@ -324,8 +312,8 @@ export function assertHtmlContentsMatch(htmlPattern, actual, opt_strictAttribute
     advanceActualNode();
     assertNotNull(
         'Finished actual HTML before finishing expected HTML at ' +
-            'node number ' + number + ': ' +
-            describeNode_(expectedNode) + errorSuffix,
+            'node number ' + number + ': ' + describeNode_(expectedNode) +
+            errorSuffix,
         actualNode);
 
     // Do no processing for expectedNode == div.
@@ -334,9 +322,8 @@ export function assertHtmlContentsMatch(htmlPattern, actual, opt_strictAttribute
     }
 
     assertEquals(
-        'Should have the same node type, got ' +
-            describeNode_(actualNode) + ' but expected ' +
-            describeNode_(expectedNode) + '.' + errorSuffix,
+        'Should have the same node type, got ' + describeNode_(actualNode) +
+            ' but expected ' + describeNode_(expectedNode) + '.' + errorSuffix,
         expectedNode.nodeType, actualNode.nodeType);
 
     if (expectedNode.nodeType == NodeType.ELEMENT) {
@@ -419,12 +406,10 @@ export function assertHtmlMatches(htmlPattern, actual, opt_strictAttributes) {
 
   safe.setInnerHtml(
       div,
-      uncheckedconversions
-          .safeHtmlFromStringKnownToSatisfyTypeContract(
-              Const.from('HTML is never attached to DOM'), actual));
+      uncheckedconversions.safeHtmlFromStringKnownToSatisfyTypeContract(
+          Const.from('HTML is never attached to DOM'), actual));
 
-  assertHtmlContentsMatch(
-      htmlPattern, div, opt_strictAttributes);
+  assertHtmlContentsMatch(htmlPattern, div, opt_strictAttributes);
 }
 
 
@@ -521,7 +506,8 @@ function getAttributeValue_(node, name) {
  *     actualNode must have the same set of attributes.
  * @private
  */
-function assertAttributesEqual_(errorSuffix, expectedElem, actualElem, strictAttributes) {
+function assertAttributesEqual_(
+    errorSuffix, expectedElem, actualElem, strictAttributes) {
   if (strictAttributes) {
     compareClassAttribute_(expectedElem, actualElem);
   }
@@ -531,12 +517,10 @@ function assertAttributesEqual_(errorSuffix, expectedElem, actualElem, strictAtt
 
   for (var i = 0, len = expectedAttributes.length; i < len; i++) {
     var expectedName = expectedAttributes[i].name;
-    var expectedValue =
-        getAttributeValue_(expectedElem, expectedName);
+    var expectedValue = getAttributeValue_(expectedElem, expectedName);
 
     var actualAttribute = actualAttributes[expectedName];
-    var actualValue =
-        getAttributeValue_(actualElem, expectedName);
+    var actualValue = getAttributeValue_(actualElem, expectedName);
 
     // IE enumerates attribute names in the expected node that are not present,
     // causing an undefined actualAttribute.
@@ -557,15 +541,13 @@ function assertAttributesEqual_(errorSuffix, expectedElem, actualElem, strictAtt
 
     assertNotUndefined(
         'Expected to find attribute with name ' + expectedName +
-            ', in element ' + describeNode_(actualElem) +
-            errorSuffix,
+            ', in element ' + describeNode_(actualElem) + errorSuffix,
         actualAttribute);
     assertEquals(
         'Expected attribute ' + expectedName + ' has a different value ' +
             errorSuffix,
-        String(expectedValue), String(
-                                   getAttributeValue_(
-                                       actualElem, actualAttribute.name)));
+        String(expectedValue),
+        String(getAttributeValue_(actualElem, actualAttribute.name)));
   }
 
   if (strictAttributes) {
@@ -620,8 +602,13 @@ function compareClassAttribute_(expectedElem, actualElem) {
  * @type {Object}
  * @private
  */
-var BAD_IE_ATTRIBUTES_ = object.createSet(
-    'methods', 'CHECKED', 'dataFld', 'dataFormatAs', 'dataSrc');
+var BAD_IE_ATTRIBUTES_ = {
+  'methods': true,
+  'CHECKED': true,
+  'dataFld': true,
+  'dataFormatAs': true,
+  'dataSrc': true
+};
 
 
 /**
@@ -649,7 +636,8 @@ function ignoreAttribute_(name) {
  * @param {string} errorSuffix String to append to error messages.
  * @private
  */
-function compareIdAttributeForIe_(expectedValue, actualAttribute, strictAttributes, errorSuffix) {
+function compareIdAttributeForIe_(
+    expectedValue, actualAttribute, strictAttributes, errorSuffix) {
   if (expectedValue === '') {
     if (strictAttributes) {
       assertTrue(

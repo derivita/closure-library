@@ -774,9 +774,9 @@ const IntCache_ = {};
  * @private
  */
 function getCachedIntValue_(value) {
-  return reflect.cache(IntCache_, value, function(val) {
+  return /** @pureOrBreakMyCode */(reflect.cache(IntCache_, value, function(val) {
     return new Long(val, val < 0 ? -1 : 0);
-  });
+  }));
 }
 
 /**
