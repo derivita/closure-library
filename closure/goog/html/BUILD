@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "cssspecificity",
     srcs = [
         "cssspecificity.d.ts",
@@ -13,7 +13,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "legacyconversions",
     srcs = [
         "legacyconversions.d.ts",
@@ -31,7 +31,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "safehtml",
     srcs = [
         "safehtml.d.ts",
@@ -58,7 +58,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "safehtmlformatter",
     srcs = [
         "safehtmlformatter.d.ts",
@@ -73,7 +73,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "safescript",
     srcs = [
         "safescript.d.ts",
@@ -89,7 +89,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "safestyle",
     srcs = [
         "safestyle.d.ts",
@@ -107,7 +107,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "safestylesheet",
     srcs = [
         "safestylesheet.d.ts",
@@ -125,7 +125,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "safeurl",
     srcs = [
         "safeurl.d.ts",
@@ -143,7 +143,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "safeurl_test_vectors",
     testonly = 1,
     srcs = [
@@ -155,7 +155,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "testing",
     testonly = True,
     srcs = [
@@ -175,7 +175,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "textextractor",
     srcs = [
         "textextractor.d.ts",
@@ -189,7 +189,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "trustedresourceurl",
     srcs = [
         "trustedresourceurl.d.ts",
@@ -208,7 +208,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "trustedtypes",
     srcs = [
         "trustedtypes.d.ts",
@@ -218,7 +218,7 @@ closure_js_library(
     deps = ["//closure/goog/memoize"],
 )
 
-closure_js_library(
+js_library(
     name = "uncheckedconversions",
     srcs = [
         "uncheckedconversions.d.ts",
@@ -239,7 +239,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "utils",
     srcs = [
         "utils.d.ts",

@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "ac",
     srcs = ["ac.js", "ac.d.ts"],
     lenient = True,
@@ -16,14 +16,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "arraymatcher",
     srcs = ["arraymatcher.js", "arraymatcher.d.ts"],
     lenient = True,
     deps = ["//closure/goog/string"],
 )
 
-closure_js_library(
+js_library(
     name = "autocomplete",
     srcs = [
         "autocomplete.js", "autocomplete.d.ts",
@@ -53,7 +53,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "cachingmatcher",
     srcs = ["cachingmatcher.js", "cachingmatcher.d.ts"],
     lenient = True,
@@ -70,7 +70,7 @@ alias(
     actual = ":autocomplete",
 )
 
-closure_js_library(
+js_library(
     name = "remote",
     srcs = ["remote.js", "remote.d.ts"],
     lenient = True,
@@ -83,7 +83,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "remotearraymatcher",
     srcs = ["remotearraymatcher.js", "remotearraymatcher.d.ts"],
     lenient = True,
@@ -99,7 +99,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "renderer",
     srcs = ["renderer.js", "renderer.d.ts"],
     lenient = True,
@@ -128,20 +128,20 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "renderoptions",
     srcs = ["renderoptions.js", "renderoptions.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "richinputhandler",
     srcs = ["richinputhandler.js", "richinputhandler.d.ts"],
     lenient = True,
     deps = [":inputhandler"],
 )
 
-closure_js_library(
+js_library(
     name = "richremote",
     srcs = ["richremote.js", "richremote.d.ts"],
     lenient = True,
@@ -154,7 +154,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "richremotearraymatcher",
     srcs = ["richremotearraymatcher.js", "richremotearraymatcher.d.ts"],
     lenient = True,

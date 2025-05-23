@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "animationdelay",
     srcs = ["animationdelay.js", "animationdelay.d.ts"],
     lenient = True,
@@ -15,7 +15,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "conditionaldelay",
     srcs = ["conditionaldelay.js", "conditionaldelay.d.ts"],
     lenient = True,
@@ -25,7 +25,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "debouncer",
     srcs = ["debouncer.js", "debouncer.d.ts"],
     lenient = True,
@@ -35,7 +35,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "delay",
     srcs = ["delay.js", "delay.d.ts"],
     lenient = True,
@@ -45,13 +45,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "freelist",
     srcs = ["freelist.js", "freelist.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "nexttick",
     srcs = [
         "nexttick.js", "nexttick.d.ts",
@@ -67,7 +67,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "throwexception",
     srcs = [
         "throwexception.js", "throwexception.d.ts",
@@ -75,14 +75,14 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "promises",
     srcs = ["promises.js", "promises.d.ts"],
     lenient = True,
     deps = ["//closure/goog/promise"],
 )
 
-closure_js_library(
+js_library(
     name = "run",
     srcs = ["run.js", "run.d.ts"],
     lenient = True,
@@ -95,7 +95,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "throttle",
     srcs = [
         "legacy_throttle.js", "legacy_throttle.d.ts",
@@ -108,7 +108,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "workqueue",
     srcs = ["workqueue.js", "workqueue.d.ts"],
     lenient = True,

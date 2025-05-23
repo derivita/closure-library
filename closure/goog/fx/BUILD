@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "abstractdragdrop",
     srcs = ["abstractdragdrop.js", "abstractdragdrop.d.ts"],
     lenient = True,
@@ -26,7 +26,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "animation",
     srcs = ["animation.js", "animation.d.ts"],
     lenient = True,
@@ -40,7 +40,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "animationqueue",
     srcs = ["animationqueue.js", "animationqueue.d.ts"],
     lenient = True,
@@ -55,7 +55,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "cssspriteanimation",
     srcs = ["cssspriteanimation.js", "cssspriteanimation.d.ts"],
     lenient = True,
@@ -66,7 +66,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "dom",
     srcs = ["dom.js", "dom.d.ts"],
     lenient = True,
@@ -81,14 +81,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "dragdrop",
     srcs = ["dragdrop.js", "dragdrop.d.ts"],
     lenient = True,
     deps = [":abstractdragdrop"],
 )
 
-closure_js_library(
+js_library(
     name = "dragdropgroup",
     srcs = ["dragdropgroup.js", "dragdropgroup.d.ts"],
     lenient = True,
@@ -98,7 +98,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "dragger",
     srcs = ["dragger.js", "dragger.d.ts"],
     lenient = True,
@@ -119,7 +119,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "draglistgroup",
     srcs = ["draglistgroup.js", "draglistgroup.d.ts"],
     lenient = True,
@@ -143,7 +143,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "dragscrollsupport",
     srcs = ["dragscrollsupport.js", "dragscrollsupport.d.ts"],
     lenient = True,
@@ -160,13 +160,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "easing",
     srcs = ["easing.js", "easing.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "fx",
     srcs = ["fx.js", "fx.d.ts"],
     lenient = True,
@@ -178,13 +178,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "transition",
     srcs = ["transition.js", "transition.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "transitionbase",
     srcs = ["transitionbase.js", "transitionbase.d.ts"],
     lenient = True,

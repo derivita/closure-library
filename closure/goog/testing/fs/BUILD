@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "blob",
     testonly = True,
     srcs = ["blob.js", "blob.d.ts"],
@@ -15,7 +15,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "filesystem",
     testonly = True,
     srcs = [
@@ -43,7 +43,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "file",
     testonly = True,
     srcs = ["file.js", "file.d.ts"],
@@ -51,7 +51,7 @@ closure_js_library(
     deps = [":blob"],
 )
 
-closure_js_library(
+js_library(
     name = "filereader",
     testonly = True,
     srcs = ["filereader.js", "filereader.d.ts"],
@@ -76,7 +76,7 @@ alias(
     actual = ":filesystem",
 )
 
-closure_js_library(
+js_library(
     name = "fs",
     testonly = True,
     srcs = ["fs.js", "fs.d.ts"],
@@ -93,7 +93,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "progressevent",
     testonly = True,
     srcs = ["progressevent.js", "progressevent.d.ts"],

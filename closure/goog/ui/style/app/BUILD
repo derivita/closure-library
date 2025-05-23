@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "buttonrenderer",
     srcs = ["buttonrenderer.js", "buttonrenderer.d.ts"],
     lenient = True,
@@ -20,7 +20,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "menubuttonrenderer",
     srcs = ["menubuttonrenderer.js", "menubuttonrenderer.d.ts"],
     lenient = True,
@@ -39,7 +39,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "primaryactionbuttonrenderer",
     srcs = ["primaryactionbuttonrenderer.js", "primaryactionbuttonrenderer.d.ts"],
     lenient = True,

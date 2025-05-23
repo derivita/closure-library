@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "coordinates",
     srcs = ["coordinates.js", "coordinates.d.ts"],
     lenient = True,
@@ -16,7 +16,7 @@ alias(
     actual = ":graphics",
 )
 
-closure_js_library(
+js_library(
     name = "ellipse",
     srcs = ["ellipse.js", "ellipse.d.ts"],
     lenient = True,
@@ -26,7 +26,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "ext",
     srcs = ["ext.js", "ext.d.ts"],
     lenient = True,
@@ -40,7 +40,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "graphics",
     srcs = [
         "element.js", "element.d.ts",
@@ -68,14 +68,14 @@ alias(
     actual = ":graphics",
 )
 
-closure_js_library(
+js_library(
     name = "image",
     srcs = ["image.js", "image.d.ts"],
     lenient = True,
     deps = [":element"],
 )
 
-closure_js_library(
+js_library(
     name = "path",
     srcs = ["path.js", "path.d.ts"],
     lenient = True,
@@ -86,7 +86,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "rectangle",
     srcs = ["rectangle.js", "rectangle.d.ts"],
     lenient = True,
@@ -96,7 +96,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "shape",
     srcs = ["shape.js", "shape.d.ts"],
     lenient = True,
@@ -109,7 +109,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "strokeandfillelement",
     srcs = ["strokeandfillelement.js", "strokeandfillelement.d.ts"],
     lenient = True,

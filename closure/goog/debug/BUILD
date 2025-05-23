@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "console",
     srcs = ["console.js", "console.d.ts"],
     lenient = True,
@@ -14,14 +14,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "asyncstacktag",
     srcs = ["asyncstacktag.js", "asyncstacktag.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )
 
-closure_js_library(
+js_library(
     name = "debug",
     srcs = ["debug.js", "debug.d.ts"],
     lenient = True,
@@ -32,14 +32,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "deepfreeze",
     srcs = ["deepfreeze.js", "deepfreeze.d.ts"],
     lenient = True,
     deps = [":debug"],
 )
 
-closure_js_library(
+js_library(
     name = "debugwindow",
     srcs = ["debugwindow.js", "debugwindow.d.ts"],
     lenient = True,
@@ -55,7 +55,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "divconsole",
     srcs = ["divconsole.js", "divconsole.d.ts"],
     lenient = True,
@@ -72,26 +72,26 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "entrypointregistry",
     srcs = ["entrypointregistry.js", "entrypointregistry.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )
 
-closure_js_library(
+js_library(
     name = "error",
     srcs = ["error.js", "error.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "errorcontext",
     srcs = ["errorcontext.js", "errorcontext.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "errorhandler",
     srcs = ["errorhandler.js", "errorhandler.d.ts"],
     lenient = True,
@@ -103,7 +103,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "errorreporter",
     srcs = ["errorreporter.js", "errorreporter.d.ts"],
     lenient = True,
@@ -124,7 +124,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "fancywindow",
     srcs = ["fancywindow.js", "fancywindow.d.ts"],
     lenient = True,
@@ -145,7 +145,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "formatter",
     srcs = ["formatter.js", "formatter.d.ts"],
     lenient = True,
@@ -160,13 +160,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "relativetimeprovider",
     srcs = ["relativetimeprovider.js", "relativetimeprovider.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "tracer",
     srcs = ["tracer.js", "tracer.d.ts"],
     lenient = True,

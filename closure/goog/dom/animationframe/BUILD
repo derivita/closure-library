@@ -1,17 +1,17 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "animationframe",
     srcs = ["animationframe.js", "animationframe.d.ts"],
     lenient = True,
     deps = [":polyfill"],
 )
 
-closure_js_library(
+js_library(
     name = "polyfill",
     srcs = ["polyfill.js", "polyfill.d.ts"],
     lenient = True,

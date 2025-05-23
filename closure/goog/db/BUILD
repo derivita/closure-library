@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "cursor",
     srcs = ["cursor.js", "cursor.d.ts"],
     lenient = True,
@@ -17,7 +17,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "db",
     srcs = ["db.js", "db.d.ts"],
     lenient = True,
@@ -30,7 +30,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "error",
     srcs = ["error.js", "error.d.ts"],
     lenient = True,
@@ -40,7 +40,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "index",
     srcs = ["index.js", "index.d.ts"],
     lenient = True,
@@ -53,7 +53,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "indexeddb",
     srcs = [
         "indexeddb.js",  "indexeddb.d.ts",
@@ -70,13 +70,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "keyrange",
     srcs = ["keyrange.js", "keyrange.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "objectstore",
     srcs = ["objectstore.js", "objectstore.d.ts"],
     lenient = True,

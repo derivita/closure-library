@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "date",
     srcs = ["date.js", "date.d.ts"],
     lenient = True,
@@ -20,7 +20,7 @@ alias(
     actual = ":date",
 )
 
-closure_js_library(
+js_library(
     name = "daterange",
     srcs = ["daterange.js", "daterange.d.ts"],
     lenient = True,
@@ -30,7 +30,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "duration",
     srcs = ["duration.js", "duration.d.ts"],
     lenient = True,
@@ -40,7 +40,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "relative",
     srcs = ["relative.js", "relative.d.ts"],
     lenient = True,
@@ -52,7 +52,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "relativecommontests",
     testonly = 1,
     srcs = ["relativecommontests.js", "relativecommontests.d.ts"],
@@ -71,7 +71,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "utcdatetime",
     srcs = ["utcdatetime.js", "utcdatetime.d.ts"],
     lenient = True,

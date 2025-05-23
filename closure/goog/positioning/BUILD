@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "absoluteposition",
     srcs = ["absoluteposition.js", "absoluteposition.d.ts"],
     lenient = True,
@@ -17,7 +17,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "abstractposition",
     srcs = ["abstractposition.js", "abstractposition.d.ts"],
     lenient = True,
@@ -28,7 +28,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "anchoredposition",
     srcs = ["anchoredposition.js", "anchoredposition.d.ts"],
     lenient = True,
@@ -40,7 +40,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "anchoredviewportposition",
     srcs = ["anchoredviewportposition.js", "anchoredviewportposition.d.ts"],
     lenient = True,
@@ -52,7 +52,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "clientposition",
     srcs = ["clientposition.js", "clientposition.d.ts"],
     lenient = True,
@@ -68,7 +68,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "menuanchoredposition",
     srcs = ["menuanchoredposition.js", "menuanchoredposition.d.ts"],
     lenient = True,
@@ -78,7 +78,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "positioning",
     srcs = ["positioning.js", "positioning.d.ts"],
     lenient = True,
@@ -95,7 +95,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "viewportclientposition",
     srcs = ["viewportclientposition.js", "viewportclientposition.d.ts"],
     lenient = True,
@@ -110,7 +110,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "viewportposition",
     srcs = ["viewportposition.js", "viewportposition.d.ts"],
     lenient = True,

@@ -1,17 +1,17 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "fx",
     srcs = ["fx.js", "fx.d.ts"],
     lenient = True,
     deps = [":transition"],
 )
 
-closure_js_library(
+js_library(
     name = "transition",
     srcs = ["transition.js", "transition.d.ts"],
     lenient = True,

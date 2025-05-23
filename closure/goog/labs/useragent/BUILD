@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "useragent",
     srcs = [],
     lenient = True,
@@ -18,7 +18,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "browser",
     srcs = [
         "browser.d.ts",
@@ -35,7 +35,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "chromium_rebrands",
     srcs = [
         "chromium_rebrands.d.ts",
@@ -44,7 +44,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "device",
     srcs = [
         "device.d.ts",
@@ -54,7 +54,7 @@ closure_js_library(
     deps = [":util"],
 )
 
-closure_js_library(
+js_library(
     name = "engine",
     srcs = [
         "engine.d.ts",
@@ -68,7 +68,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "extra",
     srcs = [
         "extra.d.ts",
@@ -81,7 +81,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "platform",
     srcs = [
         "platform.d.ts",
@@ -97,7 +97,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "test_agents",
     testonly = 1,
     srcs = [
@@ -107,7 +107,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "test_agentdata",
     testonly = 1,
     srcs = [
@@ -121,7 +121,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "testutil",
     srcs = [
         "testutil.d.ts",
@@ -135,7 +135,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "util",
     srcs = [
         "useragent.d.ts",
@@ -150,7 +150,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "verifier",
     srcs = [
         "verifier.d.ts",

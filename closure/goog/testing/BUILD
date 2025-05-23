@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "assertionfailure",
     testonly = True,
     srcs = [
@@ -18,7 +18,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "asserts",
     testonly = True,
     srcs = [
@@ -35,7 +35,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "asynctestcase",
     testonly = True,
     srcs = [
@@ -50,7 +50,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "benchmark",
     testonly = True,
     srcs = [
@@ -67,7 +67,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "continuationtestcase",
     testonly = True,
     srcs = [
@@ -84,7 +84,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "deferredtestcase",
     testonly = True,
     srcs = [
@@ -99,7 +99,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "dom",
     testonly = True,
     srcs = [
@@ -130,7 +130,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "expectedfailures",
     testonly = True,
     srcs = [
@@ -153,7 +153,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "functionmock",
     testonly = True,
     srcs = [
@@ -171,7 +171,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "graphics",
     testonly = True,
     srcs = [
@@ -185,7 +185,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "jstdasyncwrapper",
     testonly = True,
     srcs = [
@@ -196,7 +196,7 @@ closure_js_library(
     deps = ["//closure/goog/promise"],
 )
 
-closure_js_library(
+js_library(
     name = "jstdtestcaseadapter",
     testonly = True,
     srcs = [
@@ -213,7 +213,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "jsunit",
     testonly = True,
     srcs = [
@@ -229,7 +229,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "jsunitexception",
     testonly = True,
     srcs = [
@@ -240,7 +240,7 @@ closure_js_library(
     deps = [":stacktrace"],
 )
 
-closure_js_library(
+js_library(
     name = "loosemock",
     testonly = True,
     srcs = [
@@ -255,7 +255,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "mock",
     testonly = True,
     srcs = [
@@ -278,7 +278,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "mockclassfactory",
     testonly = True,
     srcs = [
@@ -296,7 +296,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "mockclock",
     testonly = True,
     srcs = [
@@ -316,7 +316,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "mockcontrol",
     testonly = True,
     srcs = [
@@ -334,7 +334,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "mockinterface",
     testonly = True,
     srcs = [
@@ -345,14 +345,14 @@ closure_js_library(
     deps = ["//closure/goog/promise"],
 )
 
-closure_js_library(
+js_library(
     name = "mockmatchers",
     testonly = True,
     lenient = True,
     exports = [":mock"],
 )
 
-closure_js_library(
+js_library(
     name = "mockrandom",
     testonly = True,
     srcs = [
@@ -363,7 +363,7 @@ closure_js_library(
     deps = ["//closure/goog/disposable"],
 )
 
-closure_js_library(
+js_library(
     name = "mockrange",
     testonly = True,
     srcs = [
@@ -378,7 +378,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "mockstorage",
     testonly = True,
     srcs = [
@@ -388,7 +388,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "mockuseragent",
     testonly = True,
     srcs = [
@@ -404,7 +404,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "multitestrunner",
     testonly = True,
     srcs = [
@@ -431,7 +431,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "objectpropertystring",
     testonly = True,
     srcs = [
@@ -441,7 +441,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "objects",
     testonly = True,
     srcs = [
@@ -452,7 +452,7 @@ closure_js_library(
     deps = [":asserts"],
 )
 
-closure_js_library(
+js_library(
     name = "parallel_closure_test_suite",
     testonly = True,
     srcs = [
@@ -471,7 +471,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "performancetable",
     testonly = True,
     srcs = [
@@ -489,7 +489,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "performancetimer",
     testonly = True,
     srcs = [
@@ -505,7 +505,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "propertyreplacer",
     testonly = True,
     srcs = [
@@ -519,7 +519,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "pseudorandom",
     testonly = True,
     srcs = [
@@ -530,7 +530,7 @@ closure_js_library(
     deps = ["//closure/goog/disposable"],
 )
 
-closure_js_library(
+js_library(
     name = "recordfunction",
     testonly = True,
     srcs = [
@@ -549,7 +549,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "shardingtestcase",
     testonly = True,
     srcs = [
@@ -563,7 +563,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "singleton",
     testonly = True,
     srcs = [
@@ -574,7 +574,7 @@ closure_js_library(
     deps = ["//closure/goog/singleton"],
 )
 
-closure_js_library(
+js_library(
     name = "stacktrace",
     testonly = True,
     srcs = [
@@ -584,7 +584,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "strictmock",
     testonly = True,
     srcs = [
@@ -599,7 +599,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "testcase",
     testonly = True,
     srcs = [
@@ -621,7 +621,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "cspviolationobserver",
     testonly = True,
     srcs = [
@@ -632,7 +632,7 @@ closure_js_library(
     deps = [":cspviolationobserver_externs"],
 )
 
-closure_js_library(
+js_library(
     name = "cspviolationobserver_externs",
     testonly = True,
     srcs = [
@@ -642,7 +642,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "testqueue",
     testonly = True,
     srcs = [
@@ -652,7 +652,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "testrunner",
     testonly = True,
     srcs = [
@@ -670,7 +670,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "testsuite",
     testonly = True,
     srcs = [

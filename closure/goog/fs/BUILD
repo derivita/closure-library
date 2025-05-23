@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "blob",
     srcs = ["blob.js", "blob.d.ts"],
     lenient = True,
@@ -15,7 +15,7 @@ alias(
     actual = ":filesystem",
 )
 
-closure_js_library(
+js_library(
     name = "entryimpl",
     srcs = ["entryimpl.js", "entryimpl.d.ts"],
     lenient = True,
@@ -30,7 +30,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "error",
     srcs = ["error.js", "error.d.ts"],
     lenient = True,
@@ -42,7 +42,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "filereader",
     srcs = ["filereader.js", "filereader.d.ts"],
     lenient = True,
@@ -54,7 +54,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "filesaver",
     srcs = ["filesaver.js", "filesaver.d.ts"],
     lenient = True,
@@ -65,7 +65,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "filesystem",
     srcs = [
         "entry.js", "entry.d.ts",
@@ -79,7 +79,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "filesystemimpl",
     srcs = ["filesystemimpl.js", "filesystemimpl.d.ts"],
     lenient = True,
@@ -89,7 +89,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "filewriter",
     srcs = ["filewriter.js", "filewriter.d.ts"],
     lenient = True,
@@ -99,7 +99,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "fs",
     srcs = ["fs.js", "fs.d.ts"],
     lenient = True,
@@ -112,14 +112,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "progressevent",
     srcs = ["progressevent.js", "progressevent.d.ts"],
     lenient = True,
     deps = ["//closure/goog/events:event"],
 )
 
-closure_js_library(
+js_library(
     name = "url",
     srcs = ["url.js", "url.d.ts"],
     lenient = True,

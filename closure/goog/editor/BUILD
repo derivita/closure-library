@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "browserfeature",
     srcs = ["browserfeature.js", "browserfeature.d.ts"],
     lenient = True,
@@ -15,7 +15,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "clicktoeditwrapper",
     srcs = ["clicktoeditwrapper.js", "clicktoeditwrapper.d.ts"],
     lenient = True,
@@ -35,13 +35,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "command",
     srcs = ["command.js", "command.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "contenteditablefield",
     srcs = ["contenteditablefield.js", "contenteditablefield.d.ts"],
     lenient = True,
@@ -52,13 +52,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "defines",
     srcs = ["defines.js", "defines.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "field",
     srcs = [
         "field.js", "field.d.ts",
@@ -102,14 +102,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "focus",
     srcs = ["focus.js", "focus.d.ts"],
     lenient = True,
     deps = ["//closure/goog/dom:selection"],
 )
 
-closure_js_library(
+js_library(
     name = "icontent",
     srcs = ["icontent.js", "icontent.d.ts"],
     lenient = True,
@@ -123,7 +123,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "link",
     srcs = ["link.js", "link.d.ts"],
     lenient = True,
@@ -140,7 +140,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "node",
     srcs = ["node.js", "node.d.ts"],
     lenient = True,
@@ -159,7 +159,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "plugin",
     srcs = ["plugin.js", "plugin.d.ts"],
     lenient = True,
@@ -174,7 +174,7 @@ alias(
     actual = ":field",
 )
 
-closure_js_library(
+js_library(
     name = "range",
     srcs = ["range.js", "range.d.ts"],
     lenient = True,
@@ -194,7 +194,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "seamlessfield",
     srcs = ["seamlessfield.js", "seamlessfield.d.ts"],
     lenient = True,
@@ -215,7 +215,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "style",
     srcs = ["style.js", "style.d.ts"],
     lenient = True,
@@ -235,7 +235,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "table",
     srcs = [
         "table.js", "table.d.ts",

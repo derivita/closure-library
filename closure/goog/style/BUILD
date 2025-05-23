@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "bidi",
     srcs = ["bidi.js", "bidi.d.ts"],
     lenient = True,
@@ -18,14 +18,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "cursor",
     srcs = ["cursor.js", "cursor.d.ts"],
     lenient = True,
     deps = ["//closure/goog/useragent"],
 )
 
-closure_js_library(
+js_library(
     name = "style",
     srcs = ["style.js", "style.d.ts"],
     lenient = True,
@@ -49,7 +49,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "stylescrollbartester",
     testonly = 1,
     srcs = ["stylescrollbartester.js", "stylescrollbartester.d.ts"],
@@ -62,7 +62,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "transform",
     srcs = ["transform.js", "transform.d.ts"],
     lenient = True,
@@ -75,7 +75,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "transition",
     srcs = ["transition.js", "transition.d.ts"],
     lenient = True,

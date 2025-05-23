@@ -28,3 +28,7 @@ alltests.js
 # closure/goog/deps.js
 closure/goog/deps_with_tests.js
 
+bazel-bin
+bazel-closure-library
+bazel-out
+bazel-testlogs

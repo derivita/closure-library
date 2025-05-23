@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "delegateregistry",
     srcs = ["delegateregistry.js", "delegateregistry.d.ts"],
     lenient = True,
@@ -15,7 +15,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "delegates",
     srcs = ["delegates.js", "delegates.d.ts"],
     lenient = True,

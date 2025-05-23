@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "emailaddress",
     srcs = ["emailaddress.js", "emailaddress.d.ts"],
     lenient = True,
@@ -15,7 +15,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "format",
     srcs = ["format.js", "format.d.ts"],
     lenient = True,
@@ -26,7 +26,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "htmlprettyprinter",
     srcs = ["htmlprettyprinter.js", "htmlprettyprinter.d.ts"],
     lenient = True,
@@ -37,7 +37,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "internationalizedemailaddress",
     srcs = ["internationalizedemailaddress.js", "internationalizedemailaddress.d.ts"],
     lenient = True,
@@ -47,7 +47,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "jsonprettyprinter",
     srcs = ["jsonprettyprinter.js", "jsonprettyprinter.d.ts"],
     lenient = True,
