@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "net",
     srcs = [],
     lenient = True,
@@ -18,7 +18,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "image",
     srcs = ["image.js", "image.d.ts"],
     lenient = True,
@@ -33,7 +33,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "webchannel",
     srcs = ["webchannel.js", "webchannel.d.ts"],
     lenient = True,
@@ -45,14 +45,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "webchanneltransport",
     srcs = ["webchanneltransport.js", "webchanneltransport.d.ts"],
     lenient = True,
     deps = [":webchannel"],
 )
 
-closure_js_library(
+js_library(
     name = "webchanneltransportfactory",
     srcs = ["webchanneltransportfactory.js", "webchanneltransportfactory.d.ts"],
     lenient = True,
@@ -62,7 +62,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "xhr",
     srcs = ["xhr.js", "xhr.d.ts"],
     lenient = True,

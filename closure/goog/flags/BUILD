@@ -1,8 +1,8 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
-closure_js_library(
+js_library(
     name = "flags",
     srcs = ["flags.js", "flags.d.ts"],
     lenient = True,

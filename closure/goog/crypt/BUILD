@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "aes",
     srcs = ["aes.js", "aes.d.ts"],
     lenient = True,
@@ -14,14 +14,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "arc4",
     srcs = ["arc4.js", "arc4.d.ts"],
     lenient = True,
     deps = ["//closure/goog/asserts"],
 )
 
-closure_js_library(
+js_library(
     name = "base64",
     srcs = ["base64.js", "base64.d.ts"],
     lenient = True,
@@ -34,13 +34,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "basen",
     srcs = ["basen.js", "basen.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "blobhasher",
     srcs = ["blobhasher.js", "blobhasher.d.ts"],
     lenient = True,
@@ -53,13 +53,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "blockcipher",
     srcs = ["blockcipher.js", "blockcipher.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "bytestring_perf",
     testonly = 1,
     srcs = ["bytestring_perf.js", "bytestring_perf.d.ts"],
@@ -71,7 +71,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "cbc",
     srcs = ["cbc.js", "cbc.d.ts"],
     lenient = True,
@@ -83,7 +83,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "crypt",
     srcs = ["crypt.js", "crypt.d.ts"],
     lenient = True,
@@ -93,7 +93,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "ctr",
     srcs = ["ctr.js", "ctr.d.ts"],
     lenient = True,
@@ -105,20 +105,20 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "hash",
     srcs = ["hash.js", "hash.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "hash32",
     srcs = ["hash32.js", "hash32.d.ts"],
     lenient = True,
     deps = [":crypt"],
 )
 
-closure_js_library(
+js_library(
     name = "hashtester",
     testonly = 1,
     srcs = ["hashtester.js", "hashtester.d.ts"],
@@ -136,21 +136,21 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "hmac",
     srcs = ["hmac.js", "hmac.d.ts"],
     lenient = True,
     deps = [":hash"],
 )
 
-closure_js_library(
+js_library(
     name = "md5",
     srcs = ["md5.js", "md5.d.ts"],
     lenient = True,
     deps = [":hash"],
 )
 
-closure_js_library(
+js_library(
     name = "pbkdf2",
     srcs = ["pbkdf2.js", "pbkdf2.d.ts"],
     lenient = True,
@@ -163,14 +163,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "sha1",
     srcs = ["sha1.js", "sha1.d.ts"],
     lenient = True,
     deps = [":hash"],
 )
 
-closure_js_library(
+js_library(
     name = "sha2",
     srcs = ["sha2.js", "sha2.d.ts"],
     lenient = True,
@@ -181,7 +181,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "sha2_64bit",
     srcs = ["sha2_64bit.js", "sha2_64bit.d.ts"],
     lenient = True,
@@ -193,35 +193,35 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "sha224",
     srcs = ["sha224.js", "sha224.d.ts"],
     lenient = True,
     deps = [":sha2"],
 )
 
-closure_js_library(
+js_library(
     name = "sha256",
     srcs = ["sha256.js", "sha256.d.ts"],
     lenient = True,
     deps = [":sha2"],
 )
 
-closure_js_library(
+js_library(
     name = "sha384",
     srcs = ["sha384.js", "sha384.d.ts"],
     lenient = True,
     deps = [":sha2_64bit"],
 )
 
-closure_js_library(
+js_library(
     name = "sha512",
     srcs = ["sha512.js", "sha512.d.ts"],
     lenient = True,
     deps = [":sha2_64bit"],
 )
 
-closure_js_library(
+js_library(
     name = "sha512_256",
     srcs = ["sha512_256.js", "sha512_256.d.ts"],
     lenient = True,

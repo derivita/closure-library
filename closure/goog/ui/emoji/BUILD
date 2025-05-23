@@ -1,16 +1,16 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "emoji",
     srcs = ["emoji.js", "emoji.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "emojipalette",
     srcs = ["emojipalette.js", "emojipalette.d.ts"],
     lenient = True,
@@ -26,7 +26,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "emojipaletterenderer",
     srcs = ["emojipaletterenderer.js", "emojipaletterenderer.d.ts"],
     lenient = True,
@@ -45,7 +45,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "emojipicker",
     srcs = ["emojipicker.js", "emojipicker.d.ts"],
     lenient = True,
@@ -62,7 +62,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "popupemojipicker",
     srcs = ["popupemojipicker.js", "popupemojipicker.d.ts"],
     lenient = True,
@@ -82,7 +82,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "progressiveemojipaletterenderer",
     srcs = ["progressiveemojipaletterenderer.js", "progressiveemojipaletterenderer.d.ts"],
     lenient = True,
@@ -93,7 +93,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "spriteinfo",
     srcs = ["spriteinfo.js", "spriteinfo.d.ts"],
     lenient = True,

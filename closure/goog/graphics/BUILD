@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "abstractgraphics",
     srcs = [
         "abstractgraphics.js", "abstractgraphics.d.ts",
@@ -49,7 +49,7 @@ alias(
     actual = ":canvasgraphics",
 )
 
-closure_js_library(
+js_library(
     name = "canvasgraphics",
     srcs = [
         "canvaselement.js", "canvaselement.d.ts",
@@ -93,7 +93,7 @@ alias(
     actual = ":abstractgraphics",
 )
 
-closure_js_library(
+js_library(
     name = "graphics",
     srcs = [
         "graphics.js", "graphics.d.ts",
@@ -118,7 +118,7 @@ alias(
     actual = ":abstractgraphics",
 )
 
-closure_js_library(
+js_library(
     name = "lineargradient",
     srcs = ["lineargradient.js", "lineargradient.d.ts"],
     lenient = True,
@@ -138,7 +138,7 @@ alias(
     actual = ":abstractgraphics",
 )
 
-closure_js_library(
+js_library(
     name = "paths",
     srcs = ["paths.js", "paths.d.ts"],
     lenient = True,
@@ -173,7 +173,7 @@ alias(
     actual = ":svggraphics",
 )
 
-closure_js_library(
+js_library(
     name = "svggraphics",
     srcs = [
         "svgelement.js", "svgelement.d.ts",

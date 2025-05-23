@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "abstractbubbleplugin",
     srcs = ["abstractbubbleplugin.js", "abstractbubbleplugin.d.ts"],
     lenient = True,
@@ -31,7 +31,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "abstractdialogplugin",
     srcs = ["abstractdialogplugin.js", "abstractdialogplugin.d.ts"],
     lenient = True,
@@ -48,7 +48,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "abstracttabhandler",
     srcs = ["abstracttabhandler.js", "abstracttabhandler.d.ts"],
     lenient = True,
@@ -60,7 +60,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "basictextformatter",
     srcs = ["basictextformatter.js", "basictextformatter.d.ts"],
     lenient = True,
@@ -92,7 +92,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "blockquote",
     srcs = ["blockquote.js", "blockquote.d.ts"],
     lenient = True,
@@ -109,7 +109,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "emoticons",
     srcs = ["emoticons.js", "emoticons.d.ts"],
     lenient = True,
@@ -123,7 +123,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "enterhandler",
     srcs = ["enterhandler.js", "enterhandler.d.ts"],
     lenient = True,
@@ -150,7 +150,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "firststrong",
     srcs = ["firststrong.js", "firststrong.d.ts"],
     lenient = True,
@@ -170,7 +170,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "headerformatter",
     srcs = ["headerformatter.js", "headerformatter.d.ts"],
     lenient = True,
@@ -181,7 +181,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "linkbubble",
     srcs = ["linkbubble.js", "linkbubble.d.ts"],
     lenient = True,
@@ -205,7 +205,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "linkdialogplugin",
     srcs = ["linkdialogplugin.js", "linkdialogplugin.d.ts"],
     lenient = True,
@@ -225,7 +225,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "linkshortcutplugin",
     srcs = ["linkshortcutplugin.js", "linkshortcutplugin.d.ts"],
     lenient = True,
@@ -236,7 +236,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "listtabhandler",
     srcs = ["listtabhandler.js", "listtabhandler.d.ts"],
     lenient = True,
@@ -249,7 +249,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "loremipsum",
     srcs = ["loremipsum.js", "loremipsum.d.ts"],
     lenient = True,
@@ -266,7 +266,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "removeformatting",
     srcs = ["removeformatting.js", "removeformatting.d.ts"],
     lenient = True,
@@ -288,7 +288,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "spacestabhandler",
     srcs = ["spacestabhandler.js", "spacestabhandler.d.ts"],
     lenient = True,
@@ -299,7 +299,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tableeditor",
     srcs = ["tableeditor.js", "tableeditor.d.ts"],
     lenient = True,
@@ -318,7 +318,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tagonenterhandler",
     srcs = ["tagonenterhandler.js", "tagonenterhandler.d.ts"],
     lenient = True,
@@ -341,7 +341,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "undoredo",
     srcs = ["undoredo.js", "undoredo.d.ts"],
     lenient = True,
@@ -363,7 +363,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "undoredomanager",
     srcs = ["undoredomanager.js", "undoredomanager.d.ts"],
     lenient = True,
@@ -374,7 +374,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "undoredostate",
     srcs = ["undoredostate.js", "undoredostate.d.ts"],
     lenient = True,

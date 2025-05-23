@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "webchannel",
     srcs = [],
     lenient = True,
@@ -14,7 +14,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "channel",
     srcs = [
         "channel.js", "channel.d.ts",
@@ -50,20 +50,20 @@ alias(
     actual = ":channel",
 )
 
-closure_js_library(
+js_library(
     name = "connectionstate",
     srcs = ["connectionstate.js", "connectionstate.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "environment",
     srcs = ["environment.js", "environment.d.ts"],
     lenient = True,
     deps = ["//closure/goog/useragent"],
 )
 
-closure_js_library(
+js_library(
     name = "forwardchannelrequestpool",
     srcs = ["forwardchannelrequestpool.js", "forwardchannelrequestpool.d.ts"],
     lenient = True,
@@ -75,7 +75,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "netutils",
     srcs = ["netutils.js", "netutils.d.ts"],
     lenient = True,
@@ -85,7 +85,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "requeststats",
     srcs = ["requeststats.js", "requeststats.d.ts"],
     lenient = True,
@@ -95,7 +95,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "webchannelbase",
     srcs = ["webchannelbase.js", "webchannelbase.d.ts"],
     lenient = True,
@@ -127,7 +127,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "webchannelbasetransport",
     srcs = ["webchannelbasetransport.js", "webchannelbasetransport.d.ts"],
     lenient = True,
@@ -148,7 +148,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "webchanneldebug",
     srcs = ["webchanneldebug.js", "webchanneldebug.d.ts"],
     lenient = True,
@@ -160,14 +160,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "wire",
     srcs = ["wire.js", "wire.d.ts"],
     lenient = True,
     deps = ["//closure/goog/collections:maps"],
 )
 
-closure_js_library(
+js_library(
     name = "wirev8",
     srcs = ["wirev8.js", "wirev8.d.ts"],
     lenient = True,

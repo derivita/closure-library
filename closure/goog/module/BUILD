@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "abstractmoduleloader",
     srcs = ["abstractmoduleloader.js", "abstractmoduleloader.d.ts"],
     lenient = True,
@@ -14,7 +14,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "basemodule",
     srcs = ["basemodule.js", "basemodule.d.ts"],
     lenient = True,
@@ -24,7 +24,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "loader",
     srcs = ["loader.js", "loader.d.ts"],
     lenient = True,
@@ -41,13 +41,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "module",
     srcs = ["module.js", "module.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "moduleinfo",
     srcs = [
         "moduleinfo.js", "moduleinfo.d.ts",
@@ -65,7 +65,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "moduleloadfailure",
     srcs = [
         "moduleloadfailure.js", "moduleloadfailure.d.ts",
@@ -73,7 +73,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "moduleloadcallback",
     srcs = ["moduleloadcallback.js", "moduleloadcallback.d.ts"],
     lenient = True,
@@ -83,7 +83,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "moduleloader",
     srcs = ["moduleloader.js", "moduleloader.d.ts"],
     lenient = True,
@@ -115,7 +115,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "modulemanager",
     srcs = ["modulemanager.js", "modulemanager.d.ts"],
     lenient = True,

@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "abstractspellchecker",
     srcs = ["abstractspellchecker.js", "abstractspellchecker.d.ts"],
     lenient = True,
@@ -33,7 +33,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "activitymonitor",
     srcs = ["activitymonitor.js", "activitymonitor.d.ts"],
     lenient = True,
@@ -48,7 +48,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "advancedtooltip",
     srcs = ["advancedtooltip.js", "advancedtooltip.d.ts"],
     lenient = True,
@@ -65,7 +65,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "animatedzippy",
     srcs = ["animatedzippy.js", "animatedzippy.d.ts"],
     lenient = True,
@@ -82,7 +82,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "attachablemenu",
     srcs = ["attachablemenu.js", "attachablemenu.d.ts"],
     lenient = True,
@@ -105,7 +105,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "bidiinput",
     srcs = ["bidiinput.js", "bidiinput.d.ts"],
     lenient = True,
@@ -120,7 +120,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "bubble",
     srcs = ["bubble.js", "bubble.d.ts"],
     lenient = True,
@@ -143,7 +143,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "button",
     srcs = [
         "button.js", "button.d.ts",
@@ -176,13 +176,13 @@ alias(
     actual = ":button",
 )
 
-closure_js_library(
+js_library(
     name = "buttonside",
     srcs = ["buttonside.js", "buttonside.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "charcounter",
     srcs = ["charcounter.js", "charcounter.d.ts"],
     lenient = True,
@@ -195,7 +195,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "charpicker",
     srcs = ["charpicker.js", "charpicker.d.ts"],
     lenient = True,
@@ -234,7 +234,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "checkbox",
     srcs = [
         "checkbox.js", "checkbox.d.ts",
@@ -261,7 +261,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "checkboxmenuitem",
     srcs = ["checkboxmenuitem.js", "checkboxmenuitem.d.ts"],
     lenient = True,
@@ -278,7 +278,7 @@ alias(
     actual = ":checkbox",
 )
 
-closure_js_library(
+js_library(
     name = "colormenubutton",
     srcs = [
         "colormenubutton.js", "colormenubutton.d.ts",
@@ -309,7 +309,7 @@ alias(
     actual = ":colormenubutton",
 )
 
-closure_js_library(
+js_library(
     name = "colorpalette",
     srcs = ["colorpalette.js", "colorpalette.d.ts"],
     lenient = True,
@@ -323,7 +323,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "colorpicker",
     srcs = ["colorpicker.js", "colorpicker.d.ts"],
     lenient = True,
@@ -336,7 +336,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "combobox",
     srcs = ["combobox.js", "combobox.d.ts"],
     lenient = True,
@@ -370,7 +370,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "component",
     srcs = [
         "component.js", "component.d.ts",
@@ -397,7 +397,7 @@ alias(
     actual = ":component",
 )
 
-closure_js_library(
+js_library(
     name = "container",
     srcs = [
         "container.js", "container.d.ts",
@@ -434,7 +434,7 @@ alias(
     actual = ":container",
 )
 
-closure_js_library(
+js_library(
     name = "containerscroller",
     srcs = ["containerscroller.js", "containerscroller.d.ts"],
     lenient = True,
@@ -454,7 +454,7 @@ alias(
     actual = ":registry",
 )
 
-closure_js_library(
+js_library(
     name = "controlcontent",
     srcs = ["controlcontent.js", "controlcontent.d.ts"],
     lenient = True,
@@ -465,7 +465,7 @@ alias(
     actual = ":registry",
 )
 
-closure_js_library(
+js_library(
     name = "cookieeditor",
     srcs = ["cookieeditor.js", "cookieeditor.d.ts"],
     lenient = True,
@@ -482,7 +482,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "css3buttonrenderer",
     srcs = ["css3buttonrenderer.js", "css3buttonrenderer.d.ts"],
     lenient = True,
@@ -498,7 +498,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "css3menubuttonrenderer",
     srcs = ["css3menubuttonrenderer.js", "css3menubuttonrenderer.d.ts"],
     lenient = True,
@@ -512,13 +512,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "cssnames",
     srcs = ["cssnames.js", "cssnames.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "custombutton",
     srcs = [
         "custombutton.js", "custombutton.d.ts",
@@ -546,7 +546,7 @@ alias(
     actual = ":custombutton",
 )
 
-closure_js_library(
+js_library(
     name = "customcolorpalette",
     srcs = ["customcolorpalette.js", "customcolorpalette.d.ts"],
     lenient = True,
@@ -562,7 +562,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "datepicker",
     srcs = [
         "datepicker.js", "datepicker.d.ts",
@@ -598,7 +598,7 @@ alias(
     actual = ":datepicker",
 )
 
-closure_js_library(
+js_library(
     name = "decorate",
     srcs = ["decorate.js", "decorate.d.ts"],
     lenient = True,
@@ -613,7 +613,7 @@ alias(
     actual = ":datepicker",
 )
 
-closure_js_library(
+js_library(
     name = "dialog",
     srcs = ["dialog.js", "dialog.d.ts"],
     lenient = True,
@@ -643,7 +643,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "dimensionpicker",
     srcs = [
         "dimensionpicker.js", "dimensionpicker.d.ts",
@@ -676,7 +676,7 @@ alias(
     actual = ":dimensionpicker",
 )
 
-closure_js_library(
+js_library(
     name = "dragdropdetector",
     srcs = ["dragdropdetector.js", "dragdropdetector.d.ts"],
     lenient = True,
@@ -696,7 +696,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "drilldownrow",
     srcs = ["drilldownrow.js", "drilldownrow.d.ts"],
     lenient = True,
@@ -712,7 +712,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "filteredmenu",
     srcs = ["filteredmenu.js", "filteredmenu.d.ts"],
     lenient = True,
@@ -739,7 +739,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "filterobservingmenuitem",
     srcs = [
         "filterobservingmenuitem.js", "filterobservingmenuitem.d.ts",
@@ -759,7 +759,7 @@ alias(
     actual = ":filterobservingmenuitem",
 )
 
-closure_js_library(
+js_library(
     name = "flatbuttonrenderer",
     srcs = ["flatbuttonrenderer.js", "flatbuttonrenderer.d.ts"],
     lenient = True,
@@ -775,7 +775,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "flatmenubuttonrenderer",
     srcs = ["flatmenubuttonrenderer.js", "flatmenubuttonrenderer.d.ts"],
     lenient = True,
@@ -794,7 +794,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "formpost",
     srcs = ["formpost.js", "formpost.d.ts"],
     lenient = True,
@@ -809,7 +809,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "gauge",
     srcs = ["gauge.js", "gauge.d.ts"],
     lenient = True,
@@ -832,7 +832,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "gaugetheme",
     srcs = ["gaugetheme.js", "gaugetheme.d.ts"],
     lenient = True,
@@ -843,7 +843,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "hovercard",
     srcs = ["hovercard.js", "hovercard.d.ts"],
     lenient = True,
@@ -861,7 +861,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "hsvapalette",
     srcs = ["hsvapalette.js", "hsvapalette.d.ts"],
     lenient = True,
@@ -880,7 +880,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "hsvpalette",
     srcs = ["hsvpalette.js", "hsvpalette.d.ts"],
     lenient = True,
@@ -902,13 +902,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "idgenerator",
     srcs = ["idgenerator.js", "idgenerator.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "idletimer",
     srcs = ["idletimer.js", "idletimer.d.ts"],
     lenient = True,
@@ -922,7 +922,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "iframemask",
     srcs = ["iframemask.js", "iframemask.d.ts"],
     lenient = True,
@@ -937,7 +937,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "imagelessbuttonrenderer",
     srcs = ["imagelessbuttonrenderer.js", "imagelessbuttonrenderer.d.ts"],
     lenient = True,
@@ -954,7 +954,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "imagelessmenubuttonrenderer",
     srcs = ["imagelessmenubuttonrenderer.js", "imagelessmenubuttonrenderer.d.ts"],
     lenient = True,
@@ -970,7 +970,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "inputdatepicker",
     srcs = ["inputdatepicker.js", "inputdatepicker.d.ts"],
     lenient = True,
@@ -991,14 +991,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "itemevent",
     srcs = ["itemevent.js", "itemevent.d.ts"],
     lenient = True,
     deps = ["//closure/goog/events:event"],
 )
 
-closure_js_library(
+js_library(
     name = "keyboardeventdata",
     srcs = ["keyboardeventdata.js", "keyboardeventdata.d.ts"],
     lenient = True,
@@ -1008,7 +1008,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "keyboardshortcuthandler",
     srcs = [
         "keyboardshortcutevent.js", "keyboardshortcutevent.d.ts",
@@ -1034,7 +1034,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "labelinput",
     srcs = ["labelinput.js", "labelinput.d.ts"],
     lenient = True,
@@ -1056,7 +1056,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "linkbuttonrenderer",
     srcs = ["linkbuttonrenderer.js", "linkbuttonrenderer.d.ts"],
     lenient = True,
@@ -1067,13 +1067,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "map",
     srcs = ["map.js", "map.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "menu",
     srcs = [
         "menu.js", "menu.d.ts",
@@ -1107,7 +1107,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "menubar",
     srcs = [
         "menubar.js", "menubar.d.ts",
@@ -1121,7 +1121,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "menubardecorator",
     srcs = ["menubardecorator.js", "menubardecorator.d.ts"],
     lenient = True,
@@ -1136,7 +1136,7 @@ alias(
     actual = ":menubar",
 )
 
-closure_js_library(
+js_library(
     name = "menubase",
     srcs = ["menubase.js", "menubase.d.ts"],
     lenient = True,
@@ -1149,7 +1149,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "menubutton",
     srcs = [
         "menubutton.js", "menubutton.d.ts",
@@ -1199,7 +1199,7 @@ alias(
     actual = ":menubutton",
 )
 
-closure_js_library(
+js_library(
     name = "menuheader",
     srcs = [
         "menuheader.js", "menuheader.d.ts",
@@ -1245,7 +1245,7 @@ alias(
     actual = ":separator",
 )
 
-closure_js_library(
+js_library(
     name = "mockactivitymonitor",
     srcs = ["mockactivitymonitor.js", "mockactivitymonitor.d.ts"],
     lenient = True,
@@ -1255,7 +1255,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "modalariavisibilityhelper",
     srcs = ["modalariavisibilityhelper.js", "modalariavisibilityhelper.d.ts"],
     lenient = True,
@@ -1266,7 +1266,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "modalpopup",
     srcs = ["modalpopup.js", "modalpopup.d.ts"],
     lenient = True,
@@ -1299,7 +1299,7 @@ alias(
     actual = ":button",
 )
 
-closure_js_library(
+js_library(
     name = "option",
     srcs = ["option.js", "option.d.ts"],
     lenient = True,
@@ -1313,7 +1313,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "palette",
     srcs = [
         "palette.js", "palette.d.ts",
@@ -1354,7 +1354,7 @@ alias(
     actual = ":palette",
 )
 
-closure_js_library(
+js_library(
     name = "plaintextspellchecker",
     srcs = ["plaintextspellchecker.js", "plaintextspellchecker.d.ts"],
     lenient = True,
@@ -1380,7 +1380,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "popup",
     srcs = ["popup.js", "popup.d.ts"],
     lenient = True,
@@ -1393,7 +1393,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "popupbase",
     srcs = ["popupbase.js", "popupbase.d.ts"],
     lenient = True,
@@ -1415,7 +1415,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "popupcolorpicker",
     srcs = ["popupcolorpicker.js", "popupcolorpicker.d.ts"],
     lenient = True,
@@ -1435,7 +1435,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "popupdatepicker",
     srcs = ["popupdatepicker.js", "popupdatepicker.d.ts"],
     lenient = True,
@@ -1454,7 +1454,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "popupmenu",
     srcs = ["popupmenu.js", "popupmenu.d.ts"],
     lenient = True,
@@ -1479,7 +1479,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "progressbar",
     srcs = ["progressbar.js", "progressbar.d.ts"],
     lenient = True,
@@ -1498,7 +1498,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "prompt",
     srcs = ["prompt.js", "prompt.d.ts"],
     lenient = True,
@@ -1517,7 +1517,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "rangemodel",
     srcs = ["rangemodel.js", "rangemodel.d.ts"],
     lenient = True,
@@ -1527,7 +1527,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "ratings",
     srcs = ["ratings.js", "ratings.d.ts"],
     lenient = True,
@@ -1545,7 +1545,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "registry",
     srcs = [
         "control.js", "control.d.ts",
@@ -1579,7 +1579,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "richtextspellchecker",
     srcs = ["richtextspellchecker.js", "richtextspellchecker.d.ts"],
     lenient = True,
@@ -1605,7 +1605,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "roundedpanel",
     srcs = ["roundedpanel.js", "roundedpanel.d.ts"],
     lenient = True,
@@ -1627,7 +1627,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "roundedtabrenderer",
     srcs = ["roundedtabrenderer.js", "roundedtabrenderer.d.ts"],
     lenient = True,
@@ -1642,7 +1642,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "scrollfloater",
     srcs = ["scrollfloater.js", "scrollfloater.d.ts"],
     lenient = True,
@@ -1661,7 +1661,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "select",
     srcs = ["select.js", "select.d.ts"],
     lenient = True,
@@ -1687,7 +1687,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "selectionmenubutton",
     srcs = ["selectionmenubutton.js", "selectionmenubutton.d.ts"],
     lenient = True,
@@ -1707,7 +1707,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "selectionmodel",
     srcs = ["selectionmodel.js", "selectionmodel.d.ts"],
     lenient = True,
@@ -1718,7 +1718,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "separator",
     srcs = [
         "menuseparator.js", "menuseparator.d.ts",
@@ -1739,7 +1739,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "serverchart",
     srcs = ["serverchart.js", "serverchart.d.ts"],
     lenient = True,
@@ -1756,7 +1756,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "slider",
     srcs = ["slider.js", "slider.d.ts"],
     lenient = True,
@@ -1769,7 +1769,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "sliderbase",
     srcs = ["sliderbase.js", "sliderbase.d.ts"],
     lenient = True,
@@ -1806,7 +1806,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "splitpane",
     srcs = ["splitpane.js", "splitpane.d.ts"],
     lenient = True,
@@ -1826,7 +1826,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "submenu",
     srcs = [
         "submenu.js", "submenu.d.ts",
@@ -1864,7 +1864,7 @@ alias(
     actual = ":submenu",
 )
 
-closure_js_library(
+js_library(
     name = "synthetickeyboardevent",
     srcs = ["synthetickeyboardevent.js", "synthetickeyboardevent.d.ts"],
     lenient = True,
@@ -1874,7 +1874,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tab",
     srcs = [
         "tab.js", "tab.d.ts",
@@ -1891,7 +1891,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tabbar",
     srcs = [
         "tabbar.js", "tabbar.d.ts",
@@ -1916,7 +1916,7 @@ alias(
     actual = ":tabbar",
 )
 
-closure_js_library(
+js_library(
     name = "tablesorter",
     srcs = ["tablesorter.js", "tablesorter.d.ts"],
     lenient = True,
@@ -1932,7 +1932,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tabpane",
     srcs = ["tabpane.js", "tabpane.d.ts"],
     lenient = True,
@@ -1957,7 +1957,7 @@ alias(
     actual = ":tab",
 )
 
-closure_js_library(
+js_library(
     name = "textarea",
     srcs = [
         "textarea.js", "textarea.d.ts",
@@ -1985,7 +1985,7 @@ alias(
     actual = ":textarea",
 )
 
-closure_js_library(
+js_library(
     name = "togglebutton",
     srcs = ["togglebutton.js", "togglebutton.d.ts"],
     lenient = True,
@@ -1999,7 +1999,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "toolbar",
     srcs = [
         "toolbar.js", "toolbar.d.ts",
@@ -2017,7 +2017,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "toolbarbutton",
     srcs = [
         "toolbarbutton.js", "toolbarbutton.d.ts",
@@ -2039,7 +2039,7 @@ alias(
     actual = ":toolbarbutton",
 )
 
-closure_js_library(
+js_library(
     name = "toolbarcolormenubutton",
     srcs = [
         "toolbarcolormenubutton.js", "toolbarcolormenubutton.d.ts",
@@ -2065,7 +2065,7 @@ alias(
     actual = ":toolbarcolormenubutton",
 )
 
-closure_js_library(
+js_library(
     name = "toolbarmenubutton",
     srcs = [
         "toolbarmenubutton.js", "toolbarmenubutton.d.ts",
@@ -2092,7 +2092,7 @@ alias(
     actual = ":toolbar",
 )
 
-closure_js_library(
+js_library(
     name = "toolbarselect",
     srcs = ["toolbarselect.js", "toolbarselect.d.ts"],
     lenient = True,
@@ -2107,7 +2107,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "toolbarseparator",
     srcs = [
         "toolbarseparator.js", "toolbarseparator.d.ts",
@@ -2131,7 +2131,7 @@ alias(
     actual = ":toolbarseparator",
 )
 
-closure_js_library(
+js_library(
     name = "toolbartogglebutton",
     srcs = ["toolbartogglebutton.js", "toolbartogglebutton.d.ts"],
     lenient = True,
@@ -2144,7 +2144,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tooltip",
     srcs = ["tooltip.js", "tooltip.d.ts"],
     lenient = True,
@@ -2174,7 +2174,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tristatemenuitem",
     srcs = [
         "tristatemenuitem.js", "tristatemenuitem.d.ts",
@@ -2197,7 +2197,7 @@ alias(
     actual = ":tristatemenuitem",
 )
 
-closure_js_library(
+js_library(
     name = "twothumbslider",
     srcs = ["twothumbslider.js", "twothumbslider.d.ts"],
     lenient = True,
@@ -2210,7 +2210,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "zippy",
     srcs = ["zippy.js", "zippy.d.ts"],
     lenient = True,

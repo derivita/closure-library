@@ -1,4 +1,4 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -9,7 +9,7 @@ alias(
     actual = ":range",
 )
 
-closure_js_library(
+js_library(
     name = "abstractrange",
     srcs = [
         "abstractrange.d.ts",
@@ -29,7 +29,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "annotate",
     srcs = [
         "annotate.d.ts",
@@ -48,7 +48,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "asserts",
     srcs = [
         "asserts.d.ts",
@@ -58,7 +58,7 @@ closure_js_library(
     deps = ["//closure/goog/asserts"],
 )
 
-closure_js_library(
+js_library(
     name = "attr",
     srcs = [
         "attr.d.ts",
@@ -67,7 +67,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "browserfeature",
     srcs = [
         "browserfeature.d.ts",
@@ -77,7 +77,7 @@ closure_js_library(
     deps = ["//closure/goog/useragent"],
 )
 
-closure_js_library(
+js_library(
     name = "bufferedviewportsizemonitor",
     srcs = [
         "bufferedviewportsizemonitor.d.ts",
@@ -96,7 +96,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "classes",
     srcs = [
         "classes.d.ts",
@@ -106,7 +106,7 @@ closure_js_library(
     deps = ["//closure/goog/array"],
 )
 
-closure_js_library(
+js_library(
     name = "classlist",
     srcs = [
         "classlist.d.ts",
@@ -121,7 +121,7 @@ alias(
     actual = ":range",
 )
 
-closure_js_library(
+js_library(
     name = "dataset",
     srcs = [
         "dataset.d.ts",
@@ -135,7 +135,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "dom",
     srcs = [
         "dom.d.ts",
@@ -161,7 +161,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "element",
     srcs = [
         "element.d.ts",
@@ -174,7 +174,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "fontsizemonitor",
     srcs = [
         "fontsizemonitor.d.ts",
@@ -192,7 +192,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "forms",
     srcs = [
         "forms.d.ts",
@@ -208,7 +208,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "fullscreen",
     srcs = [
         "fullscreen.d.ts",
@@ -218,7 +218,7 @@ closure_js_library(
     deps = [":dom"],
 )
 
-closure_js_library(
+js_library(
     name = "htmlelement",
     srcs = [
         "htmlelement.d.ts",
@@ -227,7 +227,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "iframe",
     srcs = [
         "iframe.d.ts",
@@ -246,7 +246,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "inputtype",
     srcs = [
         "inputtype.d.ts",
@@ -255,7 +255,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "iter",
     srcs = [
         "iter.d.ts",
@@ -270,7 +270,7 @@ alias(
     actual = ":range",
 )
 
-closure_js_library(
+js_library(
     name = "nodeiterator",
     srcs = [
         "nodeiterator.d.ts",
@@ -283,7 +283,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "nodeoffset",
     srcs = [
         "nodeoffset.d.ts",
@@ -296,7 +296,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "nodetype",
     srcs = [
         "nodetype.d.ts",
@@ -305,7 +305,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "range",
     srcs = [
         "abstractmultirange.d.ts",
@@ -340,7 +340,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "rangeendpoint",
     srcs = [
         "rangeendpoint.d.ts",
@@ -349,7 +349,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "safe",
     srcs = [
         "safe.d.ts",
@@ -383,7 +383,7 @@ alias(
     actual = ":abstractrange",
 )
 
-closure_js_library(
+js_library(
     name = "selection",
     srcs = [
         "selection.d.ts",
@@ -397,7 +397,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tagiterator",
     srcs = [
         "tagiterator.d.ts",
@@ -411,7 +411,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tagname",
     srcs = [
         "tagname.d.ts",
@@ -421,7 +421,7 @@ closure_js_library(
     deps = [":htmlelement"],
 )
 
-closure_js_library(
+js_library(
     name = "tags",
     srcs = [
         "tags.d.ts",
@@ -431,7 +431,7 @@ closure_js_library(
     deps = ["//closure/goog/object"],
 )
 
-closure_js_library(
+js_library(
     name = "textassert",
     srcs = [
         "textassert.d.ts",
@@ -450,7 +450,7 @@ alias(
     actual = ":range",
 )
 
-closure_js_library(
+js_library(
     name = "textrangeiterator",
     srcs = [
         "textrangeiterator.d.ts",
@@ -467,7 +467,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "uri",
     srcs = [
         "uri.d.ts",
@@ -483,7 +483,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "vendor",
     srcs = [
         "vendor.d.ts",
@@ -496,7 +496,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "viewportsizemonitor",
     srcs = [
         "viewportsizemonitor.d.ts",
@@ -514,7 +514,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "xml",
     srcs = [
         "xml.d.ts",

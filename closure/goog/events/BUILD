@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "actioneventwrapper",
     srcs = ["actioneventwrapper.js", "actioneventwrapper.d.ts"],
     lenient = True,
@@ -20,7 +20,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "actionhandler",
     srcs = ["actionhandler.js", "actionhandler.d.ts"],
     lenient = True,
@@ -34,7 +34,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "browserevent",
     srcs = ["browserevent.js", "browserevent.d.ts"],
     lenient = True,
@@ -48,13 +48,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "browserfeature",
     srcs = ["browserfeature.js", "browserfeature.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "event",
     srcs = [
         "event.js", "event.d.ts",
@@ -72,13 +72,13 @@ alias(
     actual = ":events",
 )
 
-closure_js_library(
+js_library(
     name = "eventid",
     srcs = ["eventid.js", "eventid.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "events",
     srcs = [
         "eventhandler.js", "eventhandler.d.ts",
@@ -108,7 +108,7 @@ alias(
     actual = ":events",
 )
 
-closure_js_library(
+js_library(
     name = "eventtargettester",
     testonly = 1,
     srcs = ["eventtargettester.js", "eventtargettester.d.ts"],
@@ -124,7 +124,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "eventtype",
     srcs = [
         "eventtype.js", "eventtype.d.ts",
@@ -142,7 +142,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "eventtypehelpers",
     srcs = ["eventtypehelpers.js", "eventtypehelpers.d.ts"],
     lenient = True,
@@ -157,7 +157,7 @@ alias(
     actual = ":events",
 )
 
-closure_js_library(
+js_library(
     name = "filedrophandler",
     srcs = ["filedrophandler.js", "filedrophandler.d.ts"],
     lenient = True,
@@ -172,7 +172,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "focushandler",
     srcs = ["focushandler.js", "focushandler.d.ts"],
     lenient = True,
@@ -184,7 +184,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "imehandler",
     srcs = ["imehandler.js", "imehandler.d.ts"],
     lenient = True,
@@ -199,7 +199,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "inputhandler",
     srcs = ["inputhandler.js", "inputhandler.d.ts"],
     lenient = True,
@@ -212,7 +212,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "keycodes",
     srcs = ["keycodes.js", "keycodes.d.ts"],
     lenient = True,
@@ -222,7 +222,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "keyhandler",
     srcs = [
         "keyevent.js", "keyevent.d.ts",
@@ -239,19 +239,19 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "keynames",
     srcs = ["keynames.js", "keynames.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "keys",
     srcs = ["keys.js", "keys.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "listenable",
     srcs = [
         "listenable.js", "listenable.d.ts",
@@ -264,14 +264,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "listener",
     srcs = ["listener.js", "listener.d.ts"],
     lenient = True,
     deps = [":listenable"],
 )
 
-closure_js_library(
+js_library(
     name = "listenermap",
     srcs = ["listenermap.js", "listenermap.d.ts"],
     lenient = True,
@@ -284,7 +284,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "mousewheelhandler",
     srcs = ["mousewheelhandler.js", "mousewheelhandler.d.ts"],
     lenient = True,
@@ -299,7 +299,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "onlinehandler",
     srcs = ["onlinehandler.js", "onlinehandler.d.ts"],
     lenient = True,
@@ -311,7 +311,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "pastehandler",
     srcs = ["pastehandler.js", "pastehandler.d.ts"],
     lenient = True,
@@ -328,7 +328,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "wheelevent",
     srcs = ["wheelevent.js", "wheelevent.d.ts"],
     lenient = True,
@@ -338,7 +338,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "wheelhandler",
     srcs = ["wheelhandler.js", "wheelhandler.d.ts"],
     lenient = True,

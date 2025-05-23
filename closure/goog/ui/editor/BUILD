@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "abstractdialog",
     srcs = ["abstractdialog.js", "abstractdialog.d.ts"],
     lenient = True,
@@ -20,7 +20,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "bubble",
     srcs = ["bubble.js", "bubble.d.ts"],
     lenient = True,
@@ -49,7 +49,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "defaulttoolbar",
     srcs = ["defaulttoolbar.js", "defaulttoolbar.d.ts"],
     lenient = True,
@@ -76,7 +76,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "linkdialog",
     srcs = ["linkdialog.js", "linkdialog.d.ts"],
     lenient = True,
@@ -109,7 +109,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "messages",
     srcs = ["messages.js", "messages.d.ts"],
     lenient = True,
@@ -119,7 +119,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tabpane",
     srcs = ["tabpane.js", "tabpane.d.ts"],
     lenient = True,
@@ -140,7 +140,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "toolbarcontroller",
     srcs = ["toolbarcontroller.js", "toolbarcontroller.d.ts"],
     lenient = True,
@@ -154,7 +154,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "toolbarfactory",
     srcs = ["toolbarfactory.js", "toolbarfactory.d.ts"],
     lenient = True,

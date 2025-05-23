@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "streams",
     srcs = [],
     lenient = True,
@@ -21,7 +21,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "base64pbstreamparser",
     srcs = ["base64pbstreamparser.js", "base64pbstreamparser.d.ts"],
     lenient = True,
@@ -33,7 +33,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "base64streamdecoder",
     srcs = ["base64streamdecoder.js", "base64streamdecoder.d.ts"],
     lenient = True,
@@ -43,7 +43,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "jsonstreamparser",
     srcs = ["jsonstreamparser.js", "jsonstreamparser.d.ts"],
     lenient = True,
@@ -54,13 +54,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "nodereadablestream",
     srcs = ["nodereadablestream.js", "nodereadablestream.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "pbjsonstreamparser",
     srcs = ["pbjsonstreamparser.js", "pbjsonstreamparser.d.ts"],
     lenient = True,
@@ -72,7 +72,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "pbstreamparser",
     srcs = ["pbstreamparser.js", "pbstreamparser.d.ts"],
     lenient = True,
@@ -82,7 +82,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "streamfactory",
     srcs = ["streamfactory.js", "streamfactory.d.ts"],
     lenient = True,
@@ -95,13 +95,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "streamparser",
     srcs = ["streamparser.js", "streamparser.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "streamparsers",
     srcs = ["streamparsers.js", "streamparsers.d.ts"],
     lenient = True,
@@ -116,13 +116,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "utils",
     srcs = ["utils.js", "utils.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "xhrnodereadablestream",
     srcs = ["xhrnodereadablestream.js", "xhrnodereadablestream.d.ts"],
     lenient = True,
@@ -134,7 +134,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "xhrstreamreader",
     srcs = ["xhrstreamreader.js", "xhrstreamreader.d.ts"],
     lenient = True,

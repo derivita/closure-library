@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "avltree",
     srcs = ["avltree.js", "avltree.d.ts"],
     lenient = True,
@@ -14,19 +14,19 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "circularbuffer",
     srcs = ["circularbuffer.js", "circularbuffer.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "collection",
     srcs = ["collection.js", "collection.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "heap",
     srcs = ["heap.js", "heap.d.ts"],
     lenient = True,
@@ -37,7 +37,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "inversionmap",
     srcs = ["inversionmap.js", "inversionmap.d.ts"],
     lenient = True,
@@ -47,14 +47,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "linkedmap",
     srcs = ["linkedmap.js", "linkedmap.d.ts"],
     lenient = True,
     deps = [":map"],
 )
 
-closure_js_library(
+js_library(
     name = "map",
     srcs = ["map.js", "map.d.ts"],
     lenient = True,
@@ -65,13 +65,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "node",
     srcs = ["node.js", "node.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "pool",
     srcs = ["pool.js", "pool.d.ts"],
     lenient = True,
@@ -82,7 +82,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "prioritypool",
     srcs = ["prioritypool.js", "prioritypool.d.ts"],
     lenient = True,
@@ -92,28 +92,28 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "priorityqueue",
     srcs = ["priorityqueue.js", "priorityqueue.d.ts"],
     lenient = True,
     deps = [":heap"],
 )
 
-closure_js_library(
+js_library(
     name = "quadtree",
     srcs = ["quadtree.js", "quadtree.d.ts"],
     lenient = True,
     deps = ["//closure/goog/math:coordinate"],
 )
 
-closure_js_library(
+js_library(
     name = "queue",
     srcs = ["queue.js", "queue.d.ts"],
     lenient = True,
     deps = ["//closure/goog/array"],
 )
 
-closure_js_library(
+js_library(
     name = "set",
     srcs = ["set.js", "set.d.ts"],
     lenient = True,
@@ -125,14 +125,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "simplepool",
     srcs = ["simplepool.js", "simplepool.d.ts"],
     lenient = True,
     deps = ["//closure/goog/disposable"],
 )
 
-closure_js_library(
+js_library(
     name = "stringset",
     srcs = ["stringset.js", "stringset.d.ts"],
     lenient = True,
@@ -142,7 +142,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "structs",
     srcs = ["structs.js", "structs.d.ts"],
     lenient = True,
@@ -152,7 +152,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "treenode",
     srcs = ["treenode.js", "treenode.d.ts"],
     lenient = True,
@@ -163,7 +163,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "trie",
     srcs = ["trie.js", "trie.d.ts"],
     lenient = True,

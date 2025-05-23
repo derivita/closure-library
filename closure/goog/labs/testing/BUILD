@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "assertthat",
     testonly = True,
     srcs = [
@@ -28,7 +28,7 @@ alias(
     actual = ":matchers",
 )
 
-closure_js_library(
+js_library(
     name = "environment",
     testonly = True,
     srcs = ["environment.js", "environment.d.ts"],
@@ -43,7 +43,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "json_fuzzing",
     testonly = True,
     srcs = ["json_fuzzing.js", "json_fuzzing.d.ts"],
@@ -59,14 +59,14 @@ alias(
     actual = ":matchers",
 )
 
-closure_js_library(
+js_library(
     name = "matcher",
     testonly = True,
     srcs = ["matcher.js", "matcher.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "matchers",
     testonly = True,
     srcs = [
@@ -88,7 +88,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "environmentbase",
     testonly = True,
     srcs = ["environmentbase.js", "environmentbase.d.ts"],

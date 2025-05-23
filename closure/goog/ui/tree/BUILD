@@ -1,4 +1,4 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -9,7 +9,7 @@ alias(
     actual = ":treecontrol",
 )
 
-closure_js_library(
+js_library(
     name = "treecontrol",
     srcs = [
         "basenode.js", "basenode.d.ts",

@@ -1,4 +1,4 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -19,7 +19,7 @@ alias(
     actual = ":message",
 )
 
-closure_js_library(
+js_library(
     name = "message",
     srcs = [
         "descriptor.js", "descriptor.d.ts",
@@ -36,7 +36,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "objectserializer",
     srcs = ["objectserializer.js", "objectserializer.d.ts"],
     lenient = True,
@@ -47,7 +47,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "pbliteserializer",
     srcs = ["pbliteserializer.js", "pbliteserializer.d.ts"],
     lenient = True,
@@ -62,7 +62,7 @@ alias(
     actual = ":message",
 )
 
-closure_js_library(
+js_library(
     name = "textformatserializer",
     srcs = ["textformatserializer.js", "textformatserializer.d.ts"],
     lenient = True,
@@ -76,7 +76,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "util",
     srcs = ["util.js", "util.d.ts"],
     lenient = True,

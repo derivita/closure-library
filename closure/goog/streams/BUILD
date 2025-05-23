@@ -1,16 +1,16 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "defines",
     srcs = ["defines.js", "defines.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "full",
     srcs = ["full.js", "full.d.ts"],
     lenient = True,
@@ -22,7 +22,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "full_impl",
     srcs = ["full_impl.js", "full_impl.d.ts"],
     lenient = True,
@@ -34,7 +34,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "full_native_impl",
     srcs = ["full_native_impl.js", "full_native_impl.d.ts"],
     lenient = True,
@@ -44,7 +44,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "full_test_cases",
     testonly = 1,
     srcs = ["full_test_cases.js", "full_test_cases.d.ts"],
@@ -56,14 +56,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "full_types",
     srcs = ["full_types.js", "full_types.d.ts"],
     lenient = True,
     deps = [":lite_types"],
 )
 
-closure_js_library(
+js_library(
     name = "lite",
     srcs = ["lite.js", "lite.d.ts"],
     lenient = True,
@@ -75,7 +75,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "lite_impl",
     srcs = ["lite_impl.js", "lite_impl.d.ts"],
     lenient = True,
@@ -86,14 +86,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "lite_native_impl",
     srcs = ["lite_native_impl.js", "lite_native_impl.d.ts"],
     lenient = True,
     deps = [":lite_types"],
 )
 
-closure_js_library(
+js_library(
     name = "lite_test_cases",
     testonly = 1,
     srcs = ["lite_test_cases.js", "lite_test_cases.d.ts"],
@@ -104,7 +104,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "lite_types",
     srcs = ["lite_types.js", "lite_types.d.ts"],
     lenient = True,

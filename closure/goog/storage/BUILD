@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "collectablestorage",
     srcs = ["collectablestorage.js", "collectablestorage.d.ts"],
     lenient = True,
@@ -18,7 +18,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "collectablestoragetester",
     testonly = True,
     srcs = ["collectablestoragetester.js", "collectablestoragetester.d.ts"],
@@ -31,7 +31,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "encryptedstorage",
     srcs = ["encryptedstorage.js", "encryptedstorage.d.ts"],
     lenient = True,
@@ -48,13 +48,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "errorcode",
     srcs = ["errorcode.js", "errorcode.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "expiringstorage",
     srcs = ["expiringstorage.js", "expiringstorage.d.ts"],
     lenient = True,
@@ -64,7 +64,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "richstorage",
     srcs = ["richstorage.js", "richstorage.d.ts"],
     lenient = True,
@@ -75,7 +75,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "storage",
     srcs = ["storage.js", "storage.d.ts"],
     lenient = True,
@@ -86,7 +86,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "storagetester",
     testonly = True,
     srcs = ["storagetester.js", "storagetester.d.ts"],

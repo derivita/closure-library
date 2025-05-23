@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "abstractchannel",
     srcs = ["abstractchannel.js", "abstractchannel.d.ts"],
     lenient = True,
@@ -16,7 +16,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "bufferedchannel",
     srcs = ["bufferedchannel.js", "bufferedchannel.d.ts"],
     lenient = True,
@@ -30,7 +30,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "deferredchannel",
     srcs = ["deferredchannel.js", "deferredchannel.d.ts"],
     lenient = True,
@@ -41,7 +41,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "loggerclient",
     srcs = ["loggerclient.js", "loggerclient.d.ts"],
     lenient = True,
@@ -53,7 +53,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "loggerserver",
     srcs = ["loggerserver.js", "loggerserver.d.ts"],
     lenient = True,
@@ -64,20 +64,20 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "messagechannel",
     srcs = ["messagechannel.js", "messagechannel.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "messaging",
     srcs = ["messaging.js", "messaging.d.ts"],
     lenient = True,
     deps = [":messagechannel"],
 )
 
-closure_js_library(
+js_library(
     name = "multichannel",
     srcs = ["multichannel.js", "multichannel.d.ts"],
     lenient = True,
@@ -89,7 +89,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "portcaller",
     srcs = ["portcaller.js", "portcaller.d.ts"],
     lenient = True,
@@ -104,7 +104,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "portchannel",
     srcs = ["portchannel.js", "portchannel.d.ts"],
     lenient = True,
@@ -128,14 +128,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "portnetwork",
     srcs = ["portnetwork.js", "portnetwork.d.ts"],
     lenient = True,
     deps = [":messagechannel"],
 )
 
-closure_js_library(
+js_library(
     name = "portoperator",
     srcs = ["portoperator.js", "portoperator.d.ts"],
     lenient = True,
@@ -150,7 +150,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "respondingchannel",
     srcs = ["respondingchannel.js", "respondingchannel.d.ts"],
     lenient = True,

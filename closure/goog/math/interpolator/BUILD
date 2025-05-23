@@ -1,16 +1,16 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "interpolator1",
     srcs = ["interpolator1.js", "interpolator1.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "linear1",
     srcs = ["linear1.js", "linear1.d.ts"],
     lenient = True,
@@ -22,7 +22,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "pchip1",
     srcs = ["pchip1.js", "pchip1.d.ts"],
     lenient = True,
@@ -32,7 +32,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "spline1",
     srcs = ["spline1.js", "spline1.d.ts"],
     lenient = True,

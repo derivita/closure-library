@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "dom",
     testonly = True,
     srcs = ["dom.js", "dom.d.ts"],
@@ -19,7 +19,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "fieldmock",
     testonly = True,
     srcs = ["fieldmock.js", "fieldmock.d.ts"],
@@ -34,7 +34,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "testhelper",
     testonly = True,
     srcs = ["testhelper.js", "testhelper.d.ts"],

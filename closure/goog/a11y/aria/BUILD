@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "announcer",
     srcs = ["announcer.js", "announcer.d.ts"],
     lenient = True,
@@ -19,7 +19,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "aria",
     srcs = ["aria.js", "aria.d.ts"],
     lenient = True,
@@ -36,13 +36,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "attributes",
     srcs = ["attributes.js", "attributes.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "datatables",
     srcs = ["datatables.js", "datatables.d.ts"],
     lenient = True,
@@ -52,7 +52,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "roles",
     srcs = ["roles.js", "roles.d.ts"],
     lenient = True,

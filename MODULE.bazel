@@ -4,3 +4,14 @@
 #
 # For more details, please check https://github.com/bazelbuild/bazel/issues/18958
 ###############################################################################
+
+module(
+    name = "@goog",
+    version = "0.0.1",
+)
+
+bazel_dep(name = "rules_derivita_ts", version = "0.0.0")
+local_path_override(
+    module_name = "rules_derivita_ts",
+    path = "../rules_derivita_ts",
+)

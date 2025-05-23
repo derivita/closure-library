@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "entries",
     srcs = ["entries.js", "entries.d.ts"],
     lenient = True,
@@ -16,7 +16,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "registry",
     srcs = ["registry.js", "registry.d.ts"],
     lenient = True,
@@ -30,7 +30,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "testhelpers",
     testonly = 1,
     srcs = ["testhelpers.js", "testhelpers.d.ts"],
@@ -42,7 +42,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tweak",
     srcs = ["tweak.js", "tweak.d.ts"],
     lenient = True,
@@ -53,7 +53,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tweakui",
     srcs = ["tweakui.js", "tweakui.d.ts"],
     lenient = True,

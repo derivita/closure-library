@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "browserchannel",
     srcs = [
         "browserchannel.js", "browserchannel.d.ts",
@@ -55,7 +55,7 @@ alias(
     actual = ":browserchannel",
 )
 
-closure_js_library(
+js_library(
     name = "bulkloader",
     srcs = ["bulkloader.js", "bulkloader.d.ts"],
     lenient = True,
@@ -71,7 +71,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "bulkloaderhelper",
     srcs = ["bulkloaderhelper.js", "bulkloaderhelper.d.ts"],
     lenient = True,
@@ -81,7 +81,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "channeldebug",
     srcs = ["channeldebug.js", "channeldebug.d.ts"],
     lenient = True,
@@ -98,7 +98,7 @@ alias(
     actual = ":browserchannel",
 )
 
-closure_js_library(
+js_library(
     name = "cookies",
     srcs = [
         "cookies.js", "cookies.d.ts",
@@ -107,7 +107,7 @@ closure_js_library(
     deps = ["//closure/goog/string"],
 )
 
-closure_js_library(
+js_library(
     name = "corsxmlhttpfactory",
     srcs = ["corsxmlhttpfactory.js", "corsxmlhttpfactory.d.ts"],
     lenient = True,
@@ -119,7 +119,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "crossdomainrpc",
     srcs = ["crossdomainrpc.js", "crossdomainrpc.d.ts"],
     lenient = True,
@@ -140,19 +140,19 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "errorcode",
     srcs = ["errorcode.js", "errorcode.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "eventtype",
     srcs = ["eventtype.js", "eventtype.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "fetchxmlhttpfactory",
     srcs = ["fetchxmlhttpfactory.js", "fetchxmlhttpfactory.d.ts"],
     lenient = True,
@@ -166,7 +166,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "filedownloader",
     srcs = ["filedownloader.js", "filedownloader.d.ts"],
     lenient = True,
@@ -192,19 +192,19 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "httpstatus",
     srcs = ["httpstatus.js", "httpstatus.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "httpstatusname",
     srcs = ["httpstatusname.js", "httpstatusname.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "iframeio",
     srcs = ["iframeio.js", "iframeio.d.ts"],
     lenient = True,
@@ -239,7 +239,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "iframeloadmonitor",
     srcs = ["iframeloadmonitor.js", "iframeloadmonitor.d.ts"],
     lenient = True,
@@ -250,7 +250,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "imageloader",
     srcs = ["imageloader.js", "imageloader.d.ts"],
     lenient = True,
@@ -266,7 +266,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "ipaddress",
     srcs = ["ipaddress.js", "ipaddress.d.ts"],
     lenient = True,
@@ -278,7 +278,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "jsloader",
     srcs = ["jsloader.js", "jsloader.d.ts"],
     lenient = True,
@@ -294,7 +294,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "jsonp",
     srcs = ["jsonp.js", "jsonp.d.ts"],
     lenient = True,
@@ -306,7 +306,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "mockiframeio",
     srcs = ["mockiframeio.js", "mockiframeio.d.ts"],
     lenient = True,
@@ -321,7 +321,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "multiiframeloadmonitor",
     srcs = ["multiiframeloadmonitor.js", "multiiframeloadmonitor.d.ts"],
     lenient = True,
@@ -332,14 +332,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "networkstatusmonitor",
     srcs = ["networkstatusmonitor.js", "networkstatusmonitor.d.ts"],
     lenient = True,
     deps = ["//closure/goog/events:listenable"],
 )
 
-closure_js_library(
+js_library(
     name = "networktester",
     srcs = ["networktester.js", "networktester.d.ts"],
     lenient = True,
@@ -350,7 +350,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tmpnetwork",
     srcs = ["tmpnetwork.js", "tmpnetwork.d.ts"],
     lenient = True,
@@ -360,7 +360,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "websocket",
     srcs = ["websocket.js", "websocket.d.ts"],
     lenient = True,
@@ -376,7 +376,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "wrapperxmlhttpfactory",
     srcs = ["wrapperxmlhttpfactory.js", "wrapperxmlhttpfactory.d.ts"],
     lenient = True,
@@ -386,7 +386,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "xhrio",
     srcs = ["xhrio.js", "xhrio.d.ts"],
     lenient = True,
@@ -414,7 +414,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "xhriopool",
     srcs = ["xhriopool.js", "xhriopool.d.ts"],
     lenient = True,
@@ -425,13 +425,13 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "xhrlike",
     srcs = ["xhrlike.js", "xhrlike.d.ts"],
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "xhrmanager",
     srcs = ["xhrmanager.js", "xhrmanager.d.ts"],
     lenient = True,
@@ -448,7 +448,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "xmlhttp",
     srcs = ["xmlhttp.js", "xmlhttp.d.ts"],
     lenient = True,
@@ -460,7 +460,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "xmlhttpfactory",
     srcs = ["xmlhttpfactory.js", "xmlhttpfactory.d.ts"],
     lenient = True,

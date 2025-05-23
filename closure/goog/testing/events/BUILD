@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "eventobserver",
     testonly = True,
     srcs = ["eventobserver.js", "eventobserver.d.ts"],
@@ -16,7 +16,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "events",
     testonly = True,
     srcs = ["events.js", "events.d.ts"],
@@ -38,7 +38,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "matchers",
     testonly = True,
     srcs = ["matchers.js", "matchers.d.ts"],
@@ -49,7 +49,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "onlinehandler",
     testonly = True,
     srcs = ["onlinehandler.js", "onlinehandler.d.ts"],

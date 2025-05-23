@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "mockiframeio",
     testonly = True,
     srcs = ["mockiframeio.js", "mockiframeio.d.ts"],
@@ -20,7 +20,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "xhrio",
     testonly = True,
     srcs = ["xhrio.js", "xhrio.d.ts"],
@@ -45,7 +45,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "xhriopool",
     testonly = True,
     srcs = ["xhriopool.js", "xhriopool.d.ts"],

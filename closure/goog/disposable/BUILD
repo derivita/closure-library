@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "disposable",
     srcs = [
         "disposable.js", "disposable.d.ts",
@@ -15,7 +15,7 @@ closure_js_library(
     deps = [":idisposable"],
 )
 
-closure_js_library(
+js_library(
     name = "idisposable",
     srcs = ["idisposable.js", "idisposable.d.ts"],
     lenient = True,

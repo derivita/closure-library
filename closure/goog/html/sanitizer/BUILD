@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "html_test_vectors_js",
     srcs = [
         "html_test_vectors.d.ts",
@@ -13,7 +13,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "attributeallowlists",
     srcs = [
         "attributeallowlists.d.ts",
@@ -22,7 +22,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "csspropertysanitizer",
     srcs = [
         "csspropertysanitizer.d.ts",
@@ -37,7 +37,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "csssanitizer",
     srcs = [
         "csssanitizer.d.ts",
@@ -64,7 +64,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "elementweakmap",
     srcs = [
         "elementweakmap.d.ts",
@@ -74,7 +74,7 @@ closure_js_library(
     deps = [":noclobber"],
 )
 
-closure_js_library(
+js_library(
     name = "htmlsanitizer",
     srcs = [
         "htmlsanitizer.d.ts",
@@ -105,7 +105,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "noclobber",
     srcs = [
         "noclobber.d.ts",
@@ -119,7 +119,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "inertdocument",
     srcs = [
         "inertdocument.d.ts",
@@ -128,7 +128,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "safedomtreeprocessor",
     srcs = [
         "safedomtreeprocessor.d.ts",
@@ -149,7 +149,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "tagblacklist",
     srcs = [
         "tagblacklist.d.ts",
@@ -158,7 +158,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "tagwhitelist",
     srcs = [
         "tagwhitelist.d.ts",
@@ -167,7 +167,7 @@ closure_js_library(
     lenient = True,
 )
 
-closure_js_library(
+js_library(
     name = "unsafe",
     srcs = [
         "unsafe.d.ts",

@@ -1,10 +1,10 @@
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library")
+load("@rules_derivita_ts//js:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
 licenses(["notice"])
 
-closure_js_library(
+js_library(
     name = "abstractrange",
     srcs = ["abstractrange.js", "abstractrange.d.ts"],
     lenient = True,
@@ -25,7 +25,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "browserrange",
     srcs = ["browserrange.js", "browserrange.d.ts"],
     lenient = True,
@@ -41,14 +41,14 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "geckorange",
     srcs = ["geckorange.js", "geckorange.d.ts"],
     lenient = True,
     deps = [":w3crange"],
 )
 
-closure_js_library(
+js_library(
     name = "w3crange",
     srcs = ["w3crange.js", "w3crange.d.ts"],
     lenient = True,
@@ -64,7 +64,7 @@ closure_js_library(
     ],
 )
 
-closure_js_library(
+js_library(
     name = "webkitrange",
     srcs = ["webkitrange.js", "webkitrange.d.ts"],
     lenient = True,
