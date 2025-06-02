@@ -1,0 +1,4 @@
+local_repository(
+    name = "rules_derivita_ts",
+    path = "../rules_derivita_ts",
+)

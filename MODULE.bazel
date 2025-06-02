@@ -6,12 +6,7 @@
 ###############################################################################
 
 module(
-    name = "@goog",
+    name = "closure_library",
     version = "0.0.1",
 )
 
-bazel_dep(name = "rules_derivita_ts", version = "0.0.0")
-local_path_override(
-    module_name = "rules_derivita_ts",
-    path = "../rules_derivita_ts",
-)

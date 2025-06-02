@@ -1,4 +1,4 @@
-load("@rules_derivita_ts//js:index.bzl", "js_library")
+load("//closure/goog:defs.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
