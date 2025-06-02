@@ -2,7 +2,7 @@
 # They are too different to attempt a copybara transform between them.
 # This file is used in the closure-library repo by external Bazel users (via rules_closure)
 
-load("@rules_derivita_ts//js:index.bzl", "js_library")
+load("//closure/goog:defs.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
