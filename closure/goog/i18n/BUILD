@@ -8,7 +8,7 @@ js_library(
     name = "jstests_deps",
     testonly = 1,
     lenient = True,
-    exports = [
+    deps = [
         ":bidi",
         ":bidiformatter",
         ":charlistdecompressor",

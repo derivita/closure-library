@@ -8,7 +8,7 @@ js_library(
     name = "streams",
     srcs = [],
     lenient = True,
-    exports = [
+    deps = [
         ":base64pbstreamparser",
         ":base64streamdecoder",
         ":jsonstreamparser",

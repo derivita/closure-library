@@ -349,7 +349,7 @@ js_library(
     name = "mockmatchers",
     testonly = True,
     lenient = True,
-    exports = [":mock"],
+    deps = [":mock"],
 )
 
 js_library(

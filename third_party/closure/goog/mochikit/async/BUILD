@@ -8,7 +8,7 @@ js_library(
     name = "all_js",
     srcs = [],
     lenient = True,
-    exports = [
+    deps = [
         ":deferred",
         ":deferredlist",
     ],

@@ -8,7 +8,7 @@ js_library(
     name = "useragent",
     srcs = [],
     lenient = True,
-    exports = [
+    deps = [
         ":browser",
         ":device",
         ":engine",

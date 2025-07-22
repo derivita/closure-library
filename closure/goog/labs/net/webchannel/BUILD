@@ -8,7 +8,7 @@ js_library(
     name = "webchannel",
     srcs = [],
     lenient = True,
-    exports = [
+    deps = [
         ":webchannelbase",
         ":webchannelbasetransport",
     ],
